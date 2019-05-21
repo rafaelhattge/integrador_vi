@@ -5,6 +5,16 @@
  */
 package telas;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author Diana
@@ -16,6 +26,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        setResizable(false);
+    setLocationRelativeTo(null);
+ //pegarResolucao();     
+ 
+  
     }
 
     /**
@@ -27,21 +42,334 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabelAluno = new javax.swing.JLabel();
+        jLabelTela1 = new javax.swing.JLabel();
+        jLabelTela2 = new javax.swing.JLabel();
+        jLabelMorp = new javax.swing.JLabel();
+        jLabelTela3 = new javax.swing.JLabel();
+        jLabelTela4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelsair = new javax.swing.JLabel();
+        jLabelMini = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/recursos/Morpheus_Labs_Logo_2.png"));
+        Image image = icon.getImage();
+        jDesktopPanePrincipal = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(69, 69, 71));
+        jPanel1.setFocusTraversalPolicyProvider(true);
+
+        jLabelAluno.setBackground(new java.awt.Color(66, 215, 244));
+        jLabelAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/estudante.png"))); // NOI18N
+        jLabelAluno.setOpaque(true);
+
+        jLabelTela1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelTela1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTela1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTela1.setText("1");
+        jLabelTela1.setToolTipText("Home");
+        jLabelTela1.setPreferredSize(new java.awt.Dimension(64, 64));
+        jLabelTela1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelTela1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelTela1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelTela1MouseExited(evt);
+            }
+        });
+
+        jLabelTela2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelTela2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTela2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTela2.setText("2");
+        jLabelTela2.setToolTipText("Home");
+        jLabelTela2.setPreferredSize(new java.awt.Dimension(64, 64));
+        jLabelTela2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelTela2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelTela2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelTela2MouseExited(evt);
+            }
+        });
+
+        jLabelMorp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMorp.setText("Logo aqui");
+        jLabelMorp.setToolTipText("");
+
+        jLabelTela3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelTela3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTela3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTela3.setText("3");
+        jLabelTela3.setToolTipText("Home");
+        jLabelTela3.setPreferredSize(new java.awt.Dimension(64, 64));
+        jLabelTela3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelTela3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelTela3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelTela3MouseExited(evt);
+            }
+        });
+
+        jLabelTela4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelTela4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTela4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTela4.setText("4");
+        jLabelTela4.setToolTipText("Home");
+        jLabelTela4.setPreferredSize(new java.awt.Dimension(64, 64));
+        jLabelTela4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelTela4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelTela4MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelMorp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelTela4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTela3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTela1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTela2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabelAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabelTela1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabelTela2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelTela3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelTela4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelMorp, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jLabelsair.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabelsair.setForeground(new java.awt.Color(181, 92, 28));
+        jLabelsair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelsair.setText("X");
+        jLabelsair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelsairMouseClicked(evt);
+            }
+        });
+
+        jLabelMini.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabelMini.setForeground(new java.awt.Color(181, 92, 28));
+        jLabelMini.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMini.setText("-");
+        jLabelMini.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelMiniMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Nome do programa");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                .addComponent(jLabelMini, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelsair, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelsair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelMini, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jDesktopPanePrincipal.setBackground(new java.awt.Color(240, 240, 240));
+
+        javax.swing.GroupLayout jDesktopPanePrincipalLayout = new javax.swing.GroupLayout(jDesktopPanePrincipal);
+        jDesktopPanePrincipal.setLayout(jDesktopPanePrincipalLayout);
+        jDesktopPanePrincipalLayout.setHorizontalGroup(
+            jDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jDesktopPanePrincipalLayout.setVerticalGroup(
+            jDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDesktopPanePrincipal)))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jDesktopPanePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        //testar se é a primeira vez do usuário
+        contadorLogin();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jLabelMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiniMouseClicked
+        // TODO add your handling code here:
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabelMiniMouseClicked
+
+    private void jLabelsairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelsairMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabelsairMouseClicked
+
+    private void jLabelTela1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela1MouseExited
+        // TODO add your handling code here:
+         jLabelTela1.setBackground(new Color(69, 69, 71));
+ jLabelTela1.setBorder(new LineBorder(new Color(69, 69, 71),2,true));
+    }//GEN-LAST:event_jLabelTela1MouseExited
+
+    private void jLabelTela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela1MouseEntered
+        // TODO add your handling code here:
+         jLabelTela1.setOpaque(true);
+ jLabelTela1.setBackground(new Color(66, 215, 244));
+ jLabelTela1.setBorder(new LineBorder(new Color(66, 215, 244),2,true));
+    }//GEN-LAST:event_jLabelTela1MouseEntered
+
+    private void jLabelTela2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela2MouseEntered
+        // TODO add your handling code here:
+        jLabelTela2.setOpaque(true);
+ jLabelTela2.setBackground(new Color(66, 215, 244));
+ jLabelTela2.setBorder(new LineBorder(new Color(66, 215, 244),2,true));
+    }//GEN-LAST:event_jLabelTela2MouseEntered
+
+    private void jLabelTela2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela2MouseExited
+        // TODO add your handling code here:
+          jLabelTela2.setBackground(new Color(69, 69, 71));
+ jLabelTela2.setBorder(new LineBorder(new Color(69, 69, 71),2,true));
+    }//GEN-LAST:event_jLabelTela2MouseExited
+
+    private void jLabelTela1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela1MouseClicked
+        // TODO add your handling code here:
+        Home home =new Home();
+        jDesktopPanePrincipal.add(home);
+        home.setBounds(0, 0, jDesktopPanePrincipal.getWidth(), jDesktopPanePrincipal.getHeight());
+      //  home.setBorder(null);//retirar bordas
+        ((BasicInternalFrameUI)home.getUI()).setNorthPane(null);
+        home.show();
+    //    home.dispose();
+        
+    }//GEN-LAST:event_jLabelTela1MouseClicked
+
+    private void jLabelTela3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela3MouseEntered
+        // TODO add your handling code here:
+        jLabelTela3.setOpaque(true);
+ jLabelTela3.setBackground(new Color(66, 215, 244));
+ jLabelTela3.setBorder(new LineBorder(new Color(66, 215, 244),2,true));
+        
+    }//GEN-LAST:event_jLabelTela3MouseEntered
+
+    private void jLabelTela3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela3MouseExited
+        // TODO add your handling code here:
+            jLabelTela3.setBackground(new Color(69, 69, 71));
+ jLabelTela3.setBorder(new LineBorder(new Color(69, 69, 71),2,true));
+    }//GEN-LAST:event_jLabelTela3MouseExited
+
+    private void jLabelTela4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela4MouseEntered
+        // TODO add your handling code here:
+        jLabelTela4.setOpaque(true);
+ jLabelTela4.setBackground(new Color(66, 215, 244));
+ jLabelTela4.setBorder(new LineBorder(new Color(66, 215, 244),2,true));
+    }//GEN-LAST:event_jLabelTela4MouseEntered
+
+    private void jLabelTela4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela4MouseExited
+        // TODO add your handling code here:
+          jLabelTela4.setBackground(new Color(69, 69, 71));
+ jLabelTela4.setBorder(new LineBorder(new Color(69, 69, 71),2,true));
+    }//GEN-LAST:event_jLabelTela4MouseExited
+
+    private void jLabelTela2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela2MouseClicked
+        // TODO add your handling code here:
+         CadastroCurso curso =new CadastroCurso();
+        jDesktopPanePrincipal.add(curso);
+        curso.setBounds(0, 0, jDesktopPanePrincipal.getWidth(), jDesktopPanePrincipal.getHeight());
+    //    curso.setBorder(null);//retirar bordas
+        ((BasicInternalFrameUI)curso.getUI()).setNorthPane(null);
+        curso.show();
+    }//GEN-LAST:event_jLabelTela2MouseClicked
+
+    private void jLabelTela3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela3MouseClicked
+        // TODO add your handling code here:
+            TelaConfiguracao tela3 =new TelaConfiguracao();
+        jDesktopPanePrincipal.add(tela3);
+        tela3.setBounds(0, 0, jDesktopPanePrincipal.getWidth(), jDesktopPanePrincipal.getHeight());
+      //  home.setBorder(null);//retirar bordas
+        ((BasicInternalFrameUI)tela3.getUI()).setNorthPane(null);
+        tela3.show();
+    }//GEN-LAST:event_jLabelTela3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,6 +407,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    private void pegarResolucao() {
+      Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension dimensao = t.getScreenSize();
+      //  System.out.println(t);
+        this.setSize((dimensao.width - 410 ), (dimensao.height - 130));
+    }
+    ////Metodo mostrar a tela de boas vinda
+public void contadorLogin(){
+    int contLog = 0;
+    if(contLog==0){
+        boaVinda boavinda  = new boaVinda(this, true);
+        boavinda.setVisible(true);
+    }
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPanePrincipal;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelAluno;
+    private javax.swing.JLabel jLabelMini;
+    private javax.swing.JLabel jLabelMorp;
+    private javax.swing.JLabel jLabelTela1;
+    private javax.swing.JLabel jLabelTela2;
+    private javax.swing.JLabel jLabelTela3;
+    private javax.swing.JLabel jLabelTela4;
+    private javax.swing.JLabel jLabelsair;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
