@@ -196,7 +196,7 @@ public class TelaLogin extends javax.swing.JFrame {
             jlblMessagem.setText("Todos campos são obrigatórios!");
             jTextUser.requestFocus(true);
         }else{
-            jlblMessagem.setText("Usuário ou senha inválida!");
+            jlblMessagem.setText("Email ou senha inválida!");
             jTextUser.setText("");
             jPasswordSenha.setText("");
             jTextUser.requestFocus(true);
@@ -230,8 +230,6 @@ public class TelaLogin extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
