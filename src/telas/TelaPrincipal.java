@@ -7,23 +7,17 @@ package telas;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  *
  * @author Diana
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-    int enter=0;
-    DefaultListModel modelo;
-String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2017","15/10/2017"};
 
     /**
      * Creates new form TelaPrincipal
@@ -33,8 +27,20 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
          this.getContentPane().setBackground(new Color(69, 69, 71));
       setResizable(false);
           setLocationRelativeTo(null);
-          modelo = new DefaultListModel();
-          jListPeridos.setModel(modelo);
+      //jTableTarefas.setBackground(new Color(0,0,0,0));
+      //   ((DefaultTableCellRenderer)jTableTarefas.getDefaultRenderer(Object.class)).setBackground(new Color(0,0,0,0));
+         //jScrollPane4.setBackground(new Color(0,0,0,0));
+     //     ((DefaultTableCellRenderer)jTableTarefas.getDefaultRenderer(Object.class)).setOpaque(false);
+    // jScrollPane4.setOpaque(false);
+         
+   jScrollPane4.getViewport().setOpaque(false);
+        // jTableTarefas.setShowGrid(false);
+        
+  
+  
+    
+         
+         
    // pegarResolucao();     
  
   
@@ -49,6 +55,7 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanelNomePrograma = new javax.swing.JPanel();
         jLabelsair = new javax.swing.JLabel();
         jLabelMini = new javax.swing.JLabel();
@@ -88,9 +95,20 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
         jTextField1 = new javax.swing.JTextField();
         jPanelTarefas = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jListPeridos = new javax.swing.JList<>();
-        jTextBuscaPeriodp = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jLabelPesquisar = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableTarefas = new javax.swing.JTable();
+        jRadioButtonPeriodo = new javax.swing.JRadioButton();
+        jRadioButtonDsicpli = new javax.swing.JRadioButton();
+        jTextField2 = new javax.swing.JTextField();
+        jLayeredPane2 = new javax.swing.JLayeredPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanelInform = new javax.swing.JPanel();
         jLabelInform = new javax.swing.JLabel();
 
@@ -466,8 +484,7 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(0, 0, 0))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelInicioLayout.setVerticalGroup(
@@ -543,31 +560,6 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
 
         jPanelTarefas.setBackground(new java.awt.Color(69, 69, 71));
 
-        jListPeridos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jListPeridosMouseClicked(evt);
-            }
-        });
-
-        jTextBuscaPeriodp.setEditable(false);
-        jTextBuscaPeriodp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextBuscaPeriodp.setText("Filtrar por periodo");
-        jTextBuscaPeriodp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextBuscaPeriodpMouseClicked(evt);
-            }
-        });
-        jTextBuscaPeriodp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextBuscaPeriodpActionPerformed(evt);
-            }
-        });
-        jTextBuscaPeriodp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextBuscaPeriodpKeyReleased(evt);
-            }
-        });
-
         jLabel11.setBackground(new java.awt.Color(66, 215, 244));
         jLabel11.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
         jLabel11.setText("Tarefas");
@@ -576,30 +568,213 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
         jLabel11.setOpaque(true);
         jLabel11.setPreferredSize(new java.awt.Dimension(318, 45));
 
-        jLayeredPane1.setLayer(jListPeridos, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jTextBuscaPeriodp, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabelPesquisar.setBackground(new java.awt.Color(66, 244, 158));
+        jLabelPesquisar.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        jLabelPesquisar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisar.setText("Pesquisar ");
+        jLabelPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jLabelPesquisar.setOpaque(true);
+
+        jPanel2.setBackground(new java.awt.Color(66, 244, 158));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true));
+        jPanel2.setOpaque(false);
+
+        jScrollPane4.setBackground(new java.awt.Color(69, 69, 71));
+        jScrollPane4.setBorder(null);
+
+        jTableTarefas.setBackground(new java.awt.Color(69, 69, 71));
+        jTableTarefas.setForeground(new java.awt.Color(255, 255, 255));
+        jTableTarefas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                { new Integer(1), "02/05/2019", "Matematica", "Tarefa1"},
+                { new Integer(2), "03/05/2019", "Portugues", "Tarefa2"},
+                { new Integer(3), "04/05/2019", "Sistemas Operacionais", "Tarefa3"},
+                { new Integer(4), "05/05/2019", "Matematica", "Tarefa4"},
+                { new Integer(5), "06/05/2019", "Matematica", "Tarefa5"},
+                { new Integer(6), "07/05/2019", "Sistemas Operacionais", "Tarefa6"},
+                { new Integer(7), "08/05/2019", "Sistemas Operacionais", "Tarefa7"},
+                { new Integer(8), "09/05/2019", "Portugues", "Tarefa8"},
+                { new Integer(9), "10/05/2019", "Portugues", "Tarefa9"},
+                { new Integer(10), "11/05/2019", "Matematica", "Tarefa10"}
+            },
+            new String [] {
+                "Cód.", "Data", "Disciplina", "Descrição"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableTarefas.setToolTipText("");
+        jTableTarefas.setOpaque(false);
+        jTableTarefas.setSelectionForeground(new java.awt.Color(221, 143, 224));
+        jTableTarefas.getTableHeader().setReorderingAllowed(false);
+        jTableTarefas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTarefasMouseClicked(evt);
+            }
+        });
+        jTableTarefas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTableTarefasKeyReleased(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTableTarefas);
+        if (jTableTarefas.getColumnModel().getColumnCount() > 0) {
+            jTableTarefas.getColumnModel().getColumn(0).setMinWidth(20);
+            jTableTarefas.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTableTarefas.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTableTarefas.getColumnModel().getColumn(1).setMinWidth(50);
+            jTableTarefas.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTableTarefas.getColumnModel().getColumn(1).setMaxWidth(100);
+            jTableTarefas.getColumnModel().getColumn(2).setResizable(false);
+            jTableTarefas.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+        );
+
+        buttonGroup1.add(jRadioButtonPeriodo);
+        jRadioButtonPeriodo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jRadioButtonPeriodo.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPeriodo.setSelected(true);
+        jRadioButtonPeriodo.setText("Período");
+        jRadioButtonPeriodo.setOpaque(false);
+
+        buttonGroup1.add(jRadioButtonDsicpli);
+        jRadioButtonDsicpli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jRadioButtonDsicpli.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonDsicpli.setText("Disciplina");
+        jRadioButtonDsicpli.setOpaque(false);
+
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
+        jTextField2.setOpaque(false);
+
+        javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
+        jLayeredPane2.setLayout(jLayeredPane2Layout);
+        jLayeredPane2Layout.setHorizontalGroup(
+            jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jLayeredPane2Layout.setVerticalGroup(
+            jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
+
+        jButton4.setText("jButton4");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
         jLayeredPane1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabelPesquisar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jRadioButtonPeriodo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jRadioButtonDsicpli, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextBuscaPeriodp, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jListPeridos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jRadioButtonPeriodo)
+                        .addGap(49, 49, 49)
+                        .addComponent(jRadioButtonDsicpli))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPane2)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jTextBuscaPeriodp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jListPeridos, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelPesquisar)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jTextField2)
+                                .addGap(2, 2, 2)))
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButtonPeriodo)
+                            .addComponent(jRadioButtonDsicpli)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLayeredPane2))))
         );
 
         javax.swing.GroupLayout jPanelTarefasLayout = new javax.swing.GroupLayout(jPanelTarefas);
@@ -656,6 +831,7 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelNomePrograma, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -744,7 +920,7 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
     private void jLabelTela3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela3MouseClicked
        jLayeredPaneis.removeAll();
   jLayeredPaneis.add(jPanelTarefas);
-  jListPeridos.setVisible(false);
+ 
   jLayeredPaneis.repaint();
   jLayeredPaneis.revalidate();
     }//GEN-LAST:event_jLabelTela3MouseClicked
@@ -763,44 +939,26 @@ String[] testeData = {"06/08/2017","06/09/2017","06/10/2017,26/08/2017","12/09/2
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox4ActionPerformed
 
-    private void jTextBuscaPeriodpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBuscaPeriodpActionPerformed
-        // TODO add your handling code here:
-        jListPeridos.setVisible(false);
-        enter =1;
-    }//GEN-LAST:event_jTextBuscaPeriodpActionPerformed
-
-    private void jTextBuscaPeriodpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscaPeriodpKeyReleased
-        // TODO add your handling code here:
-        if(enter ==0){
-            testeLista();
-        }else{
-            enter=0;
-        }
-        
-    }//GEN-LAST:event_jTextBuscaPeriodpKeyReleased
-
-    private void jListPeridosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListPeridosMouseClicked
-        // TODO add your handling code here:
-       jTextBuscaPeriodp.setText(jListPeridos.getSelectedValue());
-       jListPeridos.setVisible(false);
-        jTextBuscaPeriodp.setEditable(false);
-        enter =1;
-    }//GEN-LAST:event_jListPeridosMouseClicked
-
-    private void jTextBuscaPeriodpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextBuscaPeriodpMouseClicked
-        // TODO add your handling code here:
-        jTextBuscaPeriodp.setText("");
-        jTextBuscaPeriodp.setEditable(true);
-    }//GEN-LAST:event_jTextBuscaPeriodpMouseClicked
-
     private void jLabelTela4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTela4MouseClicked
         // TODO add your handling code here:
         jLayeredPaneis.removeAll();
   jLayeredPaneis.add(jPanelInform);
-  jListPeridos.setVisible(false);
+
   jLayeredPaneis.repaint();
   jLayeredPaneis.revalidate();
     }//GEN-LAST:event_jLabelTela4MouseClicked
+
+    private void jTableTarefasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTarefasMouseClicked
+        // TODO add your handling code here:
+
+//        controleEventoTabela();
+
+    }//GEN-LAST:event_jTableTarefasMouseClicked
+
+    private void jTableTarefasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTarefasKeyReleased
+        // TODO add your handling code here:
+//        controleEventoTabela();
+    }//GEN-LAST:event_jTableTarefasKeyReleased
 
     /**
      * @param args the command line arguments
@@ -857,22 +1015,14 @@ public void contadorLogin(){
     }
 
 }
-    public void testeLista(){
-        modelo.removeAllElements();
-        int v = 0;
-        
-        while (testeData.length>0  && v<4){
-            modelo.addElement(testeData[v]);
-            v++;
-            if(v>=1){
-                jListPeridos.setVisible(true);
-            }else{
-               jListPeridos.setVisible(false);
-            }
-        }
-        
-    }
+     
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -891,16 +1041,19 @@ public void contadorLogin(){
     private javax.swing.JLabel jLabelInform;
     private javax.swing.JLabel jLabelMini;
     private javax.swing.JLabel jLabelNomePrograma;
+    private javax.swing.JLabel jLabelPesquisar;
     private javax.swing.JLabel jLabelTela2;
     private javax.swing.JLabel jLabelTela3;
     private javax.swing.JLabel jLabelTela4;
     private javax.swing.JLabel jLabelsair;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPaneInternoDisci;
     private javax.swing.JLayeredPane jLayeredPaneis;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jListPeridos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelDisciplina;
     private javax.swing.JPanel jPanelInform;
@@ -909,13 +1062,17 @@ public void contadorLogin(){
     private javax.swing.JPanel jPanelNomePrograma;
     private javax.swing.JPanel jPanelTarefas;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JRadioButton jRadioButtonDsicpli;
+    private javax.swing.JRadioButton jRadioButtonPeriodo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTableTarefas;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextBuscaPeriodp;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
