@@ -23,7 +23,7 @@ public class Splash {
     
     JFrame frame;
     JLabel image=new JLabel(new ImageIcon(getClass().getResource("/recursos/morpheus.png")));
-    JLabel texto=new JLabel("Nome do Programa");
+    JLabel texto=new JLabel("Morpheus Study");
     JProgressBar progressBar=new JProgressBar();
     JLabel message=new JLabel();
    public Splash()
@@ -57,9 +57,12 @@ public class Splash {
     }
     public void addTexto()
     {
-        texto.setFont(new Font("arial",Font.BOLD,10));
-        texto.setBounds(140, 70, 180, 14);
-        texto.setForeground(Color.WHITE);
+        texto.setFont(new java.awt.Font("Candara", 0, 36));
+        texto.setForeground(new java.awt.Color(66, 215, 244));
+texto.setBounds(20, 70, 360, 36);
+texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+      
         frame.add(texto);
     }
     public void addMessage()

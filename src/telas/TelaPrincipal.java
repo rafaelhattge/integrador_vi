@@ -7,8 +7,11 @@ package telas;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -27,17 +30,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
          this.getContentPane().setBackground(new Color(69, 69, 71));
       setResizable(false);
           setLocationRelativeTo(null);
+          
       //jTableTarefas.setBackground(new Color(0,0,0,0));
       //   ((DefaultTableCellRenderer)jTableTarefas.getDefaultRenderer(Object.class)).setBackground(new Color(0,0,0,0));
-         //jScrollPane4.setBackground(new Color(0,0,0,0));
+    // jScrollPane5.setBackground(new Color(0,0,0,0));
      //     ((DefaultTableCellRenderer)jTableTarefas.getDefaultRenderer(Object.class)).setOpaque(false);
-    // jScrollPane4.setOpaque(false);
-         
-   jScrollPane4.getViewport().setOpaque(false);
-        // jTableTarefas.setShowGrid(false);
+  //
+       //   jPanel2.setBackground(new Color(0,0,0,0));
         
+     /*   jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
+        jTable1.getTableHeader().setForeground(new Color(255,255,255));
+        jTable1.setRowHeight(25);*/
+ //    jScrollPane4.getViewport().setOpaque(false);
+ jScrollPane4.getViewport().setOpaque(false);
+
+ //jScrollPane4.getViewport().setBackground(Color.yellow);
+        // jTableTarefas.setShowGrid(false);
+      /*  jTableTarefas.getTableHeader().setOpaque(false);
+        jTableTarefas.getTableHeader().setBackground(new Color(32,136,203));
+        jTableTarefas.getTableHeader().setForeground(new Color(255,255,255));
+        jTableTarefas.setRowHeight(25);*/
   
-  
+
     
          
          
@@ -105,10 +121,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanelInform = new javax.swing.JPanel();
         jLabelInform = new javax.swing.JLabel();
 
@@ -575,37 +588,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jLabelPesquisar.setOpaque(true);
 
-        jPanel2.setBackground(new java.awt.Color(66, 244, 158));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true));
+        jPanel2.setBackground(new java.awt.Color(60, 74, 178));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 74, 178), 6, true));
         jPanel2.setOpaque(false);
 
         jScrollPane4.setBackground(new java.awt.Color(69, 69, 71));
-        jScrollPane4.setBorder(null);
+        jScrollPane4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 74, 178), 1, true));
+        jScrollPane4.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 74, 178), 1, true));
+        jScrollPane4.setOpaque(false);
+        jScrollPane4.getViewport().setOpaque(false);
 
         jTableTarefas.setBackground(new java.awt.Color(69, 69, 71));
         jTableTarefas.setForeground(new java.awt.Color(255, 255, 255));
         jTableTarefas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1), "02/05/2019", "Matematica", "Tarefa1"},
-                { new Integer(2), "03/05/2019", "Portugues", "Tarefa2"},
-                { new Integer(3), "04/05/2019", "Sistemas Operacionais", "Tarefa3"},
-                { new Integer(4), "05/05/2019", "Matematica", "Tarefa4"},
-                { new Integer(5), "06/05/2019", "Matematica", "Tarefa5"},
-                { new Integer(6), "07/05/2019", "Sistemas Operacionais", "Tarefa6"},
-                { new Integer(7), "08/05/2019", "Sistemas Operacionais", "Tarefa7"},
-                { new Integer(8), "09/05/2019", "Portugues", "Tarefa8"},
-                { new Integer(9), "10/05/2019", "Portugues", "Tarefa9"},
-                { new Integer(10), "11/05/2019", "Matematica", "Tarefa10"}
+                { new Integer(1), "05/05/2019", "Matematica", "dasdas", null},
+                { new Integer(2), "05/06/2019", "Portugues", "sdasdas", null},
+                { new Integer(3), "05/07/2019", "Sistemas Operacionais", "dasdsad", null},
+                { new Integer(4), "05/08/2019", "Programação I", "asdasd",  new Boolean(true)},
+                { new Integer(5), "05/09/2019", "Modelos de Gestão", "asdasd",  new Boolean(true)},
+                { new Integer(6), "05/10/2019", "Matematica", "sdasd", null},
+                { new Integer(7), "05/11/2019", "Sistemas Operacionais", "asdsadsa", null}
             },
             new String [] {
-                "Cód.", "Data", "Disciplina", "Descrição"
+                "Cód", "Data", "Disciplina", "Descrição", "Concluído"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -617,9 +630,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jTableTarefas.setToolTipText("");
+        jTableTarefas.setFocusable(false);
         jTableTarefas.setOpaque(false);
-        jTableTarefas.setSelectionForeground(new java.awt.Color(221, 143, 224));
+        jTableTarefas.setRowHeight(30);
+        jTableTarefas.setSelectionBackground(new java.awt.Color(66, 244, 158));
+        jTableTarefas.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jTableTarefas.setShowVerticalLines(false);
         jTableTarefas.getTableHeader().setReorderingAllowed(false);
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableTarefas
+        .getDefaultRenderer(JLabel.class);
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(new java.awt.Color(60, 74, 178));
+        //headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < jTableTarefas.getModel().getColumnCount(); i++) {
+            jTableTarefas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
         jTableTarefas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableTarefasMouseClicked(evt);
@@ -632,25 +658,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTableTarefas);
         if (jTableTarefas.getColumnModel().getColumnCount() > 0) {
-            jTableTarefas.getColumnModel().getColumn(0).setMinWidth(20);
+            jTableTarefas.getColumnModel().getColumn(0).setResizable(false);
             jTableTarefas.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTableTarefas.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTableTarefas.getColumnModel().getColumn(1).setMinWidth(50);
+            jTableTarefas.getColumnModel().getColumn(1).setResizable(false);
             jTableTarefas.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTableTarefas.getColumnModel().getColumn(1).setMaxWidth(100);
             jTableTarefas.getColumnModel().getColumn(2).setResizable(false);
+            jTableTarefas.getColumnModel().getColumn(2).setPreferredWidth(200);
             jTableTarefas.getColumnModel().getColumn(3).setResizable(false);
+            jTableTarefas.getColumnModel().getColumn(3).setPreferredWidth(200);
+            jTableTarefas.getColumnModel().getColumn(4).setResizable(false);
+            jTableTarefas.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         buttonGroup1.add(jRadioButtonPeriodo);
@@ -669,6 +699,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
         jTextField2.setOpaque(false);
 
+        jLayeredPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 244, 158), 6));
+
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
         jLayeredPane2Layout.setHorizontalGroup(
@@ -677,42 +709,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 429, Short.MAX_VALUE)
         );
 
-        jButton1.setText("jButton1");
+        jPanel1.setBackground(new java.awt.Color(66, 244, 158));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
 
-        jButton2.setText("jButton2");
-
-        jButton3.setText("jButton3");
-
-        jButton4.setText("jButton4");
+        jLabel2.setBackground(new java.awt.Color(66, 244, 158));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Gerenciar Tarefas");
+        jLabel2.setToolTipText("");
+        jLabel2.setOpaque(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLayeredPane1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -732,30 +756,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jRadioButtonPeriodo)
-                        .addGap(49, 49, 49)
-                        .addComponent(jRadioButtonDsicpli))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addGap(144, 144, 144)
+                                .addComponent(jRadioButtonPeriodo)
+                                .addGap(49, 49, 49)
+                                .addComponent(jRadioButtonDsicpli))
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane2)))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelPesquisar)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
@@ -764,17 +790,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButtonPeriodo)
                             .addComponent(jRadioButtonDsicpli)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLayeredPane2))))
+                        .addGap(0, 0, 0)
+                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout jPanelTarefasLayout = new javax.swing.GroupLayout(jPanelTarefas);
@@ -1019,10 +1042,6 @@ public void contadorLogin(){
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -1031,6 +1050,7 @@ public void contadorLogin(){
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
