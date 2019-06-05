@@ -5,6 +5,7 @@
  */
 package telas;
 
+import java.sql.Connection;
 import javax.swing.JFrame;
 
 /**
@@ -153,6 +154,11 @@ public class TelaRegistro extends javax.swing.JFrame {
         jButtonCadastrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
 
         jLabelRegistrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,6 +268,12 @@ public class TelaRegistro extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_jLabelRegistrarMouseClicked
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        // TODO add your handling code here:
+
+        
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
