@@ -588,13 +588,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jLabelPesquisar.setOpaque(true);
 
-        jPanel2.setBackground(new java.awt.Color(60, 74, 178));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 74, 178), 6, true));
+        jPanel2.setBackground(new java.awt.Color(69, 69, 71));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 6, true));
         jPanel2.setOpaque(false);
 
         jScrollPane4.setBackground(new java.awt.Color(69, 69, 71));
-        jScrollPane4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 74, 178), 1, true));
-        jScrollPane4.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 74, 178), 1, true));
+        jScrollPane4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
+        jScrollPane4.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
         jScrollPane4.setOpaque(false);
         jScrollPane4.getViewport().setOpaque(false);
 
@@ -641,7 +641,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         .getDefaultRenderer(JLabel.class);
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
-        headerRenderer.setBackground(new java.awt.Color(60, 74, 178));
+        headerRenderer.setBackground(new java.awt.Color(40, 109, 58));
+        //60, 74, 178
         //headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < jTableTarefas.getModel().getColumnCount(); i++) {
             jTableTarefas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
@@ -680,7 +681,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         buttonGroup1.add(jRadioButtonPeriodo);
@@ -792,12 +795,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout jPanelTarefasLayout = new javax.swing.GroupLayout(jPanelTarefas);
