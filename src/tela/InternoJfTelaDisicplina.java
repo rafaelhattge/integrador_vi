@@ -55,26 +55,33 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
         jLabelDisciplinas.setOpaque(true);
 
         jScrollPane1.setBackground(new java.awt.Color(69, 69, 71));
+        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jScrollPane1.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
 
         jTableDisciplinas.setBackground(new java.awt.Color(69, 69, 71));
-        jTableDisciplinas.setForeground(new java.awt.Color(240, 240, 240));
+        jTableDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
         jTableDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Matemática", "15/02/2018", "15/06/2018", "19:00", "22:00", null, null,  new Boolean(true), null, null, null, null},
+                {"Portugues", "13/02/2018", "15/06/2018", "19:00", "22:00", null, null, null,  new Boolean(true), null, null, null},
+                {"Programação I", "15/02/2018", "15/06/2018", "19:00", "22:00", null,  new Boolean(true), null, null, null, null, null},
+                {"Bancos de Dados", "15/02/2018", "15/06/2018", "19:00", "22:00", null, null, null, null,  new Boolean(true), null, null},
+                {"Sistemas Operacionais", "15/02/2018", "15/06/2018", "19:00", "22:00", null, null, null, null, null,  new Boolean(true), null}
             },
             new String [] {
                 "Disciplina", "Data de Início", "Data de Término", "Hora de Início", "Hora de Término", "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTableDisciplinas.getTableHeader().setFont(new Font("Candara", Font.PLAIN, 18));
+        jTableDisciplinas.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 18));
+
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas
         .getDefaultRenderer(JLabel.class);
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -84,6 +91,17 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
             jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
         jScrollPane1.setViewportView(jTableDisciplinas);
+
+        //Altera o tamanho das colunas dos dias da semana
+        for(int i = 5; i <= 11; i++){
+            jTableDisciplinas.getColumnModel().getColumn(i).setPreferredWidth(20);
+        }
+        jTableDisciplinas.setFocusable(false);
+        jTableDisciplinas.setOpaque(false);
+        jTableDisciplinas.setRowHeight(30);
+        jTableDisciplinas.setSelectionBackground(new java.awt.Color(218, 83, 44));
+        jTableDisciplinas.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jTableDisciplinas.setShowVerticalLines(false);
         jScrollPane1.setViewportView(jTableDisciplinas);
 
         jLabelCurso.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
@@ -135,8 +153,8 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
                     .addComponent(jButtonAdicionarCurso)
                     .addComponent(jButtonRemoverCurso))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,7 +165,7 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanelDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 5, Short.MAX_VALUE)))
+                    .addGap(0, 10, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

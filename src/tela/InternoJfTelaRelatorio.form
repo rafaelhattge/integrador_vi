@@ -198,7 +198,7 @@
             <Component class="javax.swing.JProgressBar" name="jProgressBar1">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="d7" red="42" type="rgb"/>
+                  <Color blue="d2" green="48" red="b1" type="rgb"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="value" type="int" value="50"/>
@@ -219,10 +219,10 @@
             <Component class="javax.swing.JSeparator" name="jSeparator1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="d7" red="42" type="rgb"/>
+                  <Color blue="d2" green="48" red="b1" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="d7" red="42" type="rgb"/>
+                  <Color blue="d2" green="48" red="b1" type="rgb"/>
                 </Property>
               </Properties>
             </Component>
@@ -292,10 +292,10 @@
             <Component class="javax.swing.JSeparator" name="jSeparator2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="d7" red="42" type="rgb"/>
+                  <Color blue="d2" green="48" red="b1" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f4" green="d7" red="42" type="rgb"/>
+                  <Color blue="d2" green="48" red="b1" type="rgb"/>
                 </Property>
               </Properties>
             </Component>
@@ -416,7 +416,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="d7" red="42" type="rgb"/>
+              <Color blue="d2" green="48" red="b1" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Candara" size="36" style="0"/>

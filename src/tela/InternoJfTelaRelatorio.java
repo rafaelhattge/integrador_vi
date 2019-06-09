@@ -67,7 +67,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jCheckBox1.setText("Exercício 1");
         jCheckBox1.setOpaque(false);
 
-        jProgressBar1.setForeground(new java.awt.Color(66, 215, 244));
+        jProgressBar1.setForeground(new java.awt.Color(177, 72, 210));
         jProgressBar1.setToolTipText("");
         jProgressBar1.setValue(50);
         jProgressBar1.setStringPainted(true);
@@ -76,8 +76,8 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("Progresso:");
 
-        jSeparator1.setBackground(new java.awt.Color(66, 215, 244));
-        jSeparator1.setForeground(new java.awt.Color(66, 215, 244));
+        jSeparator1.setBackground(new java.awt.Color(177, 72, 210));
+        jSeparator1.setForeground(new java.awt.Color(177, 72, 210));
 
         jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(240, 240, 240));
@@ -109,8 +109,8 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jCheckBox6.setText("Exercício 6");
         jCheckBox6.setOpaque(false);
 
-        jSeparator2.setBackground(new java.awt.Color(66, 215, 244));
-        jSeparator2.setForeground(new java.awt.Color(66, 215, 244));
+        jSeparator2.setBackground(new java.awt.Color(177, 72, 210));
+        jSeparator2.setForeground(new java.awt.Color(177, 72, 210));
 
         jScrollPane2.setBorder(null);
 
@@ -202,7 +202,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jList1.setSelectionBackground(new java.awt.Color(66, 215, 244));
         jScrollPane1.setViewportView(jList1);
 
-        jLabel5.setBackground(new java.awt.Color(66, 215, 244));
+        jLabel5.setBackground(new java.awt.Color(177, 72, 210));
         jLabel5.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
         jLabel5.setText(" Relatório Geral");
         jLabel5.setOpaque(true);
