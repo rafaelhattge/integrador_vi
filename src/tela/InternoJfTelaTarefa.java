@@ -335,9 +335,9 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jLabelPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jLabelPesquisar.setOpaque(true);
 
-        jLabel11.setBackground(new java.awt.Color(66, 215, 244));
+        jLabel11.setBackground(new java.awt.Color(66, 244, 158));
         jLabel11.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
-        jLabel11.setText("Tarefas");
+        jLabel11.setText(" Tarefas");
         jLabel11.setMaximumSize(new java.awt.Dimension(318, 45));
         jLabel11.setMinimumSize(new java.awt.Dimension(318, 45));
         jLabel11.setOpaque(true);
@@ -455,7 +455,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 588, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
+                .addComponent(jPanelTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 588, Short.MAX_VALUE))
         );
 
         pack();
