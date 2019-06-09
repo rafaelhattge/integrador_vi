@@ -5,7 +5,7 @@
  */
 package controle;
 
-import modelos.Splash;
+import modelo.Splash;
 
 
 /**
