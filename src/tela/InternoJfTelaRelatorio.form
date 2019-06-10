@@ -164,7 +164,7 @@
             <Component class="javax.swing.JProgressBar" name="jProgressBar1">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d2" green="48" red="b1" type="rgb"/>
+                  <Color blue="f4" green="d7" red="42" type="rgb"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="value" type="int" value="50"/>
@@ -185,10 +185,10 @@
             <Component class="javax.swing.JSeparator" name="jSeparator2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d2" green="48" red="b1" type="rgb"/>
+                  <Color blue="f4" green="d7" red="42" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d2" green="48" red="b1" type="rgb"/>
+                  <Color blue="f4" green="d7" red="42" type="rgb"/>
                 </Property>
               </Properties>
             </Component>
@@ -283,7 +283,7 @@
                     <Property name="opaque" type="boolean" value="false"/>
                     <Property name="rowHeight" type="int" value="30"/>
                     <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="83" green="18" red="69" type="rgb"/>
+                      <Color blue="97" green="57" red="2b" type="rgb"/>
                     </Property>
                     <Property name="showVerticalLines" type="boolean" value="false"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -295,7 +295,7 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTableExerciciosKeyReleased"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableExercicios&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(177,72,210));&#xa;&#xa;for (int i = 0; i &lt; jTableExercicios.getModel().getColumnCount(); i++) {&#xa;    jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(6);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableExercicios&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(66,215,244));&#xa;&#xa;for (int i = 0; i &lt; jTableExercicios.getModel().getColumnCount(); i++) {&#xa;    jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(6);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -333,7 +333,7 @@
                 </Property>
                 <Property name="selectionMode" type="int" value="0"/>
                 <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="83" green="18" red="69" type="rgb"/>
+                  <Color blue="97" green="57" red="2b" type="rgb"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -377,7 +377,7 @@
                 </Property>
                 <Property name="selectionMode" type="int" value="0"/>
                 <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="83" green="18" red="69" type="rgb"/>
+                  <Color blue="97" green="57" red="2b" type="rgb"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -389,7 +389,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d2" green="48" red="b1" type="rgb"/>
+              <Color blue="f4" green="d7" red="42" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Candara" size="36" style="0"/>

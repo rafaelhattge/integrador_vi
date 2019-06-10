@@ -349,29 +349,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMiniMouseClicked
 
     private void jButtontarefasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtontarefasActionPerformed
-      
+
+     jLabelAluno.setBackground(new java.awt.Color(66,244,158));
+     jLabelNomePrograma.setForeground(new java.awt.Color(66,244,158));
      controler.TelaTarefas();
     }//GEN-LAST:event_jButtontarefasActionPerformed
 
     private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
      
      // controler.trocaPaneis(jPanelInicio);
+     jLabelAluno.setBackground(new java.awt.Color(66,215,244));
+        jLabelNomePrograma.setForeground(new java.awt.Color(66,215,244));
      controler.TelaInicio();
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisciplinaActionPerformed
         // TODO add your handling code here:
-   
+        jLabelAluno.setBackground(new java.awt.Color(227,162,26));
+        jLabelNomePrograma.setForeground(new java.awt.Color(227,162,26));
         controler.TelaDisicplinas();
     }//GEN-LAST:event_jButtonDisciplinaActionPerformed
 
     private void jButtonConfigUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigUserActionPerformed
         
+        jLabelAluno.setBackground(new java.awt.Color(177,72,210));
+        jLabelNomePrograma.setForeground(new java.awt.Color(177,72,210));
         controler.TelaUserComum();
     }//GEN-LAST:event_jButtonConfigUserActionPerformed
 
     private void jButtonConfigAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigAdminActionPerformed
     
+    jLabelAluno.setBackground(new java.awt.Color(153,180,51));
+    jLabelNomePrograma.setForeground(new java.awt.Color(153,180,51));
      controler.TelaUserGeral();
     }//GEN-LAST:event_jButtonConfigAdminActionPerformed
 

@@ -475,7 +475,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonExcluirTarefaActionPerformed
 
     private void jButtonNovaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaTarefaActionPerformed
-
+        
         controler.TrocaTarefas(jPanelGerenciatarefa);
     }//GEN-LAST:event_jButtonNovaTarefaActionPerformed
 

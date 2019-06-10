@@ -86,7 +86,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
 
         jPanelTarefas.setBackground(new java.awt.Color(69, 69, 71));
 
-        jLabel11.setBackground(new java.awt.Color(66, 215, 244));
+        jLabel11.setBackground(new java.awt.Color(153, 180, 51));
         jLabel11.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
         jLabel11.setText("Configurações Administrador");
         jLabel11.setMaximumSize(new java.awt.Dimension(318, 45));
@@ -652,7 +652,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                         .addComponent(jLabelPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
-                .addComponent(jPanelInicGerencia1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addComponent(jPanelInicGerencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
         );
         jPanelConfigMensagemLayout.setVerticalGroup(
@@ -704,7 +704,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                .addComponent(jPanelTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 566, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

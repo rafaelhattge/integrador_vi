@@ -59,7 +59,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(69, 69, 69));
 
-        jProgressBar1.setForeground(new java.awt.Color(177, 72, 210));
+        jProgressBar1.setForeground(new java.awt.Color(66, 215, 244));
         jProgressBar1.setToolTipText("");
         jProgressBar1.setValue(50);
         jProgressBar1.setStringPainted(true);
@@ -68,8 +68,8 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("Progresso:");
 
-        jSeparator2.setBackground(new java.awt.Color(177, 72, 210));
-        jSeparator2.setForeground(new java.awt.Color(177, 72, 210));
+        jSeparator2.setBackground(new java.awt.Color(66, 215, 244));
+        jSeparator2.setForeground(new java.awt.Color(66, 215, 244));
 
         jScrollPane2.setBorder(null);
 
@@ -113,14 +113,14 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jTableExercicios.setFocusable(false);
         jTableExercicios.setOpaque(false);
         jTableExercicios.setRowHeight(30);
-        jTableExercicios.setSelectionBackground(new java.awt.Color(105, 24, 131));
+        jTableExercicios.setSelectionBackground(new java.awt.Color(43, 87, 151));
         jTableExercicios.setShowVerticalLines(false);
         jTableExercicios.getTableHeader().setReorderingAllowed(false);
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableExercicios
         .getDefaultRenderer(JLabel.class);
         renderer.setHorizontalAlignment(SwingConstants.LEFT);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
-        headerRenderer.setBackground(new java.awt.Color(177,72,210));
+        headerRenderer.setBackground(new java.awt.Color(66,215,244));
 
         for (int i = 0; i < jTableExercicios.getModel().getColumnCount(); i++) {
             jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
@@ -184,7 +184,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jList2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList2.setSelectionBackground(new java.awt.Color(105, 24, 131));
+        jList2.setSelectionBackground(new java.awt.Color(43, 87, 151));
         jScrollPane3.setViewportView(jList2);
 
         jScrollPane1.setBorder(null);
@@ -200,10 +200,10 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setSelectionBackground(new java.awt.Color(105, 24, 131));
+        jList1.setSelectionBackground(new java.awt.Color(43, 87, 151));
         jScrollPane1.setViewportView(jList1);
 
-        jLabel5.setBackground(new java.awt.Color(177, 72, 210));
+        jLabel5.setBackground(new java.awt.Color(66, 215, 244));
         jLabel5.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
         jLabel5.setText(" Relatório Geral");
         jLabel5.setOpaque(true);

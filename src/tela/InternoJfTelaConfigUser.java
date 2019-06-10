@@ -206,7 +206,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        jLabel11.setBackground(new java.awt.Color(66, 215, 244));
+        jLabel11.setBackground(new java.awt.Color(177, 72, 210));
         jLabel11.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
         jLabel11.setText("Configuração usuário");
         jLabel11.setMaximumSize(new java.awt.Dimension(318, 45));
