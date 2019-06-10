@@ -6,6 +6,8 @@
 package tela;
 
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -31,18 +33,13 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         jPanelInicio = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel7 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableExercicios = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,11 +59,6 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(69, 69, 69));
 
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(240, 240, 240));
-        jCheckBox1.setText("Exercício 1");
-        jCheckBox1.setOpaque(false);
-
         jProgressBar1.setForeground(new java.awt.Color(177, 72, 210));
         jProgressBar1.setToolTipText("");
         jProgressBar1.setValue(50);
@@ -75,39 +67,6 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("Progresso:");
-
-        jSeparator1.setBackground(new java.awt.Color(177, 72, 210));
-        jSeparator1.setForeground(new java.awt.Color(177, 72, 210));
-
-        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(240, 240, 240));
-        jCheckBox2.setText("Exercício 2");
-        jCheckBox2.setOpaque(false);
-
-        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(240, 240, 240));
-        jCheckBox3.setText("Exercício 3");
-        jCheckBox3.setOpaque(false);
-
-        jCheckBox4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jCheckBox4.setForeground(new java.awt.Color(240, 240, 240));
-        jCheckBox4.setText("Exercício 4");
-        jCheckBox4.setOpaque(false);
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jCheckBox5.setForeground(new java.awt.Color(240, 240, 240));
-        jCheckBox5.setText("Exercício 5");
-        jCheckBox5.setOpaque(false);
-
-        jCheckBox6.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jCheckBox6.setForeground(new java.awt.Color(240, 240, 240));
-        jCheckBox6.setText("Exercício 6");
-        jCheckBox6.setOpaque(false);
 
         jSeparator2.setBackground(new java.awt.Color(177, 72, 210));
         jSeparator2.setForeground(new java.awt.Color(177, 72, 210));
@@ -122,6 +81,68 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jTextArea1.setToolTipText("");
         jScrollPane2.setViewportView(jTextArea1);
 
+        jScrollPane4.setBackground(new java.awt.Color(69, 69, 71));
+        jScrollPane4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
+        jScrollPane4.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
+        jScrollPane4.getViewport().setOpaque(false);
+
+        jTableExercicios.setBackground(new java.awt.Color(69, 69, 71));
+        jTableExercicios.setForeground(new java.awt.Color(255, 255, 255));
+        jTableExercicios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, "Exercício 1"},
+                {null, "Exercício 2"},
+                {null, "Exercício 3"},
+                {null, "Exercício 4"},
+                {null, "Exercício 5"},
+                {null, "Exercício 6"}
+            },
+            new String [] {
+                "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTableExercicios.setToolTipText("");
+        jTableExercicios.setFocusable(false);
+        jTableExercicios.setOpaque(false);
+        jTableExercicios.setRowHeight(30);
+        jTableExercicios.setSelectionBackground(new java.awt.Color(105, 24, 131));
+        jTableExercicios.setShowVerticalLines(false);
+        jTableExercicios.getTableHeader().setReorderingAllowed(false);
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableExercicios
+        .getDefaultRenderer(JLabel.class);
+        renderer.setHorizontalAlignment(SwingConstants.LEFT);
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(new java.awt.Color(177,72,210));
+
+        for (int i = 0; i < jTableExercicios.getModel().getColumnCount(); i++) {
+            jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+        jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(6);
+        jTableExercicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableExerciciosMouseClicked(evt);
+            }
+        });
+        jTableExercicios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTableExerciciosKeyReleased(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTableExercicios);
+        if (jTableExercicios.getColumnModel().getColumnCount() > 0) {
+            jTableExercicios.getColumnModel().getColumn(0).setMinWidth(20);
+            jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(20);
+            jTableExercicios.getColumnModel().getColumn(0).setMaxWidth(20);
+        }
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -129,61 +150,41 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
         );
 
         jScrollPane3.setBorder(null);
 
         jList2.setBackground(new java.awt.Color(69, 69, 69));
         jList2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList2.setForeground(new java.awt.Color(240, 240, 240));
+        jList2.setForeground(new java.awt.Color(255, 255, 255));
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "19:00 - Videoconferência", "00:00 - Entrega da Atividade" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jList2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList2.setSelectionBackground(new java.awt.Color(66, 215, 244));
+        jList2.setSelectionBackground(new java.awt.Color(105, 24, 131));
         jScrollPane3.setViewportView(jList2);
 
         jScrollPane1.setBorder(null);
@@ -199,7 +200,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setSelectionBackground(new java.awt.Color(66, 215, 244));
+        jList1.setSelectionBackground(new java.awt.Color(105, 24, 131));
         jScrollPane1.setViewportView(jList1);
 
         jLabel5.setBackground(new java.awt.Color(177, 72, 210));
@@ -254,10 +255,9 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -281,20 +281,21 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void jTableExerciciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableExerciciosMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+        //        controleEventoTabela();
+    }//GEN-LAST:event_jTableExerciciosMouseClicked
+
+    private void jTableExerciciosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableExerciciosKeyReleased
+        // TODO add your handling code here:
+        //        controleEventoTabela();
+    }//GEN-LAST:event_jTableExerciciosKeyReleased
 
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -308,8 +309,9 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTableExercicios;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

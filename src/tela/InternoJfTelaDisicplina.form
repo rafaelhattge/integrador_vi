@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="47" green="45" red="45" type="rgb"/>
@@ -33,18 +33,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="960" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="1002" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanelDisciplina" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="619" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="719" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanelDisciplina" min="-2" max="-2" attributes="0"/>
@@ -68,22 +68,31 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabelDisciplinas" alignment="0" pref="950" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <Component id="jLabelDisciplinas" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabelCurso" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBoxCurso" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonAdicionarCurso" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonRemoverCurso" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonAdicionarDisciplina" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jButtonEditarDisciplina" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jButtonRemoverDisciplina" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane4" min="-2" pref="913" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabelCurso" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jComboBoxCurso" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonAdicionarCurso" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButtonRemoverCurso" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="79" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -93,14 +102,20 @@
                   <Component id="jLabelDisciplinas" min="-2" pref="56" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCurso" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="jComboBoxCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonAdicionarCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonRemoverCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="504" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane4" min="-2" pref="384" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButtonEditarDisciplina" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonAdicionarDisciplina" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonRemoverDisciplina" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="167" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,14 +133,27 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Component class="javax.swing.JLabel" name="jLabelCurso">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="18" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Curso"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="47" green="45" red="45" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder roundedCorners="true"/>
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="47" green="45" red="45" type="rgb"/>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -133,6 +161,7 @@
             </Property>
           </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jScrollPane4.getViewport().setOpaque(false);"/>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
@@ -146,62 +175,48 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor" postCode="jTableDisciplinas.getTableHeader().setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 18));&#xa;&#xa;DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(227,162,26));&#xa;for (int i = 0; i &lt; jTableDisciplinas.getModel().getColumnCount(); i++) {&#xa;    jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;jScrollPane1.setViewportView(jTableDisciplinas);&#xa;&#xa;//Altera o tamanho das colunas dos dias da semana&#xa;for(int i = 5; i &lt;= 11; i++){&#xa;    jTableDisciplinas.getColumnModel().getColumn(i).setPreferredWidth(20);&#xa;}">
-                  <Table columnCount="12" rowCount="5">
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="10" rowCount="5">
                     <Column editable="true" title="Disciplina" type="java.lang.String">
                       <Data value="Matem&#xe1;tica"/>
-                      <Data value="Portugues"/>
                       <Data value="Programa&#xe7;&#xe3;o I"/>
-                      <Data value="Bancos de Dados"/>
+                      <Data value="Banco de Dados"/>
                       <Data value="Sistemas Operacionais"/>
+                      <Data value="Portugu&#xea;s"/>
                     </Column>
                     <Column editable="true" title="Data de In&#xed;cio" type="java.lang.String">
-                      <Data value="15/02/2018"/>
-                      <Data value="13/02/2018"/>
-                      <Data value="15/02/2018"/>
-                      <Data value="15/02/2018"/>
-                      <Data value="15/02/2018"/>
+                      <Data value="02/02/2019"/>
+                      <Data value="02/02/2019"/>
+                      <Data value="02/02/2019"/>
+                      <Data value="02/02/2019"/>
+                      <Data value="02/02/2019"/>
                     </Column>
                     <Column editable="true" title="Data de T&#xe9;rmino" type="java.lang.String">
-                      <Data value="15/06/2018"/>
-                      <Data value="15/06/2018"/>
-                      <Data value="15/06/2018"/>
-                      <Data value="15/06/2018"/>
-                      <Data value="15/06/2018"/>
-                    </Column>
-                    <Column editable="true" title="Hora de In&#xed;cio" type="java.lang.String">
-                      <Data value="19:00"/>
-                      <Data value="19:00"/>
-                      <Data value="19:00"/>
-                      <Data value="19:00"/>
-                      <Data value="19:00"/>
-                    </Column>
-                    <Column editable="true" title="Hora de T&#xe9;rmino" type="java.lang.String">
-                      <Data value="22:00"/>
-                      <Data value="22:00"/>
-                      <Data value="22:00"/>
-                      <Data value="22:00"/>
-                      <Data value="22:00"/>
+                      <Data value="12/06/2019"/>
+                      <Data value="12/06/2019"/>
+                      <Data value="12/06/2019"/>
+                      <Data value="12/06/2019"/>
+                      <Data value="12/06/2019"/>
                     </Column>
                     <Column editable="true" title="Dom" type="java.lang.Boolean"/>
                     <Column editable="true" title="Seg" type="java.lang.Boolean">
-                      <Data value="null"/>
-                      <Data value="null"/>
                       <Data value="true"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Ter" type="java.lang.Boolean">
-                      <Data value="true"/>
                       <Data value="null"/>
+                      <Data value="true"/>
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
                     <Column editable="true" title="Qua" type="java.lang.Boolean">
                       <Data value="null"/>
-                      <Data value="true"/>
                       <Data value="null"/>
+                      <Data value="true"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
@@ -222,6 +237,7 @@
                     <Column editable="true" title="Sab" type="java.lang.Boolean"/>
                   </Table>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -229,57 +245,47 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="100" minWidth="100" prefWidth="100" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="100" minWidth="100" prefWidth="100" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="36" minWidth="36" prefWidth="36" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="36" minWidth="36" prefWidth="36" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="36" minWidth="36" prefWidth="36" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="36" minWidth="36" prefWidth="36" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="36" minWidth="36" prefWidth="36" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="36" minWidth="36" prefWidth="36" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="36" minWidth="36" prefWidth="36" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -297,27 +303,23 @@
                 </Property>
                 <Property name="showVerticalLines" type="boolean" value="false"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableDisciplinasMouseClicked"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTableDisciplinasKeyReleased"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(227,162,26));&#xa;&#xa;for (int i = 0; i &lt; jTableDisciplinas.getModel().getColumnCount(); i++) {&#xa;    jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;//Altera o tamanho das colunas dos dias da semana&#xa;for(int i = 3; i &lt;= 9; i++){&#xa;    jTableDisciplinas.getColumnModel().getColumn(i).setPreferredWidth(6);&#xa;}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabelCurso">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Candara" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f0" red="f0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Curso"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxCurso">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="45" green="45" red="45" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Candara" size="18" style="0"/>
@@ -326,10 +328,20 @@
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="2">
                 <StringItem index="0" value="An&#xe1;lise e Desenvolvimento de Sistemas"/>
+                <StringItem index="1" value="Psicologia"/>
               </StringArray>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="1a" green="a2" red="e3" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -347,7 +359,11 @@
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Adicionar Curso"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAdicionarCursoMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRemoverCurso">
           <Properties>
@@ -361,7 +377,62 @@
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Remover Curso"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonEditarDisciplina">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1a" green="a2" red="e3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Editar Disciplina"/>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEditarDisciplinaMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonAdicionarDisciplina">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1a" green="a2" red="e3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Adicionar Disciplina"/>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAdicionarDisciplinaMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonRemoverDisciplina">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1a" green="a2" red="e3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Remover Disciplina"/>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRemoverDisciplinaMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

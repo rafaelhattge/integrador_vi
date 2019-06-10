@@ -36,6 +36,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanelTarefas = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLayeredPaneGereTarefa = new javax.swing.JLayeredPane();
         jPanelInicGerencia = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -57,7 +58,6 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableTarefas = new javax.swing.JTable();
         jLabelPesquisar = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jPanelEdicaoTarefa = new javax.swing.JPanel();
         jButtonNovaTarefa = new javax.swing.JButton();
         jButtonExcluirTarefa = new javax.swing.JButton();
@@ -70,6 +70,14 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
         jPanelTarefas.setBackground(new java.awt.Color(69, 69, 71));
         jPanelTarefas.setPreferredSize(new java.awt.Dimension(950, 570));
+
+        jLabel11.setBackground(new java.awt.Color(66, 244, 158));
+        jLabel11.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
+        jLabel11.setText(" Tarefas");
+        jLabel11.setMaximumSize(new java.awt.Dimension(318, 45));
+        jLabel11.setMinimumSize(new java.awt.Dimension(318, 45));
+        jLabel11.setOpaque(true);
+        jLabel11.setPreferredSize(new java.awt.Dimension(318, 45));
 
         jLayeredPaneGereTarefa.setLayout(new java.awt.CardLayout());
 
@@ -112,7 +120,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
             .addGroup(jPanelInicGerenciaLayout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jLayeredPaneGereTarefa.add(jPanelInicGerencia, "card2");
@@ -228,7 +236,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButtonNconcluido))
                 .addGap(21, 21, 21)
                 .addComponent(jButtonSaLvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jLayeredPaneGereTarefa.add(jPanelGerenciatarefa, "card3");
@@ -321,11 +329,14 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jPanelTableTarefas.setLayout(jPanelTableTarefasLayout);
         jPanelTableTarefasLayout.setHorizontalGroup(
             jPanelTableTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTableTarefasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanelTableTarefasLayout.setVerticalGroup(
             jPanelTableTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
         );
 
         jLabelPesquisar.setBackground(new java.awt.Color(66, 244, 158));
@@ -334,14 +345,6 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jLabelPesquisar.setText("Pesquisar ");
         jLabelPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jLabelPesquisar.setOpaque(true);
-
-        jLabel11.setBackground(new java.awt.Color(66, 244, 158));
-        jLabel11.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
-        jLabel11.setText(" Tarefas");
-        jLabel11.setMaximumSize(new java.awt.Dimension(318, 45));
-        jLabel11.setMinimumSize(new java.awt.Dimension(318, 45));
-        jLabel11.setOpaque(true);
-        jLabel11.setPreferredSize(new java.awt.Dimension(318, 45));
 
         jPanelEdicaoTarefa.setBackground(new java.awt.Color(69, 69, 71));
         jPanelEdicaoTarefa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
@@ -398,14 +401,12 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jPanelTarefas.setLayout(jPanelTarefasLayout);
         jPanelTarefasLayout.setHorizontalGroup(
             jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelTarefasLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTarefasLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jPanelTableTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarefasLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(103, 103, 103)
                         .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelTarefasLayout.createSequentialGroup()
                                 .addGap(48, 48, 48)
@@ -416,38 +417,42 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(78, 78, 78)))
+                        .addGap(78, 78, 78))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarefasLayout.createSequentialGroup()
+                        .addComponent(jPanelTableTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelEdicaoTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLayeredPaneGereTarefa))
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLayeredPaneGereTarefa)
+                    .addComponent(jPanelEdicaoTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanelTarefasLayout.setVerticalGroup(
             jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTarefasLayout.createSequentialGroup()
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelEdicaoTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarefasLayout.createSequentialGroup()
-                        .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelPesquisar)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPesquisar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButtonPeriodo)
                             .addComponent(jRadioButtonDsicpli))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelTableTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLayeredPaneGereTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLayeredPaneGereTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 961, Short.MAX_VALUE)
+            .addGap(0, 955, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelTarefas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE))
         );
@@ -461,10 +466,23 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSaLvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaLvarActionPerformed
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
-        controler.TrocaTarefas(jPanelInicGerencia);
-    }//GEN-LAST:event_jButtonSaLvarActionPerformed
+    private void jButtonExcluirTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirTarefaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonExcluirTarefaActionPerformed
+
+    private void jButtonNovaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaTarefaActionPerformed
+
+        controler.TrocaTarefas(jPanelGerenciatarefa);
+    }//GEN-LAST:event_jButtonNovaTarefaActionPerformed
+
+    private void jTableTarefasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTarefasKeyReleased
+        // TODO add your handling code here:
+        //        controleEventoTabela();
+    }//GEN-LAST:event_jTableTarefasKeyReleased
 
     private void jTableTarefasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTarefasMouseClicked
         // TODO add your handling code here:
@@ -472,23 +490,10 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         //        controleEventoTabela();
     }//GEN-LAST:event_jTableTarefasMouseClicked
 
-    private void jTableTarefasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTarefasKeyReleased
-        // TODO add your handling code here:
-        //        controleEventoTabela();
-    }//GEN-LAST:event_jTableTarefasKeyReleased
+    private void jButtonSaLvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaLvarActionPerformed
 
-    private void jButtonNovaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaTarefaActionPerformed
-
-        controler.TrocaTarefas(jPanelGerenciatarefa);
-    }//GEN-LAST:event_jButtonNovaTarefaActionPerformed
-
-    private void jButtonExcluirTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirTarefaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonExcluirTarefaActionPerformed
-
-    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEditarActionPerformed
+        controler.TrocaTarefas(jPanelInicGerencia);
+    }//GEN-LAST:event_jButtonSaLvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

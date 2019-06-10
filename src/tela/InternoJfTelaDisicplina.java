@@ -5,9 +5,18 @@
  */
 package tela;
 
+import java.awt.Dialog;
 import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Window;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -34,12 +43,15 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
 
         jPanelDisciplina = new javax.swing.JPanel();
         jLabelDisciplinas = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableDisciplinas = new javax.swing.JTable();
         jLabelCurso = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableDisciplinas = new javax.swing.JTable();
         jComboBoxCurso = new javax.swing.JComboBox<>();
         jButtonAdicionarCurso = new javax.swing.JButton();
         jButtonRemoverCurso = new javax.swing.JButton();
+        jButtonEditarDisciplina = new javax.swing.JButton();
+        jButtonAdicionarDisciplina = new javax.swing.JButton();
+        jButtonRemoverDisciplina = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(69, 69, 71));
         setBorder(null);
@@ -54,93 +66,182 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
         jLabelDisciplinas.setText(" Cursos e Disciplinas");
         jLabelDisciplinas.setOpaque(true);
 
-        jScrollPane1.setBackground(new java.awt.Color(69, 69, 71));
-        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jScrollPane1.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
+        jLabelCurso.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabelCurso.setForeground(new java.awt.Color(240, 240, 240));
+        jLabelCurso.setText("Curso");
+
+        jScrollPane4.setBackground(new java.awt.Color(69, 69, 71));
+        jScrollPane4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
+        jScrollPane4.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
+        jScrollPane4.getViewport().setOpaque(false);
 
         jTableDisciplinas.setBackground(new java.awt.Color(69, 69, 71));
         jTableDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
         jTableDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Matemática", "15/02/2018", "15/06/2018", "19:00", "22:00", null, null,  new Boolean(true), null, null, null, null},
-                {"Portugues", "13/02/2018", "15/06/2018", "19:00", "22:00", null, null, null,  new Boolean(true), null, null, null},
-                {"Programação I", "15/02/2018", "15/06/2018", "19:00", "22:00", null,  new Boolean(true), null, null, null, null, null},
-                {"Bancos de Dados", "15/02/2018", "15/06/2018", "19:00", "22:00", null, null, null, null,  new Boolean(true), null, null},
-                {"Sistemas Operacionais", "15/02/2018", "15/06/2018", "19:00", "22:00", null, null, null, null, null,  new Boolean(true), null}
+                {"Matemática", "02/02/2019", "12/06/2019", null,  new Boolean(true), null, null, null, null, null},
+                {"Programação I", "02/02/2019", "12/06/2019", null, null,  new Boolean(true), null, null, null, null},
+                {"Banco de Dados", "02/02/2019", "12/06/2019", null, null, null,  new Boolean(true), null, null, null},
+                {"Sistemas Operacionais", "02/02/2019", "12/06/2019", null, null, null, null,  new Boolean(true), null, null},
+                {"Português", "02/02/2019", "12/06/2019", null, null, null, null, null,  new Boolean(true), null}
             },
             new String [] {
-                "Disciplina", "Data de Início", "Data de Término", "Hora de Início", "Hora de Término", "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"
+                "Disciplina", "Data de Início", "Data de Término", "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTableDisciplinas.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas
-        .getDefaultRenderer(JLabel.class);
-        renderer.setHorizontalAlignment(SwingConstants.CENTER);
-        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
-        headerRenderer.setBackground(new java.awt.Color(227,162,26));
-        for (int i = 0; i < jTableDisciplinas.getModel().getColumnCount(); i++) {
-            jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
-        }
-        jScrollPane1.setViewportView(jTableDisciplinas);
-
-        //Altera o tamanho das colunas dos dias da semana
-        for(int i = 5; i <= 11; i++){
-            jTableDisciplinas.getColumnModel().getColumn(i).setPreferredWidth(20);
-        }
+        jTableDisciplinas.setToolTipText("");
         jTableDisciplinas.setFocusable(false);
         jTableDisciplinas.setOpaque(false);
         jTableDisciplinas.setRowHeight(30);
         jTableDisciplinas.setSelectionBackground(new java.awt.Color(218, 83, 44));
         jTableDisciplinas.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jTableDisciplinas.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(jTableDisciplinas);
+        jTableDisciplinas.getTableHeader().setReorderingAllowed(false);
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas
+        .getDefaultRenderer(JLabel.class);
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(new java.awt.Color(227,162,26));
 
-        jLabelCurso.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        jLabelCurso.setForeground(new java.awt.Color(240, 240, 240));
-        jLabelCurso.setText("Curso");
+        for (int i = 0; i < jTableDisciplinas.getModel().getColumnCount(); i++) {
+            jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+        //Altera o tamanho das colunas dos dias da semana
+        for(int i = 3; i <= 9; i++){
+            jTableDisciplinas.getColumnModel().getColumn(i).setPreferredWidth(6);
+        }
+        jTableDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableDisciplinasMouseClicked(evt);
+            }
+        });
+        jTableDisciplinas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTableDisciplinasKeyReleased(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTableDisciplinas);
+        if (jTableDisciplinas.getColumnModel().getColumnCount() > 0) {
+            jTableDisciplinas.getColumnModel().getColumn(1).setMinWidth(100);
+            jTableDisciplinas.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTableDisciplinas.getColumnModel().getColumn(1).setMaxWidth(100);
+            jTableDisciplinas.getColumnModel().getColumn(2).setMinWidth(100);
+            jTableDisciplinas.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTableDisciplinas.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTableDisciplinas.getColumnModel().getColumn(3).setMinWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(3).setPreferredWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(3).setMaxWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(4).setMinWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(4).setPreferredWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(4).setMaxWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(5).setMinWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(5).setPreferredWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(5).setMaxWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(6).setMinWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(6).setPreferredWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(6).setMaxWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(7).setMinWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(7).setPreferredWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(7).setMaxWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(8).setMinWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(8).setPreferredWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(8).setMaxWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(9).setMinWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(9).setPreferredWidth(36);
+            jTableDisciplinas.getColumnModel().getColumn(9).setMaxWidth(36);
+        }
 
-        jComboBoxCurso.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBoxCurso.setBackground(new java.awt.Color(69, 69, 69));
         jComboBoxCurso.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jComboBoxCurso.setForeground(new java.awt.Color(240, 240, 240));
-        jComboBoxCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Análise e Desenvolvimento de Sistemas" }));
+        jComboBoxCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Análise e Desenvolvimento de Sistemas", "Psicologia" }));
+        jComboBoxCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
+        jComboBoxCurso.setFocusable(false);
+        jComboBoxCurso.setOpaque(false);
 
         jButtonAdicionarCurso.setBackground(new java.awt.Color(227, 162, 26));
         jButtonAdicionarCurso.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jButtonAdicionarCurso.setForeground(new java.awt.Color(240, 240, 240));
         jButtonAdicionarCurso.setText("Adicionar Curso");
+        jButtonAdicionarCurso.setFocusable(false);
+        jButtonAdicionarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAdicionarCursoMouseClicked(evt);
+            }
+        });
 
         jButtonRemoverCurso.setBackground(new java.awt.Color(227, 162, 26));
         jButtonRemoverCurso.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jButtonRemoverCurso.setForeground(new java.awt.Color(240, 240, 240));
         jButtonRemoverCurso.setText("Remover Curso");
+        jButtonRemoverCurso.setFocusable(false);
+
+        jButtonEditarDisciplina.setBackground(new java.awt.Color(227, 162, 26));
+        jButtonEditarDisciplina.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonEditarDisciplina.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonEditarDisciplina.setText("Editar Disciplina");
+        jButtonEditarDisciplina.setFocusable(false);
+        jButtonEditarDisciplina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEditarDisciplinaMouseClicked(evt);
+            }
+        });
+
+        jButtonAdicionarDisciplina.setBackground(new java.awt.Color(227, 162, 26));
+        jButtonAdicionarDisciplina.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonAdicionarDisciplina.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonAdicionarDisciplina.setText("Adicionar Disciplina");
+        jButtonAdicionarDisciplina.setFocusable(false);
+        jButtonAdicionarDisciplina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAdicionarDisciplinaMouseClicked(evt);
+            }
+        });
+
+        jButtonRemoverDisciplina.setBackground(new java.awt.Color(227, 162, 26));
+        jButtonRemoverDisciplina.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonRemoverDisciplina.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonRemoverDisciplina.setText("Remover Disciplina");
+        jButtonRemoverDisciplina.setFocusable(false);
+        jButtonRemoverDisciplina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRemoverDisciplinaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDisciplinaLayout = new javax.swing.GroupLayout(jPanelDisciplina);
         jPanelDisciplina.setLayout(jPanelDisciplinaLayout);
         jPanelDisciplinaLayout.setHorizontalGroup(
             jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelDisciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
+            .addComponent(jLabelDisciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
-                        .addComponent(jLabelCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAdicionarCurso)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonRemoverCurso)))
-                .addContainerGap())
+                        .addComponent(jButtonAdicionarDisciplina)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEditarDisciplina)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonRemoverDisciplina))
+                    .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
+                            .addComponent(jLabelCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jComboBoxCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonAdicionarCurso)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButtonRemoverCurso))))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanelDisciplinaLayout.setVerticalGroup(
             jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,28 +249,33 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
                 .addComponent(jLabelDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCurso)
+                    .addComponent(jLabelCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAdicionarCurso)
                     .addComponent(jButtonRemoverCurso))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditarDisciplina)
+                    .addComponent(jButtonAdicionarDisciplina)
+                    .addComponent(jButtonRemoverDisciplina))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGap(0, 1002, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanelDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 10, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 619, Short.MAX_VALUE)
+            .addGap(0, 719, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanelDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,15 +285,54 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTableDisciplinasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableDisciplinasKeyReleased
+        // TODO add your handling code here:
+        //        controleEventoTabela();
+    }//GEN-LAST:event_jTableDisciplinasKeyReleased
+
+    private void jTableDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDisciplinasMouseClicked
+        // TODO add your handling code here:
+
+        //        controleEventoTabela();
+    }//GEN-LAST:event_jTableDisciplinasMouseClicked
+
+    private void jButtonAdicionarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarCursoMouseClicked
+        
+        PanelAdicionarCurso adicionarCurso = new PanelAdicionarCurso();
+        JDialog modal = new JDialog((JFrame)this.getTopLevelAncestor(), false);
+        modal.add(adicionarCurso);
+        modal.setUndecorated(true);
+        modal.setVisible(true);
+        modal.pack();
+        modal.setLocationRelativeTo(this);
+        
+        
+    }//GEN-LAST:event_jButtonAdicionarCursoMouseClicked
+
+    private void jButtonEditarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarDisciplinaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarDisciplinaMouseClicked
+
+    private void jButtonAdicionarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarDisciplinaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAdicionarDisciplinaMouseClicked
+
+    private void jButtonRemoverDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverDisciplinaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRemoverDisciplinaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarCurso;
+    private javax.swing.JButton jButtonAdicionarDisciplina;
+    private javax.swing.JButton jButtonEditarDisciplina;
     private javax.swing.JButton jButtonRemoverCurso;
+    private javax.swing.JButton jButtonRemoverDisciplina;
     private javax.swing.JComboBox<String> jComboBoxCurso;
     private javax.swing.JLabel jLabelCurso;
     private javax.swing.JLabel jLabelDisciplinas;
     private javax.swing.JPanel jPanelDisciplina;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableDisciplinas;
     // End of variables declaration//GEN-END:variables
 }
