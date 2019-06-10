@@ -79,7 +79,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtontarefas.setBackground(new java.awt.Color(69, 69, 71));
         jButtontarefas.setForeground(new java.awt.Color(255, 255, 255));
-        jButtontarefas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/IconMedioTarefa2.png"))); // NOI18N
+        jButtontarefas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/tasks48color.png"))); // NOI18N
         jButtontarefas.setText("Tarefas");
         jButtontarefas.setBorder(null);
         jButtontarefas.setBorderPainted(false);
@@ -87,8 +87,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtontarefas.setFocusable(false);
         jButtontarefas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtontarefas.setIconTextGap(1);
-        jButtontarefas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/IconPTarefa1.png"))); // NOI18N
-        jButtontarefas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconGrandeTarefa3.png"))); // NOI18N
+        jButtontarefas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/tasks32color.png"))); // NOI18N
+        jButtontarefas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/tasks64color.png"))); // NOI18N
         jButtontarefas.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButtontarefas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtontarefas.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +99,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonRelatorio.setBackground(new java.awt.Color(69, 69, 71));
         jButtonRelatorio.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/relatoriomedio2.png"))); // NOI18N
+        jButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/report48color.png"))); // NOI18N
         jButtonRelatorio.setText("Relatório");
         jButtonRelatorio.setBorder(null);
         jButtonRelatorio.setBorderPainted(false);
@@ -108,8 +108,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonRelatorio.setFocusable(false);
         jButtonRelatorio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonRelatorio.setIconTextGap(1);
-        jButtonRelatorio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/relatorioPequeno1.png"))); // NOI18N
-        jButtonRelatorio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/RelatorioGrande3.png"))); // NOI18N
+        jButtonRelatorio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/report32color.png"))); // NOI18N
+        jButtonRelatorio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/report64color.png"))); // NOI18N
         jButtonRelatorio.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButtonRelatorio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonRelatorio.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonDisciplina.setBackground(new java.awt.Color(69, 69, 71));
         jButtonDisciplina.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ebooksmedio2.png"))); // NOI18N
+        jButtonDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/book48color.png"))); // NOI18N
         jButtonDisciplina.setText("Disciplinas");
         jButtonDisciplina.setBorder(null);
         jButtonDisciplina.setBorderPainted(false);
@@ -128,8 +128,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonDisciplina.setFocusable(false);
         jButtonDisciplina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonDisciplina.setIconTextGap(1);
-        jButtonDisciplina.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ebookpe1.png"))); // NOI18N
-        jButtonDisciplina.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bookGeande3.png"))); // NOI18N
+        jButtonDisciplina.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/book32color.png"))); // NOI18N
+        jButtonDisciplina.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/book64color.png"))); // NOI18N
         jButtonDisciplina.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButtonDisciplina.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonDisciplina.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonConfigUser.setBackground(new java.awt.Color(69, 69, 71));
         jButtonConfigUser.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConfigUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/userMedio2.png"))); // NOI18N
+        jButtonConfigUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/config2-48color.png"))); // NOI18N
         jButtonConfigUser.setText("Configuração");
         jButtonConfigUser.setToolTipText("Configurar Usuário");
         jButtonConfigUser.setBorder(null);
@@ -149,8 +149,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonConfigUser.setFocusable(false);
         jButtonConfigUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonConfigUser.setIconTextGap(1);
-        jButtonConfigUser.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/UserPe1.png"))); // NOI18N
-        jButtonConfigUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/userGrande3.png"))); // NOI18N
+        jButtonConfigUser.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/config2-32color.png"))); // NOI18N
+        jButtonConfigUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/config2-64color.png"))); // NOI18N
         jButtonConfigUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButtonConfigUser.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonConfigUser.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonConfigAdmin.setBackground(new java.awt.Color(69, 69, 71));
         jButtonConfigAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConfigAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/config2.png"))); // NOI18N
+        jButtonConfigAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Admin2-48color.png"))); // NOI18N
         jButtonConfigAdmin.setText("Administrador");
         jButtonConfigAdmin.setToolTipText("Area administrador");
         jButtonConfigAdmin.setBorder(null);
@@ -170,8 +170,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonConfigAdmin.setFocusable(false);
         jButtonConfigAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonConfigAdmin.setIconTextGap(1);
-        jButtonConfigAdmin.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/config1.png"))); // NOI18N
-        jButtonConfigAdmin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/config3.png"))); // NOI18N
+        jButtonConfigAdmin.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Admin2-32color.png"))); // NOI18N
+        jButtonConfigAdmin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Admin2-64color.png"))); // NOI18N
         jButtonConfigAdmin.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButtonConfigAdmin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonConfigAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtontarefas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonDisciplina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonConfigUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonConfigAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                    .addComponent(jButtonConfigAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelMenuLayout.setVerticalGroup(
@@ -205,9 +205,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButtontarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jButtonConfigUser, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
                 .addComponent(jButtonConfigAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         JPanelFundoPrincipal.add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 86, 90, 560));

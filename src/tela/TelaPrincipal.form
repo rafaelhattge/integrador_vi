@@ -81,7 +81,7 @@
                           <Component id="jButtontarefas" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButtonDisciplina" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButtonConfigUser" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButtonConfigAdmin" alignment="1" pref="70" max="32767" attributes="0"/>
+                          <Component id="jButtonConfigAdmin" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -98,9 +98,9 @@
                       <Component id="jButtontarefas" min="-2" pref="71" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jButtonConfigUser" min="-2" pref="71" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jButtonConfigAdmin" min="-2" pref="78" max="-2" attributes="0"/>
-                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                      <EmptySpace pref="73" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -115,7 +115,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/IconMedioTarefa2.png"/>
+                  <Image iconType="3" name="/recursos/tasks48color.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarefas"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -127,10 +127,10 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="1"/>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/IconPTarefa1.png"/>
+                  <Image iconType="3" name="/recursos/tasks32color.png"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/iconGrandeTarefa3.png"/>
+                  <Image iconType="3" name="/recursos/tasks64color.png"/>
                 </Property>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
@@ -148,7 +148,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/relatoriomedio2.png"/>
+                  <Image iconType="3" name="/recursos/report48color.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -163,10 +163,10 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="1"/>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/relatorioPequeno1.png"/>
+                  <Image iconType="3" name="/recursos/report32color.png"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/RelatorioGrande3.png"/>
+                  <Image iconType="3" name="/recursos/report64color.png"/>
                 </Property>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
@@ -184,7 +184,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/ebooksmedio2.png"/>
+                  <Image iconType="3" name="/recursos/book48color.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Disciplinas"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -196,10 +196,10 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="1"/>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/ebookpe1.png"/>
+                  <Image iconType="3" name="/recursos/book32color.png"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/bookGeande3.png"/>
+                  <Image iconType="3" name="/recursos/book64color.png"/>
                 </Property>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
@@ -217,7 +217,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/userMedio2.png"/>
+                  <Image iconType="3" name="/recursos/config2-48color.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xe3;o"/>
                 <Property name="toolTipText" type="java.lang.String" value="Configurar Usu&#xe1;rio"/>
@@ -230,10 +230,10 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="1"/>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/UserPe1.png"/>
+                  <Image iconType="3" name="/recursos/config2-32color.png"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/userGrande3.png"/>
+                  <Image iconType="3" name="/recursos/config2-64color.png"/>
                 </Property>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
@@ -251,7 +251,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/config2.png"/>
+                  <Image iconType="3" name="/recursos/Admin2-48color.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Administrador"/>
                 <Property name="toolTipText" type="java.lang.String" value="Area administrador"/>
@@ -264,10 +264,10 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="1"/>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/config1.png"/>
+                  <Image iconType="3" name="/recursos/Admin2-32color.png"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/config3.png"/>
+                  <Image iconType="3" name="/recursos/Admin2-64color.png"/>
                 </Property>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
