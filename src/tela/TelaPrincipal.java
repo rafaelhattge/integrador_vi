@@ -26,13 +26,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+           
            controler = new ControlerTelaPrincipal(this);
            controler.TelaInicio();
+           
          
    // pegarResolucao();     
  
   
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -446,6 +451,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
+                
             }
         });
     }

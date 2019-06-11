@@ -51,7 +51,7 @@ public class TelaMensagem extends javax.swing.JDialog {
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(69, 69, 71));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 51), null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 215, 244), 2));
 
         jLabelBarra.setBackground(new java.awt.Color(66, 215, 244));
         jLabelBarra.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

@@ -59,7 +59,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jPanelTarefas.setBackground(new java.awt.Color(69, 69, 71));
 
         jPanel2.setBackground(new java.awt.Color(69, 69, 71));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true), "DADOS USUÁRIO", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 6, true), "DADOS USUÁRIO", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(570, 529));
 
         jTextTarefaCod.setEditable(false);
@@ -67,7 +67,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jTextTarefaCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextTarefaCod.setForeground(new java.awt.Color(255, 255, 255));
         jTextTarefaCod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextTarefaCod.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextTarefaCod.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextTarefaCod.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextTarefaCod.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -75,7 +75,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jTextNome.setBackground(new java.awt.Color(69, 69, 71));
         jTextNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextNome.setForeground(new java.awt.Color(255, 255, 255));
-        jTextNome.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Nome", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextNome.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Nome", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextNome.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextNome.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -83,7 +83,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jTextEmail.setBackground(new java.awt.Color(69, 69, 71));
         jTextEmail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextEmail.setForeground(new java.awt.Color(255, 255, 255));
-        jTextEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Email", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Email", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextEmail.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextEmail.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -91,7 +91,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jTextUser.setBackground(new java.awt.Color(69, 69, 71));
         jTextUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextUser.setForeground(new java.awt.Color(255, 255, 255));
-        jTextUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Usuário", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Usuário", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextUser.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextUser.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -99,7 +99,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jPasswordSenha.setBackground(new java.awt.Color(69, 69, 71));
         jPasswordSenha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPasswordSenha.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordSenha.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Tipo", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jPasswordSenha.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Tipo", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPasswordSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordSenhaActionPerformed(evt);
@@ -110,7 +110,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jPasswordSenha1.setBackground(new java.awt.Color(69, 69, 71));
         jPasswordSenha1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPasswordSenha1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordSenha1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jPasswordSenha1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPasswordSenha1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordSenha1ActionPerformed(evt);
@@ -118,25 +118,25 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         });
 
         jLabelStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelStatus.setForeground(new java.awt.Color(214, 206, 55));
+        jLabelStatus.setForeground(new java.awt.Color(255, 255, 255));
         jLabelStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelStatus.setText("Receber mensagem do dia?");
 
         jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
         jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonConcluido.setForeground(new java.awt.Color(66, 244, 158));
+        jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonConcluido.setText("Sim");
 
         jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
         jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonNconcluido.setForeground(new java.awt.Color(66, 244, 158));
-        jRadioButtonNconcluido.setText("nao");
+        jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonNconcluido.setText("Não");
 
         jPasswordSenha2.setEditable(false);
         jPasswordSenha2.setBackground(new java.awt.Color(69, 69, 71));
         jPasswordSenha2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPasswordSenha2.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordSenha2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Repita a Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jPasswordSenha2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Repita a Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPasswordSenha2.setEnabled(false);
         jPasswordSenha2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +215,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jLabel11.setPreferredSize(new java.awt.Dimension(318, 45));
 
         jPanelInicGerencia.setBackground(new java.awt.Color(69, 69, 71));
-        jPanelInicGerencia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanelInicGerencia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanelInicGerencia.setPreferredSize(new java.awt.Dimension(311, 428));
 
         jButtonSaLvar.setBackground(new java.awt.Color(181, 92, 28));
@@ -228,7 +228,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonSaLvar1.setBackground(new java.awt.Color(51, 204, 255));
+        jButtonSaLvar1.setBackground(new java.awt.Color(177, 72, 210));
         jButtonSaLvar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonSaLvar1.setText("SALVAR");
         jButtonSaLvar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

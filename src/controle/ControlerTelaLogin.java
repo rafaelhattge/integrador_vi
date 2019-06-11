@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import modelo.Usuario;
 import tela.TelaLogin;
+import tela.TelaMensagem;
 import tela.TelaPrincipal;
 import tela.TelaRegistro;
 
@@ -47,6 +48,7 @@ public class ControlerTelaLogin {
             TelaPrincipal tela = new TelaPrincipal();
                   tela.getjLabelUsarioLogado().setText(userAutenticar.getNome()); 
                   System.out.println(userAutenticar.getNome());
+                  
         
       tela.getContentPane().setBackground(new Color(69, 69, 71));
  //   tela.setResizable(false);
@@ -54,6 +56,9 @@ public class ControlerTelaLogin {
   // tela.pack();
             tela.setVisible(true);
             view.dispose();
+            //Exibe mensagem inicial
+            TelaMensagem mensagem = new TelaMensagem(tela, true);
+                  mensagem.setVisible(true);
             
        
             }else{

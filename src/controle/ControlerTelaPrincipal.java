@@ -32,6 +32,7 @@ public class ControlerTelaPrincipal {
 
     public ControlerTelaPrincipal(TelaPrincipal view) {
         this.view = view;
+        
             
     }
     
@@ -51,6 +52,8 @@ public class ControlerTelaPrincipal {
         
 }
 }*/ 
+    
+    
     
     public void TelaInicio(){
         InternoJfTelaRelatorio telaInicio = new InternoJfTelaRelatorio();

@@ -340,10 +340,10 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         );
 
         jLabelPesquisar.setBackground(new java.awt.Color(66, 244, 158));
-        jLabelPesquisar.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        jLabelPesquisar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabelPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPesquisar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPesquisar.setText("Pesquisar ");
-        jLabelPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jLabelPesquisar.setOpaque(true);
 
         jPanelEdicaoTarefa.setBackground(new java.awt.Color(69, 69, 71));
@@ -435,9 +435,9 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                     .addComponent(jPanelEdicaoTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarefasLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPesquisar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabelPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                         .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButtonPeriodo)
                             .addComponent(jRadioButtonDsicpli))))

@@ -95,18 +95,18 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jLabel11.setPreferredSize(new java.awt.Dimension(318, 45));
 
         jTabbedPaneConfigGeral.setBackground(new java.awt.Color(69, 69, 71));
-        jTabbedPaneConfigGeral.setForeground(new java.awt.Color(0, 153, 51));
+        jTabbedPaneConfigGeral.setForeground(new java.awt.Color(153, 180, 51));
 
         jPanelConfigUsers.setBackground(new java.awt.Color(69, 69, 71));
 
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 2, true));
         jTextField2.setOpaque(false);
 
-        jLabelPesquisar.setBackground(new java.awt.Color(66, 244, 158));
-        jLabelPesquisar.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        jLabelPesquisar.setBackground(new java.awt.Color(153, 180, 51));
+        jLabelPesquisar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabelPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPesquisar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPesquisar.setText("Pesquisar ");
-        jLabelPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jLabelPesquisar.setOpaque(true);
 
         jRadioButtonNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -162,7 +162,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         .getDefaultRenderer(JLabel.class);
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
-        headerRenderer.setBackground(new java.awt.Color(40, 109, 58));
+        headerRenderer.setBackground(new java.awt.Color(153,180,51));
         //60, 74, 178
         //headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < jTableUser.getModel().getColumnCount(); i++) {
@@ -181,7 +181,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jScrollPane4.setViewportView(jTableUser);
 
         jPanelInicGerencia.setBackground(new java.awt.Color(69, 69, 71));
-        jPanelInicGerencia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanelInicGerencia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanelInicGerencia.setPreferredSize(new java.awt.Dimension(311, 428));
 
         jButtonEditar.setBackground(new java.awt.Color(181, 92, 28));
@@ -194,7 +194,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonNovo.setBackground(new java.awt.Color(51, 204, 255));
+        jButtonNovo.setBackground(new java.awt.Color(153, 180, 51));
         jButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonNovo.setText("NOVO");
         jButtonNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -255,13 +255,13 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addComponent(jButtonExcluirUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addComponent(jButtonExcluirAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addGap(24, 24, 24))
         );
 
         jPanel2.setBackground(new java.awt.Color(69, 69, 71));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true), "DADOS USUÁRIO", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 6, true), "DADOS USUÁRIO", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(570, 529));
 
         jTextTarefaCod.setEditable(false);
@@ -269,14 +269,14 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jTextTarefaCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextTarefaCod.setForeground(new java.awt.Color(255, 255, 255));
         jTextTarefaCod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextTarefaCod.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Tipo", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextTarefaCod.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Tipo", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextTarefaCod.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextTarefaCod.setPreferredSize(new java.awt.Dimension(385, 40));
 
         jTextNome.setBackground(new java.awt.Color(69, 69, 71));
         jTextNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextNome.setForeground(new java.awt.Color(255, 255, 255));
-        jTextNome.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Nome", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextNome.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Nome", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextNome.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextNome.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -284,7 +284,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jTextEmail.setBackground(new java.awt.Color(69, 69, 71));
         jTextEmail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextEmail.setForeground(new java.awt.Color(255, 255, 255));
-        jTextEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Email", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Email", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextEmail.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextEmail.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -292,7 +292,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jTextUser.setBackground(new java.awt.Color(69, 69, 71));
         jTextUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextUser.setForeground(new java.awt.Color(255, 255, 255));
-        jTextUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Usuário", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Usuário", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextUser.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextUser.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -300,7 +300,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jPasswordSenha1.setBackground(new java.awt.Color(69, 69, 71));
         jPasswordSenha1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPasswordSenha1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordSenha1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jPasswordSenha1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPasswordSenha1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordSenha1ActionPerformed(evt);
@@ -308,26 +308,26 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         });
 
         jLabelMensagemDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelMensagemDia.setForeground(new java.awt.Color(214, 206, 55));
+        jLabelMensagemDia.setForeground(new java.awt.Color(255, 255, 255));
         jLabelMensagemDia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMensagemDia.setText("Receber mensagem do dia?");
 
         jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
         jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonConcluido.setForeground(new java.awt.Color(66, 244, 158));
+        jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonConcluido.setText("Sim");
 
         jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
         jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonNconcluido.setForeground(new java.awt.Color(66, 244, 158));
-        jRadioButtonNconcluido.setText("nao");
+        jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonNconcluido.setText("Não");
 
         jTextTarefaCod1.setEditable(false);
         jTextTarefaCod1.setBackground(new java.awt.Color(69, 69, 71));
         jTextTarefaCod1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextTarefaCod1.setForeground(new java.awt.Color(255, 255, 255));
         jTextTarefaCod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextTarefaCod1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextTarefaCod1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextTarefaCod1.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextTarefaCod1.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -409,16 +409,16 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPesquisar)
                     .addComponent(jRadioButtonNome)
-                    .addComponent(jRadioButtonTipo))
+                    .addComponent(jRadioButtonTipo)
+                    .addComponent(jLabelPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelConfigUsersLayout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(100, 100, 100)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE))
+                    .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
 
@@ -426,7 +426,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
 
         jPanelConfigMensagem.setBackground(new java.awt.Color(69, 69, 71));
 
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
+        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 2, true));
         jTextField3.setOpaque(false);
 
         jRadioButtonFrase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -440,21 +440,22 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jRadioButtoIdFrase.setText("Código");
         jRadioButtoIdFrase.setOpaque(false);
 
-        jLabelPesquisar1.setBackground(new java.awt.Color(198, 136, 204));
-        jLabelPesquisar1.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        jLabelPesquisar1.setBackground(new java.awt.Color(153, 180, 51));
+        jLabelPesquisar1.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabelPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPesquisar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPesquisar1.setText("Pesquisar ");
         jLabelPesquisar1.setOpaque(true);
 
         jPanel3.setBackground(new java.awt.Color(69, 69, 71));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true), "FRASE", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 6, true), "FRASE", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(570, 529));
 
         jTextCodiFrase.setBackground(new java.awt.Color(69, 69, 71));
         jTextCodiFrase.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jTextCodiFrase.setForeground(new java.awt.Color(255, 255, 255));
         jTextCodiFrase.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextCodiFrase.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Código", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextCodiFrase.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Código", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jTextCodiFrase.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextCodiFrase.setPreferredSize(new java.awt.Dimension(385, 40));
 
@@ -463,7 +464,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jTextAreaFrase.setBackground(new java.awt.Color(69, 69, 71));
         jTextAreaFrase.setColumns(20);
         jTextAreaFrase.setRows(5);
-        jTextAreaFrase.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Frase", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(214, 206, 55))); // NOI18N
+        jTextAreaFrase.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Frase", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jScrollPane6.setViewportView(jTextAreaFrase);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -530,7 +531,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         .getDefaultRenderer(JLabel.class);
         renderere.setHorizontalAlignment(SwingConstants.CENTER);
         DefaultTableCellRenderer headerRenderere = new DefaultTableCellRenderer();
-        headerRenderere.setBackground(new java.awt.Color(198, 136, 204));
+        headerRenderere.setBackground(new java.awt.Color(153,180,51));
         //60, 74, 178
         //headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < jTableMensagem.getModel().getColumnCount(); i++) {
@@ -554,7 +555,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         }
 
         jPanelInicGerencia1.setBackground(new java.awt.Color(69, 69, 71));
-        jPanelInicGerencia1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanelInicGerencia1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanelInicGerencia1.setPreferredSize(new java.awt.Dimension(311, 428));
 
         jButtonEditarMensage.setBackground(new java.awt.Color(181, 92, 28));
@@ -567,7 +568,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonNovoMensa.setBackground(new java.awt.Color(51, 204, 255));
+        jButtonNovoMensa.setBackground(new java.awt.Color(153, 180, 51));
         jButtonNovoMensa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonNovoMensa.setText("NOVO");
         jButtonNovoMensa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -666,7 +667,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                         .addGap(29, 29, 29)
                         .addGroup(jPanelConfigMensagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelPesquisar1)
+                            .addComponent(jLabelPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRadioButtoIdFrase)
                             .addComponent(jRadioButtonFrase))
                         .addGap(18, 18, 18)
