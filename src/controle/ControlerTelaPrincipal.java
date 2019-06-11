@@ -6,18 +6,9 @@
 package controle;
 
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.SQLException;
-import static javafx.scene.input.KeyCode.I;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
+import java.beans.PropertyVetoException;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.Usuario;
-import tela.InternoJfTelaConfGeral;
-import tela.InternoJfTelaConfigUser;
-import tela.InternoJfTelaDisicplina;
-import tela.InternoJfTelaRelatorio;
-import tela.InternoJfTelaTarefa;
 import tela.TelaMensagem;
 import tela.TelaPrincipal;
 
@@ -53,42 +44,31 @@ public class ControlerTelaPrincipal {
 }
 }*/ 
     
+    public void ControleTelas(javax.swing.JInternalFrame tela) {
     
+
+        if (tela.isVisible()) {
+            tela.toFront();
+            tela.getFocusOwner();
+            try {
+                tela.setSelected(true);
+            } catch (PropertyVetoException ex) {
+              //  Logger.getLogger(ControleTelas.class.getName()).log(Level.SEVERE, null, ex);
+              System.out.println(ex);
+            }
+        } else {
+            ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null); //retirar o painel superior
+
+        tela.getContentPane().setBackground(new Color(69, 69, 71));
+        tela.setBorder(null);//retirar bordas
+
+        view.getjDesktopPrincipal().add(tela).setVisible(true);
+        }
+     
     
-    public void TelaInicio(){
-        InternoJfTelaRelatorio telaInicio = new InternoJfTelaRelatorio();
-        configGeralInternoFrame(telaInicio);
-        
-    }
-  public void TelaTarefas(){
-        InternoJfTelaTarefa telaTarefas = new InternoJfTelaTarefa();
-        configGeralInternoFrame(telaTarefas);
-        
-    }
+        }
     
-  public void TelaDisicplinas(){
-        InternoJfTelaDisicplina telaDisicplina = new InternoJfTelaDisicplina();
-        configGeralInternoFrame(telaDisicplina);
-        
-    }
-   public void TelaUserComum(){
-        InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser();
-        configGeralInternoFrame(telaConfigUser);
-        
-    }
-    public void TelaUserGeral(){
-        InternoJfTelaConfGeral telaConfigGeral = new InternoJfTelaConfGeral();
-        configGeralInternoFrame(telaConfigGeral);
-        
-    }
-    private void configGeralInternoFrame(javax.swing.JInternalFrame tela) {
-        ((BasicInternalFrameUI)tela.getUI()).setNorthPane(null); //retirar o painel superior
-//telaInicio.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
-tela.getContentPane().setBackground(new Color(69,69,71));
-tela.setBorder(null);//retirar bordas
-//    telaInicio.setBounds(0, 0, view.getjDesktopPrincipal().getWidth(), view.getjDesktopPrincipal().getHeight());
-view.getjDesktopPrincipal().add(tela).setVisible(true);
-    }
+  
 
     public Usuario getUsuarioAtivo() {
         return UsuarioAtivo;
