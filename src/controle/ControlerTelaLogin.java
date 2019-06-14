@@ -26,39 +26,41 @@ public class ControlerTelaLogin {
     public ControlerTelaLogin(TelaLogin view) {
         this.view = view;
     }
+    
     public void autenticarUsuario() throws SQLException{
         //buscar usuario da view
         String usuario = view.getjTextUser().getText();
         String senha = view.getjPasswordSenha().getText();
         if(usuario.isEmpty()|| senha.isEmpty()){
             view.getJlblMessagem().setText("Todos campos são obrigatórios!");
-      view.getjTextUser().requestFocus();
+            view.getjTextUser().requestFocus();
           
         }else{
-         Usuario userAutenticar = new Usuario(usuario, senha);
-        //conexao
+            Usuario userAutenticar = new Usuario(usuario, senha);
+            //conexao
         
-        Connection conexao = new conexao().conectarBanco();
+            Connection conexao = new conexao().conectarBanco();
             UsuarioDao userDao = new UsuarioDao(conexao);
+            
              //verificar se existe no banco
             boolean autenticar = userDao.AutenticarUsuario(userAutenticar);
             if(autenticar){
-       //     Usuario UsuarioAtivo= userDao.usuarioAtivo(userAutenticar);
+            Usuario usuarioAtivo = userDao.usuarioAtivo(userAutenticar);
               
             TelaPrincipal tela = new TelaPrincipal();
-                  tela.getjLabelUsarioLogado().setText(userAutenticar.getNome()); 
-                  System.out.println(userAutenticar.getNome());
+                  tela.getjLabelUsarioLogado().setText(userAutenticar.getNome());
+                  userDao.setUserAtivo(usuarioAtivo);
+                  System.out.println(usuarioAtivo.getNome());
                   
-        
-      tela.getContentPane().setBackground(new Color(69, 69, 71));
- //   tela.setResizable(false);
-   //   tela.setLocationRelativeTo(null);
-  // tela.pack();
+            tela.getContentPane().setBackground(new Color(69, 69, 71));
+            //   tela.setResizable(false);
+            //   tela.setLocationRelativeTo(null);
+            // tela.pack();
             tela.setVisible(true);
             view.dispose();
             //Exibe mensagem inicial
             TelaMensagem mensagem = new TelaMensagem(tela, true);
-                  mensagem.setVisible(true);
+            mensagem.setVisible(true);
             
        
             }else{
@@ -66,24 +68,17 @@ public class ControlerTelaLogin {
                  view.getjTextUser().requestFocus();
                  view.getjTextUser().setText("");
                  view.getjPasswordSenha().setText("");
-                
-         
-            
             }
-       
-        }
-       
-        
-        
-        
+        } 
     }
+    
     public void limparTelaLogin(){
         view.getJlblMessagem().setText("");
                  view.getjTextUser().setText("");
                  view.getjTextUser().setText("");
-                 view.getjPasswordSenha().setText("");
-        
+                 view.getjPasswordSenha().setText(""); 
     }
+    
     public void chamarTelaCadastro(){
          TelaRegistro registro = new TelaRegistro();
         registro.setVisible(true);

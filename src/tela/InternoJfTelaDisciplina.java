@@ -9,6 +9,8 @@ import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Window;
+import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,12 +25,12 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Diana
  */
-public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
+public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form InternoJfTelaDisicplina
      */
-    public InternoJfTelaDisicplina() {
+    public InternoJfTelaDisciplina(){
         initComponents();
     }
 
@@ -335,4 +337,14 @@ public class InternoJfTelaDisicplina extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableDisciplinas;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getjComboBoxCurso() {
+        return jComboBoxCurso;
+    }
+
+    public void setjComboBoxCurso(JComboBox<String> jComboBoxCurso) {
+        this.jComboBoxCurso = jComboBoxCurso;
+    }
+
+    
 }

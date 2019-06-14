@@ -19,7 +19,7 @@ import modelo.Usuario;
 public class TelaPrincipal extends javax.swing.JFrame {
  private final InternoJfTelaRelatorio telaInicio = new InternoJfTelaRelatorio();
       private final InternoJfTelaTarefa telaTarefas = new InternoJfTelaTarefa();
-       private final InternoJfTelaDisicplina telaDisicplina = new InternoJfTelaDisicplina();
+       private final InternoJfTelaDisciplina telaDisicplina = new InternoJfTelaDisciplina();
         private final InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser();
         private final InternoJfTelaConfGeral telaConfigGeral = new InternoJfTelaConfGeral();
     private final ControlerTelaPrincipal controler;

@@ -189,8 +189,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jLabelRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegistrarMouseClicked
         // TODO add your handling code here:
        controler.chamarTelaCadastro();
-        
-        
     }//GEN-LAST:event_jLabelRegistrarMouseClicked
 
     private void jButtonLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogarActionPerformed
@@ -200,9 +198,6 @@ public class TelaLogin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-      
-        
     }//GEN-LAST:event_jButtonLogarActionPerformed
 
     private void jTextUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextUserMouseClicked
@@ -286,6 +281,5 @@ public class TelaLogin extends javax.swing.JFrame {
 
     public void setJlblMessagem(javax.swing.JLabel jlblMessagem) {
         this.jlblMessagem = jlblMessagem;
-    }
-    
+    } 
 }

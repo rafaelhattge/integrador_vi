@@ -22,7 +22,7 @@ import tela.TelaRegistro;
 public class UsuarioDao {
 
     private final Connection conectar;
-    private Usuario userAtivo;
+    private static Usuario userAtivo;
 
     //conexao com o banco
     public UsuarioDao(Connection conectar) {
@@ -129,7 +129,7 @@ public class UsuarioDao {
         //pegar resultado do select e colocar na variavel result
 
         ResultSet resultSet = statement.getResultSet();
-    
+
         return resultSet.next();
     }
 

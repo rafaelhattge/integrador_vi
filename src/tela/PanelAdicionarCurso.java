@@ -5,7 +5,9 @@
  */
 package tela;
 
+import controle.ControleAdicionarCurso;
 import javax.swing.JDialog;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 /**
@@ -14,11 +16,14 @@ import javax.swing.SwingUtilities;
  */
 public class PanelAdicionarCurso extends javax.swing.JPanel {
 
+    private ControleAdicionarCurso controle;
+    
     /**
      * Creates new form PanelAdicionarCurso
      */
     public PanelAdicionarCurso() {
         initComponents();
+        controle = new ControleAdicionarCurso(this);
     }
 
     /**
@@ -44,6 +49,11 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
         jButtonAdicionar.setForeground(new java.awt.Color(240, 240, 240));
         jButtonAdicionar.setText("Adicionar");
         jButtonAdicionar.setFocusable(false);
+        jButtonAdicionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAdicionarMouseClicked(evt);
+            }
+        });
 
         jButtonCancelar.setBackground(new java.awt.Color(227, 162, 26));
         jButtonCancelar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
@@ -117,6 +127,11 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
         SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
+    private void jButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarMouseClicked
+        controle.salvarCurso();
+        
+    }//GEN-LAST:event_jButtonAdicionarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
@@ -125,4 +140,14 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
+    
 }
