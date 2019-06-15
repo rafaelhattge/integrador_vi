@@ -40,7 +40,7 @@ public class ControlerTelaRegistro {
         try {
             Connection conexao = new conexao().conectarBanco();
             UsuarioDao userDao = new UsuarioDao(conexao);
-            userDao.Inserirusuario(user);
+            userDao.InserirUsuario(user);
             JOptionPane.showMessageDialog(null,"Usuário cadastrado com sucesso");
             limparRegistro();
             TelaLogin telalogin = new TelaLogin();

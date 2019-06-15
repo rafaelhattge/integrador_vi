@@ -23,14 +23,14 @@ public class UsuarioDao {
 
     private final Connection conectar;
     private static Usuario userAtivo;
-
+    
     //conexao com o banco
     public UsuarioDao(Connection conectar) {
         this.conectar = conectar;
     }
 
     //inserir usuario
-    public void Inserirusuario(Usuario user) throws SQLException {
+    public void InserirUsuario(Usuario user) throws SQLException {
 
         // TODO add your handling code here:
         String sql = "insert into usuario (nome,email,usuario,senha)values(?,?,?,?);";

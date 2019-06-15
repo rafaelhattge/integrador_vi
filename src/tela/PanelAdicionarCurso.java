@@ -5,8 +5,7 @@
  */
 package tela;
 
-import controle.ControleAdicionarCurso;
-import javax.swing.JDialog;
+import controle.ControleTelaDisciplina;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -16,14 +15,15 @@ import javax.swing.SwingUtilities;
  */
 public class PanelAdicionarCurso extends javax.swing.JPanel {
 
-    private ControleAdicionarCurso controle;
+
+    private final ControleTelaDisciplina controle;
     
     /**
      * Creates new form PanelAdicionarCurso
      */
-    public PanelAdicionarCurso() {
+    public PanelAdicionarCurso(InternoJfTelaDisciplina view) {
         initComponents();
-        controle = new ControleAdicionarCurso(this);
+        controle = new ControleTelaDisciplina(view, this);
     }
 
     /**
@@ -148,6 +148,4 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
     public void setjTextField1(JTextField jTextField1) {
         this.jTextField1 = jTextField1;
     }
-
-    
 }

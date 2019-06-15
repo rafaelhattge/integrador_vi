@@ -5,20 +5,12 @@
  */
 package tela;
 
-import java.awt.Dialog;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Window;
-import java.sql.SQLException;
+import controle.ControleTelaDisciplina;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -27,11 +19,18 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
+    private final ControleTelaDisciplina controle;
+    private final PanelAdicionarCurso dialog;
+    
     /**
      * Creates new form InternoJfTelaDisicplina
      */
     public InternoJfTelaDisciplina(){
         initComponents();
+        dialog = new PanelAdicionarCurso(this);
+        controle = new ControleTelaDisciplina(this, dialog);
+        
+        
     }
 
     /**
@@ -164,7 +163,6 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         jComboBoxCurso.setBackground(new java.awt.Color(69, 69, 69));
         jComboBoxCurso.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jComboBoxCurso.setForeground(new java.awt.Color(240, 240, 240));
-        jComboBoxCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Análise e Desenvolvimento de Sistemas", "Psicologia" }));
         jComboBoxCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
         jComboBoxCurso.setFocusable(false);
         jComboBoxCurso.setOpaque(false);
@@ -300,9 +298,8 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     private void jButtonAdicionarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarCursoMouseClicked
         
-        PanelAdicionarCurso adicionarCurso = new PanelAdicionarCurso();
         JDialog modal = new JDialog((JFrame)this.getTopLevelAncestor(), false);
-        modal.add(adicionarCurso);
+        modal.add(dialog);
         modal.setUndecorated(true);
         modal.setVisible(true);
         modal.pack();
@@ -313,10 +310,12 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     private void jButtonEditarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarDisciplinaMouseClicked
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_jButtonEditarDisciplinaMouseClicked
 
     private void jButtonAdicionarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarDisciplinaMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonAdicionarDisciplinaMouseClicked
 
     private void jButtonRemoverDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverDisciplinaMouseClicked
@@ -345,6 +344,13 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     public void setjComboBoxCurso(JComboBox<String> jComboBoxCurso) {
         this.jComboBoxCurso = jComboBoxCurso;
     }
+
+    public PanelAdicionarCurso getDialog() {
+        return dialog;
+    }
+    
+    
+    
 
     
 }

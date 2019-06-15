@@ -1,16 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controle;
 
+import Dao.CursoDao;
 import Dao.UsuarioDao;
 import Dao.conexao;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Usuario;
+import tela.InternoJfTelaDisciplina;
 import tela.TelaLogin;
 import tela.TelaMensagem;
 import tela.TelaPrincipal;
@@ -57,6 +57,16 @@ public class ControlerTelaLogin {
             //   tela.setLocationRelativeTo(null);
             // tela.pack();
             tela.setVisible(true);
+            
+            /*
+            Aparentemente o carregamento das informações do banco de dados
+            que se conectam com os componentes das telas internas só funciona se
+            for realizado neste ponto.
+            */
+            ControleTelaDisciplina controleTelaDisciplina = new ControleTelaDisciplina(tela.getTelaDisicplina(), tela.getTelaDisicplina().getDialog());
+            controleTelaDisciplina.exibirCursos();
+            
+            
             view.dispose();
             //Exibe mensagem inicial
             TelaMensagem mensagem = new TelaMensagem(tela, true);

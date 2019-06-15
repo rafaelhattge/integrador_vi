@@ -17,14 +17,14 @@ import modelo.Usuario;
  * @author Diana
  */
 public class TelaPrincipal extends javax.swing.JFrame {
- private final InternoJfTelaRelatorio telaInicio = new InternoJfTelaRelatorio();
-      private final InternoJfTelaTarefa telaTarefas = new InternoJfTelaTarefa();
-       private final InternoJfTelaDisciplina telaDisicplina = new InternoJfTelaDisciplina();
-        private final InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser();
-        private final InternoJfTelaConfGeral telaConfigGeral = new InternoJfTelaConfGeral();
+    private final InternoJfTelaRelatorio telaInicio = new InternoJfTelaRelatorio();
+    private final InternoJfTelaTarefa telaTarefas = new InternoJfTelaTarefa();
+    private final InternoJfTelaDisciplina telaDisicplina = new InternoJfTelaDisciplina();
+    private final InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser();
+    private final InternoJfTelaConfGeral telaConfigGeral = new InternoJfTelaConfGeral();
     private final ControlerTelaPrincipal controler;
     Usuario userAtivo;
-//  private Usuario usuario;
+    //  private Usuario usuario;
     /**
      * Creates new form TelaPrincipal
      */
@@ -359,17 +359,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtontarefasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtontarefasActionPerformed
 
-     jLabelAluno.setBackground(new java.awt.Color(66,244,158));
-     jLabelNomePrograma.setForeground(new java.awt.Color(66,244,158));
-     controler.ControleTelas(telaTarefas);
+        jLabelAluno.setBackground(new java.awt.Color(66,244,158));
+        jLabelNomePrograma.setForeground(new java.awt.Color(66,244,158));
+        controler.ControleTelas(telaTarefas);
     }//GEN-LAST:event_jButtontarefasActionPerformed
 
     private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
      
-     // controler.trocaPaneis(jPanelInicio);
-     jLabelAluno.setBackground(new java.awt.Color(66,215,244));
+        // controler.trocaPaneis(jPanelInicio);
+        jLabelAluno.setBackground(new java.awt.Color(66,215,244));
         jLabelNomePrograma.setForeground(new java.awt.Color(66,215,244));
-    controler.ControleTelas(telaInicio);
+        controler.ControleTelas(telaInicio);
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisciplinaActionPerformed
@@ -388,9 +388,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonConfigAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigAdminActionPerformed
     
-    jLabelAluno.setBackground(new java.awt.Color(153,180,51));
-    jLabelNomePrograma.setForeground(new java.awt.Color(153,180,51));
-     controler.ControleTelas(telaConfigGeral);
+        jLabelAluno.setBackground(new java.awt.Color(153,180,51));
+        jLabelNomePrograma.setForeground(new java.awt.Color(153,180,51));
+        controler.ControleTelas(telaConfigGeral);
     }//GEN-LAST:event_jButtonConfigAdminActionPerformed
 
     /**
@@ -470,6 +470,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setSize((dimensao.width - 410 ), (dimensao.height - 130));
       
     }
+
+    public InternoJfTelaDisciplina getTelaDisicplina() {
+        return telaDisicplina;
+    }
   
 
      
@@ -494,6 +498,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelNomePrograma;
     // End of variables declaration//GEN-END:variables
 
+    
+    
+    
     public javax.swing.JLabel getjLabelUsarioLogado() {
         return jLabelUsarioLogado;
     }
@@ -527,4 +534,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void setjDesktopPrincipal(javax.swing.JDesktopPane jDesktopPrincipal) {
         this.jDesktopPrincipal = jDesktopPrincipal;
     }
+    
+    
 }

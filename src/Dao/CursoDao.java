@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dao;
 
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import modelo.Curso;
 import tela.InternoJfTelaDisciplina;
 
@@ -25,9 +22,8 @@ public class CursoDao {
         this.conectar = conectar;
     }
 
-    public void AdicionarCurso(Curso curso, UsuarioDao usuarioAtivo) throws SQLException {
+    public void adicionarCurso(Curso curso, UsuarioDao usuarioAtivo) throws SQLException {
 
-        // TODO add your handling code here:
         String sql = "INSERT INTO curso(nome, idusuario) VALUES(?, ?);";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
@@ -35,5 +31,21 @@ public class CursoDao {
         statement.setInt(2, usuarioAtivo.getUserAtivo().getId());
         statement.execute();
         conectar.close();
+    }
+    
+    public ArrayList carregarCursos(UsuarioDao usuarioAtivo) throws SQLException {
+        
+        String sql = "SELECT nome FROM curso WHERE idusuario = ? ORDER BY nome ASC";
+        
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setInt(1, usuarioAtivo.getUserAtivo().getId());
+        statement.execute();
+        ResultSet resultSet = statement.getResultSet();
+        ArrayList<String> results = new ArrayList();
+        while(resultSet.next()){
+            results.add(resultSet.getString(1));
+        }
+
+        return results;
     }
 }
