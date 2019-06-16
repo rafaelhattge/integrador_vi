@@ -31,6 +31,14 @@ public class CursoDao {
         conectar.close();
     }
     
+    public void atualizarCurso(Curso curso, int idCurso)throws SQLException {
+        String sql = "UPDATE curso SET nome = ?;";
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setString(1, curso.getNome());
+        statement.execute();
+        conectar.close();
+    }
+    
     //Carrega todos os cursos do bd para o usuário ativo e retorna uma ArrayList de cursos
     public ArrayList<Curso> carregarCursos(UsuarioDao usuarioAtivo) throws SQLException {
         
@@ -51,7 +59,7 @@ public class CursoDao {
         return cursos;
     }
     
-    public void deletarUsuario(int idCurso) throws SQLException {
+    public void deletarCurso(int idCurso) throws SQLException {
         String sql = "DELETE FROM curso WHERE idcurso = ?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);

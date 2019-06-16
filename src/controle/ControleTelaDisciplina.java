@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import modelo.Curso;
@@ -31,6 +32,7 @@ public class ControleTelaDisciplina {
     private ArrayList<Curso> cursos;
     private final InternoJfTelaDisciplina view;
     private final PanelAdicionarCurso dialog;
+    private static boolean editarCurso;
 
     public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog) {
         this.view = view;
@@ -45,6 +47,7 @@ public class ControleTelaDisciplina {
             CursoDao cursoDao = new CursoDao(conexao);
             UsuarioDao usuarioDao = new UsuarioDao(conexao);
             ArrayList<Curso> listaCursos = cursoDao.carregarCursos(usuarioDao);
+            conexao.close();
             
             return listaCursos;
 
@@ -91,6 +94,33 @@ public class ControleTelaDisciplina {
         }  
     }
     
+    public void editarCurso(){
+        
+        Curso curso = carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex());
+        dialog.getjTextField1().setText(curso.getNome());
+        System.out.println(curso.getNome());
+        
+        String nome = dialog.getjTextField1().getText();
+        try {
+            if(nome.equals("")){
+                JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+            } else {
+                Connection conexao = new conexao().conectarBanco();
+                CursoDao cursoDao = new CursoDao(conexao);
+                cursoDao.atualizarCurso(curso, curso.getId());
+                JOptionPane.showMessageDialog(null, "Curso editado com sucesso.");
+                limparCampo();
+                exibirCursos();
+                exibirDisciplinas();
+                SwingUtilities.getWindowAncestor(dialog).dispose();
+            }
+        } catch (SQLException ex) {
+         //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
+         System.out.println(ex);
+         JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
+        }
+    }
+    
     
     public void removerCurso() {
         int idCurso;
@@ -102,7 +132,7 @@ public class ControleTelaDisciplina {
         try {
             Connection conexao = new conexao().conectarBanco();
             CursoDao cursoDao = new CursoDao(conexao);
-            cursoDao.deletarUsuario(idCurso);
+            cursoDao.deletarCurso(idCurso);
             
         } catch (SQLException ex) {
             Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
@@ -158,6 +188,57 @@ public class ControleTelaDisciplina {
         } 
     }
     
+    public void removerDisciplina() {
+        
+        int linha = view.getjTableDisciplinas().getSelectedRow();
+        System.out.println(linha);
+        
+        try {
+            if(linha >= 0){
+            int idDisciplina = carregarListaDisciplinas().get(linha).getIdDisciplina();
+            Connection conexao = new conexao().conectarBanco();
+            DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
+            disciplinaDao.deletarDisciplina(idDisciplina);
+            exibirDisciplinas();
+        }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        exibirDisciplinas();
+    }
+    
+    public void mostrarPainelDisciplina(){
+        view.getjButtonCancelar().setEnabled(true);
+        view.getjButtonSalvar().setEnabled(true);
+        view.getjTextFieldNome().setEnabled(true);
+        view.getjTextFieldDataInicio().setEnabled(true);
+        view.getjTextFieldDataTermino().setEnabled(true);
+        view.getjCheckBoxDom().setEnabled(true);
+        view.getjCheckBoxSeg().setEnabled(true);
+        view.getjCheckBoxTer().setEnabled(true);
+        view.getjCheckBoxQua().setEnabled(true);
+        view.getjCheckBoxQui().setEnabled(true);
+        view.getjCheckBoxSex().setEnabled(true);
+        view.getjCheckBoxSab().setEnabled(true);
+    }
+    
+    public void ocultarPainelDisciplina() {
+        view.getjButtonCancelar().setEnabled(false);
+        view.getjButtonSalvar().setEnabled(false);
+        view.getjTextFieldNome().setEnabled(false);
+        view.getjTextFieldDataInicio().setEnabled(false);
+        view.getjTextFieldDataTermino().setEnabled(false);
+        view.getjCheckBoxDom().setEnabled(false);
+        view.getjCheckBoxSeg().setEnabled(false);
+        view.getjCheckBoxTer().setEnabled(false);
+        view.getjCheckBoxQua().setEnabled(false);
+        view.getjCheckBoxQui().setEnabled(false);
+        view.getjCheckBoxSex().setEnabled(false);
+        view.getjCheckBoxSab().setEnabled(false);
+    }
+    
     public void limparCampo(){
         dialog.getjTextField1().setText("");
     }
@@ -169,4 +250,15 @@ public class ControleTelaDisciplina {
     public void setCursos(ArrayList<Curso> cursos) {
         this.cursos = cursos;
     }
+
+    public boolean isEditarCurso() {
+        return editarCurso;
+    }
+
+    public void setEditarCurso(boolean editarCurso) {
+        this.editarCurso = editarCurso;
+    }
+    
+    
+    
 }

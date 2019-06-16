@@ -55,4 +55,14 @@ public class DisciplinaDao {
             return null;
         }
     }
+    
+    //Deletar a disciplina selecionada
+    public void deletarDisciplina(int idDisciplina) throws SQLException {
+        String sql = "DELETE FROM disciplina WHERE iddisciplina = ?;";
+
+        PreparedStatement statement = conectar.prepareStatement(sql);
+
+        statement.setInt(1, idDisciplina);
+        statement.execute();    
+    }
 }
