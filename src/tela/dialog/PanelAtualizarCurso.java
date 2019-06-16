@@ -3,27 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tela;
+package tela.dialog;
 
 import controle.ControleTelaDisciplina;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import tela.InternoJfTelaDisciplina;
 
 /**
  *
  * @author Rafael
  */
-public class PanelAdicionarCurso extends javax.swing.JPanel {
+public class PanelAtualizarCurso extends javax.swing.JPanel {
 
 
     private final ControleTelaDisciplina controle;
-    
+    private final JFrame frame;
     /**
      * Creates new form PanelAdicionarCurso
      */
-    public PanelAdicionarCurso(InternoJfTelaDisciplina view) {
+    public PanelAtualizarCurso(InternoJfTelaDisciplina view, JFrame frame) {
         initComponents();
+        this.frame = frame;
         controle = new ControleTelaDisciplina(view, this);
+        JDialog modal = new JDialog(frame, false);
+        modal.add(this);
+        modal.setUndecorated(true);
+        modal.setVisible(true);
+        modal.pack();
+        modal.setLocationRelativeTo(frame);
+        frame.setEnabled(false);
     }
 
     /**
@@ -35,23 +46,23 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonAdicionar = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabelAtualizar = new javax.swing.JLabel();
+        jTextFieldAtualizar = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(69, 69, 69));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26), 6));
 
-        jButtonAdicionar.setBackground(new java.awt.Color(227, 162, 26));
-        jButtonAdicionar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jButtonAdicionar.setForeground(new java.awt.Color(240, 240, 240));
-        jButtonAdicionar.setText("Adicionar");
-        jButtonAdicionar.setFocusable(false);
-        jButtonAdicionar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAtualizar.setBackground(new java.awt.Color(227, 162, 26));
+        jButtonAtualizar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonAtualizar.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonAtualizar.setText("Atualizar");
+        jButtonAtualizar.setFocusable(false);
+        jButtonAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonAdicionarMouseClicked(evt);
+                jButtonAtualizarMouseClicked(evt);
             }
         });
 
@@ -68,9 +79,9 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(227, 162, 26));
 
-        jLabel1.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Adicionar Curso");
+        jLabelAtualizar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabelAtualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAtualizar.setText("Atualizar Curso");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,20 +89,20 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(131, 131, 131)
-                .addComponent(jLabel1)
+                .addComponent(jLabelAtualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabelAtualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextField1.setBackground(new java.awt.Color(69, 69, 69));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
+        jTextFieldAtualizar.setBackground(new java.awt.Color(69, 69, 69));
+        jTextFieldAtualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldAtualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -102,11 +113,11 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
                 .addGap(66, 66, 66)
                 .addComponent(jButtonCancelar)
                 .addGap(48, 48, 48)
-                .addComponent(jButtonAdicionar)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addComponent(jButtonAtualizar)
+                .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1)
+                .addComponent(jTextFieldAtualizar)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -114,39 +125,41 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(jTextFieldAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
-                    .addComponent(jButtonAdicionar))
+                    .addComponent(jButtonAtualizar))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
+        frame.setEnabled(true);
         SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
-    private void jButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarMouseClicked
+    private void jButtonAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtualizarMouseClicked
 
         controle.salvarCurso();
+        frame.setEnabled(true);
         
-    }//GEN-LAST:event_jButtonAdicionarMouseClicked
+    }//GEN-LAST:event_jButtonAtualizarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelAtualizar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldAtualizar;
     // End of variables declaration//GEN-END:variables
 
-    public JTextField getjTextField1() {
-        return jTextField1;
+    public JTextField getjTextFieldAtualizar() {
+        return jTextFieldAtualizar;
     }
 
-    public void setjTextField1(JTextField jTextField1) {
-        this.jTextField1 = jTextField1;
+    public void setjTextField1(JTextField jTextFieldAtualizar) {
+        this.jTextFieldAtualizar = jTextFieldAtualizar;
     }
 }

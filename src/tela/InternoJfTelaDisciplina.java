@@ -5,12 +5,13 @@
  */
 package tela;
 
+import tela.dialog.PanelAdicionarCurso;
+import tela.dialog.PanelAtualizarCurso;
 import controle.ControleTelaDisciplina;
 import java.awt.event.ItemEvent;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,16 +27,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     private final ControleTelaDisciplina controle;
-    private final PanelAdicionarCurso dialogAdicionar;
-    private final PanelAtualizarCurso dialogAtualizar;
+    private PanelAdicionarCurso dialogAdicionar;
+    private PanelAtualizarCurso dialogAtualizar;
     
     /**
      * Creates new form InternoJfTelaDisicplina
      */
     public InternoJfTelaDisciplina(){
         initComponents();
-        dialogAdicionar = new PanelAdicionarCurso(this);
-        dialogAtualizar = new PanelAtualizarCurso(this);
+        
         controle = new ControleTelaDisciplina(this, dialogAdicionar, dialogAtualizar);
         
         
@@ -454,13 +454,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     private void jButtonAdicionarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarCursoMouseClicked
 
-        
-        JDialog modal = new JDialog((JFrame)this.getTopLevelAncestor(), false);
-        modal.add(dialogAdicionar);
-        modal.setUndecorated(true);
-        modal.setVisible(true);
-        modal.pack();
-        modal.setLocationRelativeTo(this);
+        dialogAdicionar = new PanelAdicionarCurso(this, (JFrame)this.getTopLevelAncestor());
     }//GEN-LAST:event_jButtonAdicionarCursoMouseClicked
 
     private void jComboBoxCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxCursoItemStateChanged
@@ -483,12 +477,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     private void jButtonEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarCursoMouseClicked
               
-        JDialog modal = new JDialog((JFrame)this.getTopLevelAncestor(), false);
-        modal.add(dialogAtualizar);
-        modal.setUndecorated(true);
-        modal.setVisible(true);
-        modal.pack();
-        modal.setLocationRelativeTo(this);
+        dialogAtualizar = new PanelAtualizarCurso(this, (JFrame)this.getTopLevelAncestor());
     }//GEN-LAST:event_jButtonEditarCursoMouseClicked
 
     

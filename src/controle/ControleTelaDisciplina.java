@@ -20,8 +20,8 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Curso;
 import modelo.Disciplina;
 import tela.InternoJfTelaDisciplina;
-import tela.PanelAdicionarCurso;
-import tela.PanelAtualizarCurso;
+import tela.dialog.PanelAdicionarCurso;
+import tela.dialog.PanelAtualizarCurso;
 
 /**
  *
