@@ -14,9 +14,20 @@ public class Curso {
     private String nome;
     private int idUsuario;
     
+    public Curso(){
+    }
+    
     public Curso(String nome){
         this.nome = nome;
     }
+
+    public Curso(int id, String nome, int idUsuario) {
+        this.id = id;
+        this.nome = nome;
+        this.idUsuario = idUsuario;
+    }
+    
+    
 
     public int getId() {
         return id;

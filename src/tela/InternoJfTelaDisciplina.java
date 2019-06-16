@@ -6,10 +6,12 @@
 package tela;
 
 import controle.ControleTelaDisciplina;
+import java.awt.event.ItemEvent;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -80,11 +82,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         jTableDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
         jTableDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Matemática", "02/02/2019", "12/06/2019", null,  new Boolean(true), null, null, null, null, null},
-                {"Programação I", "02/02/2019", "12/06/2019", null, null,  new Boolean(true), null, null, null, null},
-                {"Banco de Dados", "02/02/2019", "12/06/2019", null, null, null,  new Boolean(true), null, null, null},
-                {"Sistemas Operacionais", "02/02/2019", "12/06/2019", null, null, null, null,  new Boolean(true), null, null},
-                {"Português", "02/02/2019", "12/06/2019", null, null, null, null, null,  new Boolean(true), null}
+
             },
             new String [] {
                 "Disciplina", "Data de Início", "Data de Término", "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"
@@ -166,6 +164,11 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         jComboBoxCurso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
         jComboBoxCurso.setFocusable(false);
         jComboBoxCurso.setOpaque(false);
+        jComboBoxCurso.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxCursoItemStateChanged(evt);
+            }
+        });
 
         jButtonAdicionarCurso.setBackground(new java.awt.Color(227, 162, 26));
         jButtonAdicionarCurso.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
@@ -183,6 +186,11 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         jButtonRemoverCurso.setForeground(new java.awt.Color(240, 240, 240));
         jButtonRemoverCurso.setText("Remover Curso");
         jButtonRemoverCurso.setFocusable(false);
+        jButtonRemoverCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRemoverCursoMouseClicked(evt);
+            }
+        });
 
         jButtonEditarDisciplina.setBackground(new java.awt.Color(227, 162, 26));
         jButtonEditarDisciplina.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
@@ -308,6 +316,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jButtonAdicionarCursoMouseClicked
 
+    
     private void jButtonEditarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarDisciplinaMouseClicked
         // TODO add your handling code here:
         
@@ -321,6 +330,18 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     private void jButtonRemoverDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverDisciplinaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRemoverDisciplinaMouseClicked
+
+    private void jButtonRemoverCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverCursoMouseClicked
+        // TODO add your handling code here:
+        controle.removerCurso();
+    }//GEN-LAST:event_jButtonRemoverCursoMouseClicked
+
+    private void jComboBoxCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxCursoItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED) {
+            controle.exibirDisciplinas();
+        }
+    }//GEN-LAST:event_jComboBoxCursoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -337,6 +358,15 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableDisciplinas;
     // End of variables declaration//GEN-END:variables
 
+    
+    public JTable getjTableDisciplinas() {
+        return jTableDisciplinas;
+    }
+    
+    public void setjTableDisciplinas(JTable jTableDisciplinas) {
+        this.jTableDisciplinas = jTableDisciplinas;
+    }
+    
     public JComboBox<String> getjComboBoxCurso() {
         return jComboBoxCurso;
     }

@@ -61,7 +61,7 @@ public class UsuarioDao {
         // conectar.close();
     }
 
-    public void DeletarUsuario(Usuario user) throws SQLException {
+    public void deletarUsuario(Usuario user) throws SQLException {
         String sql = "Delete usuario where id =?);";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
@@ -75,16 +75,19 @@ public class UsuarioDao {
         String sql = "select * from usuario";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
-        return PesquisarArrayUser(statement);
+        return pesquisarArrayUser(statement);
     }
 
-    private ArrayList<Usuario> PesquisarArrayUser(PreparedStatement statement) throws SQLException {
+    private ArrayList<Usuario> pesquisarArrayUser(PreparedStatement statement) throws SQLException {
         Usuario user;
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         statement.execute();
         ResultSet resultSet = statement.getResultSet();
         while (resultSet.next()) {
-            user = new Usuario(resultSet.getInt("id"), resultSet.getString("nome"), resultSet.getString("email"), resultSet.getString("usuario"), resultSet.getString("senha"), resultSet.getString("tipo"), resultSet.getString("mensagem"));
+            user = new Usuario(resultSet.getInt("id"), resultSet.getString("nome"), 
+                    resultSet.getString("email"), resultSet.getString("usuario"), 
+                    resultSet.getString("senha"), resultSet.getString("tipo"), 
+                    resultSet.getString("mensagem"));
             usuarios.add(user);
         }
         return usuarios;
@@ -95,7 +98,7 @@ public class UsuarioDao {
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setInt(1, user.getId());
-        return PesquisarArrayUser(statement).get(0);
+        return pesquisarArrayUser(statement).get(0);
 
     }
 
@@ -119,7 +122,7 @@ public class UsuarioDao {
         // 
     }
 
-    public boolean AutenticarUsuario(Usuario userAutenticar) throws SQLException {
+    public boolean autenticarUsuario(Usuario userAutenticar) throws SQLException {
         String sql = "select * from usuario where usuario = ? and senha = ?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);

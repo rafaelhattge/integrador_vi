@@ -43,7 +43,7 @@ public class ControlerTelaLogin {
             UsuarioDao userDao = new UsuarioDao(conexao);
             
              //verificar se existe no banco
-            boolean autenticar = userDao.AutenticarUsuario(userAutenticar);
+            boolean autenticar = userDao.autenticarUsuario(userAutenticar);
             if(autenticar){
             Usuario usuarioAtivo = userDao.usuarioAtivo(userAutenticar);
               
@@ -65,6 +65,7 @@ public class ControlerTelaLogin {
             */
             ControleTelaDisciplina controleTelaDisciplina = new ControleTelaDisciplina(tela.getTelaDisicplina(), tela.getTelaDisicplina().getDialog());
             controleTelaDisciplina.exibirCursos();
+            controleTelaDisciplina.exibirDisciplinas();
             
             
             view.dispose();
