@@ -31,10 +31,11 @@ public class CursoDao {
         conectar.close();
     }
     
-    public void atualizarCurso(Curso curso, int idCurso)throws SQLException {
-        String sql = "UPDATE curso SET nome = ?;";
+    public void atualizarCurso(Curso curso, int idCurso, String nome)throws SQLException {
+        String sql = "UPDATE curso SET nome = ? WHERE idcurso = ?;";
         PreparedStatement statement = conectar.prepareStatement(sql);
-        statement.setString(1, curso.getNome());
+        statement.setString(1, nome);
+        statement.setInt(2, idCurso);
         statement.execute();
         conectar.close();
     }

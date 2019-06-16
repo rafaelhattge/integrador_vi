@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import modelo.Curso;
 import modelo.Disciplina;
 import tela.InternoJfTelaDisciplina;
 import tela.PanelAdicionarCurso;
+import tela.PanelAtualizarCurso;
 
 /**
  *
@@ -31,12 +31,26 @@ public class ControleTelaDisciplina {
     
     private ArrayList<Curso> cursos;
     private final InternoJfTelaDisciplina view;
-    private final PanelAdicionarCurso dialog;
+    private PanelAdicionarCurso dialog;
+    private PanelAtualizarCurso panel;
     private static boolean editarCurso;
-
+    
     public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog) {
         this.view = view;
         this.dialog = dialog;
+        cursos = new ArrayList<Curso>();
+    }
+    
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panel) {
+        this.view = view;
+        this.panel = panel;
+        cursos = new ArrayList<Curso>();
+    }
+    
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog, PanelAtualizarCurso panel) {
+        this.view = view;
+        this.dialog = dialog;
+        this.panel = panel;
         cursos = new ArrayList<Curso>();
     }
     
@@ -82,7 +96,7 @@ public class ControleTelaDisciplina {
                 cursoDao.adicionarCurso(curso, usuarioAtivo);
                 System.out.println(usuarioAtivo.getUserAtivo().getNome());
                 JOptionPane.showMessageDialog(null, "Curso adicionado com sucesso.");
-                limparCampo();
+                limparjTextFieldAdicionar();
                 exibirCursos();
                 exibirDisciplinas();
                 SwingUtilities.getWindowAncestor(dialog).dispose();
@@ -97,28 +111,33 @@ public class ControleTelaDisciplina {
     public void editarCurso(){
         
         Curso curso = carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex());
-        dialog.getjTextField1().setText(curso.getNome());
-        System.out.println(curso.getNome());
-        
-        String nome = dialog.getjTextField1().getText();
+        System.out.println("Id do curso: " + curso.getId());
         try {
-            if(nome.equals("")){
+            if(panel.getjTextFieldAtualizar().getText().equals("")){
                 JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
             } else {
+                
+                
                 Connection conexao = new conexao().conectarBanco();
                 CursoDao cursoDao = new CursoDao(conexao);
-                cursoDao.atualizarCurso(curso, curso.getId());
-                JOptionPane.showMessageDialog(null, "Curso editado com sucesso.");
-                limparCampo();
+                int id = curso.getId();
+                String nome = panel.getjTextFieldAtualizar().getText();
+                
+                
+                cursoDao.atualizarCurso(curso, id, nome);
+                JOptionPane.showMessageDialog(null, "Curso atualizado com sucesso.");
+                limparjTextFieldAtualizar();
                 exibirCursos();
                 exibirDisciplinas();
-                SwingUtilities.getWindowAncestor(dialog).dispose();
+                SwingUtilities.getWindowAncestor(panel).dispose();
+                
             }
         } catch (SQLException ex) {
          //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
          System.out.println(ex);
          JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
-        }
+        }  
+        
     }
     
     
@@ -239,8 +258,12 @@ public class ControleTelaDisciplina {
         view.getjCheckBoxSab().setEnabled(false);
     }
     
-    public void limparCampo(){
+    public void limparjTextFieldAdicionar(){
         dialog.getjTextField1().setText("");
+    }
+    
+    public void limparjTextFieldAtualizar(){
+        panel.getjTextFieldAtualizar().setText("");
     }
 
     public ArrayList<Curso> getCursos() {

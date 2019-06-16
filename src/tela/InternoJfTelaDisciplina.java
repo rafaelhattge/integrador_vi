@@ -26,15 +26,17 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     private final ControleTelaDisciplina controle;
-    private final PanelAdicionarCurso dialog;
+    private final PanelAdicionarCurso dialogAdicionar;
+    private final PanelAtualizarCurso dialogAtualizar;
     
     /**
      * Creates new form InternoJfTelaDisicplina
      */
     public InternoJfTelaDisciplina(){
         initComponents();
-        dialog = new PanelAdicionarCurso(this);
-        controle = new ControleTelaDisciplina(this, dialog);
+        dialogAdicionar = new PanelAdicionarCurso(this);
+        dialogAtualizar = new PanelAtualizarCurso(this);
+        controle = new ControleTelaDisciplina(this, dialogAdicionar, dialogAtualizar);
         
         
     }
@@ -454,7 +456,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
         
         JDialog modal = new JDialog((JFrame)this.getTopLevelAncestor(), false);
-        modal.add(dialog);
+        modal.add(dialogAdicionar);
         modal.setUndecorated(true);
         modal.setVisible(true);
         modal.pack();
@@ -480,7 +482,13 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableDisciplinasMouseClicked
 
     private void jButtonEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarCursoMouseClicked
-
+              
+        JDialog modal = new JDialog((JFrame)this.getTopLevelAncestor(), false);
+        modal.add(dialogAtualizar);
+        modal.setUndecorated(true);
+        modal.setVisible(true);
+        modal.pack();
+        modal.setLocationRelativeTo(this);
     }//GEN-LAST:event_jButtonEditarCursoMouseClicked
 
     
@@ -539,7 +547,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     }
 
     public PanelAdicionarCurso getDialog() {
-        return dialog;
+        return dialogAdicionar;
     }
 
     public JButton getjButtonAdicionarDisciplina() {
