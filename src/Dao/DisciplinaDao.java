@@ -71,23 +71,24 @@ public class DisciplinaDao {
         Disciplina disciplina;
         String sql = "SELECT * FROM disciplina WHERE idcurso = ? ORDER BY nome ASC";
         
-        try{
-        PreparedStatement statement = conectar.prepareStatement(sql);
-        statement.setInt(1, idCurso);
-        statement.execute();
-        ResultSet resultSet = statement.getResultSet();
-        ArrayList<Disciplina> disciplinas = new ArrayList();
-        
-        while(resultSet.next()){
-            disciplina = new Disciplina(resultSet.getInt("iddisciplina"), 
-                resultSet.getString("nome"), resultSet.getDate("datainicio"), 
-                resultSet.getDate("datatermino"), resultSet.getBoolean("domingo"),
-                resultSet.getBoolean("segunda"), resultSet.getBoolean("terca"),
-                resultSet.getBoolean("quarta"), resultSet.getBoolean("quinta"),
-                resultSet.getBoolean("sexta"), resultSet.getBoolean("sabado"),
-                resultSet.getInt("idcurso"));
-            disciplinas.add(disciplina);
+        try {
+            PreparedStatement statement = conectar.prepareStatement(sql);
+            statement.setInt(1, idCurso);
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+            ArrayList<Disciplina> disciplinas = new ArrayList();
+
+            while(resultSet.next()){
+                disciplina = new Disciplina(resultSet.getInt("iddisciplina"), 
+                    resultSet.getString("nome"), resultSet.getDate("datainicio"), 
+                    resultSet.getDate("datatermino"), resultSet.getBoolean("domingo"),
+                    resultSet.getBoolean("segunda"), resultSet.getBoolean("terca"),
+                    resultSet.getBoolean("quarta"), resultSet.getBoolean("quinta"),
+                    resultSet.getBoolean("sexta"), resultSet.getBoolean("sabado"),
+                    resultSet.getInt("idcurso"));
+                disciplinas.add(disciplina);
         }
+            
         return disciplinas;
         
         }catch(SQLException e){

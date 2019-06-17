@@ -15,7 +15,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
-import java.text.DateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -191,22 +190,21 @@ public class ControleTelaDisciplina {
         this.setCursos(carregarListaCursos());
         if(cursos.size() > 0){
         try {
-            
             int idCurso = cursos.get(view.getjComboBoxCurso().getSelectedIndex()).getId();
             Connection conexao = new conexao().conectarBanco();
             DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
             listaDisciplinas = disciplinaDao.carregarDisciplinas(idCurso);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (SQLException ex) {
+                Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return listaDisciplinas;
     }
     
     //Exibe a lista de disciplinas na jTable
     public void exibirDisciplinas() throws ParseException{
-        carregarListaDisciplinas();
+        //carregarListaDisciplinas();
         
         DefaultTableModel tableModel = (DefaultTableModel) view.getjTableDisciplinas().getModel();
         ArrayList<Disciplina> disciplinas = carregarListaDisciplinas();
@@ -226,10 +224,10 @@ public class ControleTelaDisciplina {
                     dados[6] = disciplinas.get(i).isQuarta();
                     dados[7] = disciplinas.get(i).isQuinta();
                     dados[8] = disciplinas.get(i).isSexta();
-                dados[9] = disciplinas.get(i).isSabado();
-                tableModel.addRow(dados);
-            }
-        } 
+                    dados[9] = disciplinas.get(i).isSabado();
+                    tableModel.addRow(dados);
+                }
+            } 
     }
     
     public void salvarDisciplina() throws ParseException{

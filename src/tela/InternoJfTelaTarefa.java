@@ -5,8 +5,12 @@
  */
 package tela;
 
-import controle.ControlerTarefa;
+import controle.ControleTarefa;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -16,14 +20,14 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
-    private final ControlerTarefa controler;
+    private final ControleTarefa controle;
 
     /**
      * Creates new form InternoJfTelaDisicplina
      */
     public InternoJfTelaTarefa() {
         initComponents();
-        controler = new ControlerTarefa(this);
+        controle = new ControleTarefa(this);
     }
 
     /**
@@ -359,6 +363,11 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
         jButtonExcluirTarefa.setBackground(new java.awt.Color(66, 244, 158));
         jButtonExcluirTarefa.setText("Excluir Tarefa");
+        jButtonExcluirTarefa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonExcluirTarefaMouseClicked(evt);
+            }
+        });
         jButtonExcluirTarefa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExcluirTarefaActionPerformed(evt);
@@ -391,7 +400,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEdicaoTarefaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelEdicaoTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonExcluirTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(jButtonExcluirTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonNovaTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -476,7 +485,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
     private void jButtonNovaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaTarefaActionPerformed
         
-        controler.TrocaTarefas(jPanelGerenciatarefa);
+        controle.TrocaTarefas(jPanelGerenciatarefa);
     }//GEN-LAST:event_jButtonNovaTarefaActionPerformed
 
     private void jTableTarefasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTarefasKeyReleased
@@ -492,8 +501,16 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
     private void jButtonSaLvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaLvarActionPerformed
 
-        controler.TrocaTarefas(jPanelInicGerencia);
+        controle.TrocaTarefas(jPanelInicGerencia);
     }//GEN-LAST:event_jButtonSaLvarActionPerformed
+
+    private void jButtonExcluirTarefaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonExcluirTarefaMouseClicked
+        try {
+            controle.removerTarefa();
+        } catch (ParseException ex) {
+            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonExcluirTarefaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -533,4 +550,10 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     public void setjLayeredPaneGereTarefa(javax.swing.JLayeredPane jLayeredPaneGereTarefa) {
         this.jLayeredPaneGereTarefa = jLayeredPaneGereTarefa;
     }
+
+    public JTable getjTableTarefas() {
+        return jTableTarefas;
+    }
+    
+    
 }

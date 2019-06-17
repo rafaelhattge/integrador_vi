@@ -544,5 +544,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public InternoJfTelaDisciplina getTelaDisciplina() {
         return telaDisciplina;
-    } 
+    }
+
+    public InternoJfTelaTarefa getTelaTarefas() {
+        return telaTarefas;
+    }
+    
+    
 }

@@ -768,7 +768,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButtonExcluirTarefa" alignment="1" pref="28" max="32767" attributes="0"/>
+                          <Component id="jButtonExcluirTarefa" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButtonEditar" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButtonNovaTarefa" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -797,6 +797,7 @@
                 <Property name="text" type="java.lang.String" value="Excluir Tarefa"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonExcluirTarefaMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluirTarefaActionPerformed"/>
               </Events>
             </Component>
