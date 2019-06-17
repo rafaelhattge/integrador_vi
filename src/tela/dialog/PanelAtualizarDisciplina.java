@@ -15,13 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import modelo.Disciplina;
 import tela.InternoJfTelaDisciplina;
 
 /**
  *
  * @author Rafael
  */
-public class PanelAdicionarDisciplina extends javax.swing.JPanel {
+public class PanelAtualizarDisciplina extends javax.swing.JPanel {
 
 
     private final ControleTelaDisciplina controle;
@@ -30,7 +31,7 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
     /**
      * Creates new form PanelAdicionarCurso
      */
-    public PanelAdicionarDisciplina(InternoJfTelaDisciplina view, JFrame frame) {
+    public PanelAtualizarDisciplina(InternoJfTelaDisciplina view, JFrame frame) {
         initComponents();
         this.frame = frame;
         controle = new ControleTelaDisciplina(view, this);
@@ -40,6 +41,25 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
         modal.setVisible(true);
         modal.pack();
         modal.setLocationRelativeTo(frame);
+        Disciplina disciplina = controle.passarDisciplina();
+        this.getjTextFieldNome().setText(disciplina.getNome());
+        try {
+            this.getjTextFieldInicio().setText(controle.formatarData(disciplina.getDataInicio()));
+        } catch (ParseException ex) {
+            Logger.getLogger(PanelAtualizarDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.getjTextFieldTermino().setText(controle.formatarData(disciplina.getDataTermino()));
+        } catch (ParseException ex) {
+            Logger.getLogger(PanelAtualizarDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.getjCheckBoxDom().setSelected(disciplina.isDomingo());
+        this.getjCheckBoxSeg().setSelected(disciplina.isSegunda());
+        this.getjCheckBoxTer().setSelected(disciplina.isTerca());
+        this.getjCheckBoxQua().setSelected(disciplina.isQuarta());
+        this.getjCheckBoxQui().setSelected(disciplina.isQuinta());
+        this.getjCheckBoxSex().setSelected(disciplina.isSexta());
+        this.getjCheckBoxSab().setSelected(disciplina.isSabado());
         frame.setEnabled(false);
     }
 
@@ -52,7 +72,7 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonAdicionar = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -74,14 +94,14 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
         setBackground(new java.awt.Color(69, 69, 69));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(218, 83, 44), 6));
 
-        jButtonAdicionar.setBackground(new java.awt.Color(227, 162, 26));
-        jButtonAdicionar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jButtonAdicionar.setForeground(new java.awt.Color(240, 240, 240));
-        jButtonAdicionar.setText("Adicionar");
-        jButtonAdicionar.setFocusable(false);
-        jButtonAdicionar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAtualizar.setBackground(new java.awt.Color(227, 162, 26));
+        jButtonAtualizar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonAtualizar.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonAtualizar.setText("Atualizar");
+        jButtonAtualizar.setFocusable(false);
+        jButtonAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonAdicionarMouseClicked(evt);
+                jButtonAtualizarMouseClicked(evt);
             }
         });
 
@@ -100,7 +120,7 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Adicionar Disciplina");
+        jLabel1.setText("Atualizar Disciplina");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,7 +239,7 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
                                 .addGap(66, 66, 66)
                                 .addComponent(jButtonCancelar)
                                 .addGap(48, 48, 48)
-                                .addComponent(jButtonAdicionar))
+                                .addComponent(jButtonAtualizar))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabelNome)))
@@ -261,7 +281,7 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
-                    .addComponent(jButtonAdicionar))
+                    .addComponent(jButtonAtualizar))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -271,22 +291,19 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
         SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
-    private void jButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarMouseClicked
-
+    private void jButtonAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtualizarMouseClicked
         frame.setEnabled(true);
         try {
-            controle.salvarDisciplina();
+            controle.editarDisciplina();
             SwingUtilities.getWindowAncestor(this).dispose();
         } catch (ParseException ex) {
-            //Logger.getLogger(PanelAdicionarDisciplina.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Data em formato errado. O formato correto é 'dd/mm/AAAA'");
         }
-        
-    }//GEN-LAST:event_jButtonAdicionarMouseClicked
+    }//GEN-LAST:event_jButtonAtualizarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JCheckBox jCheckBoxDom;
     private javax.swing.JCheckBox jCheckBoxQua;

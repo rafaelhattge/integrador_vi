@@ -9,6 +9,8 @@ import controle.ControlerTelaPrincipal;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 import modelo.Usuario;
 
 
@@ -19,7 +21,7 @@ import modelo.Usuario;
 public class TelaPrincipal extends javax.swing.JFrame {
     private final InternoJfTelaRelatorio telaInicio = new InternoJfTelaRelatorio();
     private final InternoJfTelaTarefa telaTarefas = new InternoJfTelaTarefa();
-    private final InternoJfTelaDisciplina telaDisicplina = new InternoJfTelaDisciplina();
+    private final InternoJfTelaDisciplina telaDisciplina = new InternoJfTelaDisciplina();
     private final InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser();
     private final InternoJfTelaConfGeral telaConfigGeral = new InternoJfTelaConfGeral();
     private final ControlerTelaPrincipal controler;
@@ -30,9 +32,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
-           
-           controler = new ControlerTelaPrincipal(this);
-           controler.ControleTelas(telaInicio);
+        UIManager ui = new UIManager();
+        ui.put("OptionPane.background", new ColorUIResource(69,69,69));
+        ui.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));
+        ui.put("Panel.background", new ColorUIResource(69,69,69));
+        //ui.put("Button.foreground", new ColorUIResource(255,255,255));
+          
+        controler = new ControlerTelaPrincipal(this);
+        controler.ControleTelas(telaInicio);
            
          
    // pegarResolucao();     
@@ -376,7 +383,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jLabelAluno.setBackground(new java.awt.Color(227,162,26));
         jLabelNomePrograma.setForeground(new java.awt.Color(227,162,26));
-        controler.ControleTelas(telaDisicplina);
+        controler.ControleTelas(telaDisciplina);
     }//GEN-LAST:event_jButtonDisciplinaActionPerformed
 
     private void jButtonConfigUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigUserActionPerformed
@@ -472,7 +479,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public InternoJfTelaDisciplina getTelaDisicplina() {
-        return telaDisicplina;
+        return telaDisciplina;
     }
   
 
@@ -534,6 +541,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void setjDesktopPrincipal(javax.swing.JDesktopPane jDesktopPrincipal) {
         this.jDesktopPrincipal = jDesktopPrincipal;
     }
-    
-    
+
+    public InternoJfTelaDisciplina getTelaDisciplina() {
+        return telaDisciplina;
+    } 
 }

@@ -27,6 +27,7 @@ import tela.InternoJfTelaDisciplina;
 import tela.dialog.PanelAdicionarCurso;
 import tela.dialog.PanelAdicionarDisciplina;
 import tela.dialog.PanelAtualizarCurso;
+import tela.dialog.PanelAtualizarDisciplina;
 
 /**
  *
@@ -39,6 +40,7 @@ public class ControleTelaDisciplina {
     private PanelAdicionarCurso panelAdicCurso;
     private PanelAtualizarCurso panelAtuaCurso;
     private PanelAdicionarDisciplina panelAdicDisciplina;
+    private PanelAtualizarDisciplina panelAtuaDisciplina;
     private static boolean editarCurso;
     
     public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso) {
@@ -59,6 +61,12 @@ public class ControleTelaDisciplina {
         cursos = new ArrayList<Curso>();
     }
     
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarDisciplina panelAtuaDisciplina) {
+        this.view = view;
+        this.panelAtuaDisciplina = panelAtuaDisciplina;
+        cursos = new ArrayList<Curso>();
+    }
+    
     public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog, PanelAtualizarCurso panel) {
         this.view = view;
         this.panelAdicCurso = dialog;
@@ -68,33 +76,35 @@ public class ControleTelaDisciplina {
     
     //Carrega a lista de cursos do CursoDao e retorna um ArrayList
     public ArrayList<Curso> carregarListaCursos() {
+        ArrayList<Curso> listaCursos = new ArrayList();
         try {
             Connection conexao = new conexao().conectarBanco();
             CursoDao cursoDao = new CursoDao(conexao);
             UsuarioDao usuarioDao = new UsuarioDao(conexao);
-            ArrayList<Curso> listaCursos = cursoDao.carregarCursos(usuarioDao);
+            listaCursos = cursoDao.carregarCursos(usuarioDao);
             conexao.close();
-            
-            return listaCursos;
 
         } catch (SQLException ex) {
             Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
+        
+        return listaCursos;
     }
     
     //Exibe a lista de cursos na jComboBox
     public void exibirCursos(){
+        
         ArrayList<Curso> listaCursos = carregarListaCursos();
         
         view.getjComboBoxCurso().removeAllItems();
-            
-        for(Curso curso : listaCursos) {
-            view.getjComboBoxCurso().addItem(curso.getNome());
-        }
+        if(listaCursos.size() > 0){
+            for(Curso curso : listaCursos) {
+                view.getjComboBoxCurso().addItem(curso.getNome());
+            }   
+        }    
     }
     
-    public void salvarCurso(){
+    public void salvarCurso() throws ParseException{
         String nome = panelAdicCurso.getjTextField1().getText();
         Curso curso = new Curso(nome);
         
@@ -120,22 +130,17 @@ public class ControleTelaDisciplina {
         }  
     }
     
-    public void editarCurso(){
-        
+    public void editarCurso() throws ParseException{
         Curso curso = carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex());
-        System.out.println("Id do curso: " + curso.getId());
         try {
             if(panelAtuaCurso.getjTextFieldAtualizar().getText().equals("")){
                 JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
             } else {
                 
-                
                 Connection conexao = new conexao().conectarBanco();
                 CursoDao cursoDao = new CursoDao(conexao);
                 int id = curso.getId();
                 String nome = panelAtuaCurso.getjTextFieldAtualizar().getText();
-                
-                
                 cursoDao.atualizarCurso(curso, id, nome);
                 JOptionPane.showMessageDialog(null, "Curso atualizado com sucesso.");
                 limparjTextFieldAtualizar();
@@ -144,68 +149,77 @@ public class ControleTelaDisciplina {
                 SwingUtilities.getWindowAncestor(panelAtuaCurso).dispose();
             }
         } catch (SQLException ex) {
-         //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
          System.out.println(ex);
          JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
-        }  
+        }
         
     }
     
     
-    public void removerCurso() {
-        int idCurso;
-        this.setCursos(carregarListaCursos());
-        System.out.println(cursos.get(view.getjComboBoxCurso().getSelectedIndex()).getNome());
-        idCurso = cursos.get(view.getjComboBoxCurso().getSelectedIndex()).getId();
-        cursos.remove(view.getjComboBoxCurso().getSelectedIndex());
-        
-        try {
-            Connection conexao = new conexao().conectarBanco();
-            CursoDao cursoDao = new CursoDao(conexao);
-            cursoDao.deletarCurso(idCurso);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+    public void removerCurso() throws ParseException {
+        if(view.getjComboBoxCurso().getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(view, "Não há itens para serem removidos.");
+        } else {
+            int confirmar = JOptionPane.showConfirmDialog(view, "A remoção do curso "
+                    + "removerá também as disciplinas, tarefas\n e subtarefas deste curso. Deseja proceder?", "Remover Curso", JOptionPane.YES_NO_OPTION);
+            if(confirmar == JOptionPane.YES_OPTION){
+                int idCurso;
+                this.setCursos(carregarListaCursos());
+                if(cursos.size() > 0) {
+                idCurso = cursos.get(view.getjComboBoxCurso().getSelectedIndex()).getId();
+                cursos.remove(view.getjComboBoxCurso().getSelectedIndex());
+
+                try {
+                    Connection conexao = new conexao().conectarBanco();
+                    CursoDao cursoDao = new CursoDao(conexao);
+                    cursoDao.deletarCurso(idCurso);
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                exibirCursos();
+                exibirDisciplinas();
+                }
+            }
         }
-        
-        exibirCursos();
-        exibirDisciplinas();
     }
     
     //Carrega a lista de disciplinas do DisciplinaDao e retorna um ArrayList
     public ArrayList<Disciplina> carregarListaDisciplinas() {
-        
+        ArrayList<Disciplina> listaDisciplinas = new ArrayList();
+        this.setCursos(carregarListaCursos());
+        if(cursos.size() > 0){
         try {
-            this.setCursos(carregarListaCursos());
+            
             int idCurso = cursos.get(view.getjComboBoxCurso().getSelectedIndex()).getId();
             Connection conexao = new conexao().conectarBanco();
             DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
-            ArrayList<Disciplina> listaDisciplinas = disciplinaDao.carregarDisciplinas(idCurso);
-
-            return listaDisciplinas;
+            listaDisciplinas = disciplinaDao.carregarDisciplinas(idCurso);
 
         } catch (SQLException ex) {
             Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
+        }
+        return listaDisciplinas;
     }
     
     //Exibe a lista de disciplinas na jTable
-    public void exibirDisciplinas(){
+    public void exibirDisciplinas() throws ParseException{
         carregarListaDisciplinas();
-        
         
         DefaultTableModel tableModel = (DefaultTableModel) view.getjTableDisciplinas().getModel();
         ArrayList<Disciplina> disciplinas = carregarListaDisciplinas();
+        
         tableModel.setRowCount(0);
-
 
             if(disciplinas.size() > 0){
                 Object dados[] = new Object[10];
                 for(int i = 0; i < disciplinas.size(); i++) {
                     dados[0] = disciplinas.get(i).getNome();
-                    dados[1] = disciplinas.get(i).getDataInicio();
-                    dados[2] = disciplinas.get(i).getDataTermino();
+                    dados[1] = formatarData(disciplinas.get(i).getDataInicio());
+                    System.out.println(formatarData(disciplinas.get(i).getDataInicio()));
+                    dados[2] = formatarData(disciplinas.get(i).getDataTermino());
                     dados[3] = disciplinas.get(i).isDomingo();
                     dados[4] = disciplinas.get(i).isSegunda();
                     dados[5] = disciplinas.get(i).isTerca();
@@ -239,15 +253,10 @@ public class ControleTelaDisciplina {
             if(nome.equals("")){
                 JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
             } else {
-                System.out.println(disciplina.getNome()+ " " + disciplina.getDataInicio() +
-                        " " + disciplina.getDataTermino() + " " + disciplina.getIdCurso() +
-                        " " + disciplina.isDomingo() + " " + disciplina.isSegunda() + " " + 
-                        disciplina.isTerca() + " " + disciplina.isQuarta() + " " + disciplina.isQuinta() + " " + 
-                        disciplina.isSexta() + " " + disciplina.isSabado() + " " + disciplina.getIdCurso());
                 Connection conexao = new conexao().conectarBanco();
                 DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
                 disciplinaDao.adicionarDisciplina(disciplina);
-                JOptionPane.showMessageDialog(null, "Curso adicionado com sucesso.");
+                JOptionPane.showMessageDialog(null, "Disciplina adicionada com sucesso.");
                 exibirDisciplinas();
             }
         } catch (SQLException ex) {
@@ -255,66 +264,92 @@ public class ControleTelaDisciplina {
          System.out.println(ex);
          JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
         }
-        
     }
     
-    public void removerDisciplina() {
-        
+    public void editarDisciplina() throws ParseException {
         int linha = view.getjTableDisciplinas().getSelectedRow();
-        System.out.println(linha);
-        
+
+        String nome = panelAtuaDisciplina.getjTextFieldNome().getText();
+        Date dataInicio  = converterData(panelAtuaDisciplina.getjTextFieldInicio().getText());
+        Date dataTermino  = converterData(panelAtuaDisciplina.getjTextFieldTermino().getText());
+        Boolean dom = panelAtuaDisciplina.getjCheckBoxDom().isSelected();
+        Boolean seg = panelAtuaDisciplina.getjCheckBoxSeg().isSelected();
+        Boolean ter = panelAtuaDisciplina.getjCheckBoxTer().isSelected();
+        Boolean qua = panelAtuaDisciplina.getjCheckBoxQua().isSelected();
+        Boolean qui = panelAtuaDisciplina.getjCheckBoxQui().isSelected();
+        Boolean sex = panelAtuaDisciplina.getjCheckBoxSex().isSelected();
+        Boolean sab = panelAtuaDisciplina.getjCheckBoxSab().isSelected();
+
+        Disciplina disciplina = new Disciplina(nome, dataInicio, dataTermino, dom,
+                seg, ter, qua, qui, sex, sab);
         try {
             if(linha >= 0){
-            int idDisciplina = carregarListaDisciplinas().get(linha).getIdDisciplina();
-            Connection conexao = new conexao().conectarBanco();
-            DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
-            disciplinaDao.deletarDisciplina(idDisciplina);
-            exibirDisciplinas();
-        }
-            
+                int idDisciplina = carregarListaDisciplinas().get(linha).getIdDisciplina();
+                System.out.println(idDisciplina);
+                 if(nome.equals("")){
+                    JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+                } else {
+                    System.out.println(disciplina.getIdDisciplina());
+                    System.out.println(disciplina.getNome());
+                    System.out.println(disciplina.getDataInicio());
+                    System.out.println(disciplina.getDataTermino());
+                    Connection conexao = new conexao().conectarBanco();
+                    DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
+                    disciplinaDao.atualizarDisciplina(disciplina, idDisciplina);
+                    JOptionPane.showMessageDialog(null, "Disciplina atualizada com sucesso.");
+                    exibirDisciplinas();
+                }
+            }     
         } catch (SQLException ex) {
             Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void removerDisciplina() throws ParseException {
         
-        exibirDisciplinas();
+        int linha = view.getjTableDisciplinas().getSelectedRow();
+        int confirmar = JOptionPane.showConfirmDialog(view, "A remoção da disciplina "
+                + "removerá também as tarefas\n e subtarefas desta disciplina. Deseja proceder?", "Remover Disciplina", JOptionPane.YES_NO_OPTION);
+        if(confirmar == JOptionPane.YES_OPTION){
+            try {
+                if(linha >= 0){
+                int idDisciplina = carregarListaDisciplinas().get(linha).getIdDisciplina();
+                Connection conexao = new conexao().conectarBanco();
+                DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
+                disciplinaDao.deletarDisciplina(idDisciplina);
+                exibirDisciplinas();
+            }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            exibirDisciplinas();
+        }
     }
     
-    public void mostrarPainelDisciplina(){
-        view.getjButtonCancelar().setEnabled(true);
-        view.getjButtonSalvar().setEnabled(true);
-        view.getjTextFieldNome().setEnabled(true);
-        view.getjTextFieldDataInicio().setEnabled(true);
-        view.getjTextFieldDataTermino().setEnabled(true);
-        view.getjCheckBoxDom().setEnabled(true);
-        view.getjCheckBoxSeg().setEnabled(true);
-        view.getjCheckBoxTer().setEnabled(true);
-        view.getjCheckBoxQua().setEnabled(true);
-        view.getjCheckBoxQui().setEnabled(true);
-        view.getjCheckBoxSex().setEnabled(true);
-        view.getjCheckBoxSab().setEnabled(true);
-    }
-    
-    public void ocultarPainelDisciplina() {
-        view.getjButtonCancelar().setEnabled(false);
-        view.getjButtonSalvar().setEnabled(false);
-        view.getjTextFieldNome().setEnabled(false);
-        view.getjTextFieldDataInicio().setEnabled(false);
-        view.getjTextFieldDataTermino().setEnabled(false);
-        view.getjCheckBoxDom().setEnabled(false);
-        view.getjCheckBoxSeg().setEnabled(false);
-        view.getjCheckBoxTer().setEnabled(false);
-        view.getjCheckBoxQua().setEnabled(false);
-        view.getjCheckBoxQui().setEnabled(false);
-        view.getjCheckBoxSex().setEnabled(false);
-        view.getjCheckBoxSab().setEnabled(false);
-    }
-    
+    //converte uma string para data em formato SQL
     public Date converterData(String sData) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date date = format.parse(sData);
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());  
 
         return sqlDate;
+    }
+
+    //Formata a data recebida SQL para uma string dd/MM/yyyy
+    public String formatarData(Date data) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.format(data);
+    }
+    
+    //Passa o nome do curso para ser usado no jTextField do Jpanel que atualiza o nome
+    public String passarNomeCurso(){
+        return carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex()).getNome();
+    }
+    
+    public Disciplina passarDisciplina() {
+        return carregarListaDisciplinas().get(view.getjTableDisciplinas().getSelectedRow());
     }
     
     /*

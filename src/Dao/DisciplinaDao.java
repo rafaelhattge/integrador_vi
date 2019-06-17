@@ -41,6 +41,27 @@ public class DisciplinaDao {
         statement.setBoolean(10, disciplina.isSabado());
         statement.setInt(11, disciplina.getIdCurso());
         statement.execute();
+        statement.close();
+        conectar.close();
+    }
+    
+    public void atualizarDisciplina(Disciplina disciplina, int idDisciplina) throws SQLException {
+        String sql = "UPDATE disciplina SET nome = ?, datainicio = ?, datatermino = ?, domingo = ?, "
+                + "segunda = ?, terca = ?, quarta = ?, quinta = ?, sexta = ?, sabado = ? WHERE iddisciplina = ?;";
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setString(1, disciplina.getNome());
+        statement.setDate(2, disciplina.getDataInicio());
+        statement.setDate(3, disciplina.getDataTermino());
+        statement.setBoolean(4, disciplina.isDomingo());
+        statement.setBoolean(5, disciplina.isSegunda());
+        statement.setBoolean(6, disciplina.isTerca());
+        statement.setBoolean(7, disciplina.isQuarta());
+        statement.setBoolean(8, disciplina.isQuinta());
+        statement.setBoolean(9, disciplina.isSexta());
+        statement.setBoolean(10, disciplina.isSabado());
+        statement.setInt(11, idDisciplina);
+        statement.execute();
+        statement.close();
         conectar.close();
     }
     
@@ -54,7 +75,6 @@ public class DisciplinaDao {
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setInt(1, idCurso);
         statement.execute();
-        System.out.println(idCurso);
         ResultSet resultSet = statement.getResultSet();
         ArrayList<Disciplina> disciplinas = new ArrayList();
         
@@ -82,6 +102,8 @@ public class DisciplinaDao {
         PreparedStatement statement = conectar.prepareStatement(sql);
 
         statement.setInt(1, idDisciplina);
-        statement.execute();    
+        statement.execute();
+        statement.close();
+        conectar.close();
     }
 }

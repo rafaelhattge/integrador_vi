@@ -6,6 +6,7 @@ import Dao.conexao;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ public class ControlerTelaLogin {
         this.view = view;
     }
     
-    public void autenticarUsuario() throws SQLException{
+    public void autenticarUsuario() throws SQLException, ParseException{
         //buscar usuario da view
         String usuario = view.getjTextUser().getText();
         String senha = view.getjPasswordSenha().getText();

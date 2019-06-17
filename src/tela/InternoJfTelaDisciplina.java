@@ -9,17 +9,19 @@ import tela.dialog.PanelAdicionarCurso;
 import tela.dialog.PanelAtualizarCurso;
 import controle.ControleTelaDisciplina;
 import java.awt.event.ItemEvent;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import tela.dialog.PanelAdicionarDisciplina;
+import tela.dialog.PanelAtualizarDisciplina;
 
 /**
  *
@@ -31,16 +33,14 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     private PanelAdicionarCurso dialogAdicionar;
     private PanelAtualizarCurso dialogAtualizar;
     private PanelAdicionarDisciplina dialogAdicionarDisciplina;
-    
+    private PanelAtualizarDisciplina dialogAtualizarDisciplina;
     /**
      * Creates new form InternoJfTelaDisicplina
      */
+    
     public InternoJfTelaDisciplina(){
         initComponents();
-        
         controle = new ControleTelaDisciplina(this, dialogAdicionar, dialogAtualizar);
-        
-        
     }
 
     /**
@@ -63,19 +63,6 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         jButtonEditarDisciplina = new javax.swing.JButton();
         jButtonAdicionarDisciplina = new javax.swing.JButton();
         jButtonRemoverDisciplina = new javax.swing.JButton();
-        jPanelAdicionarDisciplina = new javax.swing.JPanel();
-        jTextFieldNome = new javax.swing.JTextField();
-        jTextFieldDataInicio = new javax.swing.JTextField();
-        jTextFieldDataTermino = new javax.swing.JTextField();
-        jCheckBoxDom = new javax.swing.JCheckBox();
-        jCheckBoxSeg = new javax.swing.JCheckBox();
-        jCheckBoxTer = new javax.swing.JCheckBox();
-        jCheckBoxQua = new javax.swing.JCheckBox();
-        jCheckBoxQui = new javax.swing.JCheckBox();
-        jCheckBoxSex = new javax.swing.JCheckBox();
-        jCheckBoxSab = new javax.swing.JCheckBox();
-        jButtonSalvar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
         jButtonEditarCurso = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(69, 69, 71));
@@ -248,108 +235,6 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanelAdicionarDisciplina.setOpaque(false);
-
-        jTextFieldNome.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldNome.setText("Análise e Desenvolvimento de Sistemas");
-        jTextFieldNome.setOpaque(false);
-
-        jTextFieldDataInicio.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldDataInicio.setText("12-06-2019");
-        jTextFieldDataInicio.setOpaque(false);
-
-        jTextFieldDataTermino.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldDataTermino.setText("22-02-0012");
-        jTextFieldDataTermino.setOpaque(false);
-
-        jCheckBoxDom.setText("Dom");
-        jCheckBoxDom.setOpaque(false);
-
-        jCheckBoxSeg.setText("Seg");
-        jCheckBoxSeg.setOpaque(false);
-
-        jCheckBoxTer.setText("Ter");
-        jCheckBoxTer.setOpaque(false);
-
-        jCheckBoxQua.setText("Qua");
-        jCheckBoxQua.setOpaque(false);
-
-        jCheckBoxQui.setText("Qui");
-        jCheckBoxQui.setOpaque(false);
-
-        jCheckBoxSex.setText("Sex");
-        jCheckBoxSex.setOpaque(false);
-
-        jCheckBoxSab.setText("Sab");
-        jCheckBoxSab.setOpaque(false);
-
-        javax.swing.GroupLayout jPanelAdicionarDisciplinaLayout = new javax.swing.GroupLayout(jPanelAdicionarDisciplina);
-        jPanelAdicionarDisciplina.setLayout(jPanelAdicionarDisciplinaLayout);
-        jPanelAdicionarDisciplinaLayout.setHorizontalGroup(
-            jPanelAdicionarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAdicionarDisciplinaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDataInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxDom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxSeg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxTer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxQua)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxQui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxSex)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxSab)
-                .addContainerGap())
-        );
-        jPanelAdicionarDisciplinaLayout.setVerticalGroup(
-            jPanelAdicionarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAdicionarDisciplinaLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(jPanelAdicionarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBoxDom)
-                    .addComponent(jCheckBoxSeg)
-                    .addComponent(jCheckBoxTer)
-                    .addComponent(jCheckBoxQua)
-                    .addComponent(jCheckBoxQui)
-                    .addComponent(jCheckBoxSex)
-                    .addComponent(jCheckBoxSab))
-                .addContainerGap())
-        );
-
-        jButtonSalvar.setBackground(new java.awt.Color(218, 83, 44));
-        jButtonSalvar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jButtonSalvar.setForeground(new java.awt.Color(240, 240, 240));
-        jButtonSalvar.setText("Salvar");
-        jButtonSalvar.setFocusable(false);
-        jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonSalvarMouseClicked(evt);
-            }
-        });
-
-        jButtonCancelar.setBackground(new java.awt.Color(218, 83, 44));
-        jButtonCancelar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jButtonCancelar.setForeground(new java.awt.Color(240, 240, 240));
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.setFocusable(false);
-        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonCancelarMouseClicked(evt);
-            }
-        });
-
         jButtonEditarCurso.setBackground(new java.awt.Color(227, 162, 26));
         jButtonEditarCurso.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jButtonEditarCurso.setForeground(new java.awt.Color(240, 240, 240));
@@ -367,36 +252,27 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
             jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelDisciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
-                .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelAdicionarDisciplina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
-                                        .addComponent(jLabelCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButtonAdicionarCurso)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButtonEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButtonRemoverCurso))))
-                            .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
-                                .addComponent(jButtonAdicionarDisciplina)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEditarDisciplina)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonRemoverDisciplina)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(79, 79, 79))
+                        .addComponent(jButtonAdicionarDisciplina)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEditarDisciplina)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonRemoverDisciplina))
+                    .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelDisciplinaLayout.createSequentialGroup()
+                            .addComponent(jLabelCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jComboBoxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonAdicionarCurso)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonRemoverCurso))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanelDisciplinaLayout.setVerticalGroup(
             jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,17 +286,13 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
                     .addComponent(jButtonRemoverCurso)
                     .addComponent(jButtonEditarCurso))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelAdicionarDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdicionarDisciplina)
                     .addComponent(jButtonEditarDisciplina)
-                    .addComponent(jButtonRemoverDisciplina)
-                    .addComponent(jButtonCancelar)
-                    .addComponent(jButtonSalvar))
-                .addGap(18, 18, 18))
+                    .addComponent(jButtonRemoverDisciplina))
+                .addGap(43, 43, 43))
         );
 
         getContentPane().add(jPanelDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -428,30 +300,48 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
-        controle.ocultarPainelDisciplina();
-    }//GEN-LAST:event_jButtonCancelarMouseClicked
-
-    private void jButtonSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalvarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSalvarMouseClicked
+    private void jButtonEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarCursoMouseClicked
+        if(this.getjComboBoxCurso().getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Não há itens para serem editados.");
+        } else {
+            dialogAtualizar = new PanelAtualizarCurso(this, (JFrame)this.getTopLevelAncestor());
+        }
+    }//GEN-LAST:event_jButtonEditarCursoMouseClicked
 
     private void jButtonRemoverDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverDisciplinaMouseClicked
-        // TODO add your handling code here:
-        controle.removerDisciplina();
+        if(jTableDisciplinas.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(this, "Nenhuma disciplina foi selecionada");
+        } else {
+            try {
+                controle.removerDisciplina();
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButtonRemoverDisciplinaMouseClicked
 
     private void jButtonAdicionarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarDisciplinaMouseClicked
-        dialogAdicionarDisciplina = new PanelAdicionarDisciplina(this, (JFrame)this.getTopLevelAncestor());
+        if(this.getjComboBoxCurso().getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Adicione um curso para poder inserir disciplinas");
+        } else {
+            dialogAdicionarDisciplina = new PanelAdicionarDisciplina(this, (JFrame)this.getTopLevelAncestor());
+        }
     }//GEN-LAST:event_jButtonAdicionarDisciplinaMouseClicked
 
     private void jButtonEditarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarDisciplinaMouseClicked
-        // TODO add your handling code here:
+        if(jTableDisciplinas.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(this, "Nenhuma disciplina foi selecionada");
+        }else{
+            dialogAtualizarDisciplina = new PanelAtualizarDisciplina(this, (JFrame)this.getTopLevelAncestor());
+        }
     }//GEN-LAST:event_jButtonEditarDisciplinaMouseClicked
 
     private void jButtonRemoverCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverCursoMouseClicked
-        // TODO add your handling code here:
-        controle.removerCurso();
+        try {
+            controle.removerCurso();
+        } catch (ParseException ex) {
+            Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonRemoverCursoMouseClicked
 
     private void jButtonAdicionarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarCursoMouseClicked
@@ -462,7 +352,11 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     private void jComboBoxCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxCursoItemStateChanged
         // TODO add your handling code here:
         if(evt.getStateChange() == ItemEvent.SELECTED) {
-            controle.exibirDisciplinas();
+            try {
+                controle.exibirDisciplinas();
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaDisciplina.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jComboBoxCursoItemStateChanged
 
@@ -477,49 +371,23 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         //        controleEventoTabela();
     }//GEN-LAST:event_jTableDisciplinasMouseClicked
 
-    private void jButtonEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarCursoMouseClicked
-              
-        dialogAtualizar = new PanelAtualizarCurso(this, (JFrame)this.getTopLevelAncestor());
-    }//GEN-LAST:event_jButtonEditarCursoMouseClicked
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarCurso;
     private javax.swing.JButton jButtonAdicionarDisciplina;
-    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEditarCurso;
     private javax.swing.JButton jButtonEditarDisciplina;
     private javax.swing.JButton jButtonRemoverCurso;
     private javax.swing.JButton jButtonRemoverDisciplina;
-    private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JCheckBox jCheckBoxDom;
-    private javax.swing.JCheckBox jCheckBoxQua;
-    private javax.swing.JCheckBox jCheckBoxQui;
-    private javax.swing.JCheckBox jCheckBoxSab;
-    private javax.swing.JCheckBox jCheckBoxSeg;
-    private javax.swing.JCheckBox jCheckBoxSex;
-    private javax.swing.JCheckBox jCheckBoxTer;
     private javax.swing.JComboBox<String> jComboBoxCurso;
     private javax.swing.JLabel jLabelCurso;
     private javax.swing.JLabel jLabelDisciplinas;
-    private javax.swing.JPanel jPanelAdicionarDisciplina;
     private javax.swing.JPanel jPanelDisciplina;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableDisciplinas;
-    private javax.swing.JTextField jTextFieldDataInicio;
-    private javax.swing.JTextField jTextFieldDataTermino;
-    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 
-    
-    public JPanel getjPanelAdicionarDisciplina(){
-        return jPanelAdicionarDisciplina;
-    }
-    
-    public void jPanelAdicionarDisciplina(JPanel jPanelAdicionarDisciplina) {
-        this.jPanelAdicionarDisciplina = jPanelAdicionarDisciplina;
-    }
     
     public JTable getjTableDisciplinas() {
         return jTableDisciplinas;
@@ -549,14 +417,6 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         this.jButtonAdicionarDisciplina = jButtonAdicionarDisciplina;
     }
 
-    public JButton getjButtonCancelar() {
-        return jButtonCancelar;
-    }
-
-    public void setjButtonCancelar(JButton jButtonCancelar) {
-        this.jButtonCancelar = jButtonCancelar;
-    }
-
     public JButton getjButtonEditarDisciplina() {
         return jButtonEditarDisciplina;
     }
@@ -572,97 +432,4 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     public void setjButtonRemoverDisciplina(JButton jButtonRemoverDisciplina) {
         this.jButtonRemoverDisciplina = jButtonRemoverDisciplina;
     }
-
-    public JButton getjButtonSalvar() {
-        return jButtonSalvar;
-    }
-
-    public void setjButtonSalvar(JButton jButtonSalvar) {
-        this.jButtonSalvar = jButtonSalvar;
-    }
-
-    public JCheckBox getjCheckBoxDom() {
-        return jCheckBoxDom;
-    }
-
-    public void setjCheckBoxDom(JCheckBox jCheckBoxDom) {
-        this.jCheckBoxDom = jCheckBoxDom;
-    }
-
-    public JCheckBox getjCheckBoxQua() {
-        return jCheckBoxQua;
-    }
-
-    public void setjCheckBoxQua(JCheckBox jCheckBoxQua) {
-        this.jCheckBoxQua = jCheckBoxQua;
-    }
-
-    public JCheckBox getjCheckBoxQui() {
-        return jCheckBoxQui;
-    }
-
-    public void setjCheckBoxQui(JCheckBox jCheckBoxQui) {
-        this.jCheckBoxQui = jCheckBoxQui;
-    }
-
-    public JCheckBox getjCheckBoxSab() {
-        return jCheckBoxSab;
-    }
-
-    public void setjCheckBoxSab(JCheckBox jCheckBoxSab) {
-        this.jCheckBoxSab = jCheckBoxSab;
-    }
-
-    public JCheckBox getjCheckBoxSeg() {
-        return jCheckBoxSeg;
-    }
-
-    public void setjCheckBoxSeg(JCheckBox jCheckBoxSeg) {
-        this.jCheckBoxSeg = jCheckBoxSeg;
-    }
-
-    public JCheckBox getjCheckBoxSex() {
-        return jCheckBoxSex;
-    }
-
-    public void setjCheckBoxSex(JCheckBox jCheckBoxSex) {
-        this.jCheckBoxSex = jCheckBoxSex;
-    }
-
-    public JCheckBox getjCheckBoxTer() {
-        return jCheckBoxTer;
-    }
-
-    public void setjCheckBoxTer(JCheckBox jCheckBoxTer) {
-        this.jCheckBoxTer = jCheckBoxTer;
-    }
-
-    public JTextField getjTextFieldDataInicio() {
-        return jTextFieldDataInicio;
-    }
-
-    public void setjTextFieldDataInicio(JTextField jTextFieldDataInicio) {
-        this.jTextFieldDataInicio = jTextFieldDataInicio;
-    }
-
-    public JTextField getjTextFieldDataTermino() {
-        return jTextFieldDataTermino;
-    }
-
-    public void setjTextFieldDataTermino(JTextField jTextFieldDataTermino) {
-        this.jTextFieldDataTermino = jTextFieldDataTermino;
-    }
-
-    public JTextField getjTextFieldNome() {
-        return jTextFieldNome;
-    }
-
-    public void setjTextFieldNome(JTextField jTextFieldNome) {
-        this.jTextFieldNome = jTextFieldNome;
-    }
-    
-    
-    
-
-    
 }

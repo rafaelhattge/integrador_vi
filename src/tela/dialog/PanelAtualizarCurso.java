@@ -6,6 +6,9 @@
 package tela.dialog;
 
 import controle.ControleTelaDisciplina;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -24,7 +27,7 @@ public class PanelAtualizarCurso extends javax.swing.JPanel {
     /**
      * Creates new form PanelAdicionarCurso
      */
-    public PanelAtualizarCurso(InternoJfTelaDisciplina view, JFrame frame) {
+    public PanelAtualizarCurso(InternoJfTelaDisciplina view, JFrame frame /*,String nomeCurso*/) {
         initComponents();
         this.frame = frame;
         controle = new ControleTelaDisciplina(view, this);
@@ -34,6 +37,7 @@ public class PanelAtualizarCurso extends javax.swing.JPanel {
         modal.setVisible(true);
         modal.pack();
         modal.setLocationRelativeTo(frame);
+        this.getjTextFieldAtualizar().setText(controle.passarNomeCurso());
         frame.setEnabled(false);
     }
 
@@ -53,7 +57,7 @@ public class PanelAtualizarCurso extends javax.swing.JPanel {
         jTextFieldAtualizar = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(69, 69, 69));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26), 6));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(218, 83, 44), 6));
 
         jButtonAtualizar.setBackground(new java.awt.Color(227, 162, 26));
         jButtonAtualizar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
@@ -77,7 +81,7 @@ public class PanelAtualizarCurso extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(227, 162, 26));
+        jPanel1.setBackground(new java.awt.Color(218, 83, 44));
 
         jLabelAtualizar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jLabelAtualizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,7 +145,11 @@ public class PanelAtualizarCurso extends javax.swing.JPanel {
 
     private void jButtonAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtualizarMouseClicked
         frame.setEnabled(true);
-        controle.editarCurso();
+        try {
+            controle.editarCurso();
+        } catch (ParseException ex) {
+            Logger.getLogger(PanelAtualizarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_jButtonAtualizarMouseClicked

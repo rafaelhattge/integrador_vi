@@ -32,6 +32,21 @@ public class Disciplina {
 
     public Disciplina(String nome, Date dataInicio, Date dataTermino, boolean domingo, 
             boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta, 
+            boolean sabado) {
+        this.nome = nome;
+        this.dataInicio = dataInicio;
+        this.dataTermino = dataTermino;
+        this.domingo = domingo;
+        this.segunda = segunda;
+        this.terca = terca;
+        this.quarta = quarta;
+        this.quinta = quinta;
+        this.sexta = sexta;
+        this.sabado = sabado;
+    }
+    
+    public Disciplina(String nome, Date dataInicio, Date dataTermino, boolean domingo, 
+            boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta, 
             boolean sabado, int idCurso) {
         this.nome = nome;
         this.dataInicio = dataInicio;

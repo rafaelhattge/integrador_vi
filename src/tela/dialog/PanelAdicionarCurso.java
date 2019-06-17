@@ -6,6 +6,9 @@
 package tela.dialog;
 
 import controle.ControleTelaDisciplina;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -54,7 +57,7 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(69, 69, 69));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26), 6));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(218, 83, 44), 6));
 
         jButtonAdicionar.setBackground(new java.awt.Color(227, 162, 26));
         jButtonAdicionar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
@@ -78,7 +81,7 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(227, 162, 26));
+        jPanel1.setBackground(new java.awt.Color(218, 83, 44));
 
         jLabel1.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,7 +145,11 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
 
     private void jButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarMouseClicked
         frame.setEnabled(true);
-        controle.salvarCurso();
+        try {
+            controle.salvarCurso();
+        } catch (ParseException ex) {
+            Logger.getLogger(PanelAdicionarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonAdicionarMouseClicked
 
 

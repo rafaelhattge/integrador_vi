@@ -7,6 +7,7 @@ package tela;
 
 import controle.ControlerTelaLogin;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -196,6 +197,8 @@ public class TelaLogin extends javax.swing.JFrame {
         try {
             controler.autenticarUsuario();
         } catch (SQLException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonLogarActionPerformed
