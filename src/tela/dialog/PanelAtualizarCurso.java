@@ -140,9 +140,9 @@ public class PanelAtualizarCurso extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void jButtonAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtualizarMouseClicked
-
-        controle.salvarCurso();
         frame.setEnabled(true);
+        controle.editarCurso();
+        
         
     }//GEN-LAST:event_jButtonAtualizarMouseClicked
 

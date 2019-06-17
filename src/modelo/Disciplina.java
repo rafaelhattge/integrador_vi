@@ -5,7 +5,7 @@
  */
 package modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 /**
@@ -29,6 +29,24 @@ public class Disciplina {
 
     public Disciplina() {
     }
+
+    public Disciplina(String nome, Date dataInicio, Date dataTermino, boolean domingo, 
+            boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta, 
+            boolean sabado, int idCurso) {
+        this.nome = nome;
+        this.dataInicio = dataInicio;
+        this.dataTermino = dataTermino;
+        this.domingo = domingo;
+        this.segunda = segunda;
+        this.terca = terca;
+        this.quarta = quarta;
+        this.quinta = quinta;
+        this.sexta = sexta;
+        this.sabado = sabado;
+        this.idCurso = idCurso;
+    }
+    
+    
 
     public Disciplina(int idDisciplina, String nome, Date dataInicio, Date dataTermino, 
             boolean domingo, boolean segunda, boolean terca, boolean quarta, 

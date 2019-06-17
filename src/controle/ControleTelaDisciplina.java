@@ -11,7 +11,11 @@ import Dao.UsuarioDao;
 import Dao.conexao;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
+import java.text.DateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,6 +25,7 @@ import modelo.Curso;
 import modelo.Disciplina;
 import tela.InternoJfTelaDisciplina;
 import tela.dialog.PanelAdicionarCurso;
+import tela.dialog.PanelAdicionarDisciplina;
 import tela.dialog.PanelAtualizarCurso;
 
 /**
@@ -31,26 +36,33 @@ public class ControleTelaDisciplina {
     
     private ArrayList<Curso> cursos;
     private final InternoJfTelaDisciplina view;
-    private PanelAdicionarCurso dialog;
-    private PanelAtualizarCurso panel;
+    private PanelAdicionarCurso panelAdicCurso;
+    private PanelAtualizarCurso panelAtuaCurso;
+    private PanelAdicionarDisciplina panelAdicDisciplina;
     private static boolean editarCurso;
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso) {
         this.view = view;
-        this.dialog = dialog;
+        this.panelAdicCurso = panelAdicCurso;
         cursos = new ArrayList<Curso>();
     }
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panel) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panelAtuaCurso) {
         this.view = view;
-        this.panel = panel;
+        this.panelAtuaCurso = panelAtuaCurso;
+        cursos = new ArrayList<Curso>();
+    }
+    
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarDisciplina panelAdicDisciplina) {
+        this.view = view;
+        this.panelAdicDisciplina = panelAdicDisciplina;
         cursos = new ArrayList<Curso>();
     }
     
     public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog, PanelAtualizarCurso panel) {
         this.view = view;
-        this.dialog = dialog;
-        this.panel = panel;
+        this.panelAdicCurso = dialog;
+        this.panelAtuaCurso = panel;
         cursos = new ArrayList<Curso>();
     }
     
@@ -83,7 +95,7 @@ public class ControleTelaDisciplina {
     }
     
     public void salvarCurso(){
-        String nome = dialog.getjTextField1().getText();
+        String nome = panelAdicCurso.getjTextField1().getText();
         Curso curso = new Curso(nome);
         
         try {
@@ -99,7 +111,7 @@ public class ControleTelaDisciplina {
                 limparjTextFieldAdicionar();
                 exibirCursos();
                 exibirDisciplinas();
-                SwingUtilities.getWindowAncestor(dialog).dispose();
+                SwingUtilities.getWindowAncestor(panelAdicCurso).dispose();
             }
         } catch (SQLException ex) {
          //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,7 +125,7 @@ public class ControleTelaDisciplina {
         Curso curso = carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex());
         System.out.println("Id do curso: " + curso.getId());
         try {
-            if(panel.getjTextFieldAtualizar().getText().equals("")){
+            if(panelAtuaCurso.getjTextFieldAtualizar().getText().equals("")){
                 JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
             } else {
                 
@@ -121,7 +133,7 @@ public class ControleTelaDisciplina {
                 Connection conexao = new conexao().conectarBanco();
                 CursoDao cursoDao = new CursoDao(conexao);
                 int id = curso.getId();
-                String nome = panel.getjTextFieldAtualizar().getText();
+                String nome = panelAtuaCurso.getjTextFieldAtualizar().getText();
                 
                 
                 cursoDao.atualizarCurso(curso, id, nome);
@@ -129,8 +141,7 @@ public class ControleTelaDisciplina {
                 limparjTextFieldAtualizar();
                 exibirCursos();
                 exibirDisciplinas();
-                SwingUtilities.getWindowAncestor(panel).dispose();
-                
+                SwingUtilities.getWindowAncestor(panelAtuaCurso).dispose();
             }
         } catch (SQLException ex) {
          //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -207,6 +218,46 @@ public class ControleTelaDisciplina {
         } 
     }
     
+    public void salvarDisciplina() throws ParseException{
+        Curso curso = carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex());
+        String nome = panelAdicDisciplina.getjTextFieldNome().getText();
+        Date dataInicio  = converterData(panelAdicDisciplina.getjTextFieldInicio().getText());
+        Date dataTermino  = converterData(panelAdicDisciplina.getjTextFieldTermino().getText());
+        Boolean dom = panelAdicDisciplina.getjCheckBoxDom().isSelected();
+        Boolean seg = panelAdicDisciplina.getjCheckBoxSeg().isSelected();
+        Boolean ter = panelAdicDisciplina.getjCheckBoxTer().isSelected();
+        Boolean qua = panelAdicDisciplina.getjCheckBoxQua().isSelected();
+        Boolean qui = panelAdicDisciplina.getjCheckBoxQui().isSelected();
+        Boolean sex = panelAdicDisciplina.getjCheckBoxSex().isSelected();
+        Boolean sab = panelAdicDisciplina.getjCheckBoxSab().isSelected();
+        int idCurso = curso.getId();
+
+        Disciplina disciplina = new Disciplina(nome, dataInicio, dataTermino, dom,
+                seg, ter, qua, qui, sex, sab, idCurso);
+        
+        try {
+            if(nome.equals("")){
+                JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+            } else {
+                System.out.println(disciplina.getNome()+ " " + disciplina.getDataInicio() +
+                        " " + disciplina.getDataTermino() + " " + disciplina.getIdCurso() +
+                        " " + disciplina.isDomingo() + " " + disciplina.isSegunda() + " " + 
+                        disciplina.isTerca() + " " + disciplina.isQuarta() + " " + disciplina.isQuinta() + " " + 
+                        disciplina.isSexta() + " " + disciplina.isSabado() + " " + disciplina.getIdCurso());
+                Connection conexao = new conexao().conectarBanco();
+                DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
+                disciplinaDao.adicionarDisciplina(disciplina);
+                JOptionPane.showMessageDialog(null, "Curso adicionado com sucesso.");
+                exibirDisciplinas();
+            }
+        } catch (SQLException ex) {
+         //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
+         System.out.println(ex);
+         JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
+        }
+        
+    }
+    
     public void removerDisciplina() {
         
         int linha = view.getjTableDisciplinas().getSelectedRow();
@@ -258,12 +309,27 @@ public class ControleTelaDisciplina {
         view.getjCheckBoxSab().setEnabled(false);
     }
     
+    public Date converterData(String sData) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date date = format.parse(sData);
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());  
+
+        return sqlDate;
+    }
+    
+    /*
+    public Date formatarData(String sData) throws ParseException{
+        Date data = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
+        return data;
+    }
+    */
+    
     public void limparjTextFieldAdicionar(){
-        dialog.getjTextField1().setText("");
+        panelAdicCurso.getjTextField1().setText("");
     }
     
     public void limparjTextFieldAtualizar(){
-        panel.getjTextFieldAtualizar().setText("");
+        panelAtuaCurso.getjTextFieldAtualizar().setText("");
     }
 
     public ArrayList<Curso> getCursos() {

@@ -25,6 +25,25 @@ public class DisciplinaDao {
         this.conectar = conectar;
     }
     
+    public void adicionarDisciplina(Disciplina disciplina) throws SQLException {
+        String sql = "INSERT INTO disciplina(nome, datainicio, datatermino, domingo, "
+                + "segunda, terca, quarta, quinta, sexta, sabado, idcurso) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setString(1, disciplina.getNome());
+        statement.setDate(2, disciplina.getDataInicio());
+        statement.setDate(3, disciplina.getDataTermino());
+        statement.setBoolean(4, disciplina.isDomingo());
+        statement.setBoolean(5, disciplina.isSegunda());
+        statement.setBoolean(6, disciplina.isTerca());
+        statement.setBoolean(7, disciplina.isQuarta());
+        statement.setBoolean(8, disciplina.isQuinta());
+        statement.setBoolean(9, disciplina.isSexta());
+        statement.setBoolean(10, disciplina.isSabado());
+        statement.setInt(11, disciplina.getIdCurso());
+        statement.execute();
+        conectar.close();
+    }
+    
     //Carregar as disciplinas a partir do banco de dados e retornar para um ArrayList
     public ArrayList<Disciplina> carregarDisciplinas(int idCurso) throws SQLException {
         

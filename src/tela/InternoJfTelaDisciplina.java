@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import tela.dialog.PanelAdicionarDisciplina;
 
 /**
  *
@@ -29,6 +30,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     private final ControleTelaDisciplina controle;
     private PanelAdicionarCurso dialogAdicionar;
     private PanelAtualizarCurso dialogAtualizar;
+    private PanelAdicionarDisciplina dialogAdicionarDisciplina;
     
     /**
      * Creates new form InternoJfTelaDisicplina
@@ -440,7 +442,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonRemoverDisciplinaMouseClicked
 
     private void jButtonAdicionarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarDisciplinaMouseClicked
-        controle.mostrarPainelDisciplina();
+        dialogAdicionarDisciplina = new PanelAdicionarDisciplina(this, (JFrame)this.getTopLevelAncestor());
     }//GEN-LAST:event_jButtonAdicionarDisciplinaMouseClicked
 
     private void jButtonEditarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarDisciplinaMouseClicked

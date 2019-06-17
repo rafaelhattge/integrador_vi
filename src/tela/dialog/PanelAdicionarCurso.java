@@ -141,11 +141,8 @@ public class PanelAdicionarCurso extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void jButtonAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarMouseClicked
-
         frame.setEnabled(true);
         controle.salvarCurso();
-        
-        
     }//GEN-LAST:event_jButtonAdicionarMouseClicked
 
 
