@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -33,6 +34,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
     private final ControleTarefa controle;
+    private static boolean editar;
 
     /**
      * Creates new form InternoJfTelaDisicplina
@@ -52,6 +54,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroupStatus = new javax.swing.ButtonGroup();
+        buttonGroupDisciplina = new javax.swing.ButtonGroup();
         jPanelTarefas = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLayeredPaneGereTarefa = new javax.swing.JLayeredPane();
@@ -66,7 +69,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jRadioButtonNconcluido = new javax.swing.JRadioButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextAreaDescricao = new javax.swing.JTextArea();
-        jButtonSaLvar = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
         jComboBoxDisciplina = new javax.swing.JComboBox<>();
         jFormattedTextHora = new javax.swing.JFormattedTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -181,6 +184,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         buttonGroupStatus.add(jRadioButtonNconcluido);
         jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonNconcluido.setSelected(true);
         jRadioButtonNconcluido.setText("Não Concluído");
 
         jScrollPane5.setBorder(null);
@@ -191,13 +195,13 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jTextAreaDescricao.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Descrição", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jScrollPane5.setViewportView(jTextAreaDescricao);
 
-        jButtonSaLvar.setBackground(new java.awt.Color(181, 92, 28));
-        jButtonSaLvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonSaLvar.setText("SALVAR");
-        jButtonSaLvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSaLvar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvar.setBackground(new java.awt.Color(181, 92, 28));
+        jButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonSalvar.setText("SALVAR");
+        jButtonSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaLvarActionPerformed(evt);
+                jButtonSalvarActionPerformed(evt);
             }
         });
 
@@ -250,7 +254,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                         .addComponent(jRadioButtonNconcluido))
                     .addGroup(jPanelGerenciatarefaLayout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(jButtonSaLvar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGerenciatarefaLayout.createSequentialGroup()
                 .addContainerGap()
@@ -278,7 +282,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButtonConcluido)
                     .addComponent(jRadioButtonNconcluido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSaLvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -287,11 +291,13 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
         jTextField2.setOpaque(false);
 
+        buttonGroupDisciplina.add(jRadioButtonDsicpli);
         jRadioButtonDsicpli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButtonDsicpli.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonDsicpli.setText("Disciplina");
         jRadioButtonDsicpli.setOpaque(false);
 
+        buttonGroupDisciplina.add(jRadioButtonPeriodo);
         jRadioButtonPeriodo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButtonPeriodo.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonPeriodo.setSelected(true);
@@ -510,23 +516,43 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 588, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
+                .addComponent(jPanelTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 588, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
-        
+        editar = true;
+        if (jTableTarefas.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Nenhuma tarefa foi selecionada");
+        } else {
+            try {
+                controle.TrocaTarefas(jPanelGerenciatarefa);
+                controle.carregarCamposTarefa();
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonExcluirTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirTarefaActionPerformed
-        // TODO add your handling code here:
+        if (jTableTarefas.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Nenhuma tarefa foi selecionada");
+        } else {
+            try {
+                controle.removerTarefa();
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButtonExcluirTarefaActionPerformed
 
     private void jButtonNovaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaTarefaActionPerformed
-        controle.exibirTodasDisciplinas();
+        editar = false;
         controle.TrocaTarefas(jPanelGerenciatarefa);
+        controle.exibirTodasDisciplinas();
+        
     }//GEN-LAST:event_jButtonNovaTarefaActionPerformed
 
     private void jTableTarefasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTarefasKeyReleased
@@ -540,21 +566,26 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         //        controleEventoTabela();
     }//GEN-LAST:event_jTableTarefasMouseClicked
 
-    private void jButtonSaLvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaLvarActionPerformed
-        try {
-            controle.salvarTarefa();
-        } catch (ParseException ex) {
-            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        if (editar) {
+            try {
+                controle.editarTarefa();
+                System.out.println("Editar tarefa.");
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                controle.salvarTarefa();
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         controle.TrocaTarefas(jPanelInicGerencia);
-    }//GEN-LAST:event_jButtonSaLvarActionPerformed
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonExcluirTarefaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonExcluirTarefaMouseClicked
-        try {
-            controle.removerTarefa();
-        } catch (ParseException ex) {
-            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_jButtonExcluirTarefaMouseClicked
 
     private void jComboBoxDisciplinaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDisciplinaItemStateChanged
@@ -566,11 +597,12 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupDisciplina;
     private javax.swing.ButtonGroup buttonGroupStatus;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonExcluirTarefa;
     private javax.swing.JButton jButtonNovaTarefa;
-    private javax.swing.JButton jButtonSaLvar;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JComboBox<String> jComboBoxDisciplina;
     private javax.swing.JFormattedTextField jFormattedTextData;
     private javax.swing.JFormattedTextField jFormattedTextHora;

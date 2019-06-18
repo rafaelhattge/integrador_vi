@@ -42,13 +42,14 @@ public class ControleTarefa {
     public ControleTarefa(InternoJfTelaTarefa view, Usuario usuarioAtivo) {
         this.view = view;
         this.usuarioAtivo = usuarioAtivo;
-    } 
-    
+    }
+
     public void TrocaTarefas(JPanel tela) {
         view.getjLayeredPaneGereTarefa().removeAll();
         view.getjLayeredPaneGereTarefa().add(tela);
         view.getjLayeredPaneGereTarefa().repaint();
         view.getjLayeredPaneGereTarefa().revalidate();
+        limparCampos();
     }
 
     public ArrayList<Tarefa> carregarListaTarefas() {
@@ -119,7 +120,6 @@ public class ControleTarefa {
     }
 
     public void salvarTarefa() throws ParseException {
-
         Disciplina disciplina = carregarListaTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
@@ -150,18 +150,49 @@ public class ControleTarefa {
         }
     }
 
+    //Seta os campos da tela de edição de tarefa com os valores da linha selecionada na tabela
+    public void carregarCamposTarefa() throws ParseException {
+        /*
+         */
+        Tarefa tarefa = retornarTarefa();
+        view.getjTextTarefaNome().setText(tarefa.getNome());
+        view.getjFormattedTextData().setText(formatarData(tarefa.getData()));
+        view.getjFormattedTextHora().setText(formatarHora(tarefa.getHora()));
+        view.getjTextAreaDescricao().setText(tarefa.getDescricao());
+        view.getjRadioButtonConcluido().setSelected(tarefa.isStatus());
+    }
+
     public void editarTarefa() throws ParseException {
-        Disciplina disciplina = carregarListaTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
+        //Disciplina disciplina = carregarListaTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
         Time hora = converterHora(view.getjFormattedTextHora().getText());
         String descricao = view.getjTextAreaDescricao().getText();
         Boolean status = view.getjRadioButtonConcluido().isSelected();
-        int idDisciplina = disciplina.getIdDisciplina();
-        String nomeDisciplina = disciplina.getNome();
-
-        Tarefa tarefa = new Tarefa(nome, data, hora, descricao,
-                status, idDisciplina, nomeDisciplina);
+        int idTarefa = retornarTarefa().getIdTarefa();
+        //int idDisciplina = disciplina.getIdDisciplina();
+        //String nomeDisciplina = disciplina.getNome();
+        Tarefa tarefa = new Tarefa(idTarefa, nome, data, hora, descricao, status);
+        try {
+            Connection conexao = new conexao().conectarBanco();
+            TarefaDao tarefaDao = new TarefaDao(conexao);
+            tarefaDao.atualizarTarefa(tarefa);
+            JOptionPane.showMessageDialog(null, "Tarefa atualizada.");
+            limparCampos();
+            exibirTarefas();
+            conexao.close();
+        } catch (SQLException ex) {
+            System.out.println("Conexão falhou.");
+            while (ex != null) {
+                String errorMessage = ex.getMessage();
+                System.err.println("sql error message:" + errorMessage);
+                String sqlState = ex.getSQLState();
+                System.err.println("sql state:" + sqlState);
+                int errorCode = ex.getErrorCode();
+                System.err.println("error code:" + errorCode);
+                ex = ex.getNextException();
+            }
+        }
     }
 
     public void removerTarefa() throws ParseException {
@@ -187,8 +218,6 @@ public class ControleTarefa {
         }
     }
 
-    
-
     //converte uma string para data em formato SQL
     public Date converterData(String sData) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -210,6 +239,11 @@ public class ControleTarefa {
     public String formatarData(Date data) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return simpleDateFormat.format(data);
+    }
+
+    public String formatarHora(Time hora) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:HH");
+        return simpleDateFormat.format(hora);
     }
 
     public void limparCampos() {

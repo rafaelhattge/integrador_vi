@@ -46,7 +46,7 @@ public class TarefaDao {
     
     public void atualizarTarefa(Tarefa tarefa) throws SQLException {
         
-        String sql = "UPDATE disciplina SET nome = ?, data = ?, hora = ?, descricao = ?, status = ? WHERE idtarefa = ?;";
+        String sql = "UPDATE tarefa SET nome = ?, data = ?, hora = ?, descricao = ?, status = ? WHERE idtarefa = ?;";
         
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, tarefa.getNome());
@@ -117,6 +117,7 @@ public class TarefaDao {
         conectar.close();
     }
     
+    //Seleciona todas as datas que contém tarefas, para exibição na tela de relatório
     public ArrayList<Date> carregarDatasTarefas(Usuario usuarioAtivo) throws SQLException {
         ArrayList<Date> datas = new ArrayList();
         
@@ -151,6 +152,7 @@ public class TarefaDao {
         }
     }
     
+    //seleciona todas as tarefas referentes a uma determinada data, para exibição na tela de relatório
     public ArrayList<Tarefa> carregarTarefasPorData(Usuario usuarioAtivo, Date data) throws SQLException {
         Tarefa tarefa;
         ArrayList<Tarefa> tarefas = new ArrayList();

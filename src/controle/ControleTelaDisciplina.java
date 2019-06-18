@@ -44,61 +44,71 @@ public class ControleTelaDisciplina {
     private static Usuario usuarioAtivo;
     private static boolean editarCurso;
 
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarDisciplina panelAtuaDisciplina) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAtualizarDisciplina panelAtuaDisciplina) {
         this.view = view;
         this.panelAtuaDisciplina = panelAtuaDisciplina;
     }
 
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarDisciplina panelAdicDisciplina) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAdicionarDisciplina panelAdicDisciplina) {
         this.view = view;
         this.panelAdicDisciplina = panelAdicDisciplina;
     }
 
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAdicionarCurso panelAdicCurso) {
         this.view = view;
         this.panelAdicCurso = panelAdicCurso;
     }
 
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panelAtuaCurso) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAtualizarCurso panelAtuaCurso) {
         this.view = view;
         this.panelAtuaCurso = panelAtuaCurso;
     }
 
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso, PanelAtualizarCurso panelAtuaCurso) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAdicionarCurso panelAdicCurso, PanelAtualizarCurso panelAtuaCurso) {
         this.view = view;
         this.panelAdicCurso = panelAdicCurso;
         this.panelAtuaCurso = panelAtuaCurso;
     }
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso, Usuario usuarioAtivo) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAdicionarCurso panelAdicCurso, Usuario usuarioAtivo) {
         this.view = view;
         this.panelAdicCurso = panelAdicCurso;
         this.usuarioAtivo = usuarioAtivo;
         cursos = new ArrayList<Curso>();
     }
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panelAtuaCurso, Usuario usuarioAtivo) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAtualizarCurso panelAtuaCurso, Usuario usuarioAtivo) {
         this.view = view;
         this.panelAtuaCurso = panelAtuaCurso;
         this.usuarioAtivo = usuarioAtivo;
         cursos = new ArrayList<Curso>();
     }
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarDisciplina panelAdicDisciplina, Usuario usuarioAtivo) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAdicionarDisciplina panelAdicDisciplina, Usuario usuarioAtivo) {
         this.view = view;
         this.panelAdicDisciplina = panelAdicDisciplina;
         this.usuarioAtivo = usuarioAtivo;
         cursos = new ArrayList<Curso>();
     }
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarDisciplina panelAtuaDisciplina, Usuario usuarioAtivo) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAtualizarDisciplina panelAtuaDisciplina, Usuario usuarioAtivo) {
         this.view = view;
         this.panelAtuaDisciplina = panelAtuaDisciplina;
         this.usuarioAtivo = usuarioAtivo;
         cursos = new ArrayList<Curso>();
     }
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog, PanelAtualizarCurso panel, Usuario usuarioAtivo) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, 
+            PanelAdicionarCurso dialog, PanelAtualizarCurso panel, Usuario usuarioAtivo) {
         this.view = view;
         this.panelAdicCurso = dialog;
         this.panelAtuaCurso = panel;
@@ -288,6 +298,7 @@ public class ControleTelaDisciplina {
                 disciplinaDao.adicionarDisciplina(disciplina);
                 JOptionPane.showMessageDialog(null, "Disciplina adicionada com sucesso.");
                 exibirDisciplinas();
+                conexao.close();
             }
         } catch (SQLException ex) {
          //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -373,7 +384,7 @@ public class ControleTelaDisciplina {
         return carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex()).getNome();
     }
     
-    //Retornar os atributos da disciplina para serem usados nos jTextFields do JPanel que atualiza estes campos
+    //Retorna os atributos da disciplina para serem usados nos jTextFields do JPanel que atualiza estes campos
     public Disciplina retornarDisciplina() {
         return carregarListaDisciplinas().get(view.getjTableDisciplinas().getSelectedRow());
     }
