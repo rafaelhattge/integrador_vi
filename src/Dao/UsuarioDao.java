@@ -20,7 +20,7 @@ public class UsuarioDao {
 
     private final Connection conectar;
     private static Usuario userAtivo;
-    
+
     //conexao com o banco
     public UsuarioDao(Connection conectar) {
         this.conectar = conectar;
@@ -81,9 +81,9 @@ public class UsuarioDao {
         statement.execute();
         ResultSet resultSet = statement.getResultSet();
         while (resultSet.next()) {
-            user = new Usuario(resultSet.getInt("id"), resultSet.getString("nome"), 
-                    resultSet.getString("email"), resultSet.getString("usuario"), 
-                    resultSet.getString("senha"), resultSet.getString("tipo"), 
+            user = new Usuario(resultSet.getInt("id"), resultSet.getString("nome"),
+                    resultSet.getString("email"), resultSet.getString("usuario"),
+                    resultSet.getString("senha"), resultSet.getString("tipo"),
                     resultSet.getString("mensagem"));
             usuarios.add(user);
         }
@@ -109,7 +109,7 @@ public class UsuarioDao {
         statement.execute();
         ResultSet resultSet = statement.getResultSet();
         //      verificar  = resultSet.next();
-        
+
         while (resultSet.next()) {
             user = new Usuario(resultSet.getInt("id"), resultSet.getString("nome"), resultSet.getString("email"), resultSet.getString("usuario"), resultSet.getString("senha"), resultSet.getString("tipo"), resultSet.getString("mensagem"));
 

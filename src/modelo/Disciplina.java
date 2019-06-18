@@ -7,13 +7,12 @@ package modelo;
 
 import java.sql.Date;
 
-
 /**
  *
  * @author Rafael
  */
 public class Disciplina {
-    
+
     private int idDisciplina;
     private String nome;
     private Date dataInicio;
@@ -30,8 +29,13 @@ public class Disciplina {
     public Disciplina() {
     }
 
-    public Disciplina(String nome, Date dataInicio, Date dataTermino, boolean domingo, 
-            boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta, 
+    public Disciplina(int idDisciplina, String nome) {
+        this.idDisciplina = idDisciplina;
+        this.nome = nome;
+    }
+
+    public Disciplina(String nome, Date dataInicio, Date dataTermino, boolean domingo,
+            boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta,
             boolean sabado) {
         this.nome = nome;
         this.dataInicio = dataInicio;
@@ -44,10 +48,11 @@ public class Disciplina {
         this.sexta = sexta;
         this.sabado = sabado;
     }
-    
-    public Disciplina(String nome, Date dataInicio, Date dataTermino, boolean domingo, 
-            boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta, 
+
+    public Disciplina(String nome, Date dataInicio, Date dataTermino, boolean domingo,
+            boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta,
             boolean sabado, int idCurso) {
+        
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
@@ -60,13 +65,11 @@ public class Disciplina {
         this.sabado = sabado;
         this.idCurso = idCurso;
     }
-    
-    
 
-    public Disciplina(int idDisciplina, String nome, Date dataInicio, Date dataTermino, 
-            boolean domingo, boolean segunda, boolean terca, boolean quarta, 
+    public Disciplina(int idDisciplina, String nome, Date dataInicio, Date dataTermino,
+            boolean domingo, boolean segunda, boolean terca, boolean quarta,
             boolean quinta, boolean sexta, boolean sabado, int idCurso) {
-        
+
         this.idDisciplina = idDisciplina;
         this.nome = nome;
         this.dataInicio = dataInicio;
@@ -80,8 +83,6 @@ public class Disciplina {
         this.sabado = sabado;
         this.idCurso = idCurso;
     }
-    
-    
 
     public int getIdDisciplina() {
         return idDisciplina;

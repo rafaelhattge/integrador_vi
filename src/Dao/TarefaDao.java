@@ -24,15 +24,51 @@ public class TarefaDao {
         this.conectar = conectar;
     }
     
+    
+    public void adicionarTarefa(Tarefa tarefa) throws SQLException {
+        
+        String sql = "INSERT INTO tarefa(nome, data, hora, descricao, "
+                + "status, iddisciplina) VALUES(?, ?, ?, ?, ?, ?);";
+        
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setString(1, tarefa.getNome());
+        statement.setDate(2, tarefa.getData());
+        statement.setTime(3, tarefa.getHora());
+        statement.setString(4, tarefa.getDescricao());
+        statement.setBoolean(5, tarefa.isStatus());
+        statement.setInt(6, tarefa.getIdDisciplina());
+        statement.execute();
+        statement.close();
+        conectar.close();
+    }
+    
+    public void atualizarTarefa(Tarefa tarefa) throws SQLException {
+        
+        String sql = "UPDATE disciplina SET nome = ?, data = ?, hora = ?, descricao = ?, status = ? WHERE idtarefa = ?;";
+        
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setString(1, tarefa.getNome());
+        statement.setDate(2, tarefa.getData());
+        statement.setTime(3, tarefa.getHora());
+        statement.setString(4, tarefa.getDescricao());
+        statement.setBoolean(5, tarefa.isStatus());
+        statement.setInt(6, tarefa.getIdTarefa());
+        statement.execute();
+        statement.close();
+        conectar.close();
+    }
+    
     //Carrega todas as tarefas do bd para o usuário ativo e retorna uma ArrayList de tarefas
     public ArrayList<Tarefa> carregarTarefas(UsuarioDao usuarioAtivo) throws SQLException {
         
         Tarefa tarefa;
         ArrayList<Tarefa> tarefas = new ArrayList();
-        String sql = "SELECT idtarefa, tarefa.nome, data, hora, descricao, status, tarefa.iddisciplina, disciplina.nome "
-                + "FROM tarefa, usuario, disciplina "
+        String sql = "SELECT idtarefa, tarefa.nome, data, hora, "
+                + "descricao, status, tarefa.iddisciplina, disciplina.nome "
+                + "FROM tarefa, usuario, disciplina, curso "
                 + "WHERE id = ? AND tarefa.iddisciplina = disciplina.iddisciplina "
-                + "ORDER BY data ASC, hora ASC;";
+                + "AND curso.idcurso = disciplina.idcurso AND curso.idusuario = "
+                + "usuario.id ORDER BY data ASC, hora ASC;";
         
         try {
             PreparedStatement statement = conectar.prepareStatement(sql);
@@ -49,7 +85,6 @@ public class TarefaDao {
                                     resultSet.getBoolean(6), 
                                     resultSet.getInt(7),
                                     resultSet.getString(8));
-                System.out.println(tarefa.getIdTarefa());
                 tarefas.add(tarefa);
             }
         } catch (SQLException e){
@@ -57,16 +92,11 @@ public class TarefaDao {
             while (e != null) {
                 String errorMessage = e.getMessage();
                 System.err.println("sql error message:" + errorMessage);
-
                 // This vendor-independent string contains a code.
                 String sqlState = e.getSQLState();
                 System.err.println("sql state:" + sqlState);
-
                 int errorCode = e.getErrorCode();
                 System.err.println("error code:" + errorCode);
-                // String driverName = conn.getMetaData().getDriverName();
-                // System.err.println("driver name:"+driverName);
-                // processDetailError(drivername, errorCode);
                 e = e.getNextException();
             }
         }

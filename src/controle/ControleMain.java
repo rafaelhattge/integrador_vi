@@ -7,17 +7,17 @@ package controle;
 
 import modelo.Splash;
 
-
 /**
  *
  * @author Diana
  */
 public class ControleMain {
-    public static void main(String[] args){
-    //    TelaSplash splash = new TelaSplash();
-      //  splash.runningPBar();
-     //   splash.setVisible(true);
-     Splash splash = new Splash();
-             
+
+    public static void main(String[] args) {
+        //    TelaSplash splash = new TelaSplash();
+        //  splash.runningPBar();
+        //   splash.setVisible(true);
+        Splash splash = new Splash();
+
     }
 }

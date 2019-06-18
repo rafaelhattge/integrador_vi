@@ -12,7 +12,8 @@ import tela.InternoJfTelaConfigUser;
  * @author Diana
  */
 public class ControlerTelaConfigUser {
-      private final InternoJfTelaConfigUser view;
+
+    private final InternoJfTelaConfigUser view;
 
     public ControlerTelaConfigUser(InternoJfTelaConfigUser view) {
         this.view = view;

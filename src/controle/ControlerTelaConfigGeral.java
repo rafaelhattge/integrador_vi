@@ -12,11 +12,11 @@ import tela.InternoJfTelaConfGeral;
  * @author Diana
  */
 public class ControlerTelaConfigGeral {
-     private final InternoJfTelaConfGeral view;
+
+    private final InternoJfTelaConfGeral view;
 
     public ControlerTelaConfigGeral(InternoJfTelaConfGeral view) {
         this.view = view;
     }
-     
-     
+
 }

@@ -10,15 +10,14 @@ package modelo;
  * @author Diana
  */
 public class Mensagem {
-    private int id;
-     private String mensagem;
 
-     
-      public Mensagem(String mensagem) {
+    private int id;
+    private String mensagem;
+
+    public Mensagem(String mensagem) {
         this.mensagem = mensagem;
     }
-     
-     
+
     public int getId() {
         return id;
     }
@@ -35,5 +34,4 @@ public class Mensagem {
         this.mensagem = mensagem;
     }
 
-   
 }

@@ -32,8 +32,6 @@ public class Usuario {
         this.mensagem = mensagem;
     }
 
-   
-
     public Usuario(String nome, String email, String usuario, String senha) {
         this.nome = nome;
         this.email = email;
@@ -46,8 +44,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -103,5 +99,5 @@ public class Usuario {
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
-    
+
 }

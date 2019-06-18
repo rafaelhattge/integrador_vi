@@ -230,6 +230,7 @@ public class ControleTelaDisciplina {
             } 
     }
     
+    
     public void salvarDisciplina() throws ParseException{
         Curso curso = carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex());
         String nome = panelAdicDisciplina.getjTextFieldNome().getText();

@@ -34,11 +34,12 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     private PanelAtualizarCurso dialogAtualizar;
     private PanelAdicionarDisciplina dialogAdicionarDisciplina;
     private PanelAtualizarDisciplina dialogAtualizarDisciplina;
+
     /**
      * Creates new form InternoJfTelaDisicplina
      */
-    
-    public InternoJfTelaDisciplina(){
+
+    public InternoJfTelaDisciplina() {
         initComponents();
         controle = new ControleTelaDisciplina(this, dialogAdicionar, dialogAtualizar);
     }
@@ -301,15 +302,15 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarCursoMouseClicked
-        if(this.getjComboBoxCurso().getSelectedIndex() == -1){
+        if (this.getjComboBoxCurso().getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Não há itens para serem editados.");
         } else {
-            dialogAtualizar = new PanelAtualizarCurso(this, (JFrame)this.getTopLevelAncestor());
+            dialogAtualizar = new PanelAtualizarCurso(this, (JFrame) this.getTopLevelAncestor());
         }
     }//GEN-LAST:event_jButtonEditarCursoMouseClicked
 
     private void jButtonRemoverDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverDisciplinaMouseClicked
-        if(jTableDisciplinas.getSelectedRow() == -1){
+        if (jTableDisciplinas.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Nenhuma disciplina foi selecionada");
         } else {
             try {
@@ -321,18 +322,18 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonRemoverDisciplinaMouseClicked
 
     private void jButtonAdicionarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarDisciplinaMouseClicked
-        if(this.getjComboBoxCurso().getSelectedIndex() == -1){
+        if (this.getjComboBoxCurso().getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Adicione um curso para poder inserir disciplinas");
         } else {
-            dialogAdicionarDisciplina = new PanelAdicionarDisciplina(this, (JFrame)this.getTopLevelAncestor());
+            dialogAdicionarDisciplina = new PanelAdicionarDisciplina(this, (JFrame) this.getTopLevelAncestor());
         }
     }//GEN-LAST:event_jButtonAdicionarDisciplinaMouseClicked
 
     private void jButtonEditarDisciplinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarDisciplinaMouseClicked
-        if(jTableDisciplinas.getSelectedRow() == -1){
+        if (jTableDisciplinas.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Nenhuma disciplina foi selecionada");
-        }else{
-            dialogAtualizarDisciplina = new PanelAtualizarDisciplina(this, (JFrame)this.getTopLevelAncestor());
+        } else {
+            dialogAtualizarDisciplina = new PanelAtualizarDisciplina(this, (JFrame) this.getTopLevelAncestor());
         }
     }//GEN-LAST:event_jButtonEditarDisciplinaMouseClicked
 
@@ -346,12 +347,12 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
 
     private void jButtonAdicionarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdicionarCursoMouseClicked
 
-        dialogAdicionar = new PanelAdicionarCurso(this, (JFrame)this.getTopLevelAncestor());
+        dialogAdicionar = new PanelAdicionarCurso(this, (JFrame) this.getTopLevelAncestor());
     }//GEN-LAST:event_jButtonAdicionarCursoMouseClicked
 
     private void jComboBoxCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxCursoItemStateChanged
         // TODO add your handling code here:
-        if(evt.getStateChange() == ItemEvent.SELECTED) {
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
             try {
                 controle.exibirDisciplinas();
             } catch (ParseException ex) {
@@ -371,7 +372,6 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         //        controleEventoTabela();
     }//GEN-LAST:event_jTableDisciplinasMouseClicked
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarCurso;
@@ -388,15 +388,14 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableDisciplinas;
     // End of variables declaration//GEN-END:variables
 
-    
     public JTable getjTableDisciplinas() {
         return jTableDisciplinas;
     }
-    
+
     public void setjTableDisciplinas(JTable jTableDisciplinas) {
         this.jTableDisciplinas = jTableDisciplinas;
     }
-    
+
     public JComboBox<String> getjComboBoxCurso() {
         return jComboBoxCurso;
     }

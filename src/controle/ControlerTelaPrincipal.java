@@ -17,18 +17,16 @@ import tela.TelaPrincipal;
  * @author Diana
  */
 public class ControlerTelaPrincipal {
+
     private final TelaPrincipal view;
     private Usuario UsuarioAtivo;
-  
 
     public ControlerTelaPrincipal(TelaPrincipal view) {
         this.view = view;
-        
-            
+
     }
-    
-    
-  /*  public void contadorLogin() throws SQLException{
+
+    /*  public void contadorLogin() throws SQLException{
         if(view.getuserAtivo().getMensagem().equals("sim")){
           TelaMensagem boavinda  = new TelaMensagem(view, true);
           boavinda.setVisible(true);
@@ -42,10 +40,8 @@ public class ControlerTelaPrincipal {
         }
         
 }
-}*/ 
-    
+}*/
     public void ControleTelas(javax.swing.JInternalFrame tela) {
-    
 
         if (tela.isVisible()) {
             tela.toFront();
@@ -53,22 +49,19 @@ public class ControlerTelaPrincipal {
             try {
                 tela.setSelected(true);
             } catch (PropertyVetoException ex) {
-              //  Logger.getLogger(ControleTelas.class.getName()).log(Level.SEVERE, null, ex);
-              System.out.println(ex);
+                //  Logger.getLogger(ControleTelas.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
             }
         } else {
             ((BasicInternalFrameUI) tela.getUI()).setNorthPane(null); //retirar o painel superior
 
-        tela.getContentPane().setBackground(new Color(69, 69, 71));
-        tela.setBorder(null);//retirar bordas
+            tela.getContentPane().setBackground(new Color(69, 69, 71));
+            tela.setBorder(null);//retirar bordas
 
-        view.getjDesktopPrincipal().add(tela).setVisible(true);
+            view.getjDesktopPrincipal().add(tela).setVisible(true);
         }
-     
-    
-        }
-    
-  
+
+    }
 
     public Usuario getUsuarioAtivo() {
         return UsuarioAtivo;
@@ -77,8 +70,5 @@ public class ControlerTelaPrincipal {
     public void setUsuarioAtivo(Usuario UsuarioAtivo) {
         this.UsuarioAtivo = UsuarioAtivo;
     }
-    
-   
-  
-  
+
 }

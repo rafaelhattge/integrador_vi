@@ -32,7 +32,9 @@ public class CursoDao {
     }
     
     public void atualizarCurso(Curso curso, int idCurso, String nome)throws SQLException {
+        
         String sql = "UPDATE curso SET nome = ? WHERE idcurso = ?;";
+        
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, nome);
         statement.setInt(2, idCurso);
@@ -44,7 +46,7 @@ public class CursoDao {
     public ArrayList<Curso> carregarCursos(UsuarioDao usuarioAtivo) throws SQLException {
         
         Curso curso;
-        String sql = "SELECT * FROM curso WHERE idusuario = ? ORDER BY nome ASC";
+        String sql = "SELECT * FROM curso WHERE idusuario = ? ORDER BY nome ASC;";
         
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setInt(1, usuarioAtivo.getUserAtivo().getId());

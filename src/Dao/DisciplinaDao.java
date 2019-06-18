@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelo.Curso;
 import modelo.Disciplina;
 
 /**
@@ -94,6 +93,41 @@ public class DisciplinaDao {
         }catch(SQLException e){
             return null;
         }
+    }
+    
+    public ArrayList<Disciplina> carregarTodasDisciplinas(UsuarioDao usuarioAtivo) throws SQLException {
+        Disciplina disciplina;
+        ArrayList<Disciplina> disciplinas = new ArrayList();
+        String sql =    "SELECT iddisciplina, disciplina.nome \n" +
+                        "FROM disciplina, curso, usuario \n" +
+                        "WHERE id = ? AND curso.idusuario = id " +
+                        "AND disciplina.idcurso = curso.idcurso " +
+                        "ORDER BY disciplina.nome ASC;";
+        try {
+            PreparedStatement statement = conectar.prepareStatement(sql);
+            statement.setInt(1, usuarioAtivo.getUserAtivo().getId());
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+
+            while(resultSet.next()){
+                disciplina = new Disciplina(resultSet.getInt(1), 
+                                            resultSet.getString(2));
+                disciplinas.add(disciplina);
+                System.out.println(disciplina.getNome());
+            }
+        } catch (SQLException e) {
+            System.out.println("Conexão falhou.");
+            while (e != null) {
+                String errorMessage = e.getMessage();
+                System.err.println("sql error message:" + errorMessage);
+                String sqlState = e.getSQLState();
+                System.err.println("sql state:" + sqlState);
+                int errorCode = e.getErrorCode();
+                System.err.println("error code:" + errorCode);
+                e = e.getNextException();
+            }
+        }
+        return disciplinas;
     }
     
     //Deletar a disciplina selecionada

@@ -10,14 +10,15 @@ package modelo;
  * @author Rafael
  */
 public class Curso {
+
     private int id;
     private String nome;
     private int idUsuario;
-    
-    public Curso(){
+
+    public Curso() {
     }
-    
-    public Curso(String nome){
+
+    public Curso(String nome) {
         this.nome = nome;
     }
 
@@ -26,8 +27,6 @@ public class Curso {
         this.nome = nome;
         this.idUsuario = idUsuario;
     }
-    
-    
 
     public int getId() {
         return id;
@@ -52,5 +51,5 @@ public class Curso {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-    
+
 }

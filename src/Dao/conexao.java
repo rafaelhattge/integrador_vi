@@ -14,10 +14,11 @@ import java.sql.SQLException;
  * @author Diana
  */
 public class conexao {
-    public Connection conectarBanco() throws SQLException{
-      Connection conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/projetoIntegrador","postgres","postgres");
-       
+
+    public Connection conectarBanco() throws SQLException {
+        Connection conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/projetoIntegrador", "postgres", "postgres");
+
         return conexao;
-        
+
     }
 }
