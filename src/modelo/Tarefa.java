@@ -25,6 +25,14 @@ public class Tarefa {
     public Tarefa() {
     }
 
+    public Tarefa(int idTarefa, String nome, Time hora) {
+        this.idTarefa = idTarefa;
+        this.nome = nome;
+        this.hora = hora;
+    }
+    
+    
+
     public Tarefa(String nome, Date data, Time hora, String descricao, boolean status, int idDisciplina, String nomeDisciplina) {
         this.nome = nome;
         this.data = data;

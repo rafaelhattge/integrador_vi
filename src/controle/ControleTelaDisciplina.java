@@ -284,14 +284,9 @@ public class ControleTelaDisciplina {
         try {
             if(linha >= 0){
                 int idDisciplina = carregarListaDisciplinas().get(linha).getIdDisciplina();
-                System.out.println(idDisciplina);
                  if(nome.equals("")){
                     JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
                 } else {
-                    System.out.println(disciplina.getIdDisciplina());
-                    System.out.println(disciplina.getNome());
-                    System.out.println(disciplina.getDataInicio());
-                    System.out.println(disciplina.getDataTermino());
                     Connection conexao = new conexao().conectarBanco();
                     DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
                     disciplinaDao.atualizarDisciplina(disciplina, idDisciplina);
@@ -343,11 +338,12 @@ public class ControleTelaDisciplina {
     }
     
     //Passa o nome do curso para ser usado no jTextField do Jpanel que atualiza o nome
-    public String passarNomeCurso(){
+    public String retornarNomeCurso(){
         return carregarListaCursos().get(view.getjComboBoxCurso().getSelectedIndex()).getNome();
     }
     
-    public Disciplina passarDisciplina() {
+    //Retornar os atributos da disciplina para serem usados nos jTextFields do JPanel que atualiza estes campos
+    public Disciplina retornarDisciplina() {
         return carregarListaDisciplinas().get(view.getjTableDisciplinas().getSelectedRow());
     }
     

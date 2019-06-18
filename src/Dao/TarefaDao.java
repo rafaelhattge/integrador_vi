@@ -6,11 +6,13 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.Tarefa;
+import modelo.Usuario;
 
 /**
  *
@@ -56,6 +58,7 @@ public class TarefaDao {
         statement.execute();
         statement.close();
         conectar.close();
+
     }
     
     //Carrega todas as tarefas do bd para o usuário ativo e retorna uma ArrayList de tarefas
@@ -92,7 +95,6 @@ public class TarefaDao {
             while (e != null) {
                 String errorMessage = e.getMessage();
                 System.err.println("sql error message:" + errorMessage);
-                // This vendor-independent string contains a code.
                 String sqlState = e.getSQLState();
                 System.err.println("sql state:" + sqlState);
                 int errorCode = e.getErrorCode();
@@ -103,7 +105,7 @@ public class TarefaDao {
         return tarefas;
     }
     
-    //Deletar a disciplina selecionada
+    //Deletar a tarefa selecionada
     public void deletarTarefa(int idTarefa) throws SQLException {
         String sql = "DELETE FROM tarefa WHERE idtarefa = ?;";
 
@@ -113,5 +115,81 @@ public class TarefaDao {
         statement.execute();
         statement.close();
         conectar.close();
+    }
+    
+    public ArrayList<Date> carregarDatasTarefas(UsuarioDao usuarioAtivo) throws SQLException {
+        ArrayList<Date> datas = new ArrayList();
+        
+        String sql = "SELECT data FROM tarefa, usuario, disciplina, curso "
+                + "WHERE id = ? AND tarefa.iddisciplina = disciplina.iddisciplina "
+                + "AND curso.idcurso = disciplina.idcurso AND curso.idusuario = "
+                + "usuario.id GROUP BY data ORDER BY data ASC;";
+        try {
+            PreparedStatement statement = conectar.prepareStatement(sql);
+            statement.setInt(1, usuarioAtivo.getUserAtivo().getId());
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+            
+            while(resultSet.next()){
+              
+                datas.add(resultSet.getDate(1));
+                System.out.println(datas.size());
+            }
+            return datas;
+        } catch (SQLException e){
+            System.out.println("Conexão falhou.");
+            while (e != null) {
+                String errorMessage = e.getMessage();
+                System.err.println("sql error message:" + errorMessage);
+                // This vendor-independent string contains a code.
+                String sqlState = e.getSQLState();
+                System.err.println("sql state:" + sqlState);
+                int errorCode = e.getErrorCode();
+                System.err.println("error code:" + errorCode);
+                e = e.getNextException();
+            }
+            return datas;
+        }
+    }
+    
+    public ArrayList<Tarefa> carregarTarefasPorData(UsuarioDao usuarioAtivo, Date data) throws SQLException {
+        Tarefa tarefa;
+        ArrayList<Tarefa> tarefas = new ArrayList();
+        
+        String sql = "SELECT idtarefa, hora, tarefa.nome FROM tarefa, usuario, disciplina, curso "
+                + "WHERE data = ? AND id = ? "
+                + "AND tarefa.iddisciplina = disciplina.iddisciplina "
+                + "AND curso.idcurso = disciplina.idcurso "
+                + "AND curso.idusuario = usuario.id "
+                + "ORDER BY hora ASC;";
+        try {
+            PreparedStatement statement = conectar.prepareStatement(sql);
+            statement.setDate(1, data);
+            statement.setInt(2, usuarioAtivo.getUserAtivo().getId());
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+            
+            while(resultSet.next()){
+                tarefa = new Tarefa(resultSet.getInt(1),
+                                    resultSet.getString(3),
+                                    resultSet.getTime(2));
+                tarefas.add(tarefa);
+                System.out.println(tarefas.size());
+            }
+            return tarefas;
+        } catch (SQLException e){
+            System.out.println("Conexão falhou.");
+            while (e != null) {
+                String errorMessage = e.getMessage();
+                System.err.println("sql error message:" + errorMessage);
+                // This vendor-independent string contains a code.
+                String sqlState = e.getSQLState();
+                System.err.println("sql state:" + sqlState);
+                int errorCode = e.getErrorCode();
+                System.err.println("error code:" + errorCode);
+                e = e.getNextException();
+            }
+            return tarefas;
+        }
     }
 }

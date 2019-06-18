@@ -43,10 +43,11 @@ public class ControlerTelaLogin {
             boolean autenticar = userDao.autenticarUsuario(userAutenticar);
             if (autenticar) {
                 Usuario usuarioAtivo = userDao.usuarioAtivo(userAutenticar);
-
-                TelaPrincipal tela = new TelaPrincipal();
-                tela.getjLabelUsarioLogado().setText(userAutenticar.getNome());
                 userDao.setUserAtivo(usuarioAtivo);
+                TelaPrincipal tela = new TelaPrincipal();
+                ControlerTelaPrincipal controleTelaPrincipal = new ControlerTelaPrincipal(tela, usuarioAtivo);
+                tela.getjLabelUsarioLogado().setText(userAutenticar.getNome());
+                
                 //System.out.println(usuarioAtivo.getNome());
 
                 tela.getContentPane().setBackground(new Color(69, 69, 71));
@@ -61,11 +62,7 @@ public class ControlerTelaLogin {
                 for realizado neste ponto.
                  */
                 //Criar um construtor para a telaPrincipal que receba o UsuarioAtivo
-                ControleTelaDisciplina controleTelaDisciplina = new ControleTelaDisciplina(tela.getTelaDisicplina(), tela.getTelaDisicplina().getDialog());
-                controleTelaDisciplina.exibirCursos();
-                controleTelaDisciplina.exibirDisciplinas();
-                ControleTarefa controleTarefa = new ControleTarefa(tela.getTelaTarefas());
-                controleTarefa.exibirTarefas();
+                
 
                 view.dispose();
                 //Exibe mensagem inicial

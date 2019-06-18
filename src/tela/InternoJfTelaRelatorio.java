@@ -5,8 +5,16 @@
  */
 package tela;
 
+import controle.ControleTelaRelatorio;
+import java.awt.event.ItemEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -15,11 +23,14 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
+    
+    private final ControleTelaRelatorio controle;
     /**
      * Creates new form InternoJfTelaRelatorio
      */
     public InternoJfTelaRelatorio() {
         initComponents();
+        controle = new ControleTelaRelatorio(this);
     }
 
     /**
@@ -32,7 +43,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanelInicio = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanelDetalhes = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -41,13 +52,13 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableExercicios = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jListTarefa = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jListData = new javax.swing.JList<>();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelDetalhes = new javax.swing.JLabel();
+        jLabelTarefa = new javax.swing.JLabel();
+        jLabelData = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(69, 69, 71));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -57,7 +68,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jPanelInicio.setBackground(new java.awt.Color(69, 69, 71));
         jPanelInicio.setMaximumSize(new java.awt.Dimension(915, 544));
 
-        jPanel3.setBackground(new java.awt.Color(69, 69, 69));
+        jPanelDetalhes.setBackground(new java.awt.Color(69, 69, 69));
 
         jProgressBar1.setForeground(new java.awt.Color(66, 215, 244));
         jProgressBar1.setToolTipText("");
@@ -143,26 +154,26 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             jTableExercicios.getColumnModel().getColumn(0).setMaxWidth(20);
         }
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelDetalhesLayout = new javax.swing.GroupLayout(jPanelDetalhes);
+        jPanelDetalhes.setLayout(jPanelDetalhesLayout);
+        jPanelDetalhesLayout.setHorizontalGroup(
+            jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDetalhesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDetalhesLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanelDetalhesLayout.setVerticalGroup(
+            jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDetalhesLayout.createSequentialGroup()
+                .addGroup(jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -175,50 +186,76 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         jScrollPane3.setBorder(null);
 
-        jList2.setBackground(new java.awt.Color(69, 69, 69));
-        jList2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList2.setForeground(new java.awt.Color(255, 255, 255));
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        jListTarefa.setBackground(new java.awt.Color(69, 69, 69));
+        jListTarefa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jListTarefa.setForeground(new java.awt.Color(255, 255, 255));
+        jListTarefa.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "19:00 - Videoconferência", "00:00 - Entrega da Atividade" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList2.setSelectionBackground(new java.awt.Color(43, 87, 151));
-        jScrollPane3.setViewportView(jList2);
+        jListTarefa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jListTarefa.setSelectionBackground(new java.awt.Color(43, 87, 151));
+        jListTarefa.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListTarefaValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jListTarefa);
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setName(""); // NOI18N
         jScrollPane1.setOpaque(false);
 
-        jList1.setBackground(new java.awt.Color(69, 69, 69));
-        jList1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(240, 240, 240));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jListData.setBackground(new java.awt.Color(69, 69, 69));
+        jListData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jListData.setForeground(new java.awt.Color(240, 240, 240));
+        jListData.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "15/02/2017", "18/02/2017", "21/02/2017", "24/02/2017" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setSelectionBackground(new java.awt.Color(43, 87, 151));
-        jScrollPane1.setViewportView(jList1);
+        jListData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jListData.setSelectionBackground(new java.awt.Color(43, 87, 151));
+        jListData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jListDataPropertyChange(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jListData);
+        jListData.addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (e.getValueIsAdjusting()) {
+                    try {
+                        controle.selecionarTarefasPorData();
 
-        jLabel5.setBackground(new java.awt.Color(66, 215, 244));
-        jLabel5.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
-        jLabel5.setText(" Relatório Geral");
-        jLabel5.setOpaque(true);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(InternoJfTelaRelatorio.class
+                            .getName()).log(Level.SEVERE, null, ex);
+                    } catch (NullPointerException eex){
+                        System.out.println("Tamanho da jListData: " + jListData.getModel().getSize());
+                    }
+                }
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Detalhes");
+        jLabelTitulo.setBackground(new java.awt.Color(66, 215, 244));
+        jLabelTitulo.setFont(new java.awt.Font("Candara", 0, 36)); // NOI18N
+        jLabelTitulo.setText(" Relatório Geral");
+        jLabelTitulo.setOpaque(true);
 
-        jLabel4.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Tarefa");
+        jLabelDetalhes.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabelDetalhes.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDetalhes.setText("Detalhes");
 
-        jLabel3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Data");
+        jLabelTarefa.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabelTarefa.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTarefa.setText("Tarefa");
+
+        jLabelData.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabelData.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelData.setText("Data");
 
         javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
         jPanelInicio.setLayout(jPanelInicioLayout);
@@ -226,37 +263,41 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelInicioLayout.createSequentialGroup()
+                        .addComponent(jLabelData, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanelInicioLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGap(8, 8, 8)
+                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                        .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
                         .addGap(125, 125, 125))
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabelTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -265,13 +306,13 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 958, Short.MAX_VALUE)
+            .addGap(0, 951, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGap(0, 628, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanelInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,7 +321,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTableExerciciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableExerciciosMouseClicked
         // TODO add your handling code here:
 
@@ -292,18 +333,28 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         //        controleEventoTabela();
     }//GEN-LAST:event_jTableExerciciosKeyReleased
 
+    private void jListTarefaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTarefaValueChanged
+        
+    }//GEN-LAST:event_jListTarefaValueChanged
+
+    private void jListDataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jListDataPropertyChange
+        if(jListData.getModel().getSize() > 0){
+           
+        }
+    }//GEN-LAST:event_jListDataPropertyChange
+
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabelData;
+    private javax.swing.JLabel jLabelDetalhes;
+    private javax.swing.JLabel jLabelTarefa;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JList<String> jListData;
+    private javax.swing.JList<String> jListTarefa;
+    private javax.swing.JPanel jPanelDetalhes;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -314,4 +365,22 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableExercicios;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    public JList<String> getjListData() {
+        return jListData;
+    }
+
+    public void setjListData(JList<String> jListData) {
+        this.jListData = jListData;
+    }
+
+    public JList<String> getjListTarefa() {
+        return jListTarefa;
+    }
+
+    public void setjListTarefa(JList<String> jListTarefa) {
+        this.jListTarefa = jListTarefa;
+    }
+
+    
 }

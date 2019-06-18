@@ -37,7 +37,7 @@ public class PanelAtualizarCurso extends javax.swing.JPanel {
         modal.setVisible(true);
         modal.pack();
         modal.setLocationRelativeTo(frame);
-        this.getjTextFieldAtualizar().setText(controle.passarNomeCurso());
+        this.getjTextFieldAtualizar().setText(controle.retornarNomeCurso());
         frame.setEnabled(false);
     }
 

@@ -136,6 +136,7 @@ public class ControleTarefa {
                 TarefaDao tarefaDao = new TarefaDao(conexao);
                 tarefaDao.adicionarTarefa(tarefa);
                 JOptionPane.showMessageDialog(null, "Tarefa adicionada com sucesso.");
+                limparCampos();
                 exibirTarefas();
             }
         } catch (SQLException ex) {
@@ -144,7 +145,7 @@ public class ControleTarefa {
             JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
         }
     }
-    
+
     public void editarTarefa() throws ParseException {
         Disciplina disciplina = carregarListaTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
@@ -182,6 +183,8 @@ public class ControleTarefa {
         }
     }
 
+    
+
     //converte uma string para data em formato SQL
     public Date converterData(String sData) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -203,5 +206,16 @@ public class ControleTarefa {
     public String formatarData(Date data) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return simpleDateFormat.format(data);
+    }
+
+    public void limparCampos() {
+        view.getjTextTarefaNome().setText("");
+        view.getjFormattedTextData().setText("");
+        view.getjFormattedTextHora().setText("");
+        view.getjTextAreaDescricao().setText("");
+    }
+
+    public Tarefa retornarTarefa() {
+        return carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow());
     }
 }

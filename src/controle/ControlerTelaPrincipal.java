@@ -7,9 +7,12 @@ package controle;
 
 import java.awt.Color;
 import java.beans.PropertyVetoException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.Usuario;
-import tela.TelaMensagem;
 import tela.TelaPrincipal;
 
 /**
@@ -19,12 +22,32 @@ import tela.TelaPrincipal;
 public class ControlerTelaPrincipal {
 
     private final TelaPrincipal view;
-    private Usuario UsuarioAtivo;
+    private Usuario usuarioAtivo;
 
     public ControlerTelaPrincipal(TelaPrincipal view) {
         this.view = view;
-
     }
+
+    public ControlerTelaPrincipal(TelaPrincipal view, Usuario usuarioAtivo) {
+        this.view = view;
+        this.usuarioAtivo = usuarioAtivo;
+        ControleTelaDisciplina controleTelaDisciplina = new ControleTelaDisciplina(view.getTelaDisicplina(), view.getTelaDisicplina().getDialog());
+        controleTelaDisciplina.exibirCursos();
+        try {
+            controleTelaDisciplina.exibirDisciplinas();
+        } catch (ParseException ex) {
+            Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ControleTarefa controleTarefa = new ControleTarefa(view.getTelaTarefas());
+        controleTarefa.exibirTarefas();
+        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio());
+        try {
+            controleRelatorio.listarDatas();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     /*  public void contadorLogin() throws SQLException{
         if(view.getuserAtivo().getMensagem().equals("sim")){
@@ -64,11 +87,11 @@ public class ControlerTelaPrincipal {
     }
 
     public Usuario getUsuarioAtivo() {
-        return UsuarioAtivo;
+        return usuarioAtivo;
     }
 
     public void setUsuarioAtivo(Usuario UsuarioAtivo) {
-        this.UsuarioAtivo = UsuarioAtivo;
+        this.usuarioAtivo = UsuarioAtivo;
     }
 
 }

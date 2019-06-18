@@ -41,7 +41,7 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
         modal.setVisible(true);
         modal.pack();
         modal.setLocationRelativeTo(frame);
-        Disciplina disciplina = controle.passarDisciplina();
+        Disciplina disciplina = controle.retornarDisciplina();
         this.getjTextFieldNome().setText(disciplina.getNome());
         try {
             this.getjTextFieldInicio().setText(controle.formatarData(disciplina.getDataInicio()));

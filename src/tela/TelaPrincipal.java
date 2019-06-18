@@ -5,6 +5,7 @@
  */
 package tela;
 
+import controle.ControleTelaRelatorio;
 import controle.ControlerTelaPrincipal;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -25,12 +26,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private final InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser();
     private final InternoJfTelaConfGeral telaConfigGeral = new InternoJfTelaConfGeral();
     private final ControlerTelaPrincipal controler;
-    Usuario userAtivo;
+    private static Usuario usuarioAtivo;
     //  private Usuario usuario;
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+ 
         initComponents();
         UIManager ui = new UIManager();
         ui.put("OptionPane.background", new ColorUIResource(69,69,69));
@@ -377,6 +379,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelAluno.setBackground(new java.awt.Color(66,215,244));
         jLabelNomePrograma.setForeground(new java.awt.Color(66,215,244));
         controler.ControleTelas(telaInicio);
+        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(telaInicio);
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisciplinaActionPerformed
@@ -516,12 +519,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.jLabelUsarioLogado = jLabelUsarioLogado;
     }
 
-    public Usuario getuserAtivo() {
-        return userAtivo;
+    public Usuario getUsuarioAtivo() {
+        return usuarioAtivo;
     }
 
-    public void setuserAtivo(Usuario usuario) {
-        this.userAtivo = usuario;
+    public void setUsuarioAtivo(Usuario usuario) {
+        this.usuarioAtivo = usuario;
     }
 
     public javax.swing.JLabel getjLabelTipoUser() {
@@ -548,6 +551,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public InternoJfTelaTarefa getTelaTarefas() {
         return telaTarefas;
+    }
+
+    public InternoJfTelaRelatorio getTelaRelatorio() {
+        return telaInicio;
     }
     
     
