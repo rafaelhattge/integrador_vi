@@ -22,6 +22,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import modelo.Curso;
 import modelo.Disciplina;
+import modelo.Usuario;
 import tela.InternoJfTelaDisciplina;
 import tela.dialog.PanelAdicionarCurso;
 import tela.dialog.PanelAdicionarDisciplina;
@@ -40,36 +41,68 @@ public class ControleTelaDisciplina {
     private PanelAtualizarCurso panelAtuaCurso;
     private PanelAdicionarDisciplina panelAdicDisciplina;
     private PanelAtualizarDisciplina panelAtuaDisciplina;
+    private static Usuario usuarioAtivo;
     private static boolean editarCurso;
-    
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso) {
-        this.view = view;
-        this.panelAdicCurso = panelAdicCurso;
-        cursos = new ArrayList<Curso>();
-    }
-    
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panelAtuaCurso) {
-        this.view = view;
-        this.panelAtuaCurso = panelAtuaCurso;
-        cursos = new ArrayList<Curso>();
-    }
-    
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarDisciplina panelAdicDisciplina) {
-        this.view = view;
-        this.panelAdicDisciplina = panelAdicDisciplina;
-        cursos = new ArrayList<Curso>();
-    }
-    
+
     public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarDisciplina panelAtuaDisciplina) {
         this.view = view;
         this.panelAtuaDisciplina = panelAtuaDisciplina;
+    }
+
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarDisciplina panelAdicDisciplina) {
+        this.view = view;
+        this.panelAdicDisciplina = panelAdicDisciplina;
+    }
+
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso) {
+        this.view = view;
+        this.panelAdicCurso = panelAdicCurso;
+    }
+
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panelAtuaCurso) {
+        this.view = view;
+        this.panelAtuaCurso = panelAtuaCurso;
+    }
+
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso, PanelAtualizarCurso panelAtuaCurso) {
+        this.view = view;
+        this.panelAdicCurso = panelAdicCurso;
+        this.panelAtuaCurso = panelAtuaCurso;
+    }
+    
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso panelAdicCurso, Usuario usuarioAtivo) {
+        this.view = view;
+        this.panelAdicCurso = panelAdicCurso;
+        this.usuarioAtivo = usuarioAtivo;
         cursos = new ArrayList<Curso>();
     }
     
-    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog, PanelAtualizarCurso panel) {
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarCurso panelAtuaCurso, Usuario usuarioAtivo) {
+        this.view = view;
+        this.panelAtuaCurso = panelAtuaCurso;
+        this.usuarioAtivo = usuarioAtivo;
+        cursos = new ArrayList<Curso>();
+    }
+    
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarDisciplina panelAdicDisciplina, Usuario usuarioAtivo) {
+        this.view = view;
+        this.panelAdicDisciplina = panelAdicDisciplina;
+        this.usuarioAtivo = usuarioAtivo;
+        cursos = new ArrayList<Curso>();
+    }
+    
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAtualizarDisciplina panelAtuaDisciplina, Usuario usuarioAtivo) {
+        this.view = view;
+        this.panelAtuaDisciplina = panelAtuaDisciplina;
+        this.usuarioAtivo = usuarioAtivo;
+        cursos = new ArrayList<Curso>();
+    }
+    
+    public ControleTelaDisciplina(InternoJfTelaDisciplina view, PanelAdicionarCurso dialog, PanelAtualizarCurso panel, Usuario usuarioAtivo) {
         this.view = view;
         this.panelAdicCurso = dialog;
         this.panelAtuaCurso = panel;
+        this.usuarioAtivo = usuarioAtivo;
         cursos = new ArrayList<Curso>();
     }
     
@@ -79,8 +112,7 @@ public class ControleTelaDisciplina {
         try {
             Connection conexao = new conexao().conectarBanco();
             CursoDao cursoDao = new CursoDao(conexao);
-            UsuarioDao usuarioDao = new UsuarioDao(conexao);
-            listaCursos = cursoDao.carregarCursos(usuarioDao);
+            listaCursos = cursoDao.carregarCursos(usuarioAtivo);
             conexao.close();
 
         } catch (SQLException ex) {
@@ -113,9 +145,8 @@ public class ControleTelaDisciplina {
             } else {
                 Connection conexao = new conexao().conectarBanco();
                 CursoDao cursoDao = new CursoDao(conexao);
-                UsuarioDao usuarioAtivo = new UsuarioDao(conexao);
+
                 cursoDao.adicionarCurso(curso, usuarioAtivo);
-                System.out.println(usuarioAtivo.getUserAtivo().getNome());
                 JOptionPane.showMessageDialog(null, "Curso adicionado com sucesso.");
                 limparjTextFieldAdicionar();
                 exibirCursos();
@@ -346,14 +377,7 @@ public class ControleTelaDisciplina {
     public Disciplina retornarDisciplina() {
         return carregarListaDisciplinas().get(view.getjTableDisciplinas().getSelectedRow());
     }
-    
-    /*
-    public Date formatarData(String sData) throws ParseException{
-        Date data = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
-        return data;
-    }
-    */
-    
+
     public void limparjTextFieldAdicionar(){
         panelAdicCurso.getjTextField1().setText("");
     }
@@ -377,7 +401,4 @@ public class ControleTelaDisciplina {
     public void setEditarCurso(boolean editarCurso) {
         this.editarCurso = editarCurso;
     }
-    
-    
-    
 }

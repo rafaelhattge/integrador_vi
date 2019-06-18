@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import modelo.Tarefa;
+import modelo.Usuario;
 import tela.InternoJfTelaRelatorio;
 
 /**
@@ -27,9 +28,17 @@ import tela.InternoJfTelaRelatorio;
 public class ControleTelaRelatorio {
 
     private final InternoJfTelaRelatorio view;
+    private static Usuario usuarioAtivo;
 
+    
     public ControleTelaRelatorio(InternoJfTelaRelatorio view) {
         this.view = view;
+    }
+    
+    
+    public ControleTelaRelatorio(InternoJfTelaRelatorio view, Usuario usuarioAtivo) {
+        this.view = view;
+        this.usuarioAtivo = usuarioAtivo;
         try {
             listarDatas();
         } catch (SQLException ex) {
@@ -40,7 +49,6 @@ public class ControleTelaRelatorio {
     public void listarDatas() throws SQLException {
         Connection conexao = new conexao().conectarBanco();
         TarefaDao tarefaDao = new TarefaDao(conexao);
-        UsuarioDao usuarioAtivo = new UsuarioDao(conexao);
         ArrayList<Date> datas = tarefaDao.carregarDatasTarefas(usuarioAtivo);
         DefaultListModel model = new DefaultListModel();
         for (Date data : datas) {
@@ -51,6 +59,7 @@ public class ControleTelaRelatorio {
             }
         }
         view.getjListData().setModel(model);
+        conexao.close();
     }
 
     /*Este método será executado no código personalizado da jListData da Tela de Relatórios, 
@@ -60,7 +69,6 @@ public class ControleTelaRelatorio {
         ArrayList<Tarefa> tarefas = new ArrayList();
         Connection conexao = new conexao().conectarBanco();
         TarefaDao tarefaDao = new TarefaDao(conexao);
-        UsuarioDao usuarioAtivo = new UsuarioDao(conexao);
         ArrayList<Date> datas = tarefaDao.carregarDatasTarefas(usuarioAtivo);
         int index = view.getjListData().getSelectedIndex();
         tarefas = tarefaDao.carregarTarefasPorData(usuarioAtivo, datas.get(index));
@@ -69,6 +77,7 @@ public class ControleTelaRelatorio {
             model.addElement(tarefa.getHora() + " - " + tarefa.getNome());
         }
         view.getjListTarefa().setModel(model);
+        conexao.close();
     }
 
     //Formata a data recebida SQL para uma string dd/MM/yyyy

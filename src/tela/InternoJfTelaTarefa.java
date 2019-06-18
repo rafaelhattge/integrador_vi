@@ -16,12 +16,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -49,6 +51,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupStatus = new javax.swing.ButtonGroup();
         jPanelTarefas = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLayeredPaneGereTarefa = new javax.swing.JLayeredPane();
@@ -169,11 +172,13 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jLabelStatus.setText("Status");
 
         jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupStatus.add(jRadioButtonConcluido);
         jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonConcluido.setText("Concluido");
 
         jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupStatus.add(jRadioButtonNconcluido);
         jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonNconcluido.setText("Não Concluído");
@@ -505,7 +510,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 588, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 588, Short.MAX_VALUE))
+                .addComponent(jPanelTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
         );
 
         pack();
@@ -561,6 +566,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupStatus;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonExcluirTarefa;
     private javax.swing.JButton jButtonNovaTarefa;

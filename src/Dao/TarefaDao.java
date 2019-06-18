@@ -62,7 +62,7 @@ public class TarefaDao {
     }
     
     //Carrega todas as tarefas do bd para o usuário ativo e retorna uma ArrayList de tarefas
-    public ArrayList<Tarefa> carregarTarefas(UsuarioDao usuarioAtivo) throws SQLException {
+    public ArrayList<Tarefa> carregarTarefas(Usuario usuarioAtivo) throws SQLException {
         
         Tarefa tarefa;
         ArrayList<Tarefa> tarefas = new ArrayList();
@@ -75,7 +75,7 @@ public class TarefaDao {
         
         try {
             PreparedStatement statement = conectar.prepareStatement(sql);
-            statement.setInt(1, usuarioAtivo.getUserAtivo().getId());
+            statement.setInt(1, usuarioAtivo.getId());
             statement.execute();
             ResultSet resultSet = statement.getResultSet();
             
@@ -117,7 +117,7 @@ public class TarefaDao {
         conectar.close();
     }
     
-    public ArrayList<Date> carregarDatasTarefas(UsuarioDao usuarioAtivo) throws SQLException {
+    public ArrayList<Date> carregarDatasTarefas(Usuario usuarioAtivo) throws SQLException {
         ArrayList<Date> datas = new ArrayList();
         
         String sql = "SELECT data FROM tarefa, usuario, disciplina, curso "
@@ -126,14 +126,13 @@ public class TarefaDao {
                 + "usuario.id GROUP BY data ORDER BY data ASC;";
         try {
             PreparedStatement statement = conectar.prepareStatement(sql);
-            statement.setInt(1, usuarioAtivo.getUserAtivo().getId());
+            statement.setInt(1, usuarioAtivo.getId());
             statement.execute();
             ResultSet resultSet = statement.getResultSet();
             
             while(resultSet.next()){
               
                 datas.add(resultSet.getDate(1));
-                System.out.println(datas.size());
             }
             return datas;
         } catch (SQLException e){
@@ -152,7 +151,7 @@ public class TarefaDao {
         }
     }
     
-    public ArrayList<Tarefa> carregarTarefasPorData(UsuarioDao usuarioAtivo, Date data) throws SQLException {
+    public ArrayList<Tarefa> carregarTarefasPorData(Usuario usuarioAtivo, Date data) throws SQLException {
         Tarefa tarefa;
         ArrayList<Tarefa> tarefas = new ArrayList();
         
@@ -165,7 +164,7 @@ public class TarefaDao {
         try {
             PreparedStatement statement = conectar.prepareStatement(sql);
             statement.setDate(1, data);
-            statement.setInt(2, usuarioAtivo.getUserAtivo().getId());
+            statement.setInt(2, usuarioAtivo.getId());
             statement.execute();
             ResultSet resultSet = statement.getResultSet();
             
@@ -174,7 +173,6 @@ public class TarefaDao {
                                     resultSet.getString(3),
                                     resultSet.getTime(2));
                 tarefas.add(tarefa);
-                System.out.println(tarefas.size());
             }
             return tarefas;
         } catch (SQLException e){

@@ -44,9 +44,9 @@ public class ControlerTelaLogin {
             if (autenticar) {
                 Usuario usuarioAtivo = userDao.usuarioAtivo(userAutenticar);
                 userDao.setUserAtivo(usuarioAtivo);
-                TelaPrincipal tela = new TelaPrincipal();
+                TelaPrincipal tela = new TelaPrincipal(usuarioAtivo);
                 ControlerTelaPrincipal controleTelaPrincipal = new ControlerTelaPrincipal(tela, usuarioAtivo);
-                tela.getjLabelUsarioLogado().setText(userAutenticar.getNome());
+                tela.getjLabelUsarioLogado().setText(usuarioAtivo.getNome());
                 
                 //System.out.println(usuarioAtivo.getNome());
 

@@ -32,6 +32,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupReceberMensagem = new javax.swing.ButtonGroup();
         jPanelTarefas = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTextTarefaCod = new javax.swing.JTextField();
@@ -123,11 +124,13 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jLabelStatus.setText("Receber mensagem do dia?");
 
         jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonConcluido);
         jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonConcluido.setText("Sim");
 
         jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonNconcluido);
         jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonNconcluido.setText("Não");
@@ -171,7 +174,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
                         .addComponent(jRadioButtonConcluido)
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButtonNconcluido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -203,7 +206,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
                 .addComponent(jPasswordSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPasswordSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jLabel11.setBackground(new java.awt.Color(177, 72, 210));
@@ -339,6 +342,7 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupReceberMensagem;
     private javax.swing.JButton jButtonSaLvar;
     private javax.swing.JButton jButtonSaLvar1;
     private javax.swing.JButton jButtonSaLvar2;

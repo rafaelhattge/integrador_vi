@@ -35,6 +35,9 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupReceberMensagem = new javax.swing.ButtonGroup();
+        buttonGroupCampo = new javax.swing.ButtonGroup();
+        buttonGroupFrase = new javax.swing.ButtonGroup();
         jPanelTarefas = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jTabbedPaneConfigGeral = new javax.swing.JTabbedPane();
@@ -109,11 +112,13 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jLabelPesquisar.setText("Pesquisar ");
         jLabelPesquisar.setOpaque(true);
 
+        buttonGroupCampo.add(jRadioButtonNome);
         jRadioButtonNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButtonNome.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonNome.setText("Nome");
         jRadioButtonNome.setOpaque(false);
 
+        buttonGroupCampo.add(jRadioButtonTipo);
         jRadioButtonTipo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButtonTipo.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonTipo.setSelected(true);
@@ -255,7 +260,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addComponent(jButtonExcluirUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addComponent(jButtonExcluirAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addGap(24, 24, 24))
         );
@@ -313,11 +318,13 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jLabelMensagemDia.setText("Receber mensagem do dia?");
 
         jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonConcluido);
         jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonConcluido.setText("Sim");
 
         jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonNconcluido);
         jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonNconcluido.setText("Não");
@@ -377,7 +384,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelConfigUsersLayout = new javax.swing.GroupLayout(jPanelConfigUsers);
@@ -397,7 +404,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
             .addGroup(jPanelConfigUsersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,18 +414,19 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
             jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConfigUsersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonNome)
-                    .addComponent(jRadioButtonTipo)
-                    .addComponent(jLabelPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jRadioButtonNome)
+                        .addComponent(jRadioButtonTipo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelConfigUsersLayout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE))
+                    .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
 
@@ -429,12 +437,14 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 2, true));
         jTextField3.setOpaque(false);
 
+        buttonGroupFrase.add(jRadioButtonFrase);
         jRadioButtonFrase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButtonFrase.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonFrase.setSelected(true);
         jRadioButtonFrase.setText("Frase");
         jRadioButtonFrase.setOpaque(false);
 
+        buttonGroupFrase.add(jRadioButtoIdFrase);
         jRadioButtoIdFrase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButtoIdFrase.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtoIdFrase.setText("Código");
@@ -484,7 +494,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextCodiFrase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -629,7 +639,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addComponent(jButtonExcluirMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addComponent(jButtonExcluirAllFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(24, 24, 24))
         );
@@ -653,7 +663,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                         .addComponent(jLabelPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
-                .addComponent(jPanelInicGerencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, Short.MAX_VALUE)
+                .addComponent(jPanelInicGerencia1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
         );
         jPanelConfigMensagemLayout.setVerticalGroup(
@@ -769,6 +779,9 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupCampo;
+    private javax.swing.ButtonGroup buttonGroupFrase;
+    private javax.swing.ButtonGroup buttonGroupReceberMensagem;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEditarMensage;
     private javax.swing.JButton jButtonExcluirAll;

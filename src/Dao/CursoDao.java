@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.Curso;
+import modelo.Usuario;
 
 /**
  *
@@ -20,13 +21,13 @@ public class CursoDao {
     }
 
     //Adiciona um curso ao bd para o usuario ativo
-    public void adicionarCurso(Curso curso, UsuarioDao usuarioAtivo) throws SQLException {
+    public void adicionarCurso(Curso curso, Usuario usuarioAtivo) throws SQLException {
 
         String sql = "INSERT INTO curso(nome, idusuario) VALUES(?, ?);";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, curso.getNome());
-        statement.setInt(2, usuarioAtivo.getUserAtivo().getId());
+        statement.setInt(2, usuarioAtivo.getId());
         statement.execute();
         conectar.close();
     }
@@ -43,13 +44,13 @@ public class CursoDao {
     }
     
     //Carrega todos os cursos do bd para o usuário ativo e retorna uma ArrayList de cursos
-    public ArrayList<Curso> carregarCursos(UsuarioDao usuarioAtivo) throws SQLException {
+    public ArrayList<Curso> carregarCursos(Usuario usuarioAtivo) throws SQLException {
         
         Curso curso;
         String sql = "SELECT * FROM curso WHERE idusuario = ? ORDER BY nome ASC;";
         
         PreparedStatement statement = conectar.prepareStatement(sql);
-        statement.setInt(1, usuarioAtivo.getUserAtivo().getId());
+        statement.setInt(1, usuarioAtivo.getId());
         statement.execute();
         ResultSet resultSet = statement.getResultSet();
         ArrayList<Curso> cursos = new ArrayList();

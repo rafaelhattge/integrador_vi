@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Disciplina;
 import modelo.Tarefa;
+import modelo.Usuario;
 import tela.InternoJfTelaTarefa;
 
 /**
@@ -32,11 +33,17 @@ import tela.InternoJfTelaTarefa;
 public class ControleTarefa {
 
     private final InternoJfTelaTarefa view;
+    private static Usuario usuarioAtivo;
 
     public ControleTarefa(InternoJfTelaTarefa view) {
         this.view = view;
     }
 
+    public ControleTarefa(InternoJfTelaTarefa view, Usuario usuarioAtivo) {
+        this.view = view;
+        this.usuarioAtivo = usuarioAtivo;
+    } 
+    
     public void TrocaTarefas(JPanel tela) {
         view.getjLayeredPaneGereTarefa().removeAll();
         view.getjLayeredPaneGereTarefa().add(tela);
@@ -49,9 +56,7 @@ public class ControleTarefa {
         try {
             Connection conexao = new conexao().conectarBanco();
             TarefaDao tarefaDao = new TarefaDao(conexao);
-            UsuarioDao usuarioDao = new UsuarioDao(conexao);
-            System.out.println(usuarioDao.getUserAtivo().getNome());
-            listaTarefas = tarefaDao.carregarTarefas(usuarioDao);
+            listaTarefas = tarefaDao.carregarTarefas(usuarioAtivo);
 
         } catch (SQLException ex) {
             Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,7 +89,6 @@ public class ControleTarefa {
         try {
             Connection conexao = new conexao().conectarBanco();
             DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
-            UsuarioDao usuarioAtivo = new UsuarioDao(conexao);
             listaDisciplinas = disciplinaDao.carregarTodasDisciplinas(usuarioAtivo);
             System.out.println(listaDisciplinas.size());
         } catch (SQLException e) {

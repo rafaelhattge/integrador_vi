@@ -31,16 +31,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
- 
+    public TelaPrincipal(Usuario usuarioAtivo) {
+        
         initComponents();
         UIManager ui = new UIManager();
         ui.put("OptionPane.background", new ColorUIResource(69,69,69));
         ui.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));
         ui.put("Panel.background", new ColorUIResource(69,69,69));
         //ui.put("Button.foreground", new ColorUIResource(255,255,255));
-          
-        controler = new ControlerTelaPrincipal(this);
+        this.usuarioAtivo = usuarioAtivo;
+        controler = new ControlerTelaPrincipal(this, usuarioAtivo);
         controler.ControleTelas(telaInicio);
            
          
@@ -295,11 +295,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanelNomeProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNomeProgramaLayout.createSequentialGroup()
                 .addComponent(jLabelAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(jPanelNomeProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelUsarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTipoUser, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
+                .addGroup(jPanelNomeProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelTipoUser, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(jLabelUsarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabelNomePrograma, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(161, 161, 161)
                 .addComponent(jLabelMini, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,17 +315,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelNomePrograma))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelNomeProgramaLayout.createSequentialGroup()
-                        .addGroup(jPanelNomeProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelNomeProgramaLayout.createSequentialGroup()
+                        .addGroup(jPanelNomeProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelNomeProgramaLayout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addGroup(jPanelNomeProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabelsair)
                                     .addComponent(jLabelMini, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelNomeProgramaLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelNomeProgramaLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabelUsarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelTipoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabelTipoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(610, 610, 610))
             .addGroup(jPanelNomeProgramaLayout.createSequentialGroup()
@@ -379,7 +379,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelAluno.setBackground(new java.awt.Color(66,215,244));
         jLabelNomePrograma.setForeground(new java.awt.Color(66,215,244));
         controler.ControleTelas(telaInicio);
-        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(telaInicio);
+        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(telaInicio, usuarioAtivo);
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisciplinaActionPerformed
@@ -464,7 +464,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new TelaPrincipal(usuarioAtivo).setVisible(true);
                 
             }
         });

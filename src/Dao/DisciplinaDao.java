@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.Disciplina;
+import modelo.Usuario;
 
 /**
  *
@@ -95,7 +96,7 @@ public class DisciplinaDao {
         }
     }
     
-    public ArrayList<Disciplina> carregarTodasDisciplinas(UsuarioDao usuarioAtivo) throws SQLException {
+    public ArrayList<Disciplina> carregarTodasDisciplinas(Usuario usuarioAtivo) throws SQLException {
         Disciplina disciplina;
         ArrayList<Disciplina> disciplinas = new ArrayList();
         String sql =    "SELECT iddisciplina, disciplina.nome \n" +
@@ -105,7 +106,7 @@ public class DisciplinaDao {
                         "ORDER BY disciplina.nome ASC;";
         try {
             PreparedStatement statement = conectar.prepareStatement(sql);
-            statement.setInt(1, usuarioAtivo.getUserAtivo().getId());
+            statement.setInt(1, usuarioAtivo.getId());
             statement.execute();
             ResultSet resultSet = statement.getResultSet();
 
@@ -113,7 +114,6 @@ public class DisciplinaDao {
                 disciplina = new Disciplina(resultSet.getInt(1), 
                                             resultSet.getString(2));
                 disciplinas.add(disciplina);
-                System.out.println(disciplina.getNome());
             }
         } catch (SQLException e) {
             System.out.println("Conexão falhou.");
