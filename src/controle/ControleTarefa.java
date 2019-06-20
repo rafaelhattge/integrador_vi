@@ -7,7 +7,6 @@ package controle;
 
 import Dao.DisciplinaDao;
 import Dao.TarefaDao;
-import Dao.UsuarioDao;
 import Dao.conexao;
 import java.sql.Connection;
 import java.sql.Date;
@@ -152,8 +151,6 @@ public class ControleTarefa {
                 exibirTarefas();
             }
         } catch (SQLException ex) {
-            //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
         }
     }
@@ -193,18 +190,8 @@ public class ControleTarefa {
             JOptionPane.showMessageDialog(null, "Tarefa atualizada.");
             limparCampos();
             exibirTarefas();
-            conexao.close();
         } catch (SQLException ex) {
-            System.out.println("Conexão falhou.");
-            while (ex != null) {
-                String errorMessage = ex.getMessage();
-                System.err.println("sql error message:" + errorMessage);
-                String sqlState = ex.getSQLState();
-                System.err.println("sql state:" + sqlState);
-                int errorCode = ex.getErrorCode();
-                System.err.println("error code:" + errorCode);
-                ex = ex.getNextException();
-            }
+            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -220,6 +207,7 @@ public class ControleTarefa {
                     Connection conexao = new conexao().conectarBanco();
                     TarefaDao tarefaDao = new TarefaDao(conexao);
                     tarefaDao.deletarTarefa(idTarefa);
+                    limparCampos();
                     exibirTarefas();
                 }
 

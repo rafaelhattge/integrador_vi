@@ -46,7 +46,7 @@ public class TarefaDao {
     
     public void atualizarTarefa(Tarefa tarefa) throws SQLException {
         
-        String sql = "UPDATE tarefa SET nome = ?, data = ?, hora = ?, descricao = ?, status = ? WHERE idtarefa = ?;";
+        String sql = "UPDATE tarefa SET nome = ?, data = ?, hora = ?, descricao = ?, status = ?, iddisciplina = ? WHERE idtarefa = ?;";
         
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, tarefa.getNome());
@@ -54,7 +54,8 @@ public class TarefaDao {
         statement.setTime(3, tarefa.getHora());
         statement.setString(4, tarefa.getDescricao());
         statement.setBoolean(5, tarefa.isStatus());
-        statement.setInt(6, tarefa.getIdTarefa());
+        statement.setInt(6, tarefa.getIdDisciplina());
+        statement.setInt(7, tarefa.getIdTarefa());
         statement.execute();
         statement.close();
         conectar.close();
