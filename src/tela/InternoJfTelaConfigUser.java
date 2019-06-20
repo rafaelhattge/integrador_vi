@@ -6,6 +6,7 @@
 package tela;
 
 import controle.ControlerTelaConfigUser;
+import modelo.Usuario;
 
 /**
  *
@@ -35,22 +36,21 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         buttonGroupReceberMensagem = new javax.swing.ButtonGroup();
         jPanelTarefas = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTextTarefaCod = new javax.swing.JTextField();
-        jTextNome = new javax.swing.JTextField();
+        jTextUserCod = new javax.swing.JTextField();
+        jTextTipo = new javax.swing.JTextField();
         jTextEmail = new javax.swing.JTextField();
         jTextUser = new javax.swing.JTextField();
         jPasswordSenha = new javax.swing.JPasswordField();
-        jPasswordSenha1 = new javax.swing.JPasswordField();
         jLabelStatus = new javax.swing.JLabel();
-        jRadioButtonConcluido = new javax.swing.JRadioButton();
-        jRadioButtonNconcluido = new javax.swing.JRadioButton();
+        jRadioButtonMensagem = new javax.swing.JRadioButton();
+        jRadioButtonNMensagem = new javax.swing.JRadioButton();
         jPasswordSenha2 = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
+        jTextNome = new javax.swing.JTextField();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jLabelMensagemUser = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanelInicGerencia = new javax.swing.JPanel();
-        jButtonSaLvar = new javax.swing.JButton();
-        jButtonSaLvar1 = new javax.swing.JButton();
-        jButtonSaLvar2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(69, 69, 71));
         setBorder(null);
@@ -63,22 +63,32 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 6, true), "DADOS USUÁRIO", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(570, 529));
 
-        jTextTarefaCod.setEditable(false);
-        jTextTarefaCod.setBackground(new java.awt.Color(69, 69, 71));
-        jTextTarefaCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextTarefaCod.setForeground(new java.awt.Color(255, 255, 255));
-        jTextTarefaCod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextTarefaCod.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jTextTarefaCod.setMaximumSize(new java.awt.Dimension(385, 40));
-        jTextTarefaCod.setPreferredSize(new java.awt.Dimension(385, 40));
+        jTextUserCod.setEditable(false);
+        jTextUserCod.setBackground(new java.awt.Color(69, 69, 71));
+        jTextUserCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextUserCod.setForeground(new java.awt.Color(255, 255, 255));
+        jTextUserCod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextUserCod.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jTextUserCod.setMaximumSize(new java.awt.Dimension(385, 40));
+        jTextUserCod.setPreferredSize(new java.awt.Dimension(385, 40));
+        jTextUserCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextUserCodFocusLost(evt);
+            }
+        });
+        jTextUserCod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NaoPermitido(evt);
+            }
+        });
 
-        jTextNome.setEditable(false);
-        jTextNome.setBackground(new java.awt.Color(69, 69, 71));
-        jTextNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextNome.setForeground(new java.awt.Color(255, 255, 255));
-        jTextNome.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Nome", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jTextNome.setMaximumSize(new java.awt.Dimension(385, 40));
-        jTextNome.setPreferredSize(new java.awt.Dimension(385, 40));
+        jTextTipo.setEditable(false);
+        jTextTipo.setBackground(new java.awt.Color(69, 69, 71));
+        jTextTipo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextTipo.setForeground(new java.awt.Color(255, 255, 255));
+        jTextTipo.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Tipo", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jTextTipo.setMaximumSize(new java.awt.Dimension(385, 40));
+        jTextTipo.setPreferredSize(new java.awt.Dimension(385, 40));
 
         jTextEmail.setEditable(false);
         jTextEmail.setBackground(new java.awt.Color(69, 69, 71));
@@ -100,21 +110,10 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jPasswordSenha.setBackground(new java.awt.Color(69, 69, 71));
         jPasswordSenha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPasswordSenha.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordSenha.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Tipo", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPasswordSenha.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPasswordSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordSenhaActionPerformed(evt);
-            }
-        });
-
-        jPasswordSenha1.setEditable(false);
-        jPasswordSenha1.setBackground(new java.awt.Color(69, 69, 71));
-        jPasswordSenha1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPasswordSenha1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordSenha1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPasswordSenha1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordSenha1ActionPerformed(evt);
             }
         });
 
@@ -123,17 +122,19 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jLabelStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelStatus.setText("Receber mensagem do dia?");
 
-        jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
-        buttonGroupReceberMensagem.add(jRadioButtonConcluido);
-        jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtonConcluido.setText("Sim");
+        jRadioButtonMensagem.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonMensagem);
+        jRadioButtonMensagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonMensagem.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonMensagem.setText("Sim");
+        jRadioButtonMensagem.setEnabled(false);
 
-        jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
-        buttonGroupReceberMensagem.add(jRadioButtonNconcluido);
-        jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtonNconcluido.setText("Não");
+        jRadioButtonNMensagem.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonNMensagem);
+        jRadioButtonNMensagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonNMensagem.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonNMensagem.setText("Não");
+        jRadioButtonNMensagem.setEnabled(false);
 
         jPasswordSenha2.setEditable(false);
         jPasswordSenha2.setBackground(new java.awt.Color(69, 69, 71));
@@ -149,6 +150,38 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/morpheus.png"))); // NOI18N
 
+        jTextNome.setEditable(false);
+        jTextNome.setBackground(new java.awt.Color(69, 69, 71));
+        jTextNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextNome.setForeground(new java.awt.Color(255, 255, 255));
+        jTextNome.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 1, true), "Nome", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jTextNome.setMaximumSize(new java.awt.Dimension(385, 40));
+        jTextNome.setPreferredSize(new java.awt.Dimension(385, 40));
+
+        jButtonEditar.setBackground(new java.awt.Color(181, 92, 28));
+        jButtonEditar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonEditar.setText("EDITAR");
+        jButtonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LiberarEdicao(evt);
+            }
+        });
+
+        jButtonExcluir.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonExcluir.setText("EXCLUIR CONTA");
+        jButtonExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirUsuario(evt);
+            }
+        });
+
+        jLabelMensagemUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelMensagemUser.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelMensagemUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -158,55 +191,68 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPasswordSenha1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextTarefaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jPasswordSenha))
-                            .addComponent(jTextNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPasswordSenha2))
-                        .addGap(35, 35, 35))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelStatus)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButtonConcluido)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButtonNconcluido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelStatus)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButtonMensagem)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButtonNMensagem))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addComponent(jLabelMensagemUser, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextUserCod, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPasswordSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPasswordSenha2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(35, 35, 35))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addComponent(jLabelMensagemUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelStatus)
-                            .addComponent(jRadioButtonConcluido)
-                            .addComponent(jRadioButtonNconcluido))
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextTarefaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jRadioButtonMensagem)
+                            .addComponent(jRadioButtonNMensagem))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextUserCod, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPasswordSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
+                .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jPasswordSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jLabel11.setBackground(new java.awt.Color(177, 72, 210));
@@ -217,74 +263,14 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         jLabel11.setOpaque(true);
         jLabel11.setPreferredSize(new java.awt.Dimension(318, 45));
 
-        jPanelInicGerencia.setBackground(new java.awt.Color(69, 69, 71));
-        jPanelInicGerencia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 72, 210), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanelInicGerencia.setPreferredSize(new java.awt.Dimension(311, 428));
-
-        jButtonSaLvar.setBackground(new java.awt.Color(181, 92, 28));
-        jButtonSaLvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonSaLvar.setText("EDITAR");
-        jButtonSaLvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSaLvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaLvarActionPerformed(evt);
-            }
-        });
-
-        jButtonSaLvar1.setBackground(new java.awt.Color(177, 72, 210));
-        jButtonSaLvar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonSaLvar1.setText("SALVAR");
-        jButtonSaLvar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSaLvar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaLvar1ActionPerformed(evt);
-            }
-        });
-
-        jButtonSaLvar2.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonSaLvar2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonSaLvar2.setText("EXCLUIR CONTA");
-        jButtonSaLvar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSaLvar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaLvar2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelInicGerenciaLayout = new javax.swing.GroupLayout(jPanelInicGerencia);
-        jPanelInicGerencia.setLayout(jPanelInicGerenciaLayout);
-        jPanelInicGerenciaLayout.setHorizontalGroup(
-            jPanelInicGerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInicGerenciaLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanelInicGerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSaLvar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSaLvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSaLvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-        jPanelInicGerenciaLayout.setVerticalGroup(
-            jPanelInicGerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInicGerenciaLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jButtonSaLvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jButtonSaLvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jButtonSaLvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jPanelTarefasLayout = new javax.swing.GroupLayout(jPanelTarefas);
         jPanelTarefas.setLayout(jPanelTarefasLayout);
         jPanelTarefasLayout.setHorizontalGroup(
             jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
             .addGroup(jPanelTarefasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 842, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTarefasLayout.setVerticalGroup(
@@ -292,74 +278,180 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
             .addGroup(jPanelTarefasLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                    .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSaLvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaLvarActionPerformed
+    private void LiberarEdicao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LiberarEdicao
 
-     
-    }//GEN-LAST:event_jButtonSaLvarActionPerformed
+     controler.liberareditacaoUser();
+    }//GEN-LAST:event_LiberarEdicao
 
     private void jPasswordSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordSenhaActionPerformed
 
-    private void jPasswordSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordSenha1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordSenha1ActionPerformed
-
     private void jPasswordSenha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordSenha2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordSenha2ActionPerformed
 
-    private void jButtonSaLvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaLvar1ActionPerformed
+    private void ExcluirUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUsuario
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSaLvar1ActionPerformed
+        controler.DeleTarUsuario();
+    }//GEN-LAST:event_ExcluirUsuario
 
-    private void jButtonSaLvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaLvar2ActionPerformed
+    private void NaoPermitido(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NaoPermitido
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSaLvar2ActionPerformed
+        controler.naoPermitido();
+    }//GEN-LAST:event_NaoPermitido
+
+    private void jTextUserCodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextUserCodFocusLost
+        // TODO add your handling code here:
+     //   jLabelMensagemUser.setText("");
+    }//GEN-LAST:event_jTextUserCodFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupReceberMensagem;
-    private javax.swing.JButton jButtonSaLvar;
-    private javax.swing.JButton jButtonSaLvar1;
-    private javax.swing.JButton jButtonSaLvar2;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelMensagemUser;
     private javax.swing.JLabel jLabelStatus;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanelInicGerencia;
     private javax.swing.JPanel jPanelTarefas;
     private javax.swing.JPasswordField jPasswordSenha;
-    private javax.swing.JPasswordField jPasswordSenha1;
     private javax.swing.JPasswordField jPasswordSenha2;
-    private javax.swing.JRadioButton jRadioButtonConcluido;
-    private javax.swing.JRadioButton jRadioButtonNconcluido;
+    private javax.swing.JRadioButton jRadioButtonMensagem;
+    private javax.swing.JRadioButton jRadioButtonNMensagem;
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextNome;
-    private javax.swing.JTextField jTextTarefaCod;
+    private javax.swing.JTextField jTextTipo;
     private javax.swing.JTextField jTextUser;
+    private javax.swing.JTextField jTextUserCod;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTextField getjTextUserCod() {
+        return jTextUserCod;
+    }
+
+    public void setjTextUserCod(javax.swing.JTextField jTextUserCod) {
+        this.jTextUserCod = jTextUserCod;
+    }
+
+    public javax.swing.JPasswordField getjPasswordSenha() {
+        return jPasswordSenha;
+    }
+
+    public void setjPasswordSenha(javax.swing.JPasswordField jPasswordSenha) {
+        this.jPasswordSenha = jPasswordSenha;
+    }
+
+    public javax.swing.JTextField getjTextEmail() {
+        return jTextEmail;
+    }
+
+    public void setjTextEmail(javax.swing.JTextField jTextEmail) {
+        this.jTextEmail = jTextEmail;
+    }
+
+    public javax.swing.JTextField getjTextNome() {
+        return jTextNome;
+    }
+
+    public void setjTextNome(javax.swing.JTextField jTextNome) {
+        this.jTextNome = jTextNome;
+    }
+
+ 
+
+    public javax.swing.JTextField getjTextUser() {
+        return jTextUser;
+    }
+
+    public void setjTextUser(javax.swing.JTextField jTextUser) {
+        this.jTextUser = jTextUser;
+    }
+
+    public javax.swing.JRadioButton getjRadioButtoMensagem() {
+        return jRadioButtonMensagem;
+    }
+
+    public void setjRadioButtonMensagem(javax.swing.JRadioButton jRadioButtonConcluido) {
+        this.jRadioButtonMensagem = jRadioButtonConcluido;
+    }
+
+    public javax.swing.JRadioButton getjRadioButtonNMensagem() {
+        return jRadioButtonNMensagem;
+    }
+
+    public void setjRadioButtonNMensagem(javax.swing.JRadioButton jRadioButtonNconcluido) {
+        this.jRadioButtonNMensagem = jRadioButtonNconcluido;
+    }
+
+
+
+    public javax.swing.JButton getjButtonEditar() {
+        return jButtonEditar;
+    }
+
+    public void setjButtonEditar(javax.swing.JButton jButtonEditar) {
+        this.jButtonEditar = jButtonEditar;
+    }
+
+    public javax.swing.JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public void setjButtonExcluir(javax.swing.JButton jButtonExcluir) {
+        this.jButtonExcluir = jButtonExcluir;
+    }
+
+    public javax.swing.JPasswordField getjPasswordSenha2() {
+        return jPasswordSenha2;
+    }
+
+    public void setjPasswordSenha2(javax.swing.JPasswordField jPasswordSenha2) {
+        this.jPasswordSenha2 = jPasswordSenha2;
+    }
+
+    public javax.swing.JLabel getjLabelMensagemUser() {
+        return jLabelMensagemUser;
+    }
+
+    public void setjLabelMensagemUser(javax.swing.JLabel jLabelMensagemUser) {
+        this.jLabelMensagemUser = jLabelMensagemUser;
+    }
+
+    public javax.swing.JTextField getjTextTipo() {
+        return jTextTipo;
+    }
+
+    public void setjTextTipo(javax.swing.JTextField jTextTipo) {
+        this.jTextTipo = jTextTipo;
+    }
+
+ 
+    
 }

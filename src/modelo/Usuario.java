@@ -38,8 +38,15 @@ public class Usuario {
         this.usuario = usuario;
         this.senha = senha;
     }
-
+//construtor para logar
     public Usuario(String usuario, String senha) {
+        this.usuario = usuario;
+        this.senha = senha;
+    }
+
+       public Usuario(int id,String nome, String email, String usuario, String senha) {
+        this.nome = nome;
+        this.email = email;
         this.usuario = usuario;
         this.senha = senha;
     }

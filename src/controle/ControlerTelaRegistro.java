@@ -9,8 +9,6 @@ import Dao.UsuarioDao;
 import Dao.conexao;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import tela.TelaLogin;
@@ -42,10 +40,11 @@ public class ControlerTelaRegistro {
                 try {
                     Connection conexao = new conexao().conectarBanco();
                     UsuarioDao userDao = new UsuarioDao(conexao);
-                    userDao.InserirUsuario(user);
+             userDao.InserirUsuario(user);
+                 //  userDao.UpdateUsuario(user);
                     JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso");
                     limparRegistro();
-                    TelaLogin telalogin = new TelaLogin();
+                   
                     TelaLogin login = new TelaLogin();
                     login.setVisible(true);
                     view.dispose();

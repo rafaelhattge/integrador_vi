@@ -42,12 +42,12 @@ public class ControlerTelaLogin {
             //verificar se existe no banco
             boolean autenticar = userDao.autenticarUsuario(userAutenticar);
             if (autenticar) {
-                Usuario usuarioAtivo = userDao.usuarioAtivo(userAutenticar);
+                Usuario usuarioAtivo = userDao.usuarioAtivo(userAutenticar);//usuario para demais telas
                 userDao.setUserAtivo(usuarioAtivo);
                 TelaPrincipal tela = new TelaPrincipal(usuarioAtivo);
-                ControlerTelaPrincipal controleTelaPrincipal = new ControlerTelaPrincipal(tela, usuarioAtivo);
+              // ControlerTelaPrincipal controleTelaPrincipal = new ControlerTelaPrincipal(tela, usuarioAtivo);?
                 tela.getjLabelUsarioLogado().setText(usuarioAtivo.getNome());
-                
+                tela.getjLabelTipoUser().setText(usuarioAtivo.getTipo());
                 //System.out.println(usuarioAtivo.getNome());
 
                 tela.getContentPane().setBackground(new Color(69, 69, 71));
@@ -55,7 +55,7 @@ public class ControlerTelaLogin {
                 //   tela.setLocationRelativeTo(null);
                 // tela.pack();
                 tela.setVisible(true);
-
+conexao.close();
                 /*
                 Aparentemente o carregamento das informações do banco de dados
                 que se conectam com os componentes das telas internas só funciona se

@@ -19,7 +19,7 @@ import modelo.Usuario;
 public class UsuarioDao {
 
     private final Connection conectar;
-    private static Usuario userAtivo;
+    private Usuario userAtivo;
 
     //conexao com o banco
     public UsuarioDao(Connection conectar) {
@@ -38,13 +38,12 @@ public class UsuarioDao {
         statement.setString(3, user.getUsuario());
         statement.setString(4, user.getSenha());
         statement.execute();
-        // conectar.close();
+   // conectar.close();
 
     }
 
     public void UpdateUsuario(Usuario user) throws SQLException {
-        String sql = "update usuario set nome = ?,email= ?,usuario= ?,senha= ?, tipo =?,mensagem =? where"
-                + "id =?);";
+        String sql = "update usuario set nome = ?,email= ?,usuario= ?,senha= ?, tipo =?,mensagem =? where id =?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, user.getNome());
@@ -55,17 +54,17 @@ public class UsuarioDao {
         statement.setString(6, user.getMensagem());
         statement.setInt(7, user.getId());
         statement.execute();
-        // conectar.close();
+    //  conectar.close();
     }
 
     public void deletarUsuario(Usuario user) throws SQLException {
-        String sql = "Delete usuario where id =?);";
+        String sql = "Delete usuario where id =?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
 
         statement.setInt(1, user.getId());
         statement.execute();
-        // conectar.close();
+    conectar.close();
     }
 
     public ArrayList<Usuario> selecionarTodoUser() throws SQLException {
@@ -91,7 +90,7 @@ public class UsuarioDao {
     }
 
     public Usuario retornarUsuarioUnico(Usuario user) throws SQLException {
-        String sql = "select * from usuario where id = ?";
+        String sql = "select * from usuario where id = ?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setInt(1, user.getId());

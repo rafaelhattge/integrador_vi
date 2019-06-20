@@ -30,6 +30,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //  private Usuario usuario;
     /**
      * Creates new form TelaPrincipal
+     
      */
     public TelaPrincipal(Usuario usuarioAtivo) {
         
@@ -40,10 +41,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ui.put("Panel.background", new ColorUIResource(69,69,69));
         //ui.put("Button.foreground", new ColorUIResource(255,255,255));
         this.usuarioAtivo = usuarioAtivo;
-        controler = new ControlerTelaPrincipal(this, usuarioAtivo);
+        controler = new ControlerTelaPrincipal(this, this.usuarioAtivo);
         controler.ControleTelas(telaInicio);
            
-         
+     
    // pegarResolucao();     
  
   
@@ -556,6 +557,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public InternoJfTelaRelatorio getTelaRelatorio() {
         return telaInicio;
     }
-    
+     public InternoJfTelaConfigUser getTelaUser() {
+        return telaConfigUser;
+    }
     
 }
