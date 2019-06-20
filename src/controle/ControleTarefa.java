@@ -66,27 +66,29 @@ public class ControleTarefa {
         return listaTarefas;
     }
 
-    public void exibirTarefas() {
+    public void exibirTarefas() throws ParseException {
         DefaultTableModel tableModel = (DefaultTableModel) view.getjTableTarefas().getModel();
         ArrayList<Tarefa> tarefas = carregarListaTarefas();
         tableModel.setRowCount(0);
 
         if (tarefas.size() > 0) {
-            Object dados[] = new Object[5];
+            Object dados[] = new Object[8];
             for (int i = 0; i < tarefas.size(); i++) {
                 dados[0] = tarefas.get(i).getIdTarefa();
-                dados[1] = tarefas.get(i).getData();
-                dados[2] = tarefas.get(i).getNomeDisciplina();
-                dados[3] = tarefas.get(i).getDescricao();
-                dados[4] = tarefas.get(i).isStatus();
+                dados[1] = tarefas.get(i).getNome();
+                dados[2] = formatarData(tarefas.get(i).getData());
+                dados[3] = formatarHora(tarefas.get(i).getHora());
+                dados[4] = tarefas.get(i).getNomeDisciplina();
+                dados[5] = tarefas.get(i).getDescricao();
+                dados[6] = tarefas.get(i).isStatus();
+                dados[7] = tarefas.get(i).getIdDisciplina();
                 tableModel.addRow(dados);
             }
         }
     }
-
-    public ArrayList<Disciplina> carregarListaTodasDisciplinas() {
+    
+    public ArrayList<Disciplina> carregarTodasDisciplinas() {
         ArrayList<Disciplina> listaDisciplinas = new ArrayList();
-
         try {
             Connection conexao = new conexao().conectarBanco();
             DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
@@ -104,23 +106,29 @@ public class ControleTarefa {
                 e = e.getNextException();
             }
         }
-
         return listaDisciplinas;
     }
-
-    public void exibirTodasDisciplinas() {
-        ArrayList<Disciplina> listaDisciplinas = carregarListaTodasDisciplinas();
-
+    
+    public ArrayList<Disciplina> exibirTodasDisciplinas(int idDisciplina) {
+        int index = 0;
+        int i = 0;
+        ArrayList<Disciplina> listaDisciplinas = carregarTodasDisciplinas();
         view.getjComboBoxDisciplina().removeAllItems();
         if (listaDisciplinas.size() > 0) {
             for (Disciplina disciplina : listaDisciplinas) {
                 view.getjComboBoxDisciplina().addItem(disciplina.getNome());
+                if(idDisciplina == disciplina.getIdDisciplina()){
+                    index = i;
+                }
+                i++;
             }
         }
+        view.getjComboBoxDisciplina().setSelectedIndex(index);
+        return listaDisciplinas;
     }
 
     public void salvarTarefa() throws ParseException {
-        Disciplina disciplina = carregarListaTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
+        Disciplina disciplina = carregarTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
         Time hora = converterHora(view.getjFormattedTextHora().getText());
@@ -154,25 +162,30 @@ public class ControleTarefa {
     public void carregarCamposTarefa() throws ParseException {
         /*
          */
-        Tarefa tarefa = retornarTarefa();
+        Tarefa tarefa = carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow());
         view.getjTextTarefaNome().setText(tarefa.getNome());
         view.getjFormattedTextData().setText(formatarData(tarefa.getData()));
         view.getjFormattedTextHora().setText(formatarHora(tarefa.getHora()));
         view.getjTextAreaDescricao().setText(tarefa.getDescricao());
         view.getjRadioButtonConcluido().setSelected(tarefa.isStatus());
+        int idDisciplina = tarefa.getIdDisciplina();
+        exibirTodasDisciplinas(idDisciplina);
     }
 
     public void editarTarefa() throws ParseException {
-        //Disciplina disciplina = carregarListaTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
+        ArrayList<Disciplina> disciplinas = carregarTodasDisciplinas();
+        
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
         Time hora = converterHora(view.getjFormattedTextHora().getText());
         String descricao = view.getjTextAreaDescricao().getText();
         Boolean status = view.getjRadioButtonConcluido().isSelected();
-        int idTarefa = retornarTarefa().getIdTarefa();
-        //int idDisciplina = disciplina.getIdDisciplina();
-        //String nomeDisciplina = disciplina.getNome();
-        Tarefa tarefa = new Tarefa(idTarefa, nome, data, hora, descricao, status);
+        int idTarefa = carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow()).getIdTarefa();
+        int idDisciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex()).getIdDisciplina();
+        String nomeDisciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex()).getNome();
+        
+        Tarefa tarefa = new Tarefa(idTarefa, nome, data, hora, descricao, status, idDisciplina, nomeDisciplina);
+        
         try {
             Connection conexao = new conexao().conectarBanco();
             TarefaDao tarefaDao = new TarefaDao(conexao);
@@ -251,9 +264,5 @@ public class ControleTarefa {
         view.getjFormattedTextData().setText("");
         view.getjFormattedTextHora().setText("");
         view.getjTextAreaDescricao().setText("");
-    }
-
-    public Tarefa retornarTarefa() {
-        return carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow());
     }
 }

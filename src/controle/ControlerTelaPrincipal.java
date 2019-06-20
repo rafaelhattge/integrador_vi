@@ -35,17 +35,16 @@ public class ControlerTelaPrincipal {
         controleTelaDisciplina.exibirCursos();
         try {
             controleTelaDisciplina.exibirDisciplinas();
+            ControleTarefa controleTarefa = new ControleTarefa(view.getTelaTarefas(), usuarioAtivo);
+            controleTarefa.exibirTarefas();
+            ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio(), usuarioAtivo);
+            controleRelatorio.listarDatas();
         } catch (ParseException ex) {
             Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ControleTarefa controleTarefa = new ControleTarefa(view.getTelaTarefas(), usuarioAtivo);
-        controleTarefa.exibirTarefas();
-        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio(), usuarioAtivo);
-        try {
-            controleRelatorio.listarDatas();
         } catch (SQLException ex) {
             Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
 
