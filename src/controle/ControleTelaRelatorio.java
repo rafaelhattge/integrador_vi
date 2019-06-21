@@ -5,8 +5,8 @@
  */
 package controle;
 
+import Dao.SubtarefaDao;
 import Dao.TarefaDao;
-import Dao.UsuarioDao;
 import Dao.conexao;
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+import modelo.Subtarefa;
 import modelo.Tarefa;
 import modelo.Usuario;
 import tela.InternoJfTelaRelatorio;
@@ -29,6 +31,7 @@ public class ControleTelaRelatorio {
 
     private final InternoJfTelaRelatorio view;
     private static Usuario usuarioAtivo;
+    private ArrayList<Tarefa> tarefas;
 
     
     public ControleTelaRelatorio(InternoJfTelaRelatorio view) {
@@ -66,7 +69,7 @@ public class ControleTelaRelatorio {
     através de de um List Selection Listener
      */
     public void selecionarTarefasPorData() throws SQLException {
-        ArrayList<Tarefa> tarefas = new ArrayList();
+        tarefas = new ArrayList();
         Connection conexao = new conexao().conectarBanco();
         TarefaDao tarefaDao = new TarefaDao(conexao);
         ArrayList<Date> datas = tarefaDao.carregarDatasTarefas(usuarioAtivo);
@@ -78,6 +81,48 @@ public class ControleTelaRelatorio {
         }
         view.getjListTarefa().setModel(model);
         conexao.close();
+    }
+    
+    public ArrayList<Subtarefa> carregarSubtarefas(int idTarefa) {
+        ArrayList<Subtarefa> subtarefas = new ArrayList();
+        Connection conexao;
+        try {
+            conexao = new conexao().conectarBanco();
+            SubtarefaDao subtarefaDao = new SubtarefaDao(conexao);
+            subtarefas = subtarefaDao.carregarSubtarefas(idTarefa);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControleTelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return subtarefas;
+    }
+    //1 - idSubtarefa 2 - status 3- nomeSubtarefa 4 - idTarefa 5 - nomeTarefa
+    public void exibirSubtarefas() {
+        DefaultTableModel tableModel = (DefaultTableModel) view.getjTableExercicios().getModel();
+        ArrayList<Subtarefa> subtarefas;
+        int idTarefa = tarefas.get(view.getjListTarefa().getSelectedIndex()).getIdTarefa();
+        int concluidas = 0;
+        subtarefas = carregarSubtarefas(idTarefa);
+        tableModel.setRowCount(0);
+   
+        if(subtarefas.size() > 0) {
+            Object dados[] = new Object[5];
+            for (int i = 0; i < subtarefas.size(); i++) {
+                dados[0] = subtarefas.get(i).getIdSubtarefa();
+                dados[1] = subtarefas.get(i).isStatus();
+                dados[2] = subtarefas.get(i).getNome();
+                dados[3] = subtarefas.get(i).getIdTarefa();
+                dados[4] = subtarefas.get(i).getNomeTarefa();
+                tableModel.addRow(dados);
+                if(subtarefas.get(i).isStatus()){
+                    concluidas++;
+                }
+            }
+            if(concluidas > 0){
+                view.getjProgressBar().setValue(subtarefas.size() / concluidas);
+            }
+        }  
+        
     }
 
     //Formata a data recebida SQL para uma string dd/MM/yyyy
