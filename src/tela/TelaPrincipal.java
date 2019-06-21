@@ -23,7 +23,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private final InternoJfTelaRelatorio telaInicio = new InternoJfTelaRelatorio();
     private final InternoJfTelaTarefa telaTarefas = new InternoJfTelaTarefa();
     private final InternoJfTelaDisciplina telaDisciplina = new InternoJfTelaDisciplina();
-    private final InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser();
+    private final InternoJfTelaConfigUser telaConfigUser = new InternoJfTelaConfigUser(usuarioAtivo);
     private final InternoJfTelaConfGeral telaConfigGeral = new InternoJfTelaConfGeral();
     private final ControlerTelaPrincipal controler;
     private static Usuario usuarioAtivo;
@@ -559,6 +559,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
      public InternoJfTelaConfigUser getTelaUser() {
         return telaConfigUser;
+    }
+
+    public javax.swing.JButton getjButtonConfigAdmin() {
+        return jButtonConfigAdmin;
+    }
+
+    public void setjButtonConfigAdmin(javax.swing.JButton jButtonConfigAdmin) {
+        this.jButtonConfigAdmin = jButtonConfigAdmin;
     }
     
 }

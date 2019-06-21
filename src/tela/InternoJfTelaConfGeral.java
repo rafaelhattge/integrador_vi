@@ -6,9 +6,15 @@
 package tela;
 
 import controle.ControlerTelaConfigGeral;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import modelo.Usuario;
 
 /**
  *
@@ -42,33 +48,33 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jTabbedPaneConfigGeral = new javax.swing.JTabbedPane();
         jPanelConfigUsers = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabelPesquisar = new javax.swing.JLabel();
+        jTextFieldPesquisarUsuario = new javax.swing.JTextField();
+        jLabelBotaoPesquisar = new javax.swing.JLabel();
         jRadioButtonNome = new javax.swing.JRadioButton();
         jRadioButtonTipo = new javax.swing.JRadioButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTableUser = new javax.swing.JTable();
+        jTableUsuario = new javax.swing.JTable();
         jPanelInicGerencia = new javax.swing.JPanel();
-        jButtonEditar = new javax.swing.JButton();
-        jButtonNovo = new javax.swing.JButton();
+        jButtonEditarUsuario = new javax.swing.JButton();
+        jButtonNovoUsuario = new javax.swing.JButton();
         jButtonExcluirAll = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jButtonExcluirUser = new javax.swing.JButton();
+        jButtonExcluirUsuario = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jTextTarefaCod = new javax.swing.JTextField();
         jTextNome = new javax.swing.JTextField();
         jTextEmail = new javax.swing.JTextField();
         jTextUser = new javax.swing.JTextField();
-        jPasswordSenha1 = new javax.swing.JPasswordField();
+        jPasswordSenha = new javax.swing.JPasswordField();
         jLabelMensagemDia = new javax.swing.JLabel();
-        jRadioButtonConcluido = new javax.swing.JRadioButton();
-        jRadioButtonNconcluido = new javax.swing.JRadioButton();
-        jTextTarefaCod1 = new javax.swing.JTextField();
+        jRadioButtonReceMensagem = new javax.swing.JRadioButton();
+        jRadioButtonNReceMensage = new javax.swing.JRadioButton();
+        jTextCodigouser = new javax.swing.JTextField();
+        jComboBoxTipoUser = new javax.swing.JComboBox<>();
         jPanelConfigMensagem = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldPesquisarMensagem = new javax.swing.JTextField();
         jRadioButtonFrase = new javax.swing.JRadioButton();
-        jRadioButtoIdFrase = new javax.swing.JRadioButton();
-        jLabelPesquisar1 = new javax.swing.JLabel();
+        jRadioButtoCodigoFrase = new javax.swing.JRadioButton();
+        jLabeBotaolPesquisaMensagem = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jTextCodiFrase = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -102,15 +108,20 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
 
         jPanelConfigUsers.setBackground(new java.awt.Color(69, 69, 71));
 
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 2, true));
-        jTextField2.setOpaque(false);
+        jTextFieldPesquisarUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 2, true));
+        jTextFieldPesquisarUsuario.setOpaque(false);
+        jTextFieldPesquisarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldPesquisarUsuarioKeyReleased(evt);
+            }
+        });
 
-        jLabelPesquisar.setBackground(new java.awt.Color(153, 180, 51));
-        jLabelPesquisar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jLabelPesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelPesquisar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPesquisar.setText("Pesquisar ");
-        jLabelPesquisar.setOpaque(true);
+        jLabelBotaoPesquisar.setBackground(new java.awt.Color(153, 180, 51));
+        jLabelBotaoPesquisar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabelBotaoPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelBotaoPesquisar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBotaoPesquisar.setText("Pesquisar ");
+        jLabelBotaoPesquisar.setOpaque(true);
 
         buttonGroupCampo.add(jRadioButtonNome);
         jRadioButtonNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -130,9 +141,9 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jScrollPane4.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
         jScrollPane4.getViewport().setOpaque(false);
 
-        jTableUser.setBackground(new java.awt.Color(69, 69, 71));
-        jTableUser.setForeground(new java.awt.Color(255, 255, 255));
-        jTableUser.setModel(new javax.swing.table.DefaultTableModel(
+        jTableUsuario.setBackground(new java.awt.Color(69, 69, 71));
+        jTableUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -155,57 +166,57 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableUser.setToolTipText("");
-        jTableUser.setFocusable(false);
-        jTableUser.setOpaque(false);
-        jTableUser.setRowHeight(30);
-        jTableUser.setSelectionBackground(new java.awt.Color(66, 244, 158));
-        jTableUser.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jTableUser.setShowVerticalLines(false);
-        jTableUser.getTableHeader().setReorderingAllowed(false);
-        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableUser
+        jTableUsuario.setToolTipText("");
+        jTableUsuario.setFocusable(false);
+        jTableUsuario.setOpaque(false);
+        jTableUsuario.setRowHeight(30);
+        jTableUsuario.setSelectionBackground(new java.awt.Color(66, 244, 158));
+        jTableUsuario.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jTableUsuario.setShowVerticalLines(false);
+        jTableUsuario.getTableHeader().setReorderingAllowed(false);
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableUsuario
         .getDefaultRenderer(JLabel.class);
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(new java.awt.Color(153,180,51));
         //60, 74, 178
         //headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-        for (int i = 0; i < jTableUser.getModel().getColumnCount(); i++) {
-            jTableUser.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        for (int i = 0; i < jTableUsuario.getModel().getColumnCount(); i++) {
+            jTableUsuario.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
-        jTableUser.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableUserMouseClicked(evt);
+                jTableUsuarioMouseClicked(evt);
             }
         });
-        jTableUser.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTableUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTableUserKeyReleased(evt);
+                jTableUsuarioKeyReleased(evt);
             }
         });
-        jScrollPane4.setViewportView(jTableUser);
+        jScrollPane4.setViewportView(jTableUsuario);
 
         jPanelInicGerencia.setBackground(new java.awt.Color(69, 69, 71));
         jPanelInicGerencia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 6, true), "OPÇÕES", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanelInicGerencia.setPreferredSize(new java.awt.Dimension(311, 428));
 
-        jButtonEditar.setBackground(new java.awt.Color(181, 92, 28));
-        jButtonEditar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonEditar.setText("EDITAR");
-        jButtonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditarUsuario.setBackground(new java.awt.Color(181, 92, 28));
+        jButtonEditarUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonEditarUsuario.setText("EDITAR");
+        jButtonEditarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditarActionPerformed(evt);
+                jButtonEditarUsuarioActionPerformed(evt);
             }
         });
 
-        jButtonNovo.setBackground(new java.awt.Color(153, 180, 51));
-        jButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonNovo.setText("NOVO");
-        jButtonNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNovoUsuario.setBackground(new java.awt.Color(153, 180, 51));
+        jButtonNovoUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonNovoUsuario.setText("NOVO");
+        jButtonNovoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNovoActionPerformed(evt);
+                jButtonNovoUsuarioActionPerformed(evt);
             }
         });
 
@@ -221,13 +232,13 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/morpheus.png"))); // NOI18N
 
-        jButtonExcluirUser.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonExcluirUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonExcluirUser.setText("Excluir Usuário");
-        jButtonExcluirUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonExcluirUser.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExcluirUsuario.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonExcluirUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonExcluirUsuario.setText("Excluir Usuário");
+        jButtonExcluirUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExcluirUserActionPerformed(evt);
+                jButtonExcluirUsuarioActionPerformed(evt);
             }
         });
 
@@ -244,23 +255,23 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addGroup(jPanelInicGerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonExcluirAll, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInicGerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButtonEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonNovo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonExcluirUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEditarUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonNovoUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonExcluirUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelInicGerenciaLayout.setVerticalGroup(
             jPanelInicGerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicGerenciaLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonNovoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonExcluirUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addComponent(jButtonExcluirAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addGap(24, 24, 24))
         );
@@ -268,15 +279,6 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(69, 69, 71));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 6, true), "DADOS USUÁRIO", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(570, 529));
-
-        jTextTarefaCod.setEditable(false);
-        jTextTarefaCod.setBackground(new java.awt.Color(69, 69, 71));
-        jTextTarefaCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextTarefaCod.setForeground(new java.awt.Color(255, 255, 255));
-        jTextTarefaCod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextTarefaCod.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Tipo", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jTextTarefaCod.setMaximumSize(new java.awt.Dimension(385, 40));
-        jTextTarefaCod.setPreferredSize(new java.awt.Dimension(385, 40));
 
         jTextNome.setBackground(new java.awt.Color(69, 69, 71));
         jTextNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -301,14 +303,14 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jTextUser.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextUser.setPreferredSize(new java.awt.Dimension(385, 40));
 
-        jPasswordSenha1.setEditable(false);
-        jPasswordSenha1.setBackground(new java.awt.Color(69, 69, 71));
-        jPasswordSenha1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPasswordSenha1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordSenha1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPasswordSenha1.addActionListener(new java.awt.event.ActionListener() {
+        jPasswordSenha.setEditable(false);
+        jPasswordSenha.setBackground(new java.awt.Color(69, 69, 71));
+        jPasswordSenha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPasswordSenha.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordSenha.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Senha", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPasswordSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordSenha1ActionPerformed(evt);
+                jPasswordSenhaActionPerformed(evt);
             }
         });
 
@@ -317,26 +319,39 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jLabelMensagemDia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMensagemDia.setText("Receber mensagem do dia?");
 
-        jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
-        buttonGroupReceberMensagem.add(jRadioButtonConcluido);
-        jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtonConcluido.setText("Sim");
+        jRadioButtonReceMensagem.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonReceMensagem);
+        jRadioButtonReceMensagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonReceMensagem.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonReceMensagem.setText("Sim");
 
-        jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
-        buttonGroupReceberMensagem.add(jRadioButtonNconcluido);
-        jRadioButtonNconcluido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtonNconcluido.setText("Não");
+        jRadioButtonNReceMensage.setBackground(new java.awt.Color(69, 69, 71));
+        buttonGroupReceberMensagem.add(jRadioButtonNReceMensage);
+        jRadioButtonNReceMensage.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonNReceMensage.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtonNReceMensage.setText("Não");
 
-        jTextTarefaCod1.setEditable(false);
-        jTextTarefaCod1.setBackground(new java.awt.Color(69, 69, 71));
-        jTextTarefaCod1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextTarefaCod1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextTarefaCod1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextTarefaCod1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jTextTarefaCod1.setMaximumSize(new java.awt.Dimension(385, 40));
-        jTextTarefaCod1.setPreferredSize(new java.awt.Dimension(385, 40));
+        jTextCodigouser.setEditable(false);
+        jTextCodigouser.setBackground(new java.awt.Color(69, 69, 71));
+        jTextCodigouser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextCodigouser.setForeground(new java.awt.Color(255, 255, 255));
+        jTextCodigouser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextCodigouser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 1, true), "Código", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jTextCodigouser.setMaximumSize(new java.awt.Dimension(385, 40));
+        jTextCodigouser.setPreferredSize(new java.awt.Dimension(385, 40));
+
+        jComboBoxTipoUser.setBackground(new java.awt.Color(69, 69, 69));
+        jComboBoxTipoUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBoxTipoUser.setForeground(new java.awt.Color(240, 240, 240));
+        jComboBoxTipoUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Estudante" }));
+        jComboBoxTipoUser.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 180, 51)), "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jComboBoxTipoUser.setFocusable(false);
+        jComboBoxTipoUser.setOpaque(false);
+        jComboBoxTipoUser.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxTipoUserItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -345,22 +360,22 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelMensagemDia)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButtonConcluido)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButtonNconcluido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextTarefaCod1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextTarefaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                     .addComponent(jTextNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPasswordSenha1)))
+                        .addComponent(jPasswordSenha))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelMensagemDia)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButtonReceMensagem)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButtonNReceMensage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextCodigouser, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxTipoUser, 0, 251, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -371,11 +386,11 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelMensagemDia)
-                            .addComponent(jRadioButtonConcluido)
-                            .addComponent(jRadioButtonNconcluido)))
+                            .addComponent(jRadioButtonReceMensagem)
+                            .addComponent(jRadioButtonNReceMensage)))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextTarefaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextTarefaCod1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextCodigouser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxTipoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -383,8 +398,8 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelConfigUsersLayout = new javax.swing.GroupLayout(jPanelConfigUsers);
@@ -397,15 +412,15 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jRadioButtonTipo)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelBotaoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanelConfigUsersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4))
                 .addGap(10, 10, 10)
                 .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -415,9 +430,9 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConfigUsersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jLabelBotaoPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                     .addGroup(jPanelConfigUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jRadioButtonNome)
                         .addComponent(jRadioButtonTipo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -426,7 +441,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+                    .addComponent(jPanelInicGerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
 
@@ -434,8 +449,8 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
 
         jPanelConfigMensagem.setBackground(new java.awt.Color(69, 69, 71));
 
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 2, true));
-        jTextField3.setOpaque(false);
+        jTextFieldPesquisarMensagem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 2, true));
+        jTextFieldPesquisarMensagem.setOpaque(false);
 
         buttonGroupFrase.add(jRadioButtonFrase);
         jRadioButtonFrase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -444,18 +459,18 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jRadioButtonFrase.setText("Frase");
         jRadioButtonFrase.setOpaque(false);
 
-        buttonGroupFrase.add(jRadioButtoIdFrase);
-        jRadioButtoIdFrase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jRadioButtoIdFrase.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtoIdFrase.setText("Código");
-        jRadioButtoIdFrase.setOpaque(false);
+        buttonGroupFrase.add(jRadioButtoCodigoFrase);
+        jRadioButtoCodigoFrase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jRadioButtoCodigoFrase.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButtoCodigoFrase.setText("Código");
+        jRadioButtoCodigoFrase.setOpaque(false);
 
-        jLabelPesquisar1.setBackground(new java.awt.Color(153, 180, 51));
-        jLabelPesquisar1.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jLabelPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelPesquisar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPesquisar1.setText("Pesquisar ");
-        jLabelPesquisar1.setOpaque(true);
+        jLabeBotaolPesquisaMensagem.setBackground(new java.awt.Color(153, 180, 51));
+        jLabeBotaolPesquisaMensagem.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabeBotaolPesquisaMensagem.setForeground(new java.awt.Color(255, 255, 255));
+        jLabeBotaolPesquisaMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabeBotaolPesquisaMensagem.setText("Pesquisar ");
+        jLabeBotaolPesquisaMensagem.setOpaque(true);
 
         jPanel3.setBackground(new java.awt.Color(69, 69, 71));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 180, 51), 6, true), "FRASE", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -494,7 +509,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextCodiFrase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -537,7 +552,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         jTableMensagem.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jTableMensagem.setShowVerticalLines(false);
         jTableMensagem.getTableHeader().setReorderingAllowed(false);
-        DefaultTableCellRenderer renderere = (DefaultTableCellRenderer) jTableUser
+        DefaultTableCellRenderer renderere = (DefaultTableCellRenderer) jTableUsuario
         .getDefaultRenderer(JLabel.class);
         renderere.setHorizontalAlignment(SwingConstants.CENTER);
         DefaultTableCellRenderer headerRenderere = new DefaultTableCellRenderer();
@@ -639,7 +654,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                 .addComponent(jButtonExcluirMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addComponent(jButtonExcluirAllFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(24, 24, 24))
         );
@@ -654,16 +669,16 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
                     .addGroup(jPanelConfigMensagemLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(jRadioButtoIdFrase)
+                        .addComponent(jRadioButtoCodigoFrase)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButtonFrase)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldPesquisarMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabeBotaolPesquisaMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
-                .addComponent(jPanelInicGerencia1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                .addComponent(jPanelInicGerencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
         );
         jPanelConfigMensagemLayout.setVerticalGroup(
@@ -676,9 +691,9 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
                     .addGroup(jPanelConfigMensagemLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanelConfigMensagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButtoIdFrase)
+                            .addComponent(jTextFieldPesquisarMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabeBotaolPesquisaMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioButtoCodigoFrase)
                             .addComponent(jRadioButtonFrase))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -722,36 +737,42 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUserMouseClicked
+    private void jTableUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUsuarioMouseClicked
         // TODO add your handling code here:
 
         //        controleEventoTabela();
-    }//GEN-LAST:event_jTableUserMouseClicked
+    }//GEN-LAST:event_jTableUsuarioMouseClicked
 
-    private void jTableUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableUserKeyReleased
+    private void jTableUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableUsuarioKeyReleased
         // TODO add your handling code here:
         //        controleEventoTabela();
-    }//GEN-LAST:event_jTableUserKeyReleased
+    }//GEN-LAST:event_jTableUsuarioKeyReleased
 
-    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+    private void jButtonEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarUsuarioActionPerformed
 
-    }//GEN-LAST:event_jButtonEditarActionPerformed
+    }//GEN-LAST:event_jButtonEditarUsuarioActionPerformed
 
-    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
+    private void jButtonNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNovoActionPerformed
+          try {
+            mostrarTableUsuario();
+        } catch (SQLException ex) {
+            Logger.getLogger(InternoJfTelaConfGeral.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButtonNovoUsuarioActionPerformed
 
     private void jButtonExcluirAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirAllActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonExcluirAllActionPerformed
 
-    private void jPasswordSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordSenha1ActionPerformed
+    private void jPasswordSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordSenha1ActionPerformed
+    }//GEN-LAST:event_jPasswordSenhaActionPerformed
 
-    private void jButtonExcluirUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirUserActionPerformed
+    private void jButtonExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonExcluirUserActionPerformed
+    }//GEN-LAST:event_jButtonExcluirUsuarioActionPerformed
 
     private void jTableMensagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMensagemMouseClicked
         // TODO add your handling code here:
@@ -777,25 +798,35 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonExcluirMensagemActionPerformed
 
+    private void jComboBoxTipoUserItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxTipoUserItemStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBoxTipoUserItemStateChanged
+
+    private void jTextFieldPesquisarUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarUsuarioKeyReleased
+      
+    }//GEN-LAST:event_jTextFieldPesquisarUsuarioKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupCampo;
     private javax.swing.ButtonGroup buttonGroupFrase;
     private javax.swing.ButtonGroup buttonGroupReceberMensagem;
-    private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEditarMensage;
+    private javax.swing.JButton jButtonEditarUsuario;
     private javax.swing.JButton jButtonExcluirAll;
     private javax.swing.JButton jButtonExcluirAllFrase;
     private javax.swing.JButton jButtonExcluirMensagem;
-    private javax.swing.JButton jButtonExcluirUser;
-    private javax.swing.JButton jButtonNovo;
+    private javax.swing.JButton jButtonExcluirUsuario;
     private javax.swing.JButton jButtonNovoMensa;
+    private javax.swing.JButton jButtonNovoUsuario;
+    private javax.swing.JComboBox<String> jComboBoxTipoUser;
+    private javax.swing.JLabel jLabeBotaolPesquisaMensagem;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelBotaoPesquisar;
     private javax.swing.JLabel jLabelMensagemDia;
-    private javax.swing.JLabel jLabelPesquisar;
-    private javax.swing.JLabel jLabelPesquisar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelConfigMensagem;
@@ -803,27 +834,280 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanelInicGerencia;
     private javax.swing.JPanel jPanelInicGerencia1;
     private javax.swing.JPanel jPanelTarefas;
-    private javax.swing.JPasswordField jPasswordSenha1;
-    private javax.swing.JRadioButton jRadioButtoIdFrase;
-    private javax.swing.JRadioButton jRadioButtonConcluido;
+    private javax.swing.JPasswordField jPasswordSenha;
+    private javax.swing.JRadioButton jRadioButtoCodigoFrase;
     private javax.swing.JRadioButton jRadioButtonFrase;
-    private javax.swing.JRadioButton jRadioButtonNconcluido;
+    private javax.swing.JRadioButton jRadioButtonNReceMensage;
     private javax.swing.JRadioButton jRadioButtonNome;
+    private javax.swing.JRadioButton jRadioButtonReceMensagem;
     private javax.swing.JRadioButton jRadioButtonTipo;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPaneConfigGeral;
     private javax.swing.JTable jTableMensagem;
-    private javax.swing.JTable jTableUser;
+    private javax.swing.JTable jTableUsuario;
     private javax.swing.JTextArea jTextAreaFrase;
     private javax.swing.JTextField jTextCodiFrase;
+    private javax.swing.JTextField jTextCodigouser;
     private javax.swing.JTextField jTextEmail;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextFieldPesquisarMensagem;
+    private javax.swing.JTextField jTextFieldPesquisarUsuario;
     private javax.swing.JTextField jTextNome;
-    private javax.swing.JTextField jTextTarefaCod;
-    private javax.swing.JTextField jTextTarefaCod1;
     private javax.swing.JTextField jTextUser;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.ButtonGroup getButtonGroupCampo() {
+        return buttonGroupCampo;
+    }
+
+    public void setButtonGroupCampo(javax.swing.ButtonGroup buttonGroupCampo) {
+        this.buttonGroupCampo = buttonGroupCampo;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroupFrase() {
+        return buttonGroupFrase;
+    }
+
+    public void setButtonGroupFrase(javax.swing.ButtonGroup buttonGroupFrase) {
+        this.buttonGroupFrase = buttonGroupFrase;
+    }
+
+    public javax.swing.ButtonGroup getButtonGroupReceberMensagem() {
+        return buttonGroupReceberMensagem;
+    }
+
+    public void setButtonGroupReceberMensagem(javax.swing.ButtonGroup buttonGroupReceberMensagem) {
+        this.buttonGroupReceberMensagem = buttonGroupReceberMensagem;
+    }
+
+    public javax.swing.JButton getjButtonEditarMensage() {
+        return jButtonEditarMensage;
+    }
+
+    public void setjButtonEditarMensage(javax.swing.JButton jButtonEditarMensage) {
+        this.jButtonEditarMensage = jButtonEditarMensage;
+    }
+
+    public javax.swing.JButton getjButtonEditarUsuario() {
+        return jButtonEditarUsuario;
+    }
+
+    public void setjButtonEditarUsuario(javax.swing.JButton jButtonEditarUsuario) {
+        this.jButtonEditarUsuario = jButtonEditarUsuario;
+    }
+
+    public javax.swing.JButton getjButtonExcluirAll() {
+        return jButtonExcluirAll;
+    }
+
+    public void setjButtonExcluirAll(javax.swing.JButton jButtonExcluirAll) {
+        this.jButtonExcluirAll = jButtonExcluirAll;
+    }
+
+    public javax.swing.JButton getjButtonExcluirAllFrase() {
+        return jButtonExcluirAllFrase;
+    }
+
+    public void setjButtonExcluirAllFrase(javax.swing.JButton jButtonExcluirAllFrase) {
+        this.jButtonExcluirAllFrase = jButtonExcluirAllFrase;
+    }
+
+    public javax.swing.JButton getjButtonExcluirMensagem() {
+        return jButtonExcluirMensagem;
+    }
+
+    public void setjButtonExcluirMensagem(javax.swing.JButton jButtonExcluirMensagem) {
+        this.jButtonExcluirMensagem = jButtonExcluirMensagem;
+    }
+
+    public javax.swing.JButton getjButtonExcluirUsuario() {
+        return jButtonExcluirUsuario;
+    }
+
+    public void setjButtonExcluirUsuario(javax.swing.JButton jButtonExcluirUsuario) {
+        this.jButtonExcluirUsuario = jButtonExcluirUsuario;
+    }
+
+    public javax.swing.JButton getjButtonNovoMensa() {
+        return jButtonNovoMensa;
+    }
+
+    public void setjButtonNovoMensa(javax.swing.JButton jButtonNovoMensa) {
+        this.jButtonNovoMensa = jButtonNovoMensa;
+    }
+
+    public javax.swing.JButton getjButtonNovoUsuario() {
+        return jButtonNovoUsuario;
+    }
+
+    public void setjButtonNovoUsuario(javax.swing.JButton jButtonNovoUsuario) {
+        this.jButtonNovoUsuario = jButtonNovoUsuario;
+    }
+
+    public javax.swing.JComboBox<String> getjComboBoxTipoUser() {
+        return jComboBoxTipoUser;
+    }
+
+    public void setjComboBoxTipoUser(javax.swing.JComboBox<String> jComboBoxTipoUser) {
+        this.jComboBoxTipoUser = jComboBoxTipoUser;
+    }
+
+    public javax.swing.JLabel getjLabeBotaolPesquisaMensagem() {
+        return jLabeBotaolPesquisaMensagem;
+    }
+
+    public void setjLabeBotaolPesquisaMensagem(javax.swing.JLabel jLabeBotaolPesquisaMensagem) {
+        this.jLabeBotaolPesquisaMensagem = jLabeBotaolPesquisaMensagem;
+    }
+
+    public javax.swing.JLabel getjLabelBotaoPesquisar() {
+        return jLabelBotaoPesquisar;
+    }
+
+    public void setjLabelBotaoPesquisar(javax.swing.JLabel jLabelBotaoPesquisar) {
+        this.jLabelBotaoPesquisar = jLabelBotaoPesquisar;
+    }
+
+    public javax.swing.JPasswordField getjPasswordSenha() {
+        return jPasswordSenha;
+    }
+
+    public void setjPasswordSenha(javax.swing.JPasswordField jPasswordSenha) {
+        this.jPasswordSenha = jPasswordSenha;
+    }
+
+    public javax.swing.JRadioButton getjRadioButtonFrase() {
+        return jRadioButtonFrase;
+    }
+
+    public void setjRadioButtonFrase(javax.swing.JRadioButton jRadioButtonFrase) {
+        this.jRadioButtonFrase = jRadioButtonFrase;
+    }
+
+    public javax.swing.JRadioButton getjRadioButtonNReceMensage() {
+        return jRadioButtonNReceMensage;
+    }
+
+    public void setjRadioButtonNReceMensage(javax.swing.JRadioButton jRadioButtonNReceMensage) {
+        this.jRadioButtonNReceMensage = jRadioButtonNReceMensage;
+    }
+
+    public javax.swing.JRadioButton getjRadioButtonNome() {
+        return jRadioButtonNome;
+    }
+
+    public void setjRadioButtonNome(javax.swing.JRadioButton jRadioButtonNome) {
+        this.jRadioButtonNome = jRadioButtonNome;
+    }
+
+    public javax.swing.JRadioButton getjRadioButtonReceMensagem() {
+        return jRadioButtonReceMensagem;
+    }
+
+    public void setjRadioButtonReceMensagem(javax.swing.JRadioButton jRadioButtonReceMensagem) {
+        this.jRadioButtonReceMensagem = jRadioButtonReceMensagem;
+    }
+
+    public javax.swing.JRadioButton getjRadioButtonTipo() {
+        return jRadioButtonTipo;
+    }
+
+    public void setjRadioButtonTipo(javax.swing.JRadioButton jRadioButtonTipo) {
+        this.jRadioButtonTipo = jRadioButtonTipo;
+    }
+
+    public javax.swing.JTable getjTableMensagem() {
+        return jTableMensagem;
+    }
+
+    public void setjTableMensagem(javax.swing.JTable jTableMensagem) {
+        this.jTableMensagem = jTableMensagem;
+    }
+
+    public javax.swing.JTable getjTableUsuario() {
+        return jTableUsuario;
+    }
+
+    public void setjTableUsuario(javax.swing.JTable jTableUsuario) {
+        this.jTableUsuario = jTableUsuario;
+    }
+
+    public javax.swing.JTextArea getjTextAreaFrase() {
+        return jTextAreaFrase;
+    }
+
+    public void setjTextAreaFrase(javax.swing.JTextArea jTextAreaFrase) {
+        this.jTextAreaFrase = jTextAreaFrase;
+    }
+
+    public javax.swing.JTextField getjTextCodiFrase() {
+        return jTextCodiFrase;
+    }
+
+    public void setjTextCodiFrase(javax.swing.JTextField jTextCodiFrase) {
+        this.jTextCodiFrase = jTextCodiFrase;
+    }
+
+    public javax.swing.JTextField getjTextCodigouser() {
+        return jTextCodigouser;
+    }
+
+    public void setjTextCodigouser(javax.swing.JTextField jTextCodigouser) {
+        this.jTextCodigouser = jTextCodigouser;
+    }
+
+    public javax.swing.JTextField getjTextEmail() {
+        return jTextEmail;
+    }
+
+    public void setjTextEmail(javax.swing.JTextField jTextEmail) {
+        this.jTextEmail = jTextEmail;
+    }
+
+    public javax.swing.JTextField getjTextFieldPesquisarUsuario() {
+        return jTextFieldPesquisarUsuario;
+    }
+
+    public void setjTextFieldPesquisarUsuario(javax.swing.JTextField jTextFieldPesquisarUsuario) {
+        this.jTextFieldPesquisarUsuario = jTextFieldPesquisarUsuario;
+    }
+
+    public javax.swing.JTextField getjTextNome() {
+        return jTextNome;
+    }
+
+    public void setjTextNome(javax.swing.JTextField jTextNome) {
+        this.jTextNome = jTextNome;
+    }
+
+    public javax.swing.JTextField getjTextUser() {
+        return jTextUser;
+    }
+
+    public void setjTextUser(javax.swing.JTextField jTextUser) {
+        this.jTextUser = jTextUser;
+    }
+     private void mostrarTableUsuario() throws SQLException {
+        DefaultTableModel modelUsuario = (DefaultTableModel) jTableUsuario.getModel();
+           ArrayList<Usuario> listaUsuario =  controler.carregarListaUsuarios();
+        if (modelUsuario.getRowCount() > 0) {
+            modelUsuario.setRowCount(0);
+        }
+        Object rowData[] = new Object[7];
+        
+       
+        for (int i = 0; i < listaUsuario.size(); i++) {
+            rowData[0] = listaUsuario.get(i).getId();
+            rowData[1] = listaUsuario.get(i).getNome();
+            rowData[2] = listaUsuario.get(i).getEmail();
+            rowData[3] = listaUsuario.get(i).getUsuario();
+            rowData[4] = listaUsuario.get(i).getSenha();
+            rowData[5] = listaUsuario.get(i).getTipo();
+            rowData[6] = listaUsuario.get(i).getMensagem();
+            modelUsuario.addRow(rowData);
+        }
+//jTabbedPane1.setSelectedIndex(dic.getIndex());
+
+    }
 }

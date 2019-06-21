@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import tela.InternoJfTelaConfigUser;
+import tela.TelaPrincipal;
 
 /**
  *
@@ -27,14 +28,14 @@ public class ControlerTelaConfigUser {
     this.usuarioAtivo = user;
        // MostrarDados(user);
     }
-    public void MostrarDados(Usuario user){
-       view.getjTextUserCod().setText(Integer.toString(user.getId()));
-        view.getjTextTipo().setText(user.getTipo());
-        view.getjTextNome().setText(user.getNome());
-        view.getjTextEmail().setText(user.getEmail());
-        view.getjTextUser().setText(user.getUsuario());
-        view.getjPasswordSenha().setText(user.getSenha());
-        if(user.getMensagem().equals("sim")){
+    public void MostrarDados(){
+       view.getjTextUserCod().setText(Integer.toString(usuarioAtivo.getId()));
+        view.getjTextTipo().setText(usuarioAtivo.getTipo());
+        view.getjTextNome().setText(usuarioAtivo.getNome());
+        view.getjTextEmail().setText(usuarioAtivo.getEmail());
+        view.getjTextUser().setText(usuarioAtivo.getUsuario());
+        view.getjPasswordSenha().setText(usuarioAtivo.getSenha());
+        if(usuarioAtivo.getMensagem().equals("sim")){
             view.getjRadioButtoMensagem().setSelected(true);
         }else{
             view.getjRadioButtonNMensagem().setSelected(true);
@@ -46,21 +47,14 @@ public class ControlerTelaConfigUser {
     }
     public void liberareditacaoUser(){
          if(view.getjButtonEditar().getText().equals("EDITAR")){
-              view.getjTextTipo().setEditable(true);
-        view.getjTextNome().setEditable(true);
-        view.getjTextEmail().setEditable(true);
-        view.getjTextUser().setEditable(true);
-        view.getjPasswordSenha().setEditable(true);
-      view.getjPasswordSenha2().setEnabled(true);
-      view.getjPasswordSenha2().setEditable(true);
-            view.getjRadioButtoMensagem().setEnabled(true);
-       
-            view.getjRadioButtonNMensagem().setEnabled(true);
-            view.getjTextTipo().requestFocus(true);
+            
+      controleBotoes(true);
             view.getjButtonEditar().setText("SALVAR");
                 
          }else{
              AlterarUsuario();
+             controleBotoes(false);
+              view.getjButtonEditar().setText("EDITAR");
          }
     }
     ///metodo Update User
@@ -81,16 +75,20 @@ public class ControlerTelaConfigUser {
   String tip = view.getjTextTipo().getText();
           String mensa = mensageSelecionada();
                 Usuario usuarioU = new Usuario(id, nome, email, usuar, senh,tip,mensa);
+                usuarioAtivo =usuarioU;
                 try {
                     Connection conecta = new conexao().conectarBanco();
-                    System.out.println("Conectou");
+                   
                     UsuarioDao userDao = new UsuarioDao(conecta);
-                     System.out.println("Entrou no usuario DAO");
-                    userDao.InserirUsuario(usuarioAtivo);
-                    System.out.println("Echegou Update");
+                     
+                   
+                   int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja alterar o usuário:\n"+usuarioAtivo.getNome(),"Confirmar alteração",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+                    if(resposta==JOptionPane.OK_OPTION){
+                     userDao.UpdateUsuario(usuarioAtivo);
                     JOptionPane.showMessageDialog(null, "Usuário Atualizado com sucesso");
-                 //   limparRegistro();
-                 //   MostrarDados(usuario);
+                    }
+               limpardados();
+               MostrarDados();
                     
                 } catch (SQLException ex) {
                     //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,16 +113,22 @@ public class ControlerTelaConfigUser {
             String tip = view.getjTextTipo().getText();
             String mensa = mensageSelecionada();
                 Usuario usuarioU = new Usuario(id, nome, email, usuar, senh, tip, mensa);
+                usuarioAtivo =usuarioU;
                 try {
                     Connection conecta = new conexao().conectarBanco();
                     System.out.println("Conectou");
                     UsuarioDao userDao = new UsuarioDao(conecta);
+                      int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir a sua conta?\nApós a exclusão você perderá todos dados","Confirmar Excluir",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+                    if(resposta==JOptionPane.OK_OPTION){
+                     userDao.deletarUsuario(usuarioAtivo);
+                    JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.");
+                    System.exit(0);
+                    }
                      System.out.println("Entrou no usuario DAO");
-                    userDao.deletarUsuario(usuarioU);
+                    userDao.deletarUsuario(usuarioAtivo);
                     System.out.println("Echegou Update");
                     JOptionPane.showMessageDialog(null, "Usuário Atualizado com sucesso");
-                 //   limparRegistro();
-                 //   MostrarDados(usuario);
+             
                     
                 } catch (SQLException ex) {
                     //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,5 +153,28 @@ return mensagem;
         if(view.getjButtonEditar().getText().equals("SALVAR")){
             view.getjLabelMensagemUser().setText("Não é permitido editar este campo!");
           }
+    }
+
+    private void limpardados() {
+       view.getjTextNome().setText("");
+        view.getjTextEmail().setText("");
+        view.getjTextUser().setText("");
+        view.getjPasswordSenha().setText("");
+      view.getjPasswordSenha2().setText("");
+     
+          
+    }
+
+    private void controleBotoes(boolean b) {
+      view.getjTextNome().setEditable(b);
+        view.getjTextEmail().setEditable(b);
+        view.getjTextUser().setEditable(b);
+        view.getjPasswordSenha().setEditable(b);
+      view.getjPasswordSenha2().setEnabled(b);
+      view.getjPasswordSenha2().setEditable(b);
+            view.getjRadioButtoMensagem().setEnabled(b);
+             view.getjRadioButtonNMensagem().setEnabled(b);
+            
+            view.getjTextNome().requestFocus(b);
     }
 }

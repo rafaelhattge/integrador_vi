@@ -15,13 +15,14 @@ import modelo.Usuario;
 public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
 
     private final ControlerTelaConfigUser controler;
-
+    private Usuario usua;
     /**
      * Creates new form InternoJfTelaDisicplina
      */
-    public InternoJfTelaConfigUser() {
+    public InternoJfTelaConfigUser(Usuario userAtivo) {
         initComponents();
-        controler = new ControlerTelaConfigUser(this);
+        this.usua = userAtivo;
+        controler = new ControlerTelaConfigUser(this,usua);
     }
 
     /**
@@ -56,6 +57,23 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         setBorder(null);
         setMaximumSize(new java.awt.Dimension(955, 575));
         setPreferredSize(new java.awt.Dimension(955, 575));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanelTarefas.setBackground(new java.awt.Color(69, 69, 71));
 
@@ -329,6 +347,11 @@ public class InternoJfTelaConfigUser extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
      //   jLabelMensagemUser.setText("");
     }//GEN-LAST:event_jTextUserCodFocusLost
+
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        // TODO add your handling code here:
+        controler.MostrarDados();
+    }//GEN-LAST:event_formInternalFrameActivated
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

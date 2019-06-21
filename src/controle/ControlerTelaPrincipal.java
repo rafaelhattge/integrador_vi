@@ -23,7 +23,7 @@ public class ControlerTelaPrincipal {
 
     private final TelaPrincipal view;
     
-   // private Usuario usuarioAtivo;//M
+   private Usuario usuarioAtivo;
 
     public ControlerTelaPrincipal(TelaPrincipal view) {
         this.view = view;
@@ -31,8 +31,8 @@ public class ControlerTelaPrincipal {
 
     public ControlerTelaPrincipal(TelaPrincipal view, Usuario usuarioAtivo) {
         this.view = view;
-   //     this.usuarioAtivo = usuarioAtivo;//M
-        ControleTelaDisciplina controleTelaDisciplina = new ControleTelaDisciplina(view.getTelaDisicplina(), view.getTelaDisicplina().getDialog(), usuarioAtivo);
+     this.usuarioAtivo = usuarioAtivo;
+        ControleTelaDisciplina controleTelaDisciplina = new ControleTelaDisciplina(view.getTelaDisicplina(), view.getTelaDisicplina().getDialog(), this.usuarioAtivo);
         controleTelaDisciplina.exibirCursos();
         try {
          controleTelaDisciplina.exibirDisciplinas();
@@ -40,17 +40,17 @@ public class ControlerTelaPrincipal {
             Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         ///////
-        ControleTarefa controleTarefa = new ControleTarefa(view.getTelaTarefas(), usuarioAtivo);
+        ControleTarefa controleTarefa = new ControleTarefa(view.getTelaTarefas(), this.usuarioAtivo);
         controleTarefa.exibirTarefas();
-        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio(), usuarioAtivo);
+        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio(), this.usuarioAtivo);
         try {
             controleRelatorio.listarDatas();
         } catch (SQLException ex) {
             Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         ////////////////
-        ControlerTelaConfigUser controleUser = new ControlerTelaConfigUser(view.getTelaUser(), usuarioAtivo);
-        controleUser.MostrarDados(usuarioAtivo);
+        ControlerTelaConfigUser controleUser = new ControlerTelaConfigUser(view.getTelaUser(), this.usuarioAtivo);
+     //   controleUser.MostrarDados(this.usuarioAtivo);
     }
 
 

@@ -19,7 +19,7 @@ import modelo.Usuario;
 public class UsuarioDao {
 
     private final Connection conectar;
-    private Usuario userAtivo;
+  //  private Usuario userAtivo;
 
     //conexao com o banco
     public UsuarioDao(Connection conectar) {
@@ -30,13 +30,15 @@ public class UsuarioDao {
     public void InserirUsuario(Usuario user) throws SQLException {
 
         // TODO add your handling code here:
-        String sql = "insert into usuario (nome,email,usuario,senha)values(?,?,?,?);";
+        String sql = "insert into usuario (nome,email,usuario,senha,tipo,mensagem)values(?,?,?,?,?,?);";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, user.getNome());
         statement.setString(2, user.getEmail());
         statement.setString(3, user.getUsuario());
         statement.setString(4, user.getSenha());
+        statement.setString(5, user.getTipo());
+        statement.setString(6, user.getMensagem());
         statement.execute();
    // conectar.close();
 
@@ -58,7 +60,7 @@ public class UsuarioDao {
     }
 
     public void deletarUsuario(Usuario user) throws SQLException {
-        String sql = "Delete usuario where id =?;";
+        String sql = "Delete from usuario where id =?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
 
@@ -97,7 +99,15 @@ public class UsuarioDao {
         return pesquisarArrayUser(statement).get(0);
 
     }
+   public Usuario retornarUsuarioUnico(String usuario,String senha) throws SQLException {
+    String sql = "select * from usuario where usuario = ? and senha = ?;";
 
+        PreparedStatement statement = conectar.prepareStatement(sql);
+      statement.setString(1, usuario);
+        statement.setString(2, senha);
+        return pesquisarArrayUser(statement).get(0);
+
+    }
     public Usuario usuarioAtivo(Usuario user) throws SQLException {
 
         String sql = "select * from usuario where usuario = ? and senha = ?;";
@@ -132,12 +142,12 @@ public class UsuarioDao {
         return resultSet.next();
     }
 
-    public Usuario getUserAtivo() {
+ /*   public Usuario getUserAtivo() {
         return userAtivo;
     }
 
     public void setUserAtivo(Usuario user) {
         this.userAtivo = user;
-    }
+    }*/
 
 }

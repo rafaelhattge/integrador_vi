@@ -8,6 +8,7 @@ package Dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Random;
 import modelo.Mensagem;
 
 /**
@@ -18,7 +19,7 @@ public class TelaMensagemDao {
 
     //so pode criar dao se passar conexao
     private final Connection conexao;
-
+private Random aleatorio;
     public TelaMensagemDao(Connection conexao) {
         this.conexao = conexao;
     }
@@ -32,9 +33,5 @@ public class TelaMensagemDao {
         conexao.close();
     }
 
-    public String VerficarMostrarMensagem() {
-        // Usuario usuario = 
-
-        return null;
-    }
+  
 }

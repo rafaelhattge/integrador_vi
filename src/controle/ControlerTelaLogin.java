@@ -33,19 +33,24 @@ public class ControlerTelaLogin {
             view.getjTextUser().requestFocus();
 
         } else {
-            Usuario userAutenticar = new Usuario(usuario, senha);
+            Usuario userAutenticar = new Usuario(usuario, senha);//Novo Usuario Para verificacao
             //conexao
 
-            Connection conexao = new conexao().conectarBanco();
-            UsuarioDao userDao = new UsuarioDao(conexao);
+            Connection conexao = new conexao().conectarBanco();//Abrir conexao com o banco
+            UsuarioDao userDao = new UsuarioDao(conexao);//Abrir usuario DAO
 
             //verificar se existe no banco
-            boolean autenticar = userDao.autenticarUsuario(userAutenticar);
+            boolean autenticar = userDao.autenticarUsuario(userAutenticar);//verificar se usuario existe e retornar um boolean
             if (autenticar) {
-                Usuario usuarioAtivo = userDao.usuarioAtivo(userAutenticar);//usuario para demais telas
-                userDao.setUserAtivo(usuarioAtivo);
+                Usuario usuarioAtivo = userDao.retornarUsuarioUnico(usuario, senha);//usuario para demais telas
+             //   userDao.setUserAtivo(usuarioAtivo);
                 TelaPrincipal tela = new TelaPrincipal(usuarioAtivo);
               // ControlerTelaPrincipal controleTelaPrincipal = new ControlerTelaPrincipal(tela, usuarioAtivo);?
+              if(usuarioAtivo.getTipo().equals("Estudante")){
+                  tela.getjButtonConfigAdmin().setEnabled(false);
+              }else{
+                 tela.getjButtonConfigAdmin().setEnabled(true); 
+              }
                 tela.getjLabelUsarioLogado().setText(usuarioAtivo.getNome());
                 tela.getjLabelTipoUser().setText(usuarioAtivo.getTipo());
                 //System.out.println(usuarioAtivo.getNome());
@@ -66,9 +71,10 @@ conexao.close();
 
                 view.dispose();
                 //Exibe mensagem inicial
+                if(usuarioAtivo.getMensagem().equals("sim")){
                 TelaMensagem mensagem = new TelaMensagem(tela, true);
                 mensagem.setVisible(true);
-
+                }
             } else {
                 view.getJlblMessagem().setText("Usuário ou senha inválidos!");
                 view.getjTextUser().requestFocus();

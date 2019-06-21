@@ -51,6 +51,16 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Usuario(String nome, String email, String usuario, String senha, String tipo, String mensagem) {
+     
+        this.nome = nome;
+        this.email = email;
+        this.usuario = usuario;
+        this.senha = senha;
+        this.tipo = tipo;
+        this.mensagem = mensagem;
+    }
+
     public int getId() {
         return id;
     }

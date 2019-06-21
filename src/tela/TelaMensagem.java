@@ -39,7 +39,6 @@ public class TelaMensagem extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabelBarra = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jCheckMostrarFrase = new javax.swing.JCheckBox();
         jButtonSair = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -61,10 +60,6 @@ public class TelaMensagem extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(69, 69, 71));
 
-        jCheckMostrarFrase.setBackground(new java.awt.Color(69, 69, 71));
-        jCheckMostrarFrase.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckMostrarFrase.setText("Não mostrar frase do dia novamente");
-
         jButtonSair.setBackground(new java.awt.Color(181, 92, 28));
         jButtonSair.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonSair.setText("FECHAR");
@@ -79,19 +74,14 @@ public class TelaMensagem extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckMostrarFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))))
+                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,9 +89,7 @@ public class TelaMensagem extends javax.swing.JDialog {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jCheckMostrarFrase)
-                .addGap(22, 22, 22))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jScrollPane1.setBorder(null);
@@ -234,7 +222,6 @@ public class TelaMensagem extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JCheckBox jCheckMostrarFrase;
     private javax.swing.JLabel jLabelBarra;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -243,13 +230,7 @@ public class TelaMensagem extends javax.swing.JDialog {
     private javax.swing.JTextArea jTextFrase;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JCheckBox getjCheckMostrarFrase() {
-        return jCheckMostrarFrase;
-    }
 
-    public void setjCheckMostrarFrase(javax.swing.JCheckBox jCheckMostrarFrase) {
-        this.jCheckMostrarFrase = jCheckMostrarFrase;
-    }
 
     public javax.swing.JLabel getjLabelBarra() {
         return jLabelBarra;

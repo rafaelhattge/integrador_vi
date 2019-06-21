@@ -35,7 +35,7 @@ public class ControlerTelaRegistro {
                     || view.getjPasswordSenha().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Todos campos são obrigátorios");
             } else {
-                Usuario user = new Usuario(view.getjTextNome().getText(), view.getjTextEmail().getText(), view.getjTextUser().getText(), view.getjPasswordSenha().getText());
+                Usuario user = new Usuario(view.getjTextNome().getText(), view.getjTextEmail().getText(), view.getjTextUser().getText(), view.getjPasswordSenha().getText(),"Estudante","sim");
 
                 try {
                     Connection conexao = new conexao().conectarBanco();
