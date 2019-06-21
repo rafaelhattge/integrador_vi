@@ -49,8 +49,9 @@ public class ControlerTelaPrincipal {
             Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         ////////////////
-        ControlerTelaConfigUser controleUser = new ControlerTelaConfigUser(view.getTelaUser(), this.usuarioAtivo);
+      ControlerTelaConfigUser controleUser = new ControlerTelaConfigUser(view.getTelaUser(), this.usuarioAtivo);
      //   controleUser.MostrarDados(this.usuarioAtivo);
+   
     }
 
 

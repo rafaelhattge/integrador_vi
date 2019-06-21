@@ -560,7 +560,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
      public InternoJfTelaConfigUser getTelaUser() {
         return telaConfigUser;
     }
-
+   public InternoJfTelaConfGeral getTelaConfigGeral() {
+        return telaConfigGeral;
+    }
     public javax.swing.JButton getjButtonConfigAdmin() {
         return jButtonConfigAdmin;
     }

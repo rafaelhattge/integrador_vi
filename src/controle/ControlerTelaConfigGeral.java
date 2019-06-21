@@ -45,13 +45,13 @@ private Connection conecta;
             
             return listaUsuarios;
     }
-     private void mostrarTableUsuario() throws SQLException {
+     public void mostrarTableUsuario() throws SQLException {
         DefaultTableModel modelUsuario = (DefaultTableModel) view.getjTableUsuario().getModel();
            ArrayList<Usuario> listaUsuario =  carregarListaUsuarios();
         if (modelUsuario.getRowCount() > 0) {
             modelUsuario.setRowCount(0);
         }
-        Object rowData[] = new Object[6];
+        Object rowData[] = new Object[7];
         
        
         for (int i = 0; i < listaUsuario.size(); i++) {

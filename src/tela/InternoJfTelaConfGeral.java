@@ -8,8 +8,6 @@ package tela;
 import controle.ControlerTelaConfigGeral;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -754,11 +752,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
 
     private void jButtonNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoUsuarioActionPerformed
         // TODO add your handling code here:
-          try {
-            mostrarTableUsuario();
-        } catch (SQLException ex) {
-            Logger.getLogger(InternoJfTelaConfGeral.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
         
     }//GEN-LAST:event_jButtonNovoUsuarioActionPerformed
 
@@ -1088,7 +1082,7 @@ public class InternoJfTelaConfGeral extends javax.swing.JInternalFrame {
     public void setjTextUser(javax.swing.JTextField jTextUser) {
         this.jTextUser = jTextUser;
     }
-     private void mostrarTableUsuario() throws SQLException {
+    public void mostrarTableUsuario() throws SQLException {
         DefaultTableModel modelUsuario = (DefaultTableModel) jTableUsuario.getModel();
            ArrayList<Usuario> listaUsuario =  controler.carregarListaUsuarios();
         if (modelUsuario.getRowCount() > 0) {
