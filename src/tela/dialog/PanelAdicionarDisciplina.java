@@ -276,7 +276,6 @@ public class PanelAdicionarDisciplina extends javax.swing.JPanel {
         frame.setEnabled(true);
         try {
             controle.salvarDisciplina();
-            SwingUtilities.getWindowAncestor(this).dispose();
         } catch (ParseException ex) {
             //Logger.getLogger(PanelAdicionarDisciplina.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Data em formato errado. O formato correto é 'dd/mm/AAAA'");
