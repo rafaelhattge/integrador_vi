@@ -7,7 +7,6 @@ package controle;
 
 import Dao.CursoDao;
 import Dao.DisciplinaDao;
-import Dao.UsuarioDao;
 import Dao.conexao;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -292,12 +291,15 @@ public class ControleTelaDisciplina {
         try {
             if(nome.equals("")){
                 JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+            }else if(dataInicio.after(dataTermino)){
+                JOptionPane.showMessageDialog(null, "A data de término precisa ser posterior à data de incício.");
             } else {
                 Connection conexao = new conexao().conectarBanco();
                 DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
                 disciplinaDao.adicionarDisciplina(disciplina);
                 JOptionPane.showMessageDialog(null, "Disciplina adicionada com sucesso.");
                 exibirDisciplinas();
+                SwingUtilities.getWindowAncestor(panelAdicDisciplina).dispose();
                 conexao.close();
             }
         } catch (SQLException ex) {

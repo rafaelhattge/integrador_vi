@@ -22,8 +22,8 @@ import tela.TelaPrincipal;
 public class ControlerTelaPrincipal {
 
     private final TelaPrincipal view;
-    
-   private Usuario usuarioAtivo;
+
+    private Usuario usuarioAtivo;
 
     public ControlerTelaPrincipal(TelaPrincipal view) {
         this.view = view;
@@ -31,17 +31,18 @@ public class ControlerTelaPrincipal {
 
     public ControlerTelaPrincipal(TelaPrincipal view, Usuario usuarioAtivo) {
         this.view = view;
-     this.usuarioAtivo = usuarioAtivo;
+        this.usuarioAtivo = usuarioAtivo;
         ControleTelaDisciplina controleTelaDisciplina = new ControleTelaDisciplina(view.getTelaDisicplina(), view.getTelaDisicplina().getDialog(), this.usuarioAtivo);
         controleTelaDisciplina.exibirCursos();
         try {
-         controleTelaDisciplina.exibirDisciplinas();
+            controleTelaDisciplina.exibirDisciplinas();
+            ControleTarefa controleTarefa = new ControleTarefa(view.getTelaTarefas(), this.usuarioAtivo);
+            controleTarefa.exibirTarefas();
         } catch (ParseException ex) {
             Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         ///////
-        ControleTarefa controleTarefa = new ControleTarefa(view.getTelaTarefas(), this.usuarioAtivo);
-        controleTarefa.exibirTarefas();
+
         ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio(), this.usuarioAtivo);
         try {
             controleRelatorio.listarDatas();
@@ -49,9 +50,9 @@ public class ControlerTelaPrincipal {
             Logger.getLogger(ControlerTelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         ////////////////
-      ControlerTelaConfigUser controleUser = new ControlerTelaConfigUser(view.getTelaUser(), this.usuarioAtivo);
-     //   controleUser.MostrarDados(this.usuarioAtivo);
-   
+        ControlerTelaConfigUser controleUser = new ControlerTelaConfigUser(view.getTelaUser(), this.usuarioAtivo);
+        //   controleUser.MostrarDados(this.usuarioAtivo);
+
     }
 
 
@@ -92,12 +93,11 @@ public class ControlerTelaPrincipal {
 
     }
 
-   /* public Usuario getUsuarioAtivo() {
+    /* public Usuario getUsuarioAtivo() {
         return usuarioAtivo;
     }
 
     public void setUsuarioAtivo(Usuario UsuarioAtivo) {
         this.usuarioAtivo = UsuarioAtivo;
     }*/
-
 }

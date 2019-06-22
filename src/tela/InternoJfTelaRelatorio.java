@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JProgressBar;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -44,7 +46,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         jPanelInicio = new javax.swing.JPanel();
         jPanelDetalhes = new javax.swing.JPanel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        jProgressBar = new javax.swing.JProgressBar();
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -70,10 +72,9 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         jPanelDetalhes.setBackground(new java.awt.Color(69, 69, 69));
 
-        jProgressBar1.setForeground(new java.awt.Color(66, 215, 244));
-        jProgressBar1.setToolTipText("");
-        jProgressBar1.setValue(50);
-        jProgressBar1.setStringPainted(true);
+        jProgressBar.setForeground(new java.awt.Color(66, 215, 244));
+        jProgressBar.setToolTipText("");
+        jProgressBar.setStringPainted(true);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
@@ -101,19 +102,14 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jTableExercicios.setForeground(new java.awt.Color(255, 255, 255));
         jTableExercicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, "Exercício 1"},
-                {null, "Exercício 2"},
-                {null, "Exercício 3"},
-                {null, "Exercício 4"},
-                {null, "Exercício 5"},
-                {null, "Exercício 6"}
+
             },
             new String [] {
-                "", ""
+                "", "", "", "", ""
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Boolean.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -149,9 +145,18 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(jTableExercicios);
         if (jTableExercicios.getColumnModel().getColumnCount() > 0) {
-            jTableExercicios.getColumnModel().getColumn(0).setMinWidth(20);
-            jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(20);
-            jTableExercicios.getColumnModel().getColumn(0).setMaxWidth(20);
+            jTableExercicios.getColumnModel().getColumn(0).setMinWidth(0);
+            jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(0);
+            jTableExercicios.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTableExercicios.getColumnModel().getColumn(1).setMinWidth(20);
+            jTableExercicios.getColumnModel().getColumn(1).setPreferredWidth(20);
+            jTableExercicios.getColumnModel().getColumn(1).setMaxWidth(20);
+            jTableExercicios.getColumnModel().getColumn(3).setMinWidth(0);
+            jTableExercicios.getColumnModel().getColumn(3).setPreferredWidth(0);
+            jTableExercicios.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTableExercicios.getColumnModel().getColumn(4).setMinWidth(0);
+            jTableExercicios.getColumnModel().getColumn(4).setPreferredWidth(0);
+            jTableExercicios.getColumnModel().getColumn(4).setMaxWidth(0);
         }
 
         javax.swing.GroupLayout jPanelDetalhesLayout = new javax.swing.GroupLayout(jPanelDetalhes);
@@ -164,17 +169,17 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDetalhesLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
+                        .addComponent(jProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelDetalhesLayout.setVerticalGroup(
             jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDetalhesLayout.createSequentialGroup()
                 .addGroup(jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,11 +194,6 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jListTarefa.setBackground(new java.awt.Color(69, 69, 69));
         jListTarefa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jListTarefa.setForeground(new java.awt.Color(255, 255, 255));
-        jListTarefa.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "19:00 - Videoconferência", "00:00 - Entrega da Atividade" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListTarefa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListTarefa.setSelectionBackground(new java.awt.Color(43, 87, 151));
         jListTarefa.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -202,6 +202,18 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane3.setViewportView(jListTarefa);
+        jListTarefa.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (e.getValueIsAdjusting()) {
+                    try {
+                        controle.exibirSubtarefas();
+                    } catch (NullPointerException eex){
+                        System.out.println("Tamanho da jListData: " + jListTarefa.getModel().getSize());
+                    }
+                }
+            }
+        });
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setName(""); // NOI18N
@@ -210,11 +222,6 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jListData.setBackground(new java.awt.Color(69, 69, 69));
         jListData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jListData.setForeground(new java.awt.Color(240, 240, 240));
-        jListData.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "15/02/2017", "18/02/2017", "21/02/2017", "24/02/2017" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListData.setSelectionBackground(new java.awt.Color(43, 87, 151));
         jListData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -267,9 +274,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
                         .addComponent(jLabelData, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))
-                    .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                    .addComponent(jScrollPane1))
                 .addGap(8, 8, 8)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
@@ -277,7 +282,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                        .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                         .addGap(125, 125, 125))
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
                         .addComponent(jPanelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -356,7 +361,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
     private javax.swing.JList<String> jListTarefa;
     private javax.swing.JPanel jPanelDetalhes;
     private javax.swing.JPanel jPanelInicio;
-    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -382,5 +387,22 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         this.jListTarefa = jListTarefa;
     }
 
+    public JTable getjTableExercicios() {
+        return jTableExercicios;
+    }
+
+    public void setjTableExercicios(JTable jTableExercicios) {
+        this.jTableExercicios = jTableExercicios;
+    }
+
+    public JProgressBar getjProgressBar() {
+        return jProgressBar;
+    }
+
+    public void setjProgressBar(JProgressBar jProgressBar) {
+        this.jProgressBar = jProgressBar;
+    }
+
+    
     
 }

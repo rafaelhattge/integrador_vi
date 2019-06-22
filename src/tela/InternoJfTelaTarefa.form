@@ -678,7 +678,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="7">
+                      <Table columnCount="8" rowCount="7">
                         <Column editable="false" title="C&#xf3;d" type="java.lang.Integer">
                           <Data value="1"/>
                           <Data value="2"/>
@@ -688,6 +688,7 @@
                           <Data value="6"/>
                           <Data value="7"/>
                         </Column>
+                        <Column editable="false" title="Nome" type="java.lang.String"/>
                         <Column editable="false" title="Data" type="java.lang.String">
                           <Data value="05/05/2019"/>
                           <Data value="05/06/2019"/>
@@ -697,6 +698,7 @@
                           <Data value="05/10/2019"/>
                           <Data value="05/11/2019"/>
                         </Column>
+                        <Column editable="true" title="Hora" type="java.lang.String"/>
                         <Column editable="false" title="Disciplina" type="java.lang.String">
                           <Data value="Matematica"/>
                           <Data value="Portugues"/>
@@ -724,12 +726,13 @@
                           <Data value="null"/>
                           <Data value="null"/>
                         </Column>
+                        <Column editable="false" title="Id Disciplina" type="java.lang.Integer"/>
                       </Table>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -739,7 +742,12 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="80" minWidth="80" prefWidth="80" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -749,7 +757,17 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="70" minWidth="70" prefWidth="70" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -775,7 +793,7 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTableTarefasKeyReleased"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableTarefas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(40, 109, 58));&#xa;//60, 74, 178&#xa;//headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;for (int i = 0; i &lt; jTableTarefas.getModel().getColumnCount(); i++) {&#xa;    jTableTarefas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableTarefas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;headerRenderer.setBackground(new java.awt.Color(40, 109, 58));&#xa;//60, 74, 178&#xa;//headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;for (int i = 0; i &lt; jTableTarefas.getModel().getColumnCount(); i++) {&#xa;    jTableTarefas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

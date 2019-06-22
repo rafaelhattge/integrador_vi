@@ -317,23 +317,23 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jTableTarefas.setForeground(new java.awt.Color(255, 255, 255));
         jTableTarefas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1), "05/05/2019", "Matematica", "dasdas", null},
-                { new Integer(2), "05/06/2019", "Portugues", "sdasdas", null},
-                { new Integer(3), "05/07/2019", "Sistemas Operacionais", "dasdsad", null},
-                { new Integer(4), "05/08/2019", "Programação I", "asdasd",  new Boolean(true)},
-                { new Integer(5), "05/09/2019", "Modelos de Gestão", "asdasd",  new Boolean(true)},
-                { new Integer(6), "05/10/2019", "Matematica", "sdasd", null},
-                { new Integer(7), "05/11/2019", "Sistemas Operacionais", "asdsadsa", null}
+                { new Integer(1), null, "05/05/2019", null, "Matematica", "dasdas", null, null},
+                { new Integer(2), null, "05/06/2019", null, "Portugues", "sdasdas", null, null},
+                { new Integer(3), null, "05/07/2019", null, "Sistemas Operacionais", "dasdsad", null, null},
+                { new Integer(4), null, "05/08/2019", null, "Programação I", "asdasd",  new Boolean(true), null},
+                { new Integer(5), null, "05/09/2019", null, "Modelos de Gestão", "asdasd",  new Boolean(true), null},
+                { new Integer(6), null, "05/10/2019", null, "Matematica", "sdasd", null, null},
+                { new Integer(7), null, "05/11/2019", null, "Sistemas Operacionais", "asdsadsa", null, null}
             },
             new String [] {
-                "Cód", "Data", "Disciplina", "Descrição", "Concluído"
+                "Cód", "Nome", "Data", "Hora", "Disciplina", "Descrição", "Concluído", "Id Disciplina"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -354,8 +354,9 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jTableTarefas.getTableHeader().setReorderingAllowed(false);
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableTarefas
         .getDefaultRenderer(JLabel.class);
-        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        renderer.setHorizontalAlignment(SwingConstants.LEFT);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.LEFT);
         headerRenderer.setBackground(new java.awt.Color(40, 109, 58));
         //60, 74, 178
         //headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -373,6 +374,26 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane4.setViewportView(jTableTarefas);
+        if (jTableTarefas.getColumnModel().getColumnCount() > 0) {
+            jTableTarefas.getColumnModel().getColumn(0).setMinWidth(0);
+            jTableTarefas.getColumnModel().getColumn(0).setPreferredWidth(0);
+            jTableTarefas.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTableTarefas.getColumnModel().getColumn(2).setMinWidth(80);
+            jTableTarefas.getColumnModel().getColumn(2).setPreferredWidth(80);
+            jTableTarefas.getColumnModel().getColumn(2).setMaxWidth(80);
+            jTableTarefas.getColumnModel().getColumn(3).setMinWidth(0);
+            jTableTarefas.getColumnModel().getColumn(3).setPreferredWidth(0);
+            jTableTarefas.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTableTarefas.getColumnModel().getColumn(5).setMinWidth(0);
+            jTableTarefas.getColumnModel().getColumn(5).setPreferredWidth(0);
+            jTableTarefas.getColumnModel().getColumn(5).setMaxWidth(0);
+            jTableTarefas.getColumnModel().getColumn(6).setMinWidth(70);
+            jTableTarefas.getColumnModel().getColumn(6).setPreferredWidth(70);
+            jTableTarefas.getColumnModel().getColumn(6).setMaxWidth(70);
+            jTableTarefas.getColumnModel().getColumn(7).setMinWidth(0);
+            jTableTarefas.getColumnModel().getColumn(7).setPreferredWidth(0);
+            jTableTarefas.getColumnModel().getColumn(7).setMaxWidth(0);
+        }
 
         javax.swing.GroupLayout jPanelTableTarefasLayout = new javax.swing.GroupLayout(jPanelTableTarefas);
         jPanelTableTarefas.setLayout(jPanelTableTarefasLayout);
@@ -551,7 +572,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     private void jButtonNovaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaTarefaActionPerformed
         editar = false;
         controle.TrocaTarefas(jPanelGerenciatarefa);
-        controle.exibirTodasDisciplinas();
+        controle.exibirTodasDisciplinas(0);
         
     }//GEN-LAST:event_jButtonNovaTarefaActionPerformed
 

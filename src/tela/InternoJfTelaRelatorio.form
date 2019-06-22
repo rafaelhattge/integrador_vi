@@ -74,10 +74,7 @@
                           <Component id="jLabelData" min="-2" pref="83" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -87,7 +84,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabelDetalhes" pref="361" max="32767" attributes="0"/>
+                          <Component id="jLabelDetalhes" pref="208" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -139,11 +136,11 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel7" min="-2" pref="68" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jProgressBar1" pref="388" max="32767" attributes="0"/>
+                              <Component id="jProgressBar" pref="235" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                           <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jScrollPane4" alignment="0" pref="468" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" pref="315" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -153,7 +150,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jProgressBar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jProgressBar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -167,13 +164,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+            <Component class="javax.swing.JProgressBar" name="jProgressBar">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f4" green="d7" red="42" type="rgb"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="value" type="int" value="50"/>
                 <Property name="stringPainted" type="boolean" value="true"/>
               </Properties>
             </Component>
@@ -258,27 +254,38 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="6">
+                      <Table columnCount="5" rowCount="0">
+                        <Column editable="true" title="" type="java.lang.Integer"/>
                         <Column editable="true" title="" type="java.lang.Boolean"/>
-                        <Column editable="true" title="" type="java.lang.String">
-                          <Data value="Exerc&#xed;cio 1"/>
-                          <Data value="Exerc&#xed;cio 2"/>
-                          <Data value="Exerc&#xed;cio 3"/>
-                          <Data value="Exerc&#xed;cio 4"/>
-                          <Data value="Exerc&#xed;cio 5"/>
-                          <Data value="Exerc&#xed;cio 6"/>
-                        </Column>
+                        <Column editable="true" title="" type="java.lang.String"/>
+                        <Column editable="true" title="" type="java.lang.Integer"/>
+                        <Column editable="true" title="" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="20" minWidth="20" prefWidth="20" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -332,10 +339,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="19:00 - Videoconfer&#xea;ncia"/>
-                    <StringItem index="1" value="00:00 - Entrega da Atividade"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
                 <Property name="selectionMode" type="int" value="0"/>
                 <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -346,6 +350,7 @@
                 <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jListTarefaValueChanged"/>
               </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jListTarefa.addListSelectionListener(new ListSelectionListener() {&#xa;            @Override&#xa;        public void valueChanged(ListSelectionEvent e) {&#xa;                if (e.getValueIsAdjusting()) {&#xa;                     try {&#xa;                controle.exibirSubtarefas();&#xa;            } catch (NullPointerException eex){&#xa;                System.out.println(&quot;Tamanho da jListData: &quot; + jListTarefa.getModel().getSize());&#xa;            }&#xa;                }&#xa;            }  &#xa;        });"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -377,12 +382,7 @@
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="15/02/2017"/>
-                    <StringItem index="1" value="18/02/2017"/>
-                    <StringItem index="2" value="21/02/2017"/>
-                    <StringItem index="3" value="24/02/2017"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
                 <Property name="selectionMode" type="int" value="0"/>
                 <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
