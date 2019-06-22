@@ -160,21 +160,24 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="47" green="45" red="45" type="rgb"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new java.awt.Font(&quot;Dialog&quot;, 0, 14)" type="code"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="10" rowCount="0">
                     <Column editable="true" title="Disciplina" type="java.lang.String"/>
-                    <Column editable="true" title="Data de In&#xed;cio" type="java.lang.String"/>
-                    <Column editable="true" title="Data de T&#xe9;rmino" type="java.lang.String"/>
-                    <Column editable="true" title="Dom" type="java.lang.Boolean"/>
-                    <Column editable="true" title="Seg" type="java.lang.Boolean"/>
-                    <Column editable="true" title="Ter" type="java.lang.Boolean"/>
-                    <Column editable="true" title="Qua" type="java.lang.Boolean"/>
-                    <Column editable="true" title="Qui" type="java.lang.Boolean"/>
-                    <Column editable="true" title="Sex" type="java.lang.Boolean"/>
-                    <Column editable="true" title="Sab" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Data de In&#xed;cio" type="java.lang.String"/>
+                    <Column editable="false" title="Data de T&#xe9;rmino" type="java.lang.String"/>
+                    <Column editable="false" title="Dom" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Seg" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Ter" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Qua" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Qui" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Sex" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Sab" type="java.lang.Boolean"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -185,12 +188,12 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="100" minWidth="100" prefWidth="100" resizable="true">
+                    <Column maxWidth="120" minWidth="120" prefWidth="120" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="100" minWidth="100" prefWidth="100" resizable="true">
+                    <Column maxWidth="120" minWidth="120" prefWidth="120" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -251,7 +254,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTableDisciplinasKeyReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(227,162,26));&#xa;&#xa;for (int i = 0; i &lt; jTableDisciplinas.getModel().getColumnCount(); i++) {&#xa;    jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;//Altera o tamanho das colunas dos dias da semana&#xa;for(int i = 3; i &lt;= 9; i++){&#xa;    jTableDisciplinas.getColumnModel().getColumn(i).setPreferredWidth(6);&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;&#xa;//Tentando alterar alinhamento de colunas espec&#xed;ficas&#xa;DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();&#xa;centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;jTableDisciplinas.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);&#xa;jTableDisciplinas.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;DefaultTableCellRenderer headerRendererCenter = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(227,162,26));&#xa;headerRendererCenter.setBackground(new java.awt.Color(227,162,26));&#xa;headerRendererCenter.setHorizontalAlignment(SwingConstants.CENTER);&#xa;jTableDisciplinas.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);&#xa;for (int i = 1; i &lt; jTableDisciplinas.getModel().getColumnCount(); i++) {&#xa;    jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRendererCenter);&#xa;}"/>
               </AuxValues>
             </Component>
           </SubComponents>

@@ -47,18 +47,21 @@
                                   <Component id="jLabelDias" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBoxDom" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextFieldInicio" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTermino" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jCheckBoxDom" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxSeg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxTer" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxQui" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxQua" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxSex" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxSab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jCheckBoxSeg" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBoxTer" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBoxQui" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBoxQua" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBoxSex" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBoxSab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTermino" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldInicio" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -91,15 +94,15 @@
               <Component id="jLabelNome" min="-2" pref="22" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTextFieldNome" min="-2" pref="26" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelInicio" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jTextFieldInicio" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="jTextFieldTermino" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelTermino" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jTextFieldTermino" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="jTextFieldInicio" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -118,7 +121,7 @@
               <Component id="jCheckBoxSex" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jCheckBoxSab" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonAtualizar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -256,40 +259,6 @@
         <Property name="text" type="java.lang.String" value="Data de Conclus&#xe3;o da Disciplina"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldInicio">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="45" green="45" red="45" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="1a" green="a2" red="e3" type="rgb"/>
-            </LineBorder>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldTermino">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="45" green="45" red="45" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="1a" green="a2" red="e3" type="rgb"/>
-            </LineBorder>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabelDias">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -382,6 +351,44 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sexta-feira"/>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jTextFieldInicio">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="1a" green="a2" red="e3" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##/##/####" subtype="-1" type="5"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jTextFieldTermino">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="1a" green="a2" red="e3" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##/##/####" subtype="-1" type="5"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
     </Component>
