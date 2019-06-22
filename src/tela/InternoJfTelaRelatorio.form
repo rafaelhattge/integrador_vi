@@ -350,7 +350,7 @@
                 <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jListTarefaValueChanged"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jListTarefa.addListSelectionListener(new ListSelectionListener() {&#xa;            @Override&#xa;        public void valueChanged(ListSelectionEvent e) {&#xa;                if (e.getValueIsAdjusting()) {&#xa;                     try {&#xa;                controle.exibirSubtarefas();&#xa;            } catch (NullPointerException eex){&#xa;                System.out.println(&quot;Tamanho da jListData: &quot; + jListTarefa.getModel().getSize());&#xa;            }&#xa;                }&#xa;            }  &#xa;        });"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jListTarefa.addListSelectionListener(new ListSelectionListener() {&#xa;            @Override&#xa;        public void valueChanged(ListSelectionEvent e) {&#xa;                if (e.getValueIsAdjusting()) {&#xa;                     try {&#xa;                     System.out.println(&quot;Exibindo subtarefas&quot;);&#xa;                controle.exibirSubtarefas();&#xa;            } catch (NullPointerException eex){&#xa;                System.out.println(&quot;Tamanho da jListData: &quot; + jListTarefa.getModel().getSize());&#xa;            }&#xa;                }&#xa;            }  &#xa;        });"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>

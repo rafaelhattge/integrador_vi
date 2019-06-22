@@ -6,7 +6,6 @@
 package tela;
 
 import controle.ControleTelaRelatorio;
-import java.awt.event.ItemEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -207,6 +206,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()) {
                     try {
+                        System.out.println("Exibindo subtarefas");
                         controle.exibirSubtarefas();
                     } catch (NullPointerException eex){
                         System.out.println("Tamanho da jListData: " + jListTarefa.getModel().getSize());

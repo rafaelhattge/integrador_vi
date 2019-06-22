@@ -62,6 +62,17 @@ public class TarefaDao {
 
     }
     
+    public void atualizarStatusTarefa(Tarefa tarefa) throws SQLException {
+        String sql = "UPDATE tarefa SET status = ? WHERE idtarefa = ?";
+        
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setBoolean(1, tarefa.isStatus());
+        statement.setInt(2, tarefa.getIdTarefa());
+        statement.execute();
+        statement.close();
+        conectar.close();
+    }
+    
     //Carrega todas as tarefas do bd para o usuário ativo e retorna uma ArrayList de tarefas
     public ArrayList<Tarefa> carregarTarefas(Usuario usuarioAtivo) throws SQLException {
         

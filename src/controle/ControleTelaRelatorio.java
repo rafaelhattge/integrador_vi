@@ -43,7 +43,8 @@ public class ControleTelaRelatorio {
         this.view = view;
         this.usuarioAtivo = usuarioAtivo;
         try {
-            exibirInformacoes();
+            listarDatas();
+            //exibirInformacoes();
         } catch (SQLException ex) {
             Logger.getLogger(ControleTelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,7 +123,9 @@ public class ControleTelaRelatorio {
             if(concluidas > 0){
                 view.getjProgressBar().setValue(concluidas * 100 / subtarefas.size());
             }
-        }  
+        } else {
+            tableModel.setRowCount(0);
+        }
         
     }
     
@@ -134,6 +137,7 @@ public class ControleTelaRelatorio {
             if(view.getjListTarefa().getModel().getSize() > 0){
                 view.getjListTarefa().setSelectedIndex(0);
                 exibirSubtarefas();
+                
             }
         }
         

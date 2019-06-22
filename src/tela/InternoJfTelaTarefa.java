@@ -5,18 +5,13 @@
  */
 package tela;
 
-import Dao.TarefaDao;
-import Dao.conexao;
 import controle.ControleTarefa;
 import java.awt.event.ItemEvent;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -24,8 +19,9 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 /**
  *
@@ -326,14 +322,14 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                 { new Integer(7), null, "05/11/2019", null, "Sistemas Operacionais", "asdsadsa", null, null}
             },
             new String [] {
-                "Cód", "Nome", "Data", "Hora", "Disciplina", "Descrição", "Concluído", "Id Disciplina"
+                "Id", "Nome", "Data", "Hora", "Disciplina", "Descrição", "Concluído", "Id Disciplina"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, false, true, false
+                false, false, false, false, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -363,6 +359,12 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         for (int i = 0; i < jTableTarefas.getModel().getColumnCount(); i++) {
             jTableTarefas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
+
+        jTableTarefas.getModel().addTableModelListener(new TableModelListener(){
+            public void tableChanged(TableModelEvent evt) {
+                jTableTarefasTableChanged(evt);
+            }
+        });
         jTableTarefas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableTarefasMouseClicked(evt);
@@ -542,6 +544,21 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableTarefasTableChanged(TableModelEvent evt) {
+        if(evt.getType() == TableModelEvent.UPDATE){
+            int idTarefa = (int)jTableTarefas.getValueAt(jTableTarefas.getSelectedRow(), 0);
+            boolean status = (boolean)jTableTarefas.getValueAt(jTableTarefas.getSelectedRow(), jTableTarefas.getSelectedColumn());
+            System.out.println("Id da Tarefa: " + idTarefa);
+            System.out.println("Linha selecionada: " + status);
+            try {
+                 controle.editarStatusTarefa(idTarefa, status);
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+        }
+    }
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         editar = true;

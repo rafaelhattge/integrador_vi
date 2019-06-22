@@ -168,6 +168,19 @@ public class ControleTarefa {
         int idDisciplina = tarefa.getIdDisciplina();
         exibirTodasDisciplinas(idDisciplina);
     }
+    
+    public void editarStatusTarefa(int idTarefa, boolean status) throws ParseException {
+        Tarefa tarefa = new Tarefa(idTarefa, status);
+        try {
+            Connection conexao = new conexao().conectarBanco();
+            TarefaDao tarefaDao = new TarefaDao(conexao);
+            tarefaDao.atualizarStatusTarefa(tarefa);
+            JOptionPane.showMessageDialog(null, "Status da tarefa atualizado.");
+            exibirTarefas();
+        } catch (SQLException ex) {
+            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void editarTarefa() throws ParseException {
         ArrayList<Disciplina> disciplinas = carregarTodasDisciplinas();
