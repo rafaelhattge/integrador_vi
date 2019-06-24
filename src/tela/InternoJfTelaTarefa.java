@@ -619,13 +619,13 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     }
 
     private void jTableTarefasSelectionMade(ListSelectionEvent evt) {
-        try{
-        if (jTableTarefas.getModel().getRowCount() > 0) {
-            jTextArea1Descricao.setText((String) jTableTarefas.getValueAt(jTableTarefas.getSelectedRow(), 5));
-        } else {
-            jTextAreaDescricao.setText("");
-        }
-        } catch(IndexOutOfBoundsException ex){
+        try {
+            if (jTableTarefas.getModel().getRowCount() > 0) {
+                jTextArea1Descricao.setText((String) jTableTarefas.getValueAt(jTableTarefas.getSelectedRow(), 5));
+            } else {
+                jTextAreaDescricao.setText("");
+            }
+        } catch (IndexOutOfBoundsException ex) {
         }
     }
 
@@ -678,15 +678,17 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         if (editar) {
             try {
-                controle.editarTarefa();
-                controle.TrocaTarefas(jPanelInicGerencia);
+                if (controle.editarTarefa()) {
+                    controle.TrocaTarefas(jPanelInicGerencia);
+                }
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(this, "Digite uma data válida.");
             }
         } else {
             try {
-                controle.salvarTarefa();
-                controle.TrocaTarefas(jPanelInicGerencia);
+                if (controle.salvarTarefa()) {
+                    controle.TrocaTarefas(jPanelInicGerencia);
+                }
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(this, "Digite uma data válida.");
             }
@@ -742,7 +744,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldPesquisarMouseClicked
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        
+
         controle.TrocaTarefas(jPanelInicGerencia);
         controle.limparCampos();
     }//GEN-LAST:event_jButtonCancelarActionPerformed

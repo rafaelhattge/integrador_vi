@@ -99,8 +99,9 @@ public class DisciplinaDao {
     public ArrayList<Disciplina> carregarTodasDisciplinas(Usuario usuarioAtivo) throws SQLException {
         Disciplina disciplina;
         ArrayList<Disciplina> disciplinas = new ArrayList();
-        String sql =    "SELECT iddisciplina, disciplina.nome \n" +
-                        "FROM disciplina, curso, usuario \n" +
+        String sql =    "SELECT iddisciplina, disciplina.nome, datainicio, datatermino, " +
+                        "domingo, segunda, terca, quarta, quinta, sexta, sabado, disciplina.idcurso " +
+                        "FROM disciplina, curso, usuario " +
                         "WHERE id = ? AND curso.idusuario = id " +
                         "AND disciplina.idcurso = curso.idcurso " +
                         "ORDER BY disciplina.nome ASC;";
@@ -112,7 +113,17 @@ public class DisciplinaDao {
 
             while(resultSet.next()){
                 disciplina = new Disciplina(resultSet.getInt(1), 
-                                            resultSet.getString(2));
+                                            resultSet.getString(2),
+                                            resultSet.getDate(3),
+                                            resultSet.getDate(4),
+                                            resultSet.getBoolean(5),
+                                            resultSet.getBoolean(6),
+                                            resultSet.getBoolean(7),
+                                            resultSet.getBoolean(8),
+                                            resultSet.getBoolean(9),
+                                            resultSet.getBoolean(10),
+                                            resultSet.getBoolean(11),
+                                            resultSet.getInt(12));
                 disciplinas.add(disciplina);
             }
         } catch (SQLException e) {

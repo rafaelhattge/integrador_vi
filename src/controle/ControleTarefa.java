@@ -125,7 +125,7 @@ public class ControleTarefa {
         return listaDisciplinas;
     }
 
-    public void salvarTarefa() throws ParseException {
+    public boolean salvarTarefa() throws ParseException {
         Disciplina disciplina = carregarTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
@@ -134,13 +134,23 @@ public class ControleTarefa {
         Boolean status = view.getjRadioButtonConcluido().isSelected();
         int idDisciplina = disciplina.getIdDisciplina();
         String nomeDisciplina = disciplina.getNome();
-
+        
+        System.out.println("Data de início: " + disciplina.getDataInicio() + "\nData de término: " + disciplina.getDataTermino());
         Tarefa tarefa = new Tarefa(nome, data, hora, descricao,
                 status, idDisciplina, nomeDisciplina);
 
         try {
             if (nome.equals("")) {
                 JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+                return false;
+            } else if(tarefa.getData().before(disciplina.getDataInicio()) || 
+                    tarefa.getData().after(disciplina.getDataTermino())){
+                JOptionPane.showMessageDialog(null, "A data precisa ser posterior a " 
+                        + formatarData(disciplina.getDataInicio())
+                        + " e anterior a "
+                        + formatarData(disciplina.getDataTermino())
+                        + ".\n Escolha outra data ou altere as datas de início ou término da disciplina.");
+                return false;
             } else {
                 Connection conexao = new conexao().conectarBanco();
                 TarefaDao tarefaDao = new TarefaDao(conexao);
@@ -148,9 +158,11 @@ public class ControleTarefa {
                 JOptionPane.showMessageDialog(null, "Tarefa adicionada com sucesso.");
                 limparCampos();
                 exibirTarefas();
+                return true;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
+            return false;
         }
     }
 
@@ -181,9 +193,9 @@ public class ControleTarefa {
         }
     }
 
-    public void editarTarefa() throws ParseException {
+    public boolean editarTarefa() throws ParseException {
         ArrayList<Disciplina> disciplinas = carregarTodasDisciplinas();
-        
+        Disciplina disciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
         Time hora = converterHora(view.getjFormattedTextHora().getText());
@@ -191,20 +203,35 @@ public class ControleTarefa {
         Boolean status = view.getjRadioButtonConcluido().isSelected();
         int idTarefa = carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow()).getIdTarefa();
         int idDisciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex()).getIdDisciplina();
-        String nomeDisciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex()).getNome();
+        String nomeDisciplina = disciplina.getNome();
         
         Tarefa tarefa = new Tarefa(idTarefa, nome, data, hora, descricao, status, idDisciplina, nomeDisciplina);
         
-        try {
-            Connection conexao = new conexao().conectarBanco();
-            TarefaDao tarefaDao = new TarefaDao(conexao);
-            tarefaDao.atualizarTarefa(tarefa);
-            JOptionPane.showMessageDialog(null, "Tarefa atualizada.");
-            limparCampos();
-            exibirTarefas();
-        } catch (SQLException ex) {
-            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (nome.equals("")) {
+                JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+                return false;
+            } else if(tarefa.getData().before(disciplina.getDataInicio()) || 
+                    tarefa.getData().after(disciplina.getDataTermino())){
+                JOptionPane.showMessageDialog(null, "A data precisa ser posterior a " 
+                        + formatarData(disciplina.getDataInicio())
+                        + " e anterior a "
+                        + formatarData(disciplina.getDataTermino())
+                        + ".\n Escolha outra data ou altere as datas de início ou término da disciplina.");
+                return false;
+            } else {
+                try {
+                    Connection conexao = new conexao().conectarBanco();
+                    TarefaDao tarefaDao = new TarefaDao(conexao);
+                    tarefaDao.atualizarTarefa(tarefa);
+                    JOptionPane.showMessageDialog(null, "Tarefa atualizada.");
+                    limparCampos();
+                    exibirTarefas();
+                    return true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+                    return false;
+                }
+            }
     }
 
     public void removerTarefa() throws ParseException {
