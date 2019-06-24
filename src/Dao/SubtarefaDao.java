@@ -25,7 +25,7 @@ public class SubtarefaDao {
         this.conectar = conectar;
     }
     
-    public void adicionarTarefa(Subtarefa subtarefa) throws SQLException {
+    public void adicionarSubtarefa(Subtarefa subtarefa) throws SQLException {
         
         String sql = "INSERT INTO subtarefa(nome, status, idtarefa) VALUES(?, ?, ?);";
         
@@ -38,15 +38,23 @@ public class SubtarefaDao {
         conectar.close();
     }
     
-    public void atualizarTarefa(Subtarefa subtarefa) throws SQLException {
-        
-        String sql = "UPDATE subtarefa SET nome = ?, status = ?, idtarefa = ? WHERE idsubtarefa = ?;";
+    public void atualizarStatusSubtarefa(Subtarefa subtarefa) throws SQLException {
+        String sql = "UPDATE subtarefa SET status = ? WHERE idsubtarefa = ?";
         
         PreparedStatement statement = conectar.prepareStatement(sql);
-        statement.setString(1, subtarefa.getNome());
-        statement.setBoolean(2, subtarefa.isStatus());
-        statement.setInt(3, subtarefa.getIdTarefa());
-        statement.setInt(4, subtarefa.getIdSubtarefa());
+        statement.setBoolean(1, subtarefa.isStatus());
+        statement.setInt(2, subtarefa.getIdSubtarefa());
+        statement.execute();
+        statement.close();
+        conectar.close();
+    }
+    
+    public void deletarSubtarefa(int idSubtarefa) throws SQLException {
+        String sql = "DELETE FROM subtarefa WHERE idsubtarefa = ?;";
+
+        PreparedStatement statement = conectar.prepareStatement(sql);
+
+        statement.setInt(1, idSubtarefa);
         statement.execute();
         statement.close();
         conectar.close();

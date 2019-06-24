@@ -35,7 +35,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="951" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="1013" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Component id="jPanelInicio" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -84,7 +84,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabelDetalhes" pref="208" max="32767" attributes="0"/>
+                          <Component id="jLabelDetalhes" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -136,11 +136,16 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel7" min="-2" pref="68" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jProgressBar" pref="235" max="32767" attributes="0"/>
+                              <Component id="jProgressBar" pref="297" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                           <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jScrollPane4" alignment="0" pref="315" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButtonRemover" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonAdicionar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -158,7 +163,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="265" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="146" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonRemover" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="69" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -308,11 +319,47 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTableExerciciosKeyReleased"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableExercicios&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(66,215,244));&#xa;&#xa;for (int i = 0; i &lt; jTableExercicios.getModel().getColumnCount(); i++) {&#xa;    jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(6);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableExercicios&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setBackground(new java.awt.Color(66,215,244));&#xa;&#xa;for (int i = 0; i &lt; jTableExercicios.getModel().getColumnCount(); i++) {&#xa;    jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(6);&#xa;jTableExercicios.getModel().addTableModelListener(new TableModelListener(){&#xa;    public void tableChanged(TableModelEvent evt) {&#xa;        jTableExerciciosTableChanged(evt);              &#xa;    }&#xa;});"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="jButtonAdicionar">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f4" green="d7" red="42" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Adicionar Subtarefa"/>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAdicionarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonRemover">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f4" green="d7" red="42" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Remover Subtarefa"/>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRemoverActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">

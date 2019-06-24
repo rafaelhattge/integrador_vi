@@ -20,6 +20,17 @@ public class Subtarefa {
     public Subtarefa() {
     }
 
+    public Subtarefa(int idSubtarefa, boolean status) {
+        this.idSubtarefa = idSubtarefa;
+        this.status = status;
+    }
+
+    public Subtarefa(String nome, boolean status, int idTarefa) {
+        this.nome = nome;
+        this.status = status;
+        this.idTarefa = idTarefa;
+    }
+
     public Subtarefa(int idSubtarefa, String nome, boolean status, int idTarefa) {
         this.idSubtarefa = idSubtarefa;
         this.nome = nome;
@@ -34,9 +45,6 @@ public class Subtarefa {
         this.idTarefa = idTarefa;
         this.nomeTarefa = nomeTarefa;
     }
-    
-    
-    
 
     public int getIdSubtarefa() {
         return idSubtarefa;

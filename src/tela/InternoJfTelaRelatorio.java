@@ -7,16 +7,22 @@ package tela;
 
 import controle.ControleTelaRelatorio;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import tela.dialog.PanelAdicionarSubtarefa;
 
 /**
  *
@@ -24,14 +30,15 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
-    
     private final ControleTelaRelatorio controle;
+    private PanelAdicionarSubtarefa dialogAdicionar;
+
     /**
      * Creates new form InternoJfTelaRelatorio
      */
     public InternoJfTelaRelatorio() {
         initComponents();
-        controle = new ControleTelaRelatorio(this);
+        controle = new ControleTelaRelatorio(this, dialogAdicionar);
     }
 
     /**
@@ -52,6 +59,8 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableExercicios = new javax.swing.JTable();
+        jButtonAdicionar = new javax.swing.JButton();
+        jButtonRemover = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListTarefa = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -132,6 +141,11 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
         jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(6);
+        jTableExercicios.getModel().addTableModelListener(new TableModelListener(){
+            public void tableChanged(TableModelEvent evt) {
+                jTableExerciciosTableChanged(evt);
+            }
+        });
         jTableExercicios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableExerciciosMouseClicked(evt);
@@ -158,6 +172,28 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             jTableExercicios.getColumnModel().getColumn(4).setMaxWidth(0);
         }
 
+        jButtonAdicionar.setBackground(new java.awt.Color(66, 215, 244));
+        jButtonAdicionar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonAdicionar.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonAdicionar.setText("Adicionar Subtarefa");
+        jButtonAdicionar.setFocusable(false);
+        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarActionPerformed(evt);
+            }
+        });
+
+        jButtonRemover.setBackground(new java.awt.Color(66, 215, 244));
+        jButtonRemover.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonRemover.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonRemover.setText("Remover Subtarefa");
+        jButtonRemover.setFocusable(false);
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelDetalhesLayout = new javax.swing.GroupLayout(jPanelDetalhes);
         jPanelDetalhes.setLayout(jPanelDetalhesLayout);
         jPanelDetalhesLayout.setHorizontalGroup(
@@ -168,10 +204,14 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDetalhesLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+                        .addComponent(jProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDetalhesLayout.createSequentialGroup()
+                        .addComponent(jButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAdicionar)))
                 .addContainerGap())
         );
         jPanelDetalhesLayout.setVerticalGroup(
@@ -185,7 +225,12 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAdicionar)
+                    .addComponent(jButtonRemover))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jScrollPane3.setBorder(null);
@@ -282,7 +327,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                        .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(125, 125, 125))
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
                         .addComponent(jPanelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -311,7 +356,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 951, Short.MAX_VALUE)
+            .addGap(0, 1013, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -326,6 +371,20 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableExerciciosTableChanged(TableModelEvent evt) {
+        if(evt.getType() == TableModelEvent.UPDATE){
+            int idSubtarefa = (int)jTableExercicios.getValueAt(jTableExercicios.getSelectedRow(), 0);
+            boolean status = (boolean)jTableExercicios.getValueAt(jTableExercicios.getSelectedRow(), jTableExercicios.getSelectedColumn());
+            System.out.println("Id da Subtarefa: " + idSubtarefa);
+            System.out.println("Linha selecionada: " + status);
+            try {
+                controle.editarStatusSubtarefa(idSubtarefa, status);
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+        }
+    }
     
     private void jTableExerciciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableExerciciosMouseClicked
         // TODO add your handling code here:
@@ -339,19 +398,35 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableExerciciosKeyReleased
 
     private void jListTarefaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTarefaValueChanged
-        
+
     }//GEN-LAST:event_jListTarefaValueChanged
 
     private void jListDataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jListDataPropertyChange
-        if(jListData.getModel().getSize() > 0){
-           
+        if (jListData.getModel().getSize() > 0) {
+
         }
     }//GEN-LAST:event_jListDataPropertyChange
 
+    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+        if (jListTarefa.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione uma tarefa à qual adicionar a subtarefa.");
+        } else {
+            dialogAdicionar = new PanelAdicionarSubtarefa(this, (JFrame) this.getTopLevelAncestor());
+        }
+    }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
+        if (jTableExercicios.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Nenhuma subtarefa foi selecionada.");
+        } else {
+            controle.removerSubtarefa();
+        }
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonRemover;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelDetalhes;
@@ -403,6 +478,8 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         this.jProgressBar = jProgressBar;
     }
 
-    
-    
+    public PanelAdicionarSubtarefa getDialogAdicionar() {
+        return dialogAdicionar;
+    }
+
 }

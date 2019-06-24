@@ -43,7 +43,7 @@ public class ControlerTelaPrincipal {
         }
         ///////
 
-        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio(), this.usuarioAtivo);
+        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(view.getTelaRelatorio(), this.usuarioAtivo, view.getTelaRelatorio().getDialogAdicionar());
         try {
             controleRelatorio.listarDatas();
         } catch (SQLException ex) {

@@ -380,7 +380,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelAluno.setBackground(new java.awt.Color(66,215,244));
         jLabelNomePrograma.setForeground(new java.awt.Color(66,215,244));
         controler.ControleTelas(telaInicio);
-        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(telaInicio, usuarioAtivo);
+        ControleTelaRelatorio controleRelatorio = new ControleTelaRelatorio(telaInicio, usuarioAtivo, telaInicio.getDialogAdicionar());
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisciplinaActionPerformed
