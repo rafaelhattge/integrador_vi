@@ -29,22 +29,7 @@ public class ControlerTelaMensagem {
         view.getjLabelBarra().setOpaque(true);
     }
 
-    public void salvaMensagem() throws SQLException {
 
-        String mensagem = view.getjTextFrase().getText();
-        Mensagem mens = new Mensagem(mensagem);
-
-        try {
-            Connection conexao = new conexao().conectarBanco();
-            TelaMensagemDao mensagemDao = new TelaMensagemDao(conexao);
-            mensagemDao.insertmMensagem(mens);
-            JOptionPane.showMessageDialog(null, "Mensagem cadastrada com sucesso");
-
-            view.dispose();
-        } catch (SQLException ex) {
-            //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Não foi possível a conexão!");
-        }
-    }
+   
 
 }

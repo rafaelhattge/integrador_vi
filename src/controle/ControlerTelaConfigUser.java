@@ -122,16 +122,13 @@ public class ControlerTelaConfigUser {
             System.out.println("Conectou");
             UsuarioDao userDao = new UsuarioDao(conecta);
             int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir a sua conta?\n"
-                    + "Após a exclusão você perderá todos dados", "Confirmar Excluir", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    + "Após a exclusão você perderá todos dados", "Confirmar Excluir", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
             if (resposta == JOptionPane.OK_OPTION) {
                 userDao.deletarUsuario(usuarioAtivo);
                 JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.");
                 System.exit(0);
             }
-            System.out.println("Entrou no usuario DAO");
-            userDao.deletarUsuario(usuarioAtivo);
-            System.out.println("Echegou Update");
-            JOptionPane.showMessageDialog(null, "Usuário Atualizado com sucesso");
+      
 
         } catch (SQLException ex) {
             //  Logger.getLogger(TelaRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -145,7 +142,7 @@ public class ControlerTelaConfigUser {
         if (view.getjRadioButtoMensagem().isSelected()) {
             mensagem = "sim";
         } else {
-            mensagem = "nao";
+            mensagem = "não";
         }
         return mensagem;
     }

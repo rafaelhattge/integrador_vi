@@ -70,7 +70,7 @@ public class UsuarioDao {
     }
 
     public ArrayList<Usuario> selecionarTodoUser() throws SQLException {
-        String sql = "select * from usuario";
+        String sql = "select * from usuario ORDER BY id ASC";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         return pesquisarArrayUser(statement);
@@ -91,15 +91,16 @@ public class UsuarioDao {
         return usuarios;
     }
 
-    public Usuario retornarUsuarioUnico(Usuario user) throws SQLException {
+  /*  public Usuario retornarUsuarioUnico(Usuario user) throws SQLException {
         String sql = "select * from usuario where id = ?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setInt(1, user.getId());
         return pesquisarArrayUser(statement).get(0);
 
-    }
-   public Usuario retornarUsuarioUnico(String usuario,String senha) throws SQLException {
+    }*/
+    //////PASSAR USUARIO PARA TELA PRINCIPAL
+  public Usuario retornarUsuarioUnico(String usuario,String senha) throws SQLException {
     String sql = "select * from usuario where usuario = ? and senha = ?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
@@ -127,7 +128,7 @@ public class UsuarioDao {
 
         // 
     }
-
+////AUTENTICAR O USUARIO NA TELA LOGIN
     public boolean autenticarUsuario(Usuario userAutenticar) throws SQLException {
         String sql = "select * from usuario where usuario = ? and senha = ?;";
 

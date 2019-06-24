@@ -18,6 +18,11 @@ public class Mensagem {
         this.mensagem = mensagem;
     }
 
+    public Mensagem(int id, String mensagem) {
+      this.id=id;
+      this.mensagem=mensagem;
+    }
+
     public int getId() {
         return id;
     }
