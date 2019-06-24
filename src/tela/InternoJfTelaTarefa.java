@@ -22,6 +22,13 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.RowFilter;
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -31,6 +38,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
     private final ControleTarefa controle;
     private static boolean editar;
+    private TableRowSorter<TableModel> rowSorter;
 
     /**
      * Creates new form InternoJfTelaDisicplina
@@ -68,7 +76,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jButtonSalvar = new javax.swing.JButton();
         jComboBoxDisciplina = new javax.swing.JComboBox<>();
         jFormattedTextHora = new javax.swing.JFormattedTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldPesquisar = new javax.swing.JTextField();
         jRadioButtonDsicpli = new javax.swing.JRadioButton();
         jRadioButtonPeriodo = new javax.swing.JRadioButton();
         jPanelTableTarefas = new javax.swing.JPanel();
@@ -284,8 +292,28 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
         jLayeredPaneGereTarefa.add(jPanelGerenciatarefa, "card3");
 
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
-        jTextField2.setOpaque(false);
+        jTextFieldPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
+        //código para adicionar um document listener ao campo de pesquisa
+        jTextFieldPesquisar.getDocument().addDocumentListener(new DocumentListener(){
+            public void insertUpdate(DocumentEvent evt) {
+                jTextFieldPesquisarInserir(evt);
+            }
+
+            public void removeUpdate(DocumentEvent evt) {
+                jTextFieldPesquisarRemover(evt);
+            }
+
+            public void changedUpdate(DocumentEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet.");
+                //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        jTextFieldPesquisar.setOpaque(false);
+        jTextFieldPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPesquisarActionPerformed(evt);
+            }
+        });
 
         buttonGroupDisciplina.add(jRadioButtonDsicpli);
         jRadioButtonDsicpli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -365,6 +393,10 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                 jTableTarefasTableChanged(evt);
             }
         });
+
+        //Row sorter para permitir a busca dinâmica na jTable
+        rowSorter = new TableRowSorter<>(jTableTarefas.getModel());
+        jTableTarefas.setRowSorter(rowSorter);
         jTableTarefas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableTarefasMouseClicked(evt);
@@ -493,7 +525,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(jRadioButtonDsicpli))
                             .addGroup(jPanelTarefasLayout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(78, 78, 78))
@@ -516,7 +548,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                         .addGap(2, 2, 2)
                         .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabelPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                            .addComponent(jTextFieldPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                         .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButtonPeriodo)
                             .addComponent(jRadioButtonDsicpli))))
@@ -545,6 +577,8 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void jTableTarefasTableChanged(TableModelEvent evt) {
         if(evt.getType() == TableModelEvent.UPDATE){
             int idTarefa = (int)jTableTarefas.getValueAt(jTableTarefas.getSelectedRow(), 0);
@@ -629,9 +663,35 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     private void jComboBoxDisciplinaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDisciplinaItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-
+            
         }
     }//GEN-LAST:event_jComboBoxDisciplinaItemStateChanged
+
+    private void jTextFieldPesquisarInserir(DocumentEvent evt){
+        String texto = jTextFieldPesquisar.getText();
+
+                if (texto.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + texto));
+                }
+    }
+    
+    private void jTextFieldPesquisarRemover(DocumentEvent evt) {
+        String texto = jTextFieldPesquisar.getText();
+
+                if (texto.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + texto));
+                }
+    }
+    
+    private void jTextFieldPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarActionPerformed
+        // TODO add your handling code here:String texto = jTextFieldPesquisar.getText();
+
+                
+    }//GEN-LAST:event_jTextFieldPesquisarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -663,7 +723,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTableTarefas;
     private javax.swing.JTextArea jTextAreaDescricao;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldPesquisar;
     private javax.swing.JTextField jTextTarefaNome;
     // End of variables declaration//GEN-END:variables
 

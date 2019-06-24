@@ -82,7 +82,7 @@
                                   <Component id="jRadioButtonDsicpli" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField2" min="-2" pref="267" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldPesquisar" min="-2" pref="267" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabelPesquisar" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
@@ -113,7 +113,7 @@
                           <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jLabelPesquisar" max="32767" attributes="0"/>
-                              <Component id="jTextField2" pref="25" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPesquisar" pref="25" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jRadioButtonPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -568,9 +568,9 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="jTextFieldPesquisar">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor" postCode="//c&#xf3;digo para adicionar um document listener ao campo de pesquisa &#xa;jTextFieldPesquisar.getDocument().addDocumentListener(new DocumentListener(){ &#xa;    public void insertUpdate(DocumentEvent evt) {&#xa;        jTextFieldPesquisarInserir(evt);&#xa;    }&#xa;&#xa;    public void removeUpdate(DocumentEvent evt) {&#xa;        jTextFieldPesquisarRemover(evt);&#xa;    }&#xa;&#xa;    public void changedUpdate(DocumentEvent evt) {&#xa;        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); &#xa;        //To change body of generated methods, choose Tools | Templates.&#xa;    } &#xa;});">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder roundedCorners="true" thickness="2">
                   <Color PropertyName="color" blue="9e" green="f4" red="42" type="rgb"/>
@@ -579,6 +579,9 @@
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPesquisarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonDsicpli">
           <Properties>
@@ -793,7 +796,7 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTableTarefasKeyReleased"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableTarefas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;headerRenderer.setBackground(new java.awt.Color(40, 109, 58));&#xa;//60, 74, 178&#xa;//headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;for (int i = 0; i &lt; jTableTarefas.getModel().getColumnCount(); i++) {&#xa;    jTableTarefas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;&#xa;jTableTarefas.getModel().addTableModelListener(new TableModelListener(){&#xa;    public void tableChanged(TableModelEvent evt) {&#xa;        jTableTarefasTableChanged(evt);              &#xa;    }&#xa;});"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableTarefas&#xa;&#x9;&#x9;&#x9;&#x9;.getDefaultRenderer(JLabel.class);&#xa;&#x9;&#x9;renderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();&#xa;headerRenderer.setHorizontalAlignment(SwingConstants.LEFT);&#xa;headerRenderer.setBackground(new java.awt.Color(40, 109, 58));&#xa;//60, 74, 178&#xa;//headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);&#xa;for (int i = 0; i &lt; jTableTarefas.getModel().getColumnCount(); i++) {&#xa;    jTableTarefas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);&#xa;}&#xa;&#xa;jTableTarefas.getModel().addTableModelListener(new TableModelListener(){&#xa;    public void tableChanged(TableModelEvent evt) {&#xa;        jTableTarefasTableChanged(evt);              &#xa;    }&#xa;});&#xa;&#xa;//Row sorter para permitir a busca din&#xe2;mica na jTable&#xa;rowSorter = new TableRowSorter&lt;&gt;(jTableTarefas.getModel());&#xa;jTableTarefas.setRowSorter(rowSorter);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
