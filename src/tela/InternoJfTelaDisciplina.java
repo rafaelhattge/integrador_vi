@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import tela.dialog.PanelAdicionarDisciplina;
 import tela.dialog.PanelAtualizarDisciplina;
+import java.awt.Font;
 
 /**
  *
@@ -90,6 +91,7 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         jScrollPane4.getViewport().setOpaque(false);
 
         jTableDisciplinas.setBackground(new java.awt.Color(69, 69, 71));
+        jTableDisciplinas.setFont(new java.awt.Font("Dialog", 0, 14));
         jTableDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
         jTableDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,9 +104,16 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTableDisciplinas.setToolTipText("");
@@ -117,16 +126,21 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         jTableDisciplinas.getTableHeader().setReorderingAllowed(false);
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableDisciplinas
         .getDefaultRenderer(JLabel.class);
-        renderer.setHorizontalAlignment(SwingConstants.CENTER);
-        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
-        headerRenderer.setBackground(new java.awt.Color(227,162,26));
+        renderer.setHorizontalAlignment(SwingConstants.LEFT);
 
-        for (int i = 0; i < jTableDisciplinas.getModel().getColumnCount(); i++) {
-            jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
-        }
-        //Altera o tamanho das colunas dos dias da semana
-        for(int i = 3; i <= 9; i++){
-            jTableDisciplinas.getColumnModel().getColumn(i).setPreferredWidth(6);
+        //Tentando alterar alinhamento de colunas específicas
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        jTableDisciplinas.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+        jTableDisciplinas.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer headerRendererCenter = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(new java.awt.Color(227,162,26));
+        headerRendererCenter.setBackground(new java.awt.Color(227,162,26));
+        headerRendererCenter.setHorizontalAlignment(SwingConstants.CENTER);
+        jTableDisciplinas.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
+        for (int i = 1; i < jTableDisciplinas.getModel().getColumnCount(); i++) {
+            jTableDisciplinas.getColumnModel().getColumn(i).setHeaderRenderer(headerRendererCenter);
         }
         jTableDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -140,12 +154,12 @@ public class InternoJfTelaDisciplina extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(jTableDisciplinas);
         if (jTableDisciplinas.getColumnModel().getColumnCount() > 0) {
-            jTableDisciplinas.getColumnModel().getColumn(1).setMinWidth(100);
-            jTableDisciplinas.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTableDisciplinas.getColumnModel().getColumn(1).setMaxWidth(100);
-            jTableDisciplinas.getColumnModel().getColumn(2).setMinWidth(100);
-            jTableDisciplinas.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTableDisciplinas.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTableDisciplinas.getColumnModel().getColumn(1).setMinWidth(120);
+            jTableDisciplinas.getColumnModel().getColumn(1).setPreferredWidth(120);
+            jTableDisciplinas.getColumnModel().getColumn(1).setMaxWidth(120);
+            jTableDisciplinas.getColumnModel().getColumn(2).setMinWidth(120);
+            jTableDisciplinas.getColumnModel().getColumn(2).setPreferredWidth(120);
+            jTableDisciplinas.getColumnModel().getColumn(2).setMaxWidth(120);
             jTableDisciplinas.getColumnModel().getColumn(3).setMinWidth(36);
             jTableDisciplinas.getColumnModel().getColumn(3).setPreferredWidth(36);
             jTableDisciplinas.getColumnModel().getColumn(3).setMaxWidth(36);

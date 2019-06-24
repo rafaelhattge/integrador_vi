@@ -25,6 +25,13 @@ public class Tarefa {
     public Tarefa() {
     }
 
+    public Tarefa(int idTarefa, boolean status) {
+        this.idTarefa = idTarefa;
+        this.status = status;
+    }
+    
+    
+
     public Tarefa(int idTarefa, String nome, Time hora) {
         this.idTarefa = idTarefa;
         this.nome = nome;

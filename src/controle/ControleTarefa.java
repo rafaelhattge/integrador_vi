@@ -92,7 +92,6 @@ public class ControleTarefa {
             Connection conexao = new conexao().conectarBanco();
             DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
             listaDisciplinas = disciplinaDao.carregarTodasDisciplinas(usuarioAtivo);
-            System.out.println(listaDisciplinas.size());
         } catch (SQLException e) {
             System.out.println("Conexão falhou.");
             while (e != null) {
@@ -126,7 +125,7 @@ public class ControleTarefa {
         return listaDisciplinas;
     }
 
-    public void salvarTarefa() throws ParseException {
+    public boolean salvarTarefa() throws ParseException {
         Disciplina disciplina = carregarTodasDisciplinas().get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
@@ -135,13 +134,23 @@ public class ControleTarefa {
         Boolean status = view.getjRadioButtonConcluido().isSelected();
         int idDisciplina = disciplina.getIdDisciplina();
         String nomeDisciplina = disciplina.getNome();
-
+        
+        System.out.println("Data de início: " + disciplina.getDataInicio() + "\nData de término: " + disciplina.getDataTermino());
         Tarefa tarefa = new Tarefa(nome, data, hora, descricao,
                 status, idDisciplina, nomeDisciplina);
 
         try {
             if (nome.equals("")) {
                 JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+                return false;
+            } else if(tarefa.getData().before(disciplina.getDataInicio()) || 
+                    tarefa.getData().after(disciplina.getDataTermino())){
+                JOptionPane.showMessageDialog(null, "A data precisa ser posterior a " 
+                        + formatarData(disciplina.getDataInicio())
+                        + " e anterior a "
+                        + formatarData(disciplina.getDataTermino())
+                        + ".\n Escolha outra data ou altere as datas de início ou término da disciplina.");
+                return false;
             } else {
                 Connection conexao = new conexao().conectarBanco();
                 TarefaDao tarefaDao = new TarefaDao(conexao);
@@ -149,9 +158,11 @@ public class ControleTarefa {
                 JOptionPane.showMessageDialog(null, "Tarefa adicionada com sucesso.");
                 limparCampos();
                 exibirTarefas();
+                return true;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível realizar a conexão.");
+            return false;
         }
     }
 
@@ -159,7 +170,7 @@ public class ControleTarefa {
     public void carregarCamposTarefa() throws ParseException {
         /*
          */
-        Tarefa tarefa = carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow());
+        Tarefa tarefa = buscarTarefaPorId();
         view.getjTextTarefaNome().setText(tarefa.getNome());
         view.getjFormattedTextData().setText(formatarData(tarefa.getData()));
         view.getjFormattedTextHora().setText(formatarHora(tarefa.getHora()));
@@ -168,10 +179,23 @@ public class ControleTarefa {
         int idDisciplina = tarefa.getIdDisciplina();
         exibirTodasDisciplinas(idDisciplina);
     }
+    
+    public void editarStatusTarefa(int idTarefa, boolean status) throws ParseException {
+        Tarefa tarefa = new Tarefa(idTarefa, status);
+        try {
+            Connection conexao = new conexao().conectarBanco();
+            TarefaDao tarefaDao = new TarefaDao(conexao);
+            tarefaDao.atualizarStatusTarefa(tarefa);
+            JOptionPane.showMessageDialog(null, "Status da tarefa atualizado.");
+            exibirTarefas();
+        } catch (SQLException ex) {
+            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-    public void editarTarefa() throws ParseException {
+    public boolean editarTarefa() throws ParseException {
         ArrayList<Disciplina> disciplinas = carregarTodasDisciplinas();
-        
+        Disciplina disciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex());
         String nome = view.getjTextTarefaNome().getText();
         Date data = converterData(view.getjFormattedTextData().getText());
         Time hora = converterHora(view.getjFormattedTextHora().getText());
@@ -179,20 +203,35 @@ public class ControleTarefa {
         Boolean status = view.getjRadioButtonConcluido().isSelected();
         int idTarefa = carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow()).getIdTarefa();
         int idDisciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex()).getIdDisciplina();
-        String nomeDisciplina = disciplinas.get(view.getjComboBoxDisciplina().getSelectedIndex()).getNome();
+        String nomeDisciplina = disciplina.getNome();
         
         Tarefa tarefa = new Tarefa(idTarefa, nome, data, hora, descricao, status, idDisciplina, nomeDisciplina);
         
-        try {
-            Connection conexao = new conexao().conectarBanco();
-            TarefaDao tarefaDao = new TarefaDao(conexao);
-            tarefaDao.atualizarTarefa(tarefa);
-            JOptionPane.showMessageDialog(null, "Tarefa atualizada.");
-            limparCampos();
-            exibirTarefas();
-        } catch (SQLException ex) {
-            Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (nome.equals("")) {
+                JOptionPane.showMessageDialog(null, "O nome não pode estar em branco.");
+                return false;
+            } else if(tarefa.getData().before(disciplina.getDataInicio()) || 
+                    tarefa.getData().after(disciplina.getDataTermino())){
+                JOptionPane.showMessageDialog(null, "A data precisa ser posterior a " 
+                        + formatarData(disciplina.getDataInicio())
+                        + " e anterior a "
+                        + formatarData(disciplina.getDataTermino())
+                        + ".\n Escolha outra data ou altere as datas de início ou término da disciplina.");
+                return false;
+            } else {
+                try {
+                    Connection conexao = new conexao().conectarBanco();
+                    TarefaDao tarefaDao = new TarefaDao(conexao);
+                    tarefaDao.atualizarTarefa(tarefa);
+                    JOptionPane.showMessageDialog(null, "Tarefa atualizada.");
+                    limparCampos();
+                    exibirTarefas();
+                    return true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
+                    return false;
+                }
+            }
     }
 
     public void removerTarefa() throws ParseException {
@@ -203,7 +242,7 @@ public class ControleTarefa {
         if (confirmar == JOptionPane.YES_OPTION) {
             try {
                 if (linha >= 0) {
-                    int idTarefa = carregarListaTarefas().get(linha).getIdTarefa();
+                    int idTarefa = buscarTarefaPorId().getIdTarefa();
                     Connection conexao = new conexao().conectarBanco();
                     TarefaDao tarefaDao = new TarefaDao(conexao);
                     tarefaDao.deletarTarefa(idTarefa);
@@ -219,6 +258,16 @@ public class ControleTarefa {
         }
     }
 
+    public Tarefa buscarTarefaPorId(){
+        int idTarefa = (int) view.getjTableTarefas().getValueAt(view.getjTableTarefas().getSelectedRow(), 0);
+        for(Tarefa tarefa : carregarListaTarefas()){
+            if(tarefa.getIdTarefa() == idTarefa){
+                return tarefa;
+            }
+        }
+        return null;
+    }
+    
     //converte uma string para data em formato SQL
     public Date converterData(String sData) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -251,6 +300,7 @@ public class ControleTarefa {
         view.getjTextTarefaNome().setText("");
         view.getjFormattedTextData().setText("");
         view.getjFormattedTextHora().setText("");
+        view.getjTextAreaDescricao().setText("");
         view.getjTextAreaDescricao().setText("");
     }
 }

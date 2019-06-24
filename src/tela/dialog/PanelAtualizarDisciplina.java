@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -80,8 +81,6 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
         jLabelNome = new javax.swing.JLabel();
         jLabelInicio = new javax.swing.JLabel();
         jLabelTermino = new javax.swing.JLabel();
-        jTextFieldInicio = new javax.swing.JTextField();
-        jTextFieldTermino = new javax.swing.JTextField();
         jLabelDias = new javax.swing.JLabel();
         jCheckBoxDom = new javax.swing.JCheckBox();
         jCheckBoxSeg = new javax.swing.JCheckBox();
@@ -90,6 +89,8 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
         jCheckBoxSab = new javax.swing.JCheckBox();
         jCheckBoxQua = new javax.swing.JCheckBox();
         jCheckBoxSex = new javax.swing.JCheckBox();
+        jTextFieldInicio = new javax.swing.JFormattedTextField();
+        jTextFieldTermino = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(69, 69, 69));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(218, 83, 44), 6));
@@ -155,14 +156,6 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
         jLabelTermino.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTermino.setText("Data de Conclusão da Disciplina");
 
-        jTextFieldInicio.setBackground(new java.awt.Color(69, 69, 69));
-        jTextFieldInicio.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
-
-        jTextFieldTermino.setBackground(new java.awt.Color(69, 69, 69));
-        jTextFieldTermino.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldTermino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
-
         jLabelDias.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabelDias.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDias.setText("Dias em que Ocorre a Disciplina");
@@ -202,6 +195,26 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
         jCheckBoxSex.setText("Sexta-feira");
         jCheckBoxSex.setOpaque(false);
 
+        jTextFieldInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
+        jTextFieldInicio.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jTextFieldInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jTextFieldInicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldInicio.setOpaque(false);
+
+        jTextFieldTermino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 162, 26)));
+        jTextFieldTermino.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jTextFieldTermino.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jTextFieldTermino.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldTermino.setOpaque(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,17 +235,19 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
                                         .addGap(0, 31, Short.MAX_VALUE))
                                     .addComponent(jLabelDias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBoxDom)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextFieldTermino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jCheckBoxSeg)
-                                    .addComponent(jCheckBoxTer)
-                                    .addComponent(jCheckBoxQui)
-                                    .addComponent(jCheckBoxQua)
-                                    .addComponent(jCheckBoxSex)
-                                    .addComponent(jCheckBoxSab)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBoxDom)
+                                            .addComponent(jCheckBoxSeg)
+                                            .addComponent(jCheckBoxTer)
+                                            .addComponent(jCheckBoxQui)
+                                            .addComponent(jCheckBoxQua)
+                                            .addComponent(jCheckBoxSex)
+                                            .addComponent(jCheckBoxSab))
+                                        .addGap(37, 37, 37))
+                                    .addComponent(jTextFieldTermino)
+                                    .addComponent(jTextFieldInicio)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -254,14 +269,14 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
                 .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDias, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,7 +293,7 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
                 .addComponent(jCheckBoxSex)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxSab)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonAtualizar))
@@ -318,9 +333,9 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelTermino;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFieldInicio;
+    private javax.swing.JFormattedTextField jTextFieldInicio;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTermino;
+    private javax.swing.JFormattedTextField jTextFieldTermino;
     // End of variables declaration//GEN-END:variables
 
     public JCheckBox getjCheckBoxDom() {
@@ -379,14 +394,6 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
         this.jCheckBoxTer = jCheckBoxTer;
     }
 
-    public JTextField getjTextFieldInicio() {
-        return jTextFieldInicio;
-    }
-
-    public void setjTextFieldInicio(JTextField jTextFieldInicio) {
-        this.jTextFieldInicio = jTextFieldInicio;
-    }
-
     public JTextField getjTextFieldNome() {
         return jTextFieldNome;
     }
@@ -395,11 +402,21 @@ public class PanelAtualizarDisciplina extends javax.swing.JPanel {
         this.jTextFieldNome = jTextFieldNome;
     }
 
-    public JTextField getjTextFieldTermino() {
+    public JFormattedTextField getjTextFieldInicio() {
+        return jTextFieldInicio;
+    }
+
+    public void setjTextFieldInicio(JFormattedTextField jTextFieldInicio) {
+        this.jTextFieldInicio = jTextFieldInicio;
+    }
+
+    public JFormattedTextField getjTextFieldTermino() {
         return jTextFieldTermino;
     }
 
-    public void setjTextFieldTermino(JTextField jTextFieldTermino) {
+    public void setjTextFieldTermino(JFormattedTextField jTextFieldTermino) {
         this.jTextFieldTermino = jTextFieldTermino;
     }
+    
+    
 }

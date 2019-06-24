@@ -6,18 +6,25 @@
 package tela;
 
 import controle.ControleTelaRelatorio;
-import java.awt.event.ItemEvent;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import tela.dialog.PanelAdicionarSubtarefa;
 
 /**
  *
@@ -25,14 +32,15 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
-    
     private final ControleTelaRelatorio controle;
+    private PanelAdicionarSubtarefa dialogAdicionar;
+
     /**
      * Creates new form InternoJfTelaRelatorio
      */
     public InternoJfTelaRelatorio() {
         initComponents();
-        controle = new ControleTelaRelatorio(this);
+        controle = new ControleTelaRelatorio(this, dialogAdicionar);
     }
 
     /**
@@ -49,18 +57,21 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jProgressBar = new javax.swing.JProgressBar();
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableExercicios = new javax.swing.JTable();
+        jButtonAdicionar = new javax.swing.JButton();
+        jButtonRemover = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListTarefa = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListData = new javax.swing.JList<>();
         jLabelTitulo = new javax.swing.JLabel();
         jLabelDetalhes = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaDescricao = new javax.swing.JTextArea();
         jLabelTarefa = new javax.swing.JLabel();
         jLabelData = new javax.swing.JLabel();
+        jLabelTarefa1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(69, 69, 71));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -82,16 +93,6 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         jSeparator2.setBackground(new java.awt.Color(66, 215, 244));
         jSeparator2.setForeground(new java.awt.Color(66, 215, 244));
-
-        jScrollPane2.setBorder(null);
-
-        jTextArea1.setBackground(new java.awt.Color(69, 69, 69));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(240, 240, 240));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Adicione uma observação...");
-        jTextArea1.setToolTipText("");
-        jScrollPane2.setViewportView(jTextArea1);
 
         jScrollPane4.setBackground(new java.awt.Color(69, 69, 71));
         jScrollPane4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(69, 69, 71), 1, true));
@@ -121,6 +122,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jTableExercicios.setOpaque(false);
         jTableExercicios.setRowHeight(30);
         jTableExercicios.setSelectionBackground(new java.awt.Color(43, 87, 151));
+        jTableExercicios.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTableExercicios.setShowVerticalLines(false);
         jTableExercicios.getTableHeader().setReorderingAllowed(false);
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) jTableExercicios
@@ -133,6 +135,11 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             jTableExercicios.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
         jTableExercicios.getColumnModel().getColumn(0).setPreferredWidth(6);
+        jTableExercicios.getModel().addTableModelListener(new TableModelListener(){
+            public void tableChanged(TableModelEvent evt) {
+                jTableExerciciosTableChanged(evt);
+            }
+        });
         jTableExercicios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableExerciciosMouseClicked(evt);
@@ -159,6 +166,28 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             jTableExercicios.getColumnModel().getColumn(4).setMaxWidth(0);
         }
 
+        jButtonAdicionar.setBackground(new java.awt.Color(66, 215, 244));
+        jButtonAdicionar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonAdicionar.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonAdicionar.setText("Adicionar Subtarefa");
+        jButtonAdicionar.setFocusable(false);
+        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarActionPerformed(evt);
+            }
+        });
+
+        jButtonRemover.setBackground(new java.awt.Color(66, 215, 244));
+        jButtonRemover.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jButtonRemover.setForeground(new java.awt.Color(240, 240, 240));
+        jButtonRemover.setText("Remover Subtarefa");
+        jButtonRemover.setFocusable(false);
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelDetalhesLayout = new javax.swing.GroupLayout(jPanelDetalhes);
         jPanelDetalhes.setLayout(jPanelDetalhesLayout);
         jPanelDetalhesLayout.setHorizontalGroup(
@@ -169,10 +198,13 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDetalhesLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanelDetalhesLayout.createSequentialGroup()
+                        .addComponent(jButtonRemover)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jButtonAdicionar)))
                 .addContainerGap())
         );
         jPanelDetalhesLayout.setVerticalGroup(
@@ -182,11 +214,14 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                     .addComponent(jProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAdicionar)
+                    .addComponent(jButtonRemover))
+                .addGap(95, 95, 95))
         );
 
         jScrollPane3.setBorder(null);
@@ -196,6 +231,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jListTarefa.setForeground(new java.awt.Color(255, 255, 255));
         jListTarefa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListTarefa.setSelectionBackground(new java.awt.Color(43, 87, 151));
+        jListTarefa.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jListTarefa.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jListTarefaValueChanged(evt);
@@ -207,6 +243,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()) {
                     try {
+                        System.out.println("Exibindo subtarefas");
                         controle.exibirSubtarefas();
                     } catch (NullPointerException eex){
                         System.out.println("Tamanho da jListData: " + jListTarefa.getModel().getSize());
@@ -224,6 +261,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jListData.setForeground(new java.awt.Color(240, 240, 240));
         jListData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListData.setSelectionBackground(new java.awt.Color(43, 87, 151));
+        jListData.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jListData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jListDataPropertyChange(evt);
@@ -236,6 +274,13 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                 if (e.getValueIsAdjusting()) {
                     try {
                         controle.selecionarTarefasPorData();
+
+                        DefaultTableModel model = (DefaultTableModel)jTableExercicios.getModel();
+                        model.setRowCount(0);
+                        if(jListTarefa.getModel().getSize() > 0){
+                            jListTarefa.setSelectedIndex(0);
+                            controle.exibirSubtarefas();
+                        }
 
                     } catch (SQLException ex) {
                         Logger.getLogger(InternoJfTelaRelatorio.class
@@ -256,6 +301,20 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jLabelDetalhes.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDetalhes.setText("Detalhes");
 
+        jScrollPane2.setBorder(null);
+
+        jTextAreaDescricao.setEditable(false);
+        jTextAreaDescricao.setBackground(new java.awt.Color(69, 69, 69));
+        jTextAreaDescricao.setColumns(20);
+        jTextAreaDescricao.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextAreaDescricao.setForeground(new java.awt.Color(240, 240, 240));
+        jTextAreaDescricao.setLineWrap(true);
+        jTextAreaDescricao.setRows(5);
+        jTextAreaDescricao.setToolTipText("");
+        jTextAreaDescricao.setBorder(null);
+        jTextAreaDescricao.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(jTextAreaDescricao);
+
         jLabelTarefa.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelTarefa.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTarefa.setText("Tarefa");
@@ -264,29 +323,35 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         jLabelData.setForeground(new java.awt.Color(255, 255, 255));
         jLabelData.setText("Data");
 
+        jLabelTarefa1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabelTarefa1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTarefa1.setText("Descrição da Tarefa");
+
         javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
         jPanelInicio.setLayout(jPanelInicioLayout);
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTarefa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jLabelData, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addComponent(jScrollPane1))
-                .addGap(8, 8, 8)
-                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3))
+                        .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelInicioLayout.createSequentialGroup()
+                                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelData, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                        .addGap(125, 125, 125))
-                    .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jPanelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .addComponent(jLabelDetalhes)
+                    .addComponent(jPanelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76))
             .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelInicioLayout.setVerticalGroup(
@@ -294,16 +359,21 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             .addGroup(jPanelInicioLayout.createSequentialGroup()
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabelTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelInicioLayout.createSequentialGroup()
+                        .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelTarefa1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -311,7 +381,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 951, Short.MAX_VALUE)
+            .addGap(0, 959, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -326,36 +396,65 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void jTableExerciciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableExerciciosMouseClicked
-        // TODO add your handling code here:
 
-        //        controleEventoTabela();
-    }//GEN-LAST:event_jTableExerciciosMouseClicked
+    private void jListDataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jListDataPropertyChange
+        if (jListData.getModel().getSize() > 0) {
+
+        }
+    }//GEN-LAST:event_jListDataPropertyChange
+
+    private void jListTarefaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTarefaValueChanged
+
+    }//GEN-LAST:event_jListTarefaValueChanged
+
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
+        if (jTableExercicios.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Nenhuma subtarefa foi selecionada.");
+        } else {
+            controle.removerSubtarefa();
+        }
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
+
+    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+        if (jListTarefa.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione uma tarefa à qual adicionar a subtarefa.");
+        } else {
+            dialogAdicionar = new PanelAdicionarSubtarefa(this, (JFrame) this.getTopLevelAncestor());
+        }
+    }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
     private void jTableExerciciosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableExerciciosKeyReleased
         // TODO add your handling code here:
         //        controleEventoTabela();
     }//GEN-LAST:event_jTableExerciciosKeyReleased
 
-    private void jListTarefaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTarefaValueChanged
-        
-    }//GEN-LAST:event_jListTarefaValueChanged
+    private void jTableExerciciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableExerciciosMouseClicked
+        // TODO add your handling code here:
 
-    private void jListDataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jListDataPropertyChange
-        if(jListData.getModel().getSize() > 0){
-           
+        //        controleEventoTabela();
+    }//GEN-LAST:event_jTableExerciciosMouseClicked
+
+    private void jTableExerciciosTableChanged(TableModelEvent evt) {
+        if(evt.getType() == TableModelEvent.UPDATE){
+            int idSubtarefa = (int)jTableExercicios.getValueAt(jTableExercicios.getSelectedRow(), 0);
+            boolean status = (boolean)jTableExercicios.getValueAt(jTableExercicios.getSelectedRow(), jTableExercicios.getSelectedColumn());
+            try {
+                controle.editarStatusSubtarefa(idSubtarefa, status);
+            } catch (ParseException ex) {
+                Logger.getLogger(InternoJfTelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+            }   
         }
-    }//GEN-LAST:event_jListDataPropertyChange
-
-
-
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonRemover;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelDetalhes;
     private javax.swing.JLabel jLabelTarefa;
+    private javax.swing.JLabel jLabelTarefa1;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JList<String> jListData;
     private javax.swing.JList<String> jListTarefa;
@@ -368,7 +467,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTableExercicios;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaDescricao;
     // End of variables declaration//GEN-END:variables
 
     public JList<String> getjListData() {
@@ -403,6 +502,18 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
         this.jProgressBar = jProgressBar;
     }
 
+    public PanelAdicionarSubtarefa getDialogAdicionar() {
+        return dialogAdicionar;
+    }
+
+    public JTextArea getjTextAreaDescricao() {
+        return jTextAreaDescricao;
+    }
+
+    public void setjTextAreaDescricao(JTextArea jTextAreaDescricao) {
+        this.jTextAreaDescricao = jTextAreaDescricao;
+    }
     
     
+
 }

@@ -62,6 +62,17 @@ public class TarefaDao {
 
     }
     
+    public void atualizarStatusTarefa(Tarefa tarefa) throws SQLException {
+        String sql = "UPDATE tarefa SET status = ? WHERE idtarefa = ?";
+        
+        PreparedStatement statement = conectar.prepareStatement(sql);
+        statement.setBoolean(1, tarefa.isStatus());
+        statement.setInt(2, tarefa.getIdTarefa());
+        statement.execute();
+        statement.close();
+        conectar.close();
+    }
+    
     //Carrega todas as tarefas do bd para o usuário ativo e retorna uma ArrayList de tarefas
     public ArrayList<Tarefa> carregarTarefas(Usuario usuarioAtivo) throws SQLException {
         
@@ -158,7 +169,8 @@ public class TarefaDao {
         Tarefa tarefa;
         ArrayList<Tarefa> tarefas = new ArrayList();
         
-        String sql = "SELECT idtarefa, hora, tarefa.nome FROM tarefa, usuario, disciplina, curso "
+        String sql = "SELECT tarefa.idtarefa, tarefa.nome, tarefa.hora, tarefa.data, tarefa.descricao, tarefa.status, tarefa.iddisciplina, disciplina.nome "
+                + "FROM tarefa, usuario, disciplina, curso "
                 + "WHERE data = ? AND id = ? "
                 + "AND tarefa.iddisciplina = disciplina.iddisciplina "
                 + "AND curso.idcurso = disciplina.idcurso "
@@ -173,8 +185,13 @@ public class TarefaDao {
             
             while(resultSet.next()){
                 tarefa = new Tarefa(resultSet.getInt(1),
-                                    resultSet.getString(3),
-                                    resultSet.getTime(2));
+                                    resultSet.getString(2),
+                                    resultSet.getDate(4),
+                                    resultSet.getTime(3),
+                                    resultSet.getString(5),
+                                    resultSet.getBoolean(6),
+                                    resultSet.getInt(7),
+                                    resultSet.getString(8));
                 tarefas.add(tarefa);
             }
             return tarefas;
