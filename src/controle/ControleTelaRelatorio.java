@@ -102,7 +102,6 @@ public class ControleTelaRelatorio {
                 Connection conexao = new conexao().conectarBanco();
                 SubtarefaDao subtarefaDao = new SubtarefaDao(conexao);
                 subtarefaDao.adicionarSubtarefa(subtarefa);
-                JOptionPane.showMessageDialog(null, "Curso adicionado com sucesso.");
                 exibirSubtarefas();
                 SwingUtilities.getWindowAncestor(panelSubtarefa).dispose();
             }
@@ -162,6 +161,7 @@ public class ControleTelaRelatorio {
         int idTarefa = tarefas.get(view.getjListTarefa().getSelectedIndex()).getIdTarefa();
         int concluidas = 0;
         subtarefas = carregarSubtarefas(idTarefa);
+        view.getjTextAreaDescricao().setText(tarefas.get(view.getjListTarefa().getSelectedIndex()).getDescricao());
         tableModel.setRowCount(0);
 
         if (subtarefas.size() > 0) {

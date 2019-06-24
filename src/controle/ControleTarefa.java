@@ -92,7 +92,6 @@ public class ControleTarefa {
             Connection conexao = new conexao().conectarBanco();
             DisciplinaDao disciplinaDao = new DisciplinaDao(conexao);
             listaDisciplinas = disciplinaDao.carregarTodasDisciplinas(usuarioAtivo);
-            System.out.println(listaDisciplinas.size());
         } catch (SQLException e) {
             System.out.println("Conexão falhou.");
             while (e != null) {
@@ -159,7 +158,7 @@ public class ControleTarefa {
     public void carregarCamposTarefa() throws ParseException {
         /*
          */
-        Tarefa tarefa = carregarListaTarefas().get(view.getjTableTarefas().getSelectedRow());
+        Tarefa tarefa = buscarTarefaPorId();
         view.getjTextTarefaNome().setText(tarefa.getNome());
         view.getjFormattedTextData().setText(formatarData(tarefa.getData()));
         view.getjFormattedTextHora().setText(formatarHora(tarefa.getHora()));
@@ -216,7 +215,7 @@ public class ControleTarefa {
         if (confirmar == JOptionPane.YES_OPTION) {
             try {
                 if (linha >= 0) {
-                    int idTarefa = carregarListaTarefas().get(linha).getIdTarefa();
+                    int idTarefa = buscarTarefaPorId().getIdTarefa();
                     Connection conexao = new conexao().conectarBanco();
                     TarefaDao tarefaDao = new TarefaDao(conexao);
                     tarefaDao.deletarTarefa(idTarefa);
@@ -232,6 +231,16 @@ public class ControleTarefa {
         }
     }
 
+    public Tarefa buscarTarefaPorId(){
+        int idTarefa = (int) view.getjTableTarefas().getValueAt(view.getjTableTarefas().getSelectedRow(), 0);
+        for(Tarefa tarefa : carregarListaTarefas()){
+            if(tarefa.getIdTarefa() == idTarefa){
+                return tarefa;
+            }
+        }
+        return null;
+    }
+    
     //converte uma string para data em formato SQL
     public Date converterData(String sData) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -264,6 +273,7 @@ public class ControleTarefa {
         view.getjTextTarefaNome().setText("");
         view.getjFormattedTextData().setText("");
         view.getjFormattedTextHora().setText("");
+        view.getjTextAreaDescricao().setText("");
         view.getjTextAreaDescricao().setText("");
     }
 }
