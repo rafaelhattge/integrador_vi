@@ -253,7 +253,7 @@ public class ControleTarefa {
             } catch (SQLException ex) {
                 Logger.getLogger(InternoJfTelaTarefa.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            view.getjTextAreaDescricao().setText("");
             exibirTarefas();
         }
     }

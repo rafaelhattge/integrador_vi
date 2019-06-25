@@ -48,8 +48,7 @@ public class ControleTelaRelatorio {
         this.usuarioAtivo = usuarioAtivo;
         this.panelSubtarefa = panelSubtarefa;
         try {
-            listarDatas();
-            //exibirInformacoes();
+            exibirInformacoes();
         } catch (SQLException ex) {
             Logger.getLogger(ControleTelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -163,6 +162,7 @@ public class ControleTelaRelatorio {
     public void exibirSubtarefas() {
         DefaultTableModel tableModel = (DefaultTableModel) view.getjTableExercicios().getModel();
         ArrayList<Subtarefa> subtarefas;
+        view.getjProgressBar().setValue(100);
         int idTarefa = tarefas.get(view.getjListTarefa().getSelectedIndex()).getIdTarefa();
         int concluidas = 0;
         subtarefas = carregarSubtarefas(idTarefa);
@@ -183,20 +183,25 @@ public class ControleTelaRelatorio {
                     concluidas++;
                 }
             }
-            //if (concluidas > 0) {
+            if (subtarefas.size() > 0) {
                 view.getjProgressBar().setValue(concluidas * 100 / subtarefas.size());
-            //}
+            }
         } else {
             tableModel.setRowCount(0);
         }
     }
 
     public void exibirInformacoes() throws SQLException {
+        view.getjListData().setModel(new DefaultListModel());
+        view.getjListTarefa().setModel(new DefaultListModel());
+        view.getjLabelDisciplinaNome().setText("");
+        view.getjTextAreaDescricao().setText("");
         listarDatas();
-        if (view.getjListData().getModel().getSize() > 0) {
+        if(view.getjListData().getModel().getSize() > 0){
+            System.out.println(view.getjListData().getModel().getSize());
             view.getjListData().setSelectedIndex(0);
             selecionarTarefasPorData();
-            if (view.getjListTarefa().getModel().getSize() > 0) {
+            if(view.getjListTarefa().getModel().getSize() > 0){
                 view.getjListTarefa().setSelectedIndex(0);
                 exibirSubtarefas();
             }
@@ -208,7 +213,7 @@ public class ControleTelaRelatorio {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return simpleDateFormat.format(data);
     }
-    
+
     public String formatarHora(Time hora) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:HH");
         return simpleDateFormat.format(hora);
@@ -223,9 +228,9 @@ public class ControleTelaRelatorio {
     }
 
     public String riscar(String nome, boolean status) {
-      if (status) {
-         return "<html><strike>" + nome + "</html></strike>"; 
-      }
-      return nome;
-   }
+        if (status) {
+            return "<html><strike>" + nome + "</html></strike>";
+        }
+        return nome;
+    }
 }
