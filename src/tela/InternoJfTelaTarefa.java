@@ -565,8 +565,6 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         if (evt.getType() == TableModelEvent.UPDATE) {
             int idTarefa = (int) jTableTarefas.getValueAt(jTableTarefas.getSelectedRow(), 0);
             boolean status = (boolean) jTableTarefas.getValueAt(jTableTarefas.getSelectedRow(), jTableTarefas.getSelectedColumn());
-            System.out.println("Id da Tarefa: " + idTarefa);
-            System.out.println("Linha selecionada: " + status);
             try {
                 controle.editarStatusTarefa(idTarefa, status);
             } catch (ParseException ex) {
@@ -699,6 +697,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
     private void jTextFieldPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarMouseClicked
         jTableTarefas.getSelectionModel().clearSelection();
+        jTextArea1Descricao.setText("");
     }//GEN-LAST:event_jTextFieldPesquisarMouseClicked
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
