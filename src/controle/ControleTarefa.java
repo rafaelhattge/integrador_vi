@@ -135,7 +135,6 @@ public class ControleTarefa {
         int idDisciplina = disciplina.getIdDisciplina();
         String nomeDisciplina = disciplina.getNome();
         
-        System.out.println("Data de início: " + disciplina.getDataInicio() + "\nData de término: " + disciplina.getDataTermino());
         Tarefa tarefa = new Tarefa(nome, data, hora, descricao,
                 status, idDisciplina, nomeDisciplina);
 

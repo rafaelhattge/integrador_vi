@@ -261,10 +261,10 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()) {
                     try {
-                        System.out.println("Exibindo subtarefas");
+                        //System.out.println("Exibindo subtarefas");
                         controle.exibirSubtarefas();
                     } catch (NullPointerException eex){
-                        System.out.println("Tamanho da jListData: " + jListTarefa.getModel().getSize());
+                        //System.out.println("Tamanho da jListData: " + jListTarefa.getModel().getSize());
                     }
                 }
             }
@@ -304,7 +304,7 @@ public class InternoJfTelaRelatorio extends javax.swing.JInternalFrame {
                         Logger.getLogger(InternoJfTelaRelatorio.class
                             .getName()).log(Level.SEVERE, null, ex);
                     } catch (NullPointerException eex){
-                        System.out.println("Tamanho da jListData: " + jListData.getModel().getSize());
+                        //System.out.println("Tamanho da jListData: " + jListData.getModel().getSize());
                     }
                 }
             }

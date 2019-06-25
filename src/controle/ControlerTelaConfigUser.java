@@ -119,7 +119,7 @@ public class ControlerTelaConfigUser {
         usuarioAtivo = usuarioU;
         try {
             Connection conecta = new conexao().conectarBanco();
-            System.out.println("Conectou");
+            //System.out.println("Conectou");
             UsuarioDao userDao = new UsuarioDao(conecta);
             int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir a sua conta?\n"
                     + "Após a exclusão você perderá todos dados", "Confirmar Excluir", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);

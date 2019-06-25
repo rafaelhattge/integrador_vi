@@ -256,7 +256,6 @@ public class ControleTelaDisciplina {
                 for(int i = 0; i < disciplinas.size(); i++) {
                     dados[0] = disciplinas.get(i).getNome();
                     dados[1] = formatarData(disciplinas.get(i).getDataInicio());
-                    System.out.println(formatarData(disciplinas.get(i).getDataInicio()));
                     dados[2] = formatarData(disciplinas.get(i).getDataTermino());
                     dados[3] = disciplinas.get(i).isDomingo();
                     dados[4] = disciplinas.get(i).isSegunda();

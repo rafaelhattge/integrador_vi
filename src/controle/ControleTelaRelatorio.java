@@ -198,7 +198,6 @@ public class ControleTelaRelatorio {
         view.getjTextAreaDescricao().setText("");
         listarDatas();
         if(view.getjListData().getModel().getSize() > 0){
-            System.out.println(view.getjListData().getModel().getSize());
             view.getjListData().setSelectedIndex(0);
             selecionarTarefasPorData();
             if(view.getjListTarefa().getModel().getSize() > 0){
