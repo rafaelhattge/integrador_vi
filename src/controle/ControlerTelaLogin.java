@@ -73,6 +73,7 @@ conexao.close();
                 //Exibe mensagem inicial
                 if(usuarioAtivo.getMensagem().equals("sim")){
                 TelaMensagem mensagem = new TelaMensagem(tela, true);
+                mensagem.Iniciar();
                 mensagem.setVisible(true);
                 }
             } else {

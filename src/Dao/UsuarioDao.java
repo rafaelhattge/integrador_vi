@@ -91,14 +91,7 @@ public class UsuarioDao {
         return usuarios;
     }
 
-  /*  public Usuario retornarUsuarioUnico(Usuario user) throws SQLException {
-        String sql = "select * from usuario where id = ?;";
 
-        PreparedStatement statement = conectar.prepareStatement(sql);
-        statement.setInt(1, user.getId());
-        return pesquisarArrayUser(statement).get(0);
-
-    }*/
     //////PASSAR USUARIO PARA TELA PRINCIPAL
   public Usuario retornarUsuarioUnico(String usuario,String senha) throws SQLException {
     String sql = "select * from usuario where usuario = ? and senha = ?;";
@@ -143,12 +136,6 @@ public class UsuarioDao {
         return resultSet.next();
     }
 
- /*   public Usuario getUserAtivo() {
-        return userAtivo;
-    }
 
-    public void setUserAtivo(Usuario user) {
-        this.userAtivo = user;
-    }*/
 
 }

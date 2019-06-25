@@ -21,7 +21,7 @@ public class TelaMensagemDao {
 
     //so pode criar dao se passar conexao
     private final Connection conectar;
-private Random aleatorio;
+
     public TelaMensagemDao(Connection conexao) {
         this.conectar = conexao;
     }
@@ -29,14 +29,14 @@ private Random aleatorio;
     public void insertmMensagem(Mensagem mensagem) throws SQLException {
         String sql = "insert into mensagem (mensagem)values(?);";
 
-         PreparedStatement statement = conectar.prepareStatement(sql);
+        PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, mensagem.getMensagem());
         statement.execute();
         conectar.close();
     }
 
-  ////Arrayslist de mensagem
-       public ArrayList<Mensagem> selecionarTodasMensagem() throws SQLException {
+    ////Arrayslist de mensagem
+    public ArrayList<Mensagem> selecionarTodasMensagem() throws SQLException {
         String sql = "select * from mensagem ORDER BY id ASC";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
@@ -56,17 +56,17 @@ private Random aleatorio;
     }
 
     public void deletarMensagem(Mensagem men) throws SQLException {
-         String sql = "Delete from mensagem where id =?;";
+        String sql = "Delete from mensagem where id =?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
 
         statement.setInt(1, men.getId());
         statement.execute();
-    conectar.close();
+        conectar.close();
     }
 
     public void UpdateMensagem(Mensagem men) throws SQLException {
-             String sql = "update mensagem set mensagem = ?  where id =?;";
+        String sql = "update mensagem set mensagem = ?  where id =?;";
 
         PreparedStatement statement = conectar.prepareStatement(sql);
         statement.setString(1, men.getMensagem());
@@ -74,4 +74,5 @@ private Random aleatorio;
         statement.execute();
         conectar.close();
     }
+
 }
