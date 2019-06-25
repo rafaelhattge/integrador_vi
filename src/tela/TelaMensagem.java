@@ -6,6 +6,9 @@
 package tela;
 
 import controle.ControlerTelaMensagem;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -20,10 +23,11 @@ public class TelaMensagem extends javax.swing.JDialog {
     /**
      * Creates new form ConfigInicial
      */
-    public TelaMensagem(java.awt.Frame parent, boolean modal) {
+    public TelaMensagem(java.awt.Frame parent, boolean modal) throws SQLException {
         super(parent, modal);
         initComponents();
         Controler = new  ControlerTelaMensagem(this);
+        
        
     }
 
@@ -74,14 +78,15 @@ public class TelaMensagem extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +102,10 @@ public class TelaMensagem extends javax.swing.JDialog {
         jTextFrase.setEditable(false);
         jTextFrase.setBackground(new java.awt.Color(69, 69, 71));
         jTextFrase.setColumns(20);
-        jTextFrase.setFont(new java.awt.Font("Monospaced", 3, 14)); // NOI18N
+        jTextFrase.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         jTextFrase.setForeground(new java.awt.Color(204, 255, 51));
         jTextFrase.setLineWrap(true);
         jTextFrase.setRows(5);
-        jTextFrase.setText("   \n   “Ter sucesso é falhar repetidamente, \n        mas sem perder o entusiasmo”");
         jTextFrase.setWrapStyleWord(true);
         jTextFrase.setBorder(null);
         jScrollPane1.setViewportView(jTextFrase);
@@ -119,7 +123,7 @@ public class TelaMensagem extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabelBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -208,7 +212,12 @@ public class TelaMensagem extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaMensagem dialog = new TelaMensagem(new javax.swing.JFrame(), true);
+                TelaMensagem dialog = null;
+                try {
+                    dialog = new TelaMensagem(new javax.swing.JFrame(), true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaMensagem.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -246,5 +255,8 @@ public class TelaMensagem extends javax.swing.JDialog {
 
     public void setjTextFrase(javax.swing.JTextArea jTextFrase) {
         this.jTextFrase = jTextFrase;
+    }
+    public void Iniciar(){
+        Controler.carregarListaMensagem();
     }
 }
