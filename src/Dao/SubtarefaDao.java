@@ -71,7 +71,7 @@ public class SubtarefaDao {
                 + "AND tarefa.iddisciplina = disciplina.iddisciplina "
                 + "AND curso.idcurso = disciplina.idcurso "
                 + "AND curso.idusuario = usuario.id "
-                + "ORDER BY subtarefa.nome ASC";
+                + "ORDER BY subtarefa.nome ASC, idsubtarefa ASC";
         
         try {
             PreparedStatement statement = conectar.prepareStatement(sql);

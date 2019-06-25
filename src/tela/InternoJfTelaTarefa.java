@@ -167,6 +167,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
 
         jPanelGerenciatarefa.setBackground(new java.awt.Color(69, 69, 71));
         jPanelGerenciatarefa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 244, 158), 2, true));
+        jPanelGerenciatarefa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextTarefaNome.setBackground(new java.awt.Color(69, 69, 71));
         jTextTarefaNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -176,6 +177,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jTextTarefaNome.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextTarefaNome.setMaximumSize(new java.awt.Dimension(385, 40));
         jTextTarefaNome.setPreferredSize(new java.awt.Dimension(385, 40));
+        jPanelGerenciatarefa.add(jTextTarefaNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 22, 310, -1));
 
         jFormattedTextData.setBackground(new java.awt.Color(69, 69, 71));
         jFormattedTextData.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Data", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -189,17 +191,25 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jFormattedTextData.setCaretColor(new java.awt.Color(255, 255, 255));
         jFormattedTextData.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jFormattedTextData.setSelectedTextColor(new java.awt.Color(51, 153, 255));
+        jFormattedTextData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextDataActionPerformed(evt);
+            }
+        });
+        jPanelGerenciatarefa.add(jFormattedTextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, 40));
 
         jLabelStatus.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelStatus.setForeground(new java.awt.Color(255, 255, 255));
         jLabelStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelStatus.setText("Status");
+        jPanelGerenciatarefa.add(jLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 301, -1, -1));
 
         jRadioButtonConcluido.setBackground(new java.awt.Color(69, 69, 71));
         buttonGroupStatus.add(jRadioButtonConcluido);
         jRadioButtonConcluido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButtonConcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonConcluido.setText("Concluido");
+        jPanelGerenciatarefa.add(jRadioButtonConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 295, -1, -1));
 
         jRadioButtonNconcluido.setBackground(new java.awt.Color(69, 69, 71));
         buttonGroupStatus.add(jRadioButtonNconcluido);
@@ -207,6 +217,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jRadioButtonNconcluido.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonNconcluido.setSelected(true);
         jRadioButtonNconcluido.setText("Não Concluído");
+        jPanelGerenciatarefa.add(jRadioButtonNconcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 295, -1, -1));
 
         jScrollPane5.setBorder(null);
 
@@ -221,6 +232,8 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jTextAreaDescricao.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane5.setViewportView(jTextAreaDescricao);
 
+        jPanelGerenciatarefa.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 172, 310, -1));
+
         jButtonSalvar.setBackground(new java.awt.Color(181, 92, 28));
         jButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonSalvar.setText("SALVAR");
@@ -230,6 +243,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                 jButtonSalvarActionPerformed(evt);
             }
         });
+        jPanelGerenciatarefa.add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 120, 30));
 
         jComboBoxDisciplina.setBackground(new java.awt.Color(69, 69, 69));
         jComboBoxDisciplina.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
@@ -242,6 +256,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                 jComboBoxDisciplinaItemStateChanged(evt);
             }
         });
+        jPanelGerenciatarefa.add(jComboBoxDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 310, 46));
 
         jFormattedTextHora.setBackground(new java.awt.Color(69, 69, 71));
         jFormattedTextHora.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 215, 244), 1, true), "Hora", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -255,6 +270,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         jFormattedTextHora.setCaretColor(new java.awt.Color(255, 255, 255));
         jFormattedTextHora.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jFormattedTextHora.setSelectedTextColor(new java.awt.Color(51, 153, 255));
+        jPanelGerenciatarefa.add(jFormattedTextHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 110, 40));
 
         jButtonCancelar.setBackground(new java.awt.Color(181, 92, 28));
         jButtonCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -265,67 +281,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanelGerenciatarefaLayout = new javax.swing.GroupLayout(jPanelGerenciatarefa);
-        jPanelGerenciatarefa.setLayout(jPanelGerenciatarefaLayout);
-        jPanelGerenciatarefaLayout.setHorizontalGroup(
-            jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelGerenciatarefaLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jFormattedTextData, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jFormattedTextHora, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-            .addGroup(jPanelGerenciatarefaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBoxDisciplina, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGerenciatarefaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextTarefaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5))
-                .addContainerGap())
-            .addGroup(jPanelGerenciatarefaLayout.createSequentialGroup()
-                .addGroup(jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGerenciatarefaLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabelStatus)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButtonConcluido))
-                    .addGroup(jPanelGerenciatarefaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonNconcluido))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-        jPanelGerenciatarefaLayout.setVerticalGroup(
-            jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelGerenciatarefaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jTextTarefaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextData, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextHora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBoxDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelStatus)
-                    .addComponent(jRadioButtonConcluido)
-                    .addComponent(jRadioButtonNconcluido))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelGerenciatarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        jPanelGerenciatarefa.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 110, 30));
 
         jLayeredPaneGereTarefa.add(jPanelGerenciatarefa, "card3");
 
@@ -562,7 +518,7 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
                 .addGroup(jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLayeredPaneGereTarefa)
                     .addComponent(jPanelEdicaoTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTarefasLayout.setVerticalGroup(
             jPanelTarefasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,15 +545,17 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
+            .addGap(0, 1073, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelTarefas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE))
+                .addComponent(jPanelTarefas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGap(0, 556, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanelTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -748,6 +706,10 @@ public class InternoJfTelaTarefa extends javax.swing.JInternalFrame {
         controle.TrocaTarefas(jPanelInicGerencia);
         controle.limparCampos();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jFormattedTextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextDataActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

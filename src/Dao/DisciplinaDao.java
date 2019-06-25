@@ -69,7 +69,7 @@ public class DisciplinaDao {
     public ArrayList<Disciplina> carregarDisciplinas(int idCurso) throws SQLException {
         
         Disciplina disciplina;
-        String sql = "SELECT * FROM disciplina WHERE idcurso = ? ORDER BY nome ASC";
+        String sql = "SELECT * FROM disciplina WHERE idcurso = ? ORDER BY datainicio ASC, nome ASC";
         
         try {
             PreparedStatement statement = conectar.prepareStatement(sql);
