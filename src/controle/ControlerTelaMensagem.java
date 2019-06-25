@@ -28,8 +28,4 @@ public class ControlerTelaMensagem {
         view.setOpacity(0.8f);
         view.getjLabelBarra().setOpaque(true);
     }
-
-
-   
-
 }

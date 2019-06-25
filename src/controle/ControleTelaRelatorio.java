@@ -11,6 +11,7 @@ import Dao.conexao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -83,7 +84,11 @@ public class ControleTelaRelatorio {
         tarefas = tarefaDao.carregarTarefasPorData(usuarioAtivo, datas.get(index));
         DefaultListModel model = new DefaultListModel();
         for (Tarefa tarefa : tarefas) {
-            model.addElement(tarefa.getHora() + " - " + tarefa.getNome());
+            try {
+                model.addElement(formatarHora(tarefa.getHora()) + " - " + tarefa.getNome());
+            } catch (ParseException ex) {
+                Logger.getLogger(ControleTelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         view.getjListTarefa().setModel(model);
         conexao.close();
@@ -161,6 +166,7 @@ public class ControleTelaRelatorio {
         int idTarefa = tarefas.get(view.getjListTarefa().getSelectedIndex()).getIdTarefa();
         int concluidas = 0;
         subtarefas = carregarSubtarefas(idTarefa);
+        view.getjLabelDisciplinaNome().setText(tarefas.get(view.getjListTarefa().getSelectedIndex()).getNomeDisciplina());
         view.getjTextAreaDescricao().setText(tarefas.get(view.getjListTarefa().getSelectedIndex()).getDescricao());
         tableModel.setRowCount(0);
 
@@ -201,6 +207,11 @@ public class ControleTelaRelatorio {
     public String formatarData(Date data) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return simpleDateFormat.format(data);
+    }
+    
+    public String formatarHora(Time hora) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:HH");
+        return simpleDateFormat.format(hora);
     }
 
     public ArrayList<Tarefa> getTarefas() {
