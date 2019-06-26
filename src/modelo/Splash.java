@@ -87,8 +87,8 @@ public class Splash {
         do {
             try {
                 progressBar.setValue(i);
-                //Thread.sleep(50);
-                Thread.sleep(1);
+                Thread.sleep(50);
+                //Thread.sleep(1);
 
                 message.setText("\"Aguarde carregando banco de dados...\" " + Integer.toString(i) + "%");
                 i++;
@@ -96,8 +96,8 @@ public class Splash {
                 if (i == 100) {
                     progressBar.setValue(100);
                     message.setText("\"Banco de dados carregado com sucesso\" ");
-                    //Thread.sleep(1000)
-                    Thread.sleep(1);
+                    Thread.sleep(1000);
+                    //Thread.sleep(1);
                     TelaLogin login = new TelaLogin();
                     login.setVisible(true);
                     frame.dispose();
